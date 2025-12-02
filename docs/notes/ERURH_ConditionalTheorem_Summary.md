@@ -1,60 +1,45 @@
-ERURH Condicional: Teorema Resumen hacia RH
-===========================================
+ERURH Conditional Theorem toward RH (summary)
+=============================================
 
-Introducción y contexto
------------------------
-ERURH-alpha modela el observable `\(\log R(s) = E(e^s)/e^s\)` y su derivada `jRel(s) = d/ds\,\log R(s)`, y construye una energía ERU sobre ventanas \([S,S+L]\) para controlar el decaimiento y la regularidad de este flujo. El núcleo Lean encapsula certificados de flujo, energía, inercia y RMS que verifican estas cotas en un marco discreto de ventanas. La energía se formula como integrales/promedios de \(|\log R|\) y \(|jRel|\) ponderados, y se compara con un sobre formal \(L_{\text{global}}\). Los certificados de flujo (Lema A/B) y de ventana garantizan que \(\log R\) y \(jRel\) respetan cotas racionales en cada ventana y en la cola. La cadena Plan B introduce hipótesis A1/A2 sobre la descomposición RMS: A1 controla un modo con \(\beta>1/2\) y A2 controla las partes low/tail. Los gates de renormalización e inercia se cierran al combinar certificados y las hipótesis RMS, produciendo ausencia de modos supercríticos. Finalmente, la equivalencia ERURH ↔ RH traduce inercia fuerte en la Hipótesis de Riemann para \(\xi_\alpha\). Todo esto está formalizado en Lean como una sucesión de lemas; la prueba es condicional a ciertos paquetes de supuestos externos que capturan la teoría clásica de \(\zeta\), el decaimiento espectral, el large-sieve en \(\gamma\) y los certificados numéricos beta.
+Introduction and context
+------------------------
+ERURH-alpha models the observable \(\log R(s) = E(e^s)/e^s\) and its derivative \(j_{\mathrm{rel}}(s) = \frac{d}{ds}\log R(s)\), and defines an ERU energy on windows \([S, S+L]\) to control decay and regularity. The Lean core encapsulates flux, energy, inertia, and RMS certificates that enforce rational bounds on windows and tails. Plan B adds RMS decomposition hypotheses: A1 controls a mode with \(\beta>1/2\); A2 controls low/tail parts. Renormalization/energy gates close when certificates and A1/A2 hold, eliminating supercritical modes; the ERURH ↔ RH equivalence then yields RH for \(\xi_\alpha\). This is formalized in Lean as a chain of lemmas conditional on classical analytic packages (ζ-theory, spectral decay, LSγ) and certified numeric inputs.
 
-Paquetes de suposiciones externas
----------------------------------
-- **Supuestos clásicos de \(\zeta\)** (`ClassicalZetaAssumptions`): fórmula explícita para \(\psi\), densidad de ceros, equivalencias RH↔E, bounds para \(\xi\), argumentos y traducción explícita; este paquete agrupa los axiomas clásicos exportados en Lean.
-- **Supuestos espectrales** (`SpectralAssumptionsAlpha`, \(H_b\)): decaimiento/control de los coeficientes \(b_\rho\) en la fórmula explícita ERU (cola \(\sum_{|\gamma|>T} |b_\rho|^2 \le (\log T)^A\)).
-- **Supuestos LS\(_\gamma\)** (`LSGammaAssumptions`): versión fina de las desigualdades tipo large-sieve en la variable de altura \(\gamma\).
-- **Supuestos beta numéricos** (`BetaInertiaAssumptions`): corrección de certificados beta y blow-up certificado de la energía del kernel para modos con \(\beta>1/2\).
+External assumption packages
+----------------------------
+- **Classical ζ-theory** (`ClassicalZetaAssumptions`): explicit formula for \(\psi\), zero-counting, RH↔E equivalences, bounds for \(\xi\), argument control; packaged as axioms in Lean.
+- **Spectral assumptions** (`SpectralAssumptionsAlpha`, `H_b`): decay/control of coefficients \(b_\rho\); the dyadic L² tail `hb_tail : H_b_L2_tail` is assumed as a field.
+- **LSγ assumptions** (`LSGammaAssumptions`): LSγ^weak bound on spectral sums; assumed via `ls_gamma_weak` (defaulted by `LSGammaWeak_of_simple`).
+- **Beta numeric assumptions** (`BetaInertiaAssumptions`): correctness of beta certificates and certificate-based kernel blow-up for β>1/2 modes.
+These packages form `ERURH_Assumptions` and, together with A1/A2 window hypotheses, `ERURH_GlobalAssumptions`.
 
-En Lean estos cuatro paquetes se agrupan en `ERURH_Assumptions` y, junto con las hipótesis de ventana A1/A2, en `ERURH_GlobalAssumptions`.
+Window hypotheses (A1/A2) and RMS context
+-----------------------------------------
+`RMSLocalContext` fixes windows \([S, S+L]\) with \(1 \ll L \ll S^\alpha\) and the RMS pieces (mode/low/tail). **A1-mode** asserts a mode with β > 1/2 yields RMS growth. **A2-low** and **A2-tail** bound the low/tail parts. In Lean these reside in `WindowScalingAssumptions` (fields `ctx`, `hA1`, `hLow`, `hTail`) inside `ERURH_GlobalAssumptions`.
 
-Hipótesis de ventana (A1/A2) y contexto RMS
+Conditional theorem (mathematical statement)
 --------------------------------------------
-El contexto `RMSLocalContext` fija las ventanas \([S,S+L]\) con \(1 \ll L \ll S^\alpha\) y las cantidades RMS de las contribuciones mode/low/tail. La hipótesis **A1-mode** afirma que para algún \(\beta>1/2\) la RMS local de la contribución del modo crece como \(e^{(\beta-1/2)S}/S^2\). Las hipótesis **A2-low** y **A2-tail** controlan las partes low/tail del espectro, garantizando que sin modos supercríticos la RMS permanece bajo el sobre. En Lean estas hipótesis se encapsulan en `WindowScalingAssumptions` (campos `ctx`, `hA1`, `hLow`, `hTail`).
-
-Enunciado del teorema condicional (versión matemático-papel)
-------------------------------------------------------------
-**Teorema (ERURH condicional).** Supongamos que se satisfacen:
-
-1. Un paquete clásico `ClassicalZetaAssumptions` sobre \(\zeta\) y la fórmula explícita (fórmula explícita para \(\psi\), densidad de ceros, equivalencias RH↔E, bounds para \(\xi\), etc.).
-2. Un paquete espectral `SpectralAssumptionsAlpha` que garantiza la hipótesis \(H_b\) sobre los coeficientes \(b_\rho\).
-3. Un paquete `LSGammaAssumptions` que proporciona una desigualdad refinada de tipo large-sieve en la variable \(\gamma\).
-4. Un paquete numérico `BetaInertiaAssumptions` que valida los certificados beta y el blow-up de energía del kernel para modos con \(\beta>1/2\).
-5. Un paquete de hipótesis de ventana y RMS `WindowScalingAssumptions` (A1/A2/H_range) en el contexto RMS ERURH.
-
-Entonces se cumple la Hipótesis de Riemann en la capa \(\xi_\alpha\): `RiemannHypothesis xiAlpha`.
-
-En Lean, esto se formaliza como
+Assume:
+1. `ClassicalZetaAssumptions` on ζ and the explicit formula (explicit formula, zero density/counting, RH↔E equivalences, bounds for \(\xi\), etc.).
+2. `SpectralAssumptionsAlpha` guaranteeing \(H_b\) (including `hb_tail : H_b_L2_tail`).
+3. `LSGammaAssumptions` providing LSγ^weak (`ls_gamma_weak`).
+4. `BetaInertiaAssumptions` validating beta certificates and kernel energy blow-up for β>1/2 modes.
+5. `WindowScalingAssumptions` (A1/A2/H_range) in the RMS context.
+Then `RiemannHypothesis xiAlpha` holds. In Lean:
 ```lean
-theorem RH_from_ERURH_conditional
-  (G : ERURH_GlobalAssumptions) :
+theorem RH_from_ERURH_conditional (G : ERURH_GlobalAssumptions) :
   RiemannHypothesis xiAlpha
 ```
-donde `ERURH_GlobalAssumptions` agrupa precisamente los paquetes clásico, espectral, LS\(_\gamma\), beta y las hipótesis de ventana A1/A2.
+where `ERURH_GlobalAssumptions` bundles exactly the classical, spectral, LSγ, beta, and A1/A2 window hypotheses.
 
-Esbozo de la cadena lógica
---------------------------
-1. Paquetes externos + certificados ERU ⇒ `PlanB_AnalyticAssumptions ctx`.
-2. `PlanB_AnalyticAssumptions ctx` + gates cerrados ⇒ `RMSLocalHypothesis ctx` (si existiera un modo con \(\beta>1/2\), habría una ventana con RMS por encima del sobre).
-3. `RMSLocalHypothesis ctx` + definición de gates ⇒ contradicción con gates cerrados si existiera un modo con \(\beta>1/2\).
-4. Por tanto, no hay modos con \(\beta>1/2\); esto implica `InertiaERU_alpha_strong`.
-5. Mediante la equivalencia ERURH↔RH (bajo `ClassicalZetaAssumptions`) se obtiene `RiemannHypothesis xiAlpha`.
+Logical chain (sketch)
+----------------------
+1. External packages + ERU certificates ⇒ `PlanB_AnalyticAssumptions ctx`.
+2. `PlanB_AnalyticAssumptions ctx` + closed gates ⇒ `RMSLocalHypothesis ctx` (a β>1/2 mode would force an RMS window above the envelope).
+3. `RMSLocalHypothesis ctx` + gate definitions ⇒ contradiction if a β>1/2 mode existed.
+4. Thus no β>1/2 modes; hence `InertiaERU_alpha_strong`.
+5. Using the ERURH↔RH equivalence (under `ClassicalZetaAssumptions`), conclude `RiemannHypothesis xiAlpha`.
 
-Conexión con el código Lean
----------------------------
-El teorema Lean se llama `RH_from_ERURH_conditional` y vive en `formal_proofs/ERURH/ERURH_MasterTheoremSummary.lean`. Los archivos clave son:
-- `ERURH_MasterTheoremSummary.lean`
-- `ERURH_PlanB_Assumptions.lean`
-- `ERURH_A2Hypotheses.lean`
-- `ERURH_ClassicalZetaAssumptions.lean`
-- `ERURH_ExplicitFormulaAlpha.lean`
-- `ERURH_LargeSieveGammaSketch.lean`
-- `ERURH_BetaInertiaAssumptions.lean`
-
-Todas las piezas internas (energía, RMS, gates, inercia) están demostradas en Lean; los únicos supuestos no probados corresponden a los cuatro paquetes externos descritos arriba.
+Lean references
+---------------
+`RH_from_ERURH_conditional` lives in `formal_proofs/ERURH/ERURH_MasterTheoremSummary.lean`. Supporting files: `ERURH_PlanB_Assumptions.lean`, `ERURH_A2Hypotheses.lean`, `ERURH_ClassicalZetaAssumptions.lean`, `ERURH_ExplicitFormulaAlpha.lean`, `ERURH_LargeSieveGammaSketch.lean`, `ERURH_BetaInertiaAssumptions.lean`. Internal energy/RMS/gate/inertia components are proved in Lean; the unproved pieces are the classical analytic packages listed above.

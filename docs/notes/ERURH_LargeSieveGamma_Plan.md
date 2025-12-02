@@ -3,33 +3,26 @@ ERURH Large-Sieve-on-γ Plan
 
 1. Setup for the γ-large-sieve lemma
 ------------------------------------
-- Zeros `ρ_j = β_j + iγ_j` with `β_j > 1/2` in the tail regime.
-- Coefficients `b_j = b_ρj` satisfy the decay hypothesis `H_b`.
-- Work on window variables `u ∈ [0, L]` and consider band-limited sums
-  `F_{(T, T]}(u) = Σ_{T<|γ_j|≤T'} b_j e^{i γ_j u}` over a spectral band.
+- Zeros \(\rho_j = \beta_j + i\gamma_j\) with \(\beta_j > 1/2\) in the tail regime.
+- Coefficients \(b_j = b_{\rho_j}\) satisfy the decay hypothesis \(H_b\) (assumed via `SpectralAssumptionsAlpha`).
+- Consider window variables \(u \in [0, L]\) and band-limited sums \(F_{(T_1, T_2]}(u) = \sum_{T_1<|\gamma_j|\le T_2} b_j e^{i \gamma_j u}\).
 
-2. Target inequality (LS_γ)
----------------------------
-- Desired bound (schematic):
-  \[
-  \frac{1}{L} \int_0^L \left|F_{(T_1, T_2]}(u)\right|^2 \, du
-  \le C \bigl(1 + L \log T_2\bigr)
-      \sum_{T_1<|\gamma_j|\le T_2} |b_j|^2,
-  \]
-  for `T` in the admissible range (e.g. `T ≥ S`, `T ≤ S^B`, `L` in a window range).
+2. Target inequality (LSγ)
+-------------------------
+Desired bound (schematic):
+\[
+\frac{1}{L} \int_0^L \big|F_{(T_1, T_2]}(u)\big|^2 \, du
+  \le C \bigl(1 + L \log T_2\bigr) \sum_{T_1<|\gamma_j|\le T_2} |b_j|^2,
+\]
+for admissible \(T\) (e.g., \(T \ge S\), \(T \le S^B\), \(L\) in the window range).
 
 3. Sketch of the analytic argument
 ----------------------------------
-- Expand the square and integrate termwise over `u ∈ [0, L]`.
-- Separate diagonal and off-diagonal contributions; evaluate
-  \(\int_0^L e^{i(\gamma_j - \gamma_k)u} du\).
-- Use zero-density estimates to control pairs with `|γ_j - γ_k|` small.
-- Combine these bounds to obtain an inequality of the form
-  `(1/L)∫ |F|^2 ≤ (1 + L log T) Σ |b_j|^2`.
+- Expand the square, integrate over \(u \in [0, L]\), separate diagonal/off-diagonal terms.
+- Evaluate \(\int_0^L e^{i(\gamma_j - \gamma_k)u} du\) and use zero-density estimates to control small \(|\gamma_j - \gamma_k|\).
+- Combine to obtain \((1/L)\int |F|^2 \le (1 + L \log T)\sum |b_j|^2\).
 
 4. Role in A2-tail and Plan B
 -----------------------------
-- LS_γ, together with `H_b` and zero-density, yields control of the RMS integral
-  in `u` for the tail, leading to A2-tail.
-- Thus, the γ-large-sieve lemma is a key analytic package feeding `A2Tail_RMS`
-  and, via Plan B, the exclusion of modes with `β > 1/2`.
+- LSγ, together with \(H_b\) and zero-density, yields the RMS control for the tail (A2-tail).
+- In Lean, LSγ^weak is assumed as `ls_gamma_weak` inside `LSGammaAssumptions` (defaulted via `LSGammaWeak_of_simple`); it feeds `A2Tail_RMS` and, via Plan B, the exclusion of modes with \(\beta > 1/2\).

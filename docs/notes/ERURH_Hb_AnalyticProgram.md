@@ -1,51 +1,40 @@
-ERURH: Programa Analítico para \(H_b\)
-=====================================
+ERURH: Analytic Program for \(H_b\)
+===================================
 
-1. Contexto
------------
-El paquete \(H_b\) encapsula propiedades espectrales de los coeficientes \(b_\rho\) que aparecen al expandir el observable ERU (`logR`/`jRel`) vía la fórmula explícita. En el código ya hemos separado tres componentes:
-- `H_b_explicit`: estructura explícita de \(b_\rho\).
-- `H_b_pointwise`: cota puntual de decaimiento de \(b_\rho\).
-- `H_b_L2_tail`: cota de cola en norma \(L^2\) para \(\sum_{|\gamma|>T} |b_\rho|^2\).
+1. Context
+----------
+The \(H_b\) package encapsulates spectral properties of the coefficients \(b_\rho\) that arise when expanding the ERU observables (\(\log R\)/\(jRel\)) via the explicit formula. It separates:
+- `H_b_explicit`: explicit structure of \(b_\rho\);
+- `H_b_pointwise`: pointwise decay of \(b_\rho\);
+- `H_b_L2_tail`: dyadic L² tail bound \(\sum_{|\gamma|>T} |b_\rho|^2 \ll (\log T)^A\) (assumed as `hb_tail` in `SpectralAssumptionsAlpha`).
 
-2. Forma explícita de \(b_\rho\) (`H_b_explicit`)
--------------------------------------------------
-A partir de la fórmula explícita para \(\psi(x)\) y el cambio \(x = e^s\), se obtiene una expansión del tipo
+2. Explicit form of \(b_\rho\) (`H_b_explicit`)
+-----------------------------------------------
+From the explicit formula for \(\psi(x)\) and \(x=e^s\),
 \[
-\log R(s) = \sum_\rho a_\rho\, e^{(\rho-1)s} + (\text{términos triviales}),\qquad
- \text{y derivando}\quad
-  jRel(s) = \sum_\rho \rho\, a_\rho\, e^{(\rho-1)s} + \cdots
+\log R(s) = \sum_\rho a_\rho e^{(\rho-1)s} + \text{trivial terms},\qquad
+jRel(s) = \sum_\rho (\rho-1)\rho^{-1} a_\rho e^{(\rho-1)s} + \cdots
 \]
-Bajo la normalización ERU
-\[
-\widetilde J_\alpha(s) = e^{s/2}\, jRel(s) / s^2,
-\]
-aparecen coeficientes del tipo
-\[
- b_\rho = (\rho-1)\rho^{-1} \, G(\rho),
-\]
-donde \(G(\rho)\) incluye factores \(\Gamma(\rho/2)\), \(\pi^{-\rho/2}\) y posibles regularizaciones del kernel. El objetivo de `H_b_explicit` es formalizar en Lean un lema que diga que \(b_\rho\) coincide con una fórmula cerrada \(F(\rho)\), derivada de la fórmula explícita de \(\psi\) (paquete `ClassicalZetaAssumptions`) y la normalización ERU (kernel/logR/jRel).
+Under ERU normalization \(\widetilde J_\alpha(s) = e^{s/2} jRel(s) / s^2\), coefficients take the form \(b_\rho = (\rho-1)\rho^{-1} G(\rho)\) with \(G(\rho)\) capturing \(\Gamma(\rho/2)\), \(\pi^{-\rho/2}\), and kernel regularization. `H_b_explicit` aims to state in Lean (as a classical assumption) that \(b_\rho\) equals a closed-form expression derived from the explicit formula (via `ClassicalZetaAssumptions`) and ERU normalization.
 
-3. Bound puntual (`H_b_pointwise`)
------------------------------------
-La forma típica buscada es
+3. Pointwise bound (`H_b_pointwise`)
+------------------------------------
+Target shape:
 \[
- |b_\rho| \le C\,(1+|\gamma|)^{-1+\varepsilon},
+ |b_\rho| \le C (1+|\gamma|)^{-1+\varepsilon}, \quad \Re(\rho)=\beta>1/2,
 \]
-para \(\Re(\rho)=\beta>1/2\). Debería seguir de `H_b_explicit`, Stirling/bounds de \(\Gamma\), bounds de \(\zeta'/\zeta\) en la franja crítica y quizá una región libre de ceros. Esta parte es analítica profunda; en Lean requeriría formalizar fragmentos de Titchmarsh/Ivić.
+expected from `H_b_explicit`, Stirling/Γ bounds, ζ′/ζ bounds in the critical strip, and zero-free regions. This remains classical analytic input; Lean treats it as an assumed field in `SpectralAssumptionsAlpha`.
 
-4. Cola \(L^2\) (`H_b_L2_tail`)
--------------------------------
-La cota empleada es
+4. L² tail (`H_b_L2_tail`)
+--------------------------
+Desired bound:
 \[
  \sum_{|\gamma|>T} |b_\rho|^2 \ll (\log T)^A.
 \]
-Conceptualmente se deduce de `H_b_pointwise` combinada con Riemann–von Mangoldt/densidad de ceros y una suma sobre bandas dyádicas. Es formalizable en Lean si se dispone de RvM formalizado y de los bounds de prefactores.
+Conceptually from `H_b_pointwise` + Riemann–von Mangoldt / zero-density and dyadic summation. In Lean this tail is assumed directly as `hb_tail : H_b_L2_tail` within `SpectralAssumptionsAlpha`.
 
-5. Plan de ataque y separación de responsabilidades
----------------------------------------------------
-- **Paso 1**: formalizar `H_b_explicit` como lema estructural (fórmula para \(b_\rho\)), usando solo `ClassicalZetaAssumptions` + normalización ERU.
-- **Paso 2**: aislar `H_b_pointwise` como supuesto clásico sobre \(\zeta\) + test function (prefactores, Stirling, zero-free region).
-- **Paso 3**: derivar `H_b_L2_tail` a partir de `H_b_pointwise` + conteo de ceros (idealmente como lema Lean bajo supuestos externos mínimos).
-
-Las partes ERURH (lemmas del kernel, normalización) viven en `H_b_explicit`; las partes clásicas permanecen en `ClassicalZetaAssumptions` y en los supuestos analíticos profundos para `H_b_pointwise` y `H_b_L2_tail`.
+5. Plan and separation
+----------------------
+- **Step 1:** Treat `H_b_explicit` as the structural link from the explicit formula + ERU normalization to \(b_\rho\).
+- **Step 2:** Keep `H_b_pointwise` as classical ζ-analytic input (Stirling, ζ′/ζ) within `ClassicalZetaAssumptions` or its extensions.
+- **Step 3:** Encode `H_b_L2_tail` as the packaged spectral consequence (assumed field `hb_tail`); future formalisation could derive it from `H_b_pointwise` once classical theory is mechanized.

@@ -1,25 +1,28 @@
-# ERURH-alpha · Smoothed \(J_{\mathrm{rel}}\) (concept sketch)
+ERURH-alpha · Smoothed \(J_{\mathrm{rel}}\) (concept sketch)
+===========================================================
 
-## Definition idea
-- Fix a kernel \(K: \mathbb{R} \to \mathbb{R}_{\ge 0}\), normalized \(\int K = 1\), localized (effective support tied to a window-scale parameter). In numerics we use a discrete Gaussian (radius 5, \(\sigma = 1.5\) in index units) as an approximation.
+Definition idea
+---------------
+- Choose a kernel \(K : \mathbb{R} \to \mathbb{R}_{\ge 0}\), symmetric, with \(\int K = 1\), localized (e.g., discrete Gaussian with radius 5, \(\sigma = 1.5\) in index units).
 - Define a smoothed bridge invariant
   \[
-  J_{\mathrm{rel}}^{K}(s) = (K * J_{\mathrm{rel}})(s) = \int_{\mathbb{R}} K(t)\, J_{\mathrm{rel}}(s-t)\, dt,
+    J_{\mathrm{rel}}^{K}(s) = (K * J_{\mathrm{rel}})(s) = \int_{\mathbb{R}} K(t)\, J_{\mathrm{rel}}(s-t)\, dt,
   \]
-  respecting the same \(s\)-axis as the raw bridge \(J_{\mathrm{rel}}\). The kernel introduces locality/smoothing but no new axioms—just a new derived field from \(J_{\mathrm{rel}}\) and a chosen \(K\).
+  on the same \(s\)-axis as the raw bridge. The kernel adds smoothing/locality; no new axioms are introduced—this is a derived field once `jRel` and `K` are fixed.
 
-## Potential Lean/ERU reflection
-- One could extend the bridge record with a derived field `jRel_smooth : ℝ → ℝ` defined by convolution with a fixed kernel `K_alpha` (described analytically/interval-wise). No new axioms: `jRel_smooth` is definitional once `jRel` and `K_alpha` are fixed.
-- Strong inertia certificates could then bound `|jRel_smooth(s)| ≤ C_smooth e^{-s/2} s^2` on windows, with a new constant `C_smooth`. The classical parameters (`C_strong`, `S0_strong`) would be updated to the smoothed variant; predicates remain pointwise but on the smoothed field.
-- The industrial pipeline would need to (a) represent `K_alpha` rationally/interval-wise, (b) generate rational bounds for `jRel_smooth` per window (e.g., via rigorous convolution bounds), and (c) emit the corresponding `.lean` witnesses.
+Potential Lean/ERU reflection
+-----------------------------
+- Extend the bridge record with a derived `jRel_smooth : ℝ → ℝ` defined by convolution with a fixed `K_alpha` (described analytically/interval-wise). No new axioms: `jRel_smooth` is definitional given `jRel` and `K_alpha`.
+- Strong inertia certificates could bound \(|jRel_smooth(s)| \le C_smooth e^{-s/2} s^2\) on windows, with updated constants (`C_smooth`, `S0_smooth`). Predicates stay pointwise but apply to the smoothed field.
+- Pipeline needs: (a) rational/interval description of `K_alpha`, (b) rational bounds for `jRel_smooth` per window (rigorous convolution), (c) generated `.lean` witnesses.
 
-## Numerical snapshot (explicit ζ-model)
+Numerical snapshot (explicit ζ-model)
+-------------------------------------
 - Raw normalized scale from explicit \(J_{\mathrm{rel}}\): \(C_{\text{numeric,raw}} \approx 0.4898\) (500 zeros, \(T=1000\)).
-- Smoothed normalized scale with the discrete Gaussian (\(\sigma=1.5\), radius 5): \(C_{\text{numeric,smooth}} \approx 0.2123\). Smoothing reduces the effective constant by roughly a factor \( \sim 2.3\), but it remains orders of magnitude above the formal bounds (\(\sim 7.9\times 10^{-4}\)).
+- Smoothed with Gaussian (\(\sigma=1.5\), radius 5): \(C_{\text{numeric,smooth}} \approx 0.2123\) — about a 2.3× reduction, still far above the formal target (\(\sim 7.9 \times 10^{-4}\)).
 
-## Path to integration
-- **Certificates:** Replace/augment raw \(J_{\mathrm{rel}}\) bounds with bounds on \(J_{\mathrm{rel}}^{K}\); introduce `C_smooth` in place of `C_strong` and adjust window/tail predicates accordingly.
-- **Pipeline:** Add scripts to approximate/convolve \(J_{\mathrm{rel}}\) with \(K\) and produce rational/interval bounds per window; document kernel parameters and support.
-- **Preprint narrative:** Distinguish clearly between raw \(J_{\mathrm{rel}}\) and smoothed \(J_{\mathrm{rel}}^{K}\); report \(C_{\text{numeric,smooth}}\) alongside \(C_{\text{numeric,raw}}\) to guide future constant choices.
-
-This sketch keeps the Lean axioms unchanged while opening a path to a smoothed inertia formulation that may live at a smaller, better-behaved scale.***
+Path to integration
+-------------------
+- **Certificates:** replace/augment raw \(J_{\mathrm{rel}}\) bounds with bounds on \(J_{\mathrm{rel}}^{K}\); introduce `C_smooth` and adjust window/tail predicates.
+- **Pipeline:** add scripts to convolve \(J_{\mathrm{rel}}\) with \(K\) and produce rational/interval bounds per window; document kernel parameters and support.
+- **Narrative:** clearly distinguish raw vs. smoothed \(J_{\mathrm{rel}}\); report both \(C_{\text{numeric,raw}}\) and \(C_{\text{numeric,smooth}}\) to guide future constant choices. Formal assumptions remain the classical analytic packages in `ERURH_GlobalAssumptions`; smoothing is an optional enhancement, not part of the current Lean theorem.

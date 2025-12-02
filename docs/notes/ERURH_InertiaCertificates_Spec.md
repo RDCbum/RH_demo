@@ -1,54 +1,41 @@
-# Especificación de certificados de inercia (ERURH-alpha)
+# Inertia Certificates Specification (ERURH-alpha)
 
-## 1. Introducción
-
-En el pipeline ERURH-alpha, la ruta hacia la hipótesis de Riemann sigue, a nivel conceptual:
-
+## 1. Introduction
+Conceptual route:
 ```
 ERU_energy + (no modes β > 1/2)
   ⇒ InertiaERU alphaBridge
   ⇒ InertiaERU_alpha_strong
-  ⇒ RH (vía la equivalencia ERU_RH_equiv_alpha y axiomas analíticos clásicos)
+  ⇒ RH (via ERU_RH_equiv_alpha + classical analytic axioms)
 ```
+Energy/kernel are already modeled with rational certificates. This note specifies the intended finite conditions for the bridge and strong inertia certificates so that their `Correct` predicates express rational bounds and coverings sufficient for the ERU → RH chain.
 
-La capa de energía y kernel ya está modelada con certificados racionales. Este documento fija la especificación deseada para los certificados de inercia del puente y de la inercia fuerte, de modo que, en el futuro, `Correct` exprese condiciones finitas (ventanas, bounds racionales, etc.) suficientes para sostener la ruta ERU → RH.
+## 2. BridgeInertiaCertificate_alpha — desired shape
+Purpose: finite certificate that `alphaBridge` satisfies `InertiaERU alphaBridge`.
+- Captures bridge structure (`s0`, `logR`, `jRel`) and window/tail coverage.
+- Encodes rational bounds per window and tail (from FluxWindows/FluxBounds).
+- Connects to the canonical witness `alphaBridge_inertia`.
 
-## 2. BridgeInertiaCertificate_alpha — Especificación deseada
+`BridgeInertiaCertificateCorrect_alpha` should express (finite, rational) conditions:
+- Equality with the canonical witness (`alphaBridge_inertia` from flux/energy certificates).
+- Finite cover of \([s0, +∞)\) by rational windows (`alphaWindows`) and a rational tail start (`tailStart`).
+- Per-window rational bounds (`logRBoundWindow`, `jRelBoundWindow`) for \(|\log R|\), \(|jRel|\); tail bounds (`logRBoundTail`, `jRelBoundTail`) from `tailStart` onward.
+- Coherence of window/tail bounds to imply `InertiaERU`.
+- Optional: explicit link to the underlying flux/energy certificate data.
 
-**Concepto.** Representa un certificado finito de que el puente numérico `alphaBridge` satisface la inercia ERU (`InertiaERU alphaBridge`). Debe reflejar:
-- La estructura del puente (s0, logR, jRel) y su cobertura por ventanas/tail.
-- Las cotas racionales por ventana y cola (provenientes de FluxWindows/FluxBounds).
-- La conexión con el certificado canónico `alphaBridge_inertia`.
+## 3. StrongInertiaCertificate_alpha — desired shape
+Purpose: certify the analytic step `InertiaERU alphaBridge → InertiaERU_alpha_strong`.
 
-**Condiciones que debería encapsular `BridgeInertiaCertificateCorrect_alpha`:**
-- Igualdad con el testigo canónico: la prueba de inercia coincide con `alphaBridge_inertia` (obtenido de `alphaFluxLaws` + `alphaFluxCertificate`).
-- Cobertura finita de `[s0, +∞)` mediante una familia de ventanas con extremos racionales (`alphaWindows`) y un punto tail racional (`tailStart`).
-- Para cada ventana: bounds racionales (p.ej. `logRBoundWindow`, `jRelBoundWindow`) que acotan `|logR|` y `|jRel|` en esa ventana.
-- Para la cola: bounds racionales (`logRBoundTail`, `jRelBoundTail`) que controlan `|logR|`, `|jRel|` a partir de `tailStart`.
-- Coherencia de ventanas y cola: continuidad/monotoneidad mínima para que las cotas ventana/cola impliquen el predicado `InertiaERU`.
-- Opcional a futuro: referencia explícita al certificado de flujo/energía (`flux_energy_alpha_true`) que sustenta las cotas.
+`StrongInertiaCertificateCorrect_alpha` should encode:
+- Equality with the canonical morphism (`InertiaERU_alpha_strong_of_bridge_inertia_certified`).
+- Rational parameters of the strong bound: prefactor `C`, threshold `S0`, form \(|\logR_\alpha s| ≤ C e^{-s/2} (\log e^s)^2\) for \(s ≥ S0\).
+- Monotonicity/domain conditions ensuring the bound applies for all \(s ≥ S0\).
+- Any needed harmonization with global constants (e.g., energy envelope) if required by the bridge→strong step.
 
-Estas condiciones deben ser finitas y expresables como igualdades/desigualdades racionales y pertenencia a coberturas discretas.
-
-## 3. StrongInertiaCertificate_alpha — Especificación deseada
-
-**Concepto.** Captura el paso analítico desde `InertiaERU alphaBridge` hasta la inercia fuerte `InertiaERU_alpha_strong` (bound asintótico de `logR_alpha`), empaquetado como un morphismo certificado `bridge_to_strong`.
-
-**Condiciones que debería encapsular `StrongInertiaCertificateCorrect_alpha`:**
-- Igualdad con el morphismo canónico ya certificado (`InertiaERU_alpha_strong_of_bridge_inertia_certified`), que realiza el paso bridge → inercia fuerte.
-- Parámetros racionales del bound fuerte: prefactor `C`, umbral `S0` y la forma `|logR_alpha s| ≤ C * exp(-s/2) * (log(exp s))^2` para `s ≥ S0`.
-- Monotoneidad/dominio: el bound aplica a todo `s ≥ S0`; cualquier condición sobre continuidad/monotonicidad necesaria para propagar el bound.
-- Posible conexión con constantes globales (L_global, κ) si el paso bridge → fuerte requiere armonizar cotas de energía con el decay asintótico.
-
-Al igual que en el caso del bridge, todo debe reducirse a un conjunto finito de parámetros y desigualdades racionales verificables.
-
-## 4. Conexión con el teorema ERURH-alpha
-
-La meta de diseño es que la conjunción de correctitud de los cuatro certificados:
-
+## 4. Link to the ERURH-alpha theorem
+Design goal: the conjunction
 - `GlobalEnergyCertificateCorrect_alpha`
 - `KernelBlowupCertificateCorrect_alpha`
 - `BridgeInertiaCertificateCorrect_alpha`
 - `StrongInertiaCertificateCorrect_alpha`
-
-sea suficiente para deducir `RiemannHypothesis xiAlpha`, asumiendo los axiomas analíticos clásicos (ERU ↔ E ↔ RH). Este documento fija la **spec**: qué condiciones finitas se pretende capturar en `Correct`. Aunque hoy algunas se reflejen de forma simplificada (igualdades con testigos), la intención es enriquecerlas progresivamente con las desigualdades racionales y coberturas que ya existen en FluxWindows, FluxBounds y los bounds fuertes de `logR_alpha`.
+should suffice to deduce `RiemannHypothesis xiAlpha`, assuming the classical analytic package (`ClassicalZetaAssumptions`, `SpectralAssumptionsAlpha` with `hb_tail`, `LSGammaAssumptions`, etc.) bundled in `ERURH_GlobalAssumptions`. Today, some predicates are simplified (equalities to witnesses); they are intended to evolve into finite rational inequalities and coverings consistent with the existing flux/energy bounds and strong \( \log R_\alpha \) targets.

@@ -1,0 +1,36 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["6f1dd27256af539c.olean"],
+  "i": "d107048383f696af.ilean",
+  "c": "aed50ee8978d6c18.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\PsiLayer.lean -o C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\PsiLayer.olean -i C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\PsiLayer.ilean -c C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\PsiLayer.c --setup C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\PsiLayer.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "lean/formal_proofs/ERURH/PsiLayer.lean:20:34: This simp argument is unused:\n  add_left_comm\n\nHint: Omit it from the simp argument list.\n  simp [P.E_is_error x, add_comm, a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵add_assoc]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"},
+  {"message":
+   "lean/formal_proofs/ERURH/PsiLayer.lean:20:49: This simp argument is unused:\n  add_assoc\n\nHint: Omit it from the simp argument list.\n  simp [P.E_is_error x, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+   "level": "warning"}],
+ "inputs":
+ [["ERURH.PsiLayer:deps",
+   [["deps",
+     [["eruUpgrade/ERURH:extraDep",
+       [["@eruUpgrade:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "a0ca2a892907ac51"],
+        ["Mathlib:importAllArts", "df1cb5b10cdbedab"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
+   "4bbac11c6209e48b"],
+  ["C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\PsiLayer.lean",
+   "b02bb216a4fc4953"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "1e6d2ac661388bb8"}

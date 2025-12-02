@@ -1,0 +1,7 @@
+{
+  "kappa_low_formal": "8.168110882635824",
+  "kappa_estimate": "8.936762500130309",
+  "kappa_high_formal": "9.433600625136824",
+  "delta_kappa": "0.050",
+  "proof_notes": "kappa_tol\u2248\u00b10.050; discretization safety applied to upper band."
+}

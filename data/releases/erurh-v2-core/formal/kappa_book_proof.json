@@ -1,0 +1,20 @@
+{
+  "h_min": "0.272866124662384",
+  "s_min": "14.165510876065179",
+  "s_max": "16.615510571883878",
+  "weight_min": "5.9365908676063735972540939975487643575434551524825323062577760707316184174516621",
+  "weight_max": "14.688751901571457491913526801755493163269964839523866807461416441047966079769442",
+  "kappa_book_one": "13.430765119765409074627499265824910629715130770960226184394782407824039273487999",
+  "kappa_book_weighted": "33.231391735111652258083516140795691416354159404063920126731990551717871611128396",
+  "kappa_book_closed": "33.231391735111652258083516140795691416354159404063920126731990551717871611128396",
+  "boundary_control": "Central derivative; boundary contributions bounded by same window for s>=s0.",
+  "assumptions": {
+    "operator": "Central finite difference D_h f(s) = (f(s+h)-f(s-h))/(2h)",
+    "weights": [
+      "w=1",
+      "w=e^{s/2}/s^2"
+    ],
+    "s_domain": "[s_min, s_max] with s >= s0 from bundle"
+  },
+  "notes": "Closed-form energy constant taking max between unweighted and weighted contributions."
+}

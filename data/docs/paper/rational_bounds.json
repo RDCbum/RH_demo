@@ -1,0 +1,76 @@
+{
+  "bounds": {
+    "max_w_over_min_w": {
+      "decimal": "3.0202940924080033646949855518654729226445513343582574252448142392991432798041663",
+      "numerator": 700019545,
+      "denominator": 231771981
+    },
+    "L_A_closed": {
+      "decimal": "0.57929977774014219936853669559016787753444098162539155141207156547098121417508683",
+      "numerator": 52730753,
+      "denominator": 91024984
+    },
+    "weight_min": {
+      "decimal": "5.9365908676063735972540939975487643575434551524825323062577760707316184174516621",
+      "numerator": 4659489267,
+      "denominator": 784876265
+    },
+    "weight_max": {
+      "decimal": "14.688751901571457491913526801755493163269964839523866807461416441047966079769442",
+      "numerator": 2901653316,
+      "denominator": 197542537
+    },
+    "h_min": {
+      "decimal": "0.272866124662384",
+      "numerator": 203107218,
+      "denominator": 744347501
+    },
+    "kappa_book_closed": {
+      "decimal": "33.231391735111652258083516140795691416354159404063920126731990551717871611128396",
+      "numerator": 16056372531,
+      "denominator": 483168826
+    },
+    "C_envelope_closed": {
+      "decimal": "0.047695613749186421541958354101922854282320773892561598071489257721130596194295849",
+      "numerator": 43040528,
+      "denominator": 902400129
+    },
+    "inflation_factor": {
+      "decimal": "1.0113135730153359554015573855432290453965506513276367523650187731599284777868966",
+      "numerator": 431254631,
+      "denominator": 426430182
+    },
+    "s0_closed": {
+      "decimal": "14.165510876065179",
+      "numerator": 2604787528,
+      "denominator": 183882357
+    },
+    "L_global_formal": {
+      "decimal": "0.1753984986621393400000",
+      "numerator": 175023520,
+      "denominator": 997862133
+    },
+    "kappa_low_formal": {
+      "decimal": "8.168110882635824",
+      "numerator": 3700246603,
+      "denominator": 453011309
+    },
+    "kappa_high_formal": {
+      "decimal": "9.433600625136824",
+      "numerator": 8883257317,
+      "denominator": 941661373
+    },
+    "C_envelope_formal": {
+      "decimal": "0.047695613749186421541958354101922854282320773892561598071489257721130596194295849",
+      "numerator": 43040528,
+      "denominator": 902400129
+    }
+  },
+  "sources": {
+    "L_analytic_proof": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\L_analytic_proof.json",
+    "kappa_book_proof": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\kappa_book_proof.json",
+    "bridge_closed": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\bridge_closed.json",
+    "s0_unified": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\s0_unified.json",
+    "formal_report_strict": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\formal_report_strict.json"
+  }
+}

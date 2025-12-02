@@ -1,0 +1,32 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["42cc6c73fa1a5f30.olean"],
+  "i": "bf12403797aaa066.ilean",
+  "c": "cd14ece79a130597.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe -R C:\\Users\\duran\\eru-upgrade\\staging\\ERURH_Staging=ERURH_Staging C:\\Users\\duran\\eru-upgrade\\staging\\ERURH_Staging\\AbsNotation.lean -o C:\\Users\\duran\\eru-upgrade\\.lake\\build\\lib\\lean\\ERURH_Staging\\AbsNotation.olean -i C:\\Users\\duran\\eru-upgrade\\.lake\\build\\lib\\lean\\ERURH_Staging\\AbsNotation.ilean -c C:\\Users\\duran\\eru-upgrade\\.lake\\build\\ir\\ERURH_Staging\\AbsNotation.c --setup C:\\Users\\duran\\eru-upgrade\\.lake\\build\\ir\\ERURH_Staging\\AbsNotation.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["ERURH_Staging.AbsNotation:deps",
+   [["deps",
+     [["eruUpgrade/ERURH_Staging:extraDep",
+       [["@eruUpgrade:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib.Data.Real.Basic transitive imports (legacy)",
+         "07ca8c43b83c8a01"],
+        ["Mathlib.Data.Real.Basic:importAllArts", "d94a8c86272d2e03"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
+   "4bbac11c6209e48b"],
+  ["C:\\Users\\duran\\eru-upgrade\\staging\\ERURH_Staging\\AbsNotation.lean",
+   "253a86765a75999c"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[-R, C:\\Users\\duran\\eru-upgrade\\staging\\ERURH_Staging=ERURH_Staging]",
+   "1aa5feeb7f03338b"]],
+ "depHash": "64a2d67542e594f2"}

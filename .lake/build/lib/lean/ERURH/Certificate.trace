@@ -1,0 +1,33 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["e2cb9fec642dc55c.olean"],
+  "i": "3a6ad76fa9b50770.ilean",
+  "c": "66fdb7a363bb7c3e.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\eru-upgrade\\formal_proofs\\ERURH\\Certificate.lean -o C:\\Users\\duran\\eru-upgrade\\.lake\\build\\lib\\lean\\ERURH\\Certificate.olean -i C:\\Users\\duran\\eru-upgrade\\.lake\\build\\lib\\lean\\ERURH\\Certificate.ilean -c C:\\Users\\duran\\eru-upgrade\\.lake\\build\\ir\\ERURH\\Certificate.c --setup C:\\Users\\duran\\eru-upgrade\\.lake\\build\\ir\\ERURH\\Certificate.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["ERURH.Certificate:deps",
+   [["deps",
+     [["eruUpgrade/ERURH:extraDep",
+       [["@eruUpgrade:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["Mathlib transitive imports (legacy)", "a0ca2a892907ac51"],
+        ["Mathlib:importAllArts", "df1cb5b10cdbedab"],
+        ["ERURH.RationalBounds transitive imports (legacy)",
+         "4242a7a44d5313ed"],
+        ["ERURH.RationalBounds:importAllArts", "5185e032ec9d7dbb"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
+   "4bbac11c6209e48b"],
+  ["C:\\Users\\duran\\eru-upgrade\\formal_proofs\\ERURH\\Certificate.lean",
+   "02b661be7ae87100"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "1aa3452bbec532bf"}

@@ -1,0 +1,43 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["f7af9a2020c56aa6.olean"],
+  "i": "1180e5fef827750c.ilean",
+  "c": "95da330961d67403.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\eru-upgrade\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe -R C:\\Users\\duran\\eru-upgrade\\staging\\ERURH_Staging=ERURH_Staging C:\\Users\\duran\\eru-upgrade\\staging\\ERURH_Staging\\LambdaMsamp_wAlpha50_shift1_s14.lean -o C:\\Users\\duran\\eru-upgrade\\.lake\\build\\lib\\lean\\ERURH_Staging\\LambdaMsamp_wAlpha50_shift1_s14.olean -i C:\\Users\\duran\\eru-upgrade\\.lake\\build\\lib\\lean\\ERURH_Staging\\LambdaMsamp_wAlpha50_shift1_s14.ilean -c C:\\Users\\duran\\eru-upgrade\\.lake\\build\\ir\\ERURH_Staging\\LambdaMsamp_wAlpha50_shift1_s14.c --setup C:\\Users\\duran\\eru-upgrade\\.lake\\build\\ir\\ERURH_Staging\\LambdaMsamp_wAlpha50_shift1_s14.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "staging/ERURH_Staging/LambdaMsamp_wAlpha50_shift1_s14.lean:286:6: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "staging/ERURH_Staging/LambdaMsamp_wAlpha50_shift1_s14.lean:810:6: declaration uses 'sorry'",
+   "level": "warning"}],
+ "inputs":
+ [["ERURH_Staging.LambdaMsamp_wAlpha50_shift1_s14:deps",
+   [["deps",
+     [["eruUpgrade/ERURH_Staging:extraDep",
+       [["@eruUpgrade:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["ERURH_Staging.AbsNotation transitive imports (legacy)",
+         "f7341fe37c772101"],
+        ["ERURH_Staging.AbsNotation:importAllArts", "09a38d7937fd250e"],
+        ["ERURH.XiCore transitive imports (legacy)", "7b78c111f276916e"],
+        ["ERURH.XiCore:importAllArts", "b58b2e13ab2b5722"],
+        ["ERURH.Numeric.Semantics transitive imports (legacy)",
+         "8a90d9840a5dcea8"],
+        ["ERURH.Numeric.Semantics:importAllArts", "a0f7d1b2a28a6c06"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
+   "4bbac11c6209e48b"],
+  ["C:\\Users\\duran\\eru-upgrade\\staging\\ERURH_Staging\\LambdaMsamp_wAlpha50_shift1_s14.lean",
+   "75ed7927366cd4db"],
+  ["options", "00000000000006bb"],
+  ["Module.leanArgs: #[-R, C:\\Users\\duran\\eru-upgrade\\staging\\ERURH_Staging=ERURH_Staging]",
+   "1aa5feeb7f03338b"]],
+ "depHash": "b68b3408d61bd7aa"}

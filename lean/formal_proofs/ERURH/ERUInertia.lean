@@ -1,0 +1,91 @@
+import ERURH.PsiLayer
+import ERURH.ExplicitToRHBridge
+import ERURH.EToRHChecklist
+import ERURH.Inertia
+import ERURH.FluxWindows
+
+namespace ERURH
+
+/-- ERU-style log-residual for the alpha bridge: `logR(s) = E(e^s) / e^s`. -/
+noncomputable def logR_alpha (s : ℝ) : ℝ :=
+  let x := Real.exp s
+  AlphaPsi.E x / x
+
+/-- Strong ERU inertia hypothesis for the alpha bridge.
+
+    Intuitively: the ERURH residual `logR_alpha(s)` decays like
+    `C * e^{-s/2} * s^2` for large `s`, i.e. the ERU flow is
+    compatible with the Riemann-type square-root barrier. -/
+def InertiaERU_alpha_strong : Prop :=
+  ∃ C : ℚ, ∃ S0 : ℝ, ∀ {s : ℝ}, S0 ≤ s →
+    |logR_alpha s| ≤
+      (algebraMap ℚ ℝ C) * Real.exp (-s / 2) * (Real.log (Real.exp s)) ^ 2
+
+/--
+  DEPRECATED: direct bridge-to-strong inertia bridge for the alpha case.
+  New code should use the certificate-based wrapper
+  `InertiaERU_alpha_strong_of_bridge_inertia_certified` from
+  `InertiaCertificatesAlpha`, which factors the statement through an
+  explicit strong inertia certificate.
+
+  This axiom is kept temporarily for compatibility during the
+  transition; it is no longer used in the main energetic ERURH
+  pipeline. -/
+lemma InertiaERU_alpha_strong_of_bridge_inertia_legacy :
+  InertiaERU alphaBridge → InertiaERU_alpha_strong :=
+by
+  intro h_bridge
+  -- Use the certified bridge→strong inertia path from the certificates module.
+  exact InertiaERU_alpha_strong_of_bridge_inertia_certified h_bridge
+
+/-- From strong ERU inertia (bound on `logR_alpha`) we can derive the
+    classical strong bound on `E(x)` for the alpha Chebyshev layer.
+
+    This axiom models the change-of-variable argument `x = e^s` in the
+    ERU_RH equivalence documents. -/
+axiom ERU_inertia_to_E_bound_alpha :
+  InertiaERU_alpha_strong → E_bound_strong_alpha
+
+/-- Conversely, a classical strong bound on `E(x)` yields a strong ERU
+    inertia bound for `logR_alpha`. -/
+axiom ERU_inertia_of_E_bound_alpha :
+  E_bound_strong_alpha → InertiaERU_alpha_strong
+
+/-- From strong ERU inertia for the alpha bridge we can derive the Riemann
+    Hypothesis for `xiAlpha`, by passing through the classical `E`-bound
+    and the `E → RH` checklist. -/
+theorem ERU_to_RH_alpha
+  (h_inertia : InertiaERU_alpha_strong) :
+  RiemannHypothesis xiAlpha :=
+by
+  -- 1) ERU inertia ⇒ strong `E`-bound
+  have hE : E_bound_strong_alpha :=
+    ERU_inertia_to_E_bound_alpha h_inertia
+  -- 2) strong `E`-bound + analytic certificates ⇒ fine bundle
+  have hBundle : EToRH_hypotheses_alpha :=
+    EToRH_hypotheses_alpha_of_E_bound hE
+  -- 3) bundle ⇒ RH
+  exact RH_from_EToRH_hypotheses_alpha hBundle
+
+/-- Classical direction: from the Riemann Hypothesis for `xiAlpha` we obtain
+    the strong `E`-bound for the alpha Chebyshev error term. This models the
+    classical implication RH ⇒ `E(x) = O(x (log x)^2)`. -/
+axiom RH_to_E_bound_alpha :
+  RiemannHypothesis xiAlpha → E_bound_strong_alpha
+
+/-- From the Riemann Hypothesis for `xiAlpha` we obtain strong ERU inertia
+    for the alpha bridge. -/
+theorem RH_to_ERU_alpha
+  (hRH : RiemannHypothesis xiAlpha) :
+  InertiaERU_alpha_strong :=
+by
+  have hE : E_bound_strong_alpha := RH_to_E_bound_alpha hRH
+  exact ERU_inertia_of_E_bound_alpha hE
+
+/-- Equivalence between the strong ERU inertia hypothesis for the alpha
+    bridge and the Riemann Hypothesis for `xiAlpha`. -/
+theorem ERU_RH_equiv_alpha :
+  InertiaERU_alpha_strong ↔ RiemannHypothesis xiAlpha :=
+⟨ERU_to_RH_alpha, RH_to_ERU_alpha⟩
+
+end ERURH

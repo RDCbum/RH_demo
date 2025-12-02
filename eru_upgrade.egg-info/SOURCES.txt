@@ -1,0 +1,11 @@
+AGENTS.md
+pyproject.toml
+eru_upgrade.egg-info/PKG-INFO
+eru_upgrade.egg-info/SOURCES.txt
+eru_upgrade.egg-info/dependency_links.txt
+eru_upgrade.egg-info/entry_points.txt
+eru_upgrade.egg-info/requires.txt
+eru_upgrade.egg-info/top_level.txt
+scripts/verify_gate.py
+tools/make_certificate_values.py
+tools/make_rational_bounds.py

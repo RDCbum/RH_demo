@@ -1,0 +1,9 @@
+{
+  "L_upper": "0.17505486808913934",
+  "delta_L": "0.0003436305730000000000",
+  "L_global_formal": "0.1753984986621393400000",
+  "max_slope": "0.2055783438",
+  "grid_step": "0.010000",
+  "segments": 200,
+  "proof_notes": "step=0.010000 (max \u0394u); max_slope\u22480.2055783438; discretization term=0.0003426305730000000000; safety_margin=0.000001"
+}

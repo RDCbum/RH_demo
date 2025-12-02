@@ -1,0 +1,93 @@
+import Mathlib
+import ERURH.Inertia
+import ERURH.RH
+import ERURH.ZetaLink
+import ERURH.PsiLayer
+import ERURH.ExplicitBridge
+import ERURH.Equivalence
+import ERURH.FluxWindows
+import ERURH.NumberTheory.Chebyshev
+import ERURH.AnalyticWitness
+import ERURH.XiCore
+import ERURH.XiPrefactor
+import ERURH.XiZetaIface
+import ERURH.XiWitnessAssembly
+
+namespace ERURH
+
+open Complex Real
+
+/-- Chebyshev layer specialised to the released bridge. -/
+noncomputable def AlphaPsi : PsiLayer :=
+  { psi := ERURH.NT.psi
+    , E := ERURH.NT.E
+    , x0 := max alphaBridge.s0R 3
+    , E_is_error := by
+        intro x
+        simp [ERURH.NT.E_def] }
+
+/-- Classical ξ-function in product form. -/
+@[simp] noncomputable def xiAlpha : ℂ → ℂ := xiClassic
+
+/-- Analytic domain for `xiAlpha`. -/
+def xiAlphaDomain : Set ℂ := xiAnalyticDomain
+
+/-- Abstract package collecting the analytic data required to push
+    `alphaBridge` towards the Riemann Hypothesis. -/
+structure AlphaInterfaces where
+  analytic : XiAnalytic xiAlpha xiAlphaDomain
+  cover : WindowCoverCertificate alphaBridge
+  prefactor : PrefactorWitnessOn alphaBridge cover
+  lambda : LambdaWitness alphaBridge cover
+  zeta : ZetaWitness alphaBridge cover
+  log_total_main :
+    ∀ {w : Window} (_ : w ∈ cover.windows)
+      {t : ℝ}, t ∈ w.IccR →
+        Complex.abs (Complex.log (xiAlpha (crit t))) ≤
+          prefactor.logBound t +
+            ((prefactor.pf_log_q w : ℚ) : ℝ) +
+            ((zeta.ζ_log_q w : ℚ) : ℝ)
+  log_total_tail :
+    ∀ {t : ℝ}, cover.tailStartR ≤ t →
+      Complex.abs (Complex.log (xiAlpha (crit t))) ≤
+        prefactor.logBound t + lambda.pf_tail_log t + ((zeta.ζ_log_tail : ℚ) : ℝ)
+  log_to_bridge_main :
+    ∀ {w : Window} (_ : w ∈ cover.windows)
+      {t : ℝ}, t ∈ w.IccR →
+        prefactor.logBound t +
+            ((prefactor.pf_log_q w : ℚ) : ℝ) +
+            ((zeta.ζ_log_q w : ℚ) : ℝ) ≤
+          alphaBridge.logR t
+  log_to_bridge_tail :
+    ∀ {t : ℝ}, cover.tailStartR ≤ t →
+      prefactor.logBound t + lambda.pf_tail_log t + ((zeta.ζ_log_tail : ℚ) : ℝ) ≤
+        alphaBridge.logR t
+  arg_total :
+    ∀ {a b : ℝ}, alphaBridge.s0R ≤ a → a ≤ b →
+      _root_.abs (Complex.arg (xiAlpha (crit b)) -
+          Complex.arg (xiAlpha (crit a))) ≤
+        (prefactor.argBound b - prefactor.argBound a) +
+          (zeta.argBound b - zeta.argBound a)
+  arg_to_bridge :
+    ∀ {a b : ℝ}, alphaBridge.s0R ≤ a → a ≤ b →
+      (prefactor.argBound b - prefactor.argBound a) +
+          (zeta.argBound b - zeta.argBound a) ≤
+        alphaBridge.jRel b - alphaBridge.jRel a
+  explicit : ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi
+  rh_from_E : RHfromE xiAlpha AlphaPsi
+
+/-- Conditional version: once the analytic data is instantiated,
+    the released bridge satisfies the Riemann Hypothesis. -/
+theorem alpha_rh_conditional (data : AlphaInterfaces)
+    (hI : InertiaERU alphaBridge) :
+    RiemannHypothesis xiAlpha :=
+  let witness : XiWitness alphaBridge xiAlpha :=
+    XiWitness.ofPrefactorZeta data.cover data.analytic
+      data.prefactor data.lambda data.zeta data.log_total_main
+      data.log_total_tail data.log_to_bridge_main data.log_to_bridge_tail
+      data.arg_total data.arg_to_bridge
+  let link := BridgeToXi.ofWitness witness
+  eru_to_rh alphaBridge xiAlpha AlphaPsi
+    link data.explicit data.rh_from_E hI
+
+end ERURH

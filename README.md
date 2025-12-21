@@ -18,15 +18,41 @@ This repository includes no staging or experimental files; only the validated an
 - `docs/` — ERURH notes, assumptions, and reproduction guide.
 - `lakefile.lean`, `lean-toolchain`, `lake-manifest.json` — Lean 4.25.0-rc2 + mathlib pin.
 
-## Installation (Windows PowerShell; adapt paths as needed)
+## Installation
+
+### Requirements
+- Python 3.10+ (recommended)
+- Lean toolchain as pinned by `lean-toolchain`
+- Git
+
+### Windows (PowerShell)
+
 ```powershell
+# 1) Python venv
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -U pip
+
+# 2) Install the Python package (editable)
 python -m pip install -e .
 
+# 3) Fetch Lean dependencies / cache (optional but recommended)
+lake update
 lake exe cache get
 ```
+### Linux/macOS
+
+# 1) Python venv
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -U pip
+
+# 2) Install the Python package (editable)
+python -m pip install -e .
+
+# 3) Fetch Lean dependencies / cache (optional but recommended)
+lake update
+lake exe cache get
 
 ## Verification Pipeline
 From the repo root (venv active):
@@ -43,16 +69,37 @@ python scripts/verify_gate.py --skip-pytests
 If tests are added later, omit `--skip-pytests` to run them.
 
 ## External Assumptions (high level)
-The Lean theorem is conditional on `ERURH_GlobalAssumptions`, which bundle:
+The Lean theorem formalizes a conditional implication of the form:
+
+**ERURH_GlobalAssumptions → RiemannHypothesis**
+
+`ERURH_GlobalAssumptions` bundles:
 - Classical zeta-function input (explicit formula, growth and zero-counting bounds).
-- Large-sieve–style spectral controls for the explicit-formula coefficients.
+- Spectral / large-sieve–style controls for explicit-formula coefficients.
 - Window and certificate hypotheses (A1/A2 conditions, alpha/beta coverage).
-See `docs/ERURH_MainTheorem.md` and related files for details.
-See also `docs/core/ERURH_Assumptions_Report.md` for a structured table of all external analytic assumptions, spectral fields, and numeric inputs.
+
+In addition, this repository includes a **proposed analytic proof** of three key assumptions (Theorems **A, B, C**) which, if externally verified, would discharge the remaining analytic gaps used by the conditional statement. These analytic components are provided for independent review:
+
+- Theorems A, B, C (analytic write-up): `docs/core/ERURH_Analytic_Theorems_ABC.md`
+- Assumptions table and dependency map: `docs/core/ERURH_Assumptions_Report.md`
+- Main theorem overview and assumption references: `docs/core/ERURH_MainTheorem.md`
 
 ## License
-Licensed under the Apache License, Version 2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is provided on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND. See the `LICENSE` section below or visit <http://www.apache.org/licenses/LICENSE-2.0>.
+
+### Code
+All source code in this repository (Lean, Python, scripts, build files, and related tooling) is licensed under the **Apache License, Version 2.0**.
+
+See: `LICENSE` (Apache-2.0).  
+Unless required by applicable law or agreed to in writing, software distributed under the License is provided on an **“AS IS” BASIS**, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.  
+See <http://www.apache.org/licenses/LICENSE-2.0>.
+
+### Paper / preprint materials
+The manuscript sources and rendered documents (including `.tex`, `.bib`, and `.pdf` files under `docs/preprints/` and `arxiv_submission/`, and any other files explicitly identified as manuscript material) are licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+
+See: `LICENSE-PAPER` (CC BY 4.0).
+
+**IP note.** A national filing establishing priority date **2025-12-21** exists for the general ERU analysis method.
 
 ## Copyright
-Copyright (c) 2025 Robert Duran (duran.robert301@gmail.com)
-Licensed under the Apache License, Version 2.0.
+Copyright (c) 2025 Robert Duran (e-mail: duran.robert301@gmail.com)
+

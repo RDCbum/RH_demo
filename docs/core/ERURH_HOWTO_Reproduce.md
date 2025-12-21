@@ -3,23 +3,23 @@ How to Reproduce the ERURH Verification
 
 Environment
 -----------
-- Requirements: Lean + elan installed.
+- Lean 4 (via `elan`) installed.
 - Python 3.10+ with `pip`.
-- Python deps installable via `pip install -e .`.
-- For detailed steps, see `docs/ERURH_PeerReviewChecklist.md`.
+- Python dependencies installable via `pip install -e .`.
 
 Quick steps
 -----------
-- `pip install -e .`
+- `python -m pip install -e .`
 - `lake exe cache get`
-- `lake build ERURH`
 - `python tools/make_rational_bounds.py`
 - `python tools/make_certificate_values.py`
-- `python scripts/verify_gate.py`
+- `lake build ERURH`
+- `python scripts/verify_gate.py --skip-pytests` (omit the flag if tests exist)
 
 If all goes well, these steps regenerate certificates, compile Lean, and run the basic checks.
 
 What this verifies
 ------------------
-- Confirms ERURH constants and certificates (alpha and beta) and rebuilds the Lean theorem `RH_from_ERURH_conditional`.
-- The proof remains conditional on the classical theorems listed in `docs/ERURH_MainTheorem.md`.
+- Regenerates `data/docs/paper/{rational_bounds.json,certificate_values.json}` and their Lean mirrors under `lean/formal_proofs/ERURH/`.
+- Builds the Lean library and the conditional theorem `RH_from_ERURH_conditional`.
+- Leaves the proof conditional on the classical hypotheses enumerated in `docs/core/ERURH_MainTheorem.md`.

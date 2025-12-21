@@ -1,12 +1,56 @@
-# Lean build artifacts
-.lake/
-lake-packages/
-
-# Python venv and caches
+########################################
+# Python virtual env & caches
+########################################
 .venv/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
-# OS / editor junk
+########################################
+# Lean / Lake build artefacts
+########################################
+.lake/
+build/
+*.olean
+*.ilean
+*.trace
+
+########################################
+# General build / output artefacts
+########################################
+out_*/**
+*.zip
+*.bak
+*.tmp
+
+########################################
+# Tools caches / intermediate artefacts
+########################################
+tools/cache/
+*.aux
+*.orig
+*.swp
+*.swo
+
+########################################
+# Scratch exploration (Lean experiments)
+########################################
+scratch/
+scratch/*
+
+########################################
+# Logs (never version)
+########################################
+logs/
+logs/*
+
+########################################
+# IDE / OS junk
+########################################
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
+
+docs/preprints/*_old.*

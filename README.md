@@ -1,6 +1,7 @@
 # ERURH – Conditional RH Proof (Lean/Python)
 
 This repository is a minimal, self-contained extraction of the ERURH project (from `eru-upgrade`). It preserves the Lean proof modules and the Python tooling needed to regenerate the rational certificates used in the conditional proof of the Riemann Hypothesis (RH).
+This repository includes no staging or experimental files; only the validated and review-ready components of the ERURH RH demo are included.
 
 ## Overview
 - Lean formalization: encodes the ERURH framework and the conditional implication `ERURH_GlobalAssumptions → RiemannHypothesis`.
@@ -47,8 +48,11 @@ The Lean theorem is conditional on `ERURH_GlobalAssumptions`, which bundle:
 - Large-sieve–style spectral controls for the explicit-formula coefficients.
 - Window and certificate hypotheses (A1/A2 conditions, alpha/beta coverage).
 See `docs/ERURH_MainTheorem.md` and related files for details.
+See also `docs/core/ERURH_Assumptions_Report.md` for a structured table of all external analytic assumptions, spectral fields, and numeric inputs.
 
 ## License
 Licensed under the Apache License, Version 2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is provided on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND. See the `LICENSE` section below or visit <http://www.apache.org/licenses/LICENSE-2.0>.
 
-Copyright (c) 2025 Robert Duran (duran.robert301@gmail.com).
+## Copyright
+Copyright (c) 2025 Robert Duran (duran.robert301@gmail.com)
+Licensed under the Apache License, Version 2.0.

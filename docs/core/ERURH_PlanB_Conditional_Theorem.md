@@ -1,30 +1,30 @@
 ERURH Plan B Conditional Theorem (Mini-Paper)
 =============================================
 
-1. Introducción y contexto
---------------------------
-- Plan B ofrece una ruta RMS/gates hacia RH en la capa ERURH-alpha: combinar crecimiento de modos β > 1/2 con cotas A2 (low/tail) y gates cerrados para excluir modos supercríticos.
-- Véanse `ERURH_Preprint_AlphaToBeta.md` y `ERURH_Proof_Status.md` para el panorama general y la ruta A.
-
-2. Setup ERU y equivalencia ERURH↔RH
-------------------------------------
-- `logR(s) = E(e^s)/e^s`, `jRel(s) = d/ds logR(s)`, normalización ERU de las observables.
-- Equivalencia formal: cuatro certificados alpha ⇒ Inertia_ERU ⇒ `RiemannHypothesis xiAlpha` (ver docs/preprints existentes; no se reponen las pruebas aquí).
-
-3. Gates y certificados
------------------------
-- RenormGateClosed y EnergyGateClosed capturan el régimen donde envelope/κ/energía global cumplen las cotas (ver `docs/ERURH_Gates_Conceptual.md`).
-- Certificados alpha correctos + NumericCoverage ⇒ gates cerrados (formalizado en `ERURH_GatesAlpha.lean`).
-
-4. Paquete analítico Plan B
+1. Introduction and context
 ---------------------------
-- Fórmula explícita y coeficientes `b_ρ` (ver `docs/ERURH_ExplicitFormula_Plan.md`).
-- A2-low y A2-tail (ver `docs/ERURH_A2_AnalyticPlan.md`).
-- LS_γ simple RMS (ver `docs/ERURH_LSgamma_and_Mode_Demos.md` y LS_γ docs).
-- A1-mode (ver `docs/ERURH_LSgamma_and_Mode_Demos.md`).
-- Lema RMSLocalHypothesis (ver `docs/ERURH_RMSLocal_Proof.md`).
+- Plan B gives an RMS/gates route to RH in the ERURH-alpha layer: combine growth of modes with β > 1/2, A2 low/tail bounds, and closed gates to exclude supercritical modes.
+- See `docs/core/ERURH_Proof_Status.md` for the overall picture and the alpha route.
 
-5. Teorema condicional Plan B
+2. ERU setup and ERURH↔RH equivalence
+-------------------------------------
+- \( \log R(s) = E(e^s)/e^s \), \( j_{\mathrm{rel}}(s) = \frac{d}{ds} \log R(s) \); ERU normalisation of the observables.
+- Formal equivalence: four alpha certificates ⇒ ERU inertia ⇒ `RiemannHypothesis xiAlpha` (see the master statement; proofs not repeated here).
+
+3. Gates and certificates
+-------------------------
+- `RenormGateClosed` and `EnergyGateClosed` capture the regime where envelope/κ/global energy meet their caps (see `docs/notes/ERURH_Gates_Conceptual.md`).
+- Correct alpha certificates + the assumed numeric coverage (`NumericCoverageAlpha` placeholder) ⇒ gates closed (formalised in `ERURH_GatesAlpha.lean`).
+
+4. Plan B analytic package
+--------------------------
+- Explicit formula and coefficients \(b_\rho\) (see `docs/notes/ERURH_ExplicitFormula_Plan.md`).
+- A2-low and A2-tail (see `docs/notes/ERURH_A2_AnalyticPlan.md`).
+- LS\_γ simple RMS (see `docs/notes/ERURH_LSgamma_and_Mode_Demos.md` and `docs/core/ERURH_LSgamma_AnalyticTheorem.md`).
+- A1-mode growth (see `docs/notes/ERURH_LSgamma_and_Mode_Demos.md`).
+- RMSLocalHypothesis lemma (see `docs/notes/ERURH_RMSLocal_Proof.md`).
+
+5. Plan B conditional theorem
 -----------------------------
-- Teorema (Plan B, versión condicional). Bajo las hipótesis analíticas externas H_ζ,standard sobre ζ, las hipótesis explícitas H_ERU,explicit sobre el observable ERU, las cotas A2-low/A2-tail y el modo A1, junto con certificados alpha correctos y cobertura numérica, se tiene `RiemannHypothesis xiAlpha`.
-- Cadena lógica: H_ζ,standard + H_ERU,explicit + H_LS/A2 + H_certs+num ⇒ PlanB_AnalyticAssumptions + gates cerrados ⇒ RMSLocalHypothesis + gates cerrados ⇒ no hay modos β > 1/2 ⇒ RH.
+- Statement (conditional Plan B): assuming the classical hypotheses \(H_ζ,\mathrm{standard}\) on ζ, the ERU-explicit hypotheses \(H_{\mathrm{ERU},\mathrm{explicit}}\), the A2 low/tail bounds and A1-mode growth, together with correct alpha certificates and assumed numeric coverage, we obtain `RiemannHypothesis xiAlpha`.
+- Logical chain: \(H_ζ,\mathrm{standard}\) + \(H_{\mathrm{ERU},\mathrm{explicit}}\) + \(H_{\mathrm{LS}}/H_{\mathrm{A2}}\) + \(H_{\mathrm{certs+num}}\) ⇒ PlanB analytic assumptions + closed gates ⇒ `RMSLocalHypothesis` + closed gates ⇒ no modes with β > 1/2 ⇒ RH.

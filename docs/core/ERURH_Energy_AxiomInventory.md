@@ -1,62 +1,62 @@
-# Inventario de axiomas ERU (energía/inercia, caso alpha)
+# ERURH Energy/Inertia Axiom Inventory (Alpha)
 
-Este documento resume los axiomas ERU vigentes relacionados con energía e inercia en el caso alpha, su clasificación, la interfaz actual de certificados y el objetivo de desaxiomatización.
+This note summarizes the energy- and inertia-related axioms used in the alpha layer, their locations, the current certificate interfaces, and the plan to eliminate legacy assumptions.
 
-## 1. Mapa de axiomas ERU (por archivo)
+## 1. Axiom map by file
 
 - **formal_proofs/ERURH/EnergyCertificatesAlpha.lean**
-  - Tipo A (existencia): `GlobalEnergyCertificate_exists_alpha`, `KernelBlowupCertificate_exists_alpha`.
-  - Tipo B (implicaciones): `ERU_energy_global_dominates_kernel_of_certificate` (lemma), `ERU_energy_kernel_blowup_of_mode_beta_of_certificate` (external via BetaInertiaAssumptions).
-  - Legacy: ninguno (ya certificados).
+  - Existence (Type A): `GlobalEnergyCertificate_exists_alpha`, `KernelBlowupCertificate_exists_alpha`.
+  - Implications (Type B): `ERU_energy_global_dominates_kernel_of_certificate` (lemma), `ERU_energy_kernel_blowup_of_mode_beta_of_certificate` (via `BetaInertiaAssumptions`).
+  - Legacy: none.
 
 - **formal_proofs/ERURH/EnergyBoundsAlpha.lean**
-  - Tipo B: `ERU_energy_alpha_bounded_of_checklist` (lemma, probado vía checklist + flujo).
-  - Lemas de soporte: `EnergyBoundChecklist_alpha_of_hypotheses`, `ERU_energy_alpha_supported_by_flux`.
-  - Legacy: ninguno.
+  - Implication (Type B): `ERU_energy_alpha_bounded_of_checklist` (proved lemma via checklist + flux).
+  - Supporting lemmas: `EnergyBoundChecklist_alpha_of_hypotheses`, `ERU_energy_alpha_supported_by_flux`.
+  - Legacy: none.
 
 - **formal_proofs/ERURH/ERUEnergyAlpha.lean**
-  - Legacy (tipo C): `ERU_energy_global_dominates_kernel_legacy` (lemma via certificate).
+  - Legacy (Type C): `ERU_energy_global_dominates_kernel_legacy` (certificate-based legacy route).
 
 - **formal_proofs/ERURH/ERUModesAlpha.lean**
-  - Legacy (tipo C): `ERU_energy_kernel_blowup_of_mode_beta_legacy`, `ERU_energy_blowup_of_mode_beta` (ambos ahora lemas vía ruta certificada).
-  - Lemas actuales: `alphaBridge_inertia_of_no_modes`, `InertiaERU_alpha_strong_of_no_modes` (apoyados en certificados).
+  - Legacy (Type C): `ERU_energy_kernel_blowup_of_mode_beta_legacy`, `ERU_energy_blowup_of_mode_beta` (legacy wrappers; superseded by certificate route).
+  - Current lemmas: `alphaBridge_inertia_of_no_modes`, `InertiaERU_alpha_strong_of_no_modes` (supported by certificates).
 
 - **formal_proofs/ERURH/ERUInertia.lean**
-  - Legacy (tipo C): `InertiaERU_alpha_strong_of_bridge_inertia_legacy`, `ERU_inertia_to_E_bound_alpha`, `ERU_inertia_of_E_bound_alpha`, `RH_to_E_bound_alpha`.
+  - Legacy (Type C): `InertiaERU_alpha_strong_of_bridge_inertia_legacy`, `ERU_inertia_to_E_bound_alpha`, `ERU_inertia_of_E_bound_alpha`, `RH_to_E_bound_alpha`.
 
 - **formal_proofs/ERURH/InertiaCertificatesAlpha.lean**
-  - Tipo A: `BridgeInertiaCertificate_exists_alpha`, `StrongInertiaCertificate_exists_alpha`.
-  - Tipo B: `InertiaERU_alphaBridge_of_certificate`, `InertiaERU_alpha_strong_of_bridge_inertia_of_certificate`.
-  - Legacy: ninguno.
+  - Existence (Type A): `BridgeInertiaCertificate_exists_alpha`, `StrongInertiaCertificate_exists_alpha`.
+  - Implications (Type B): `InertiaERU_alphaBridge_of_certificate`, `InertiaERU_alpha_strong_of_bridge_inertia_of_certificate`.
+  - Legacy: none.
 
-- **Otros módulos analíticos clásicos** (AlphaAssumptions, ExplicitDecomposition, ExplicitCoreBridge, EToRHChecklist, AlphaAxioms): contienen axiomas de fórmula explícita/RH clásicos, fuera del foco ERU.
+- **Other classical analytic modules** (AlphaAssumptions, ExplicitDecomposition, ExplicitCoreBridge, EToRHChecklist, AlphaAxioms): classical explicit-formula / RH axioms; out of scope for ERU-specific desaxiomatization.
 
-## 2. Interfaz de certificados (estado actual)
+## 2. Certificate interfaces (current state)
 
 - **GlobalEnergyCertificate_alpha**
-  - Campos: `kappa_book : ℚ`, `L_global : ℚ`, igualdades con auto-generados (`h_kappa`, `h_L`).
-  - Correct: identidades + desigualdad `kappaLowFormalRat ≤ kappa_book`.
+  - Fields: `kappa_book : ℚ`, `L_global : ℚ`, equalities to generated values (`h_kappa`, `h_L`).
+  - Correctness: identities plus inequality `kappaLowFormalRat ≤ kappa_book`.
 
 - **KernelBlowupCertificate_alpha**
-  - Campos: `kappa_book : ℚ`, igualdad `h_kappa`.
-  - Correct: identidad `h_kappa` (sin desigualdad aún).
+  - Fields: `kappa_book : ℚ`, equality `h_kappa`.
+  - Correctness: identity `h_kappa` (no inequality yet).
 
 - **BridgeInertiaCertificate_alpha**
-  - Campo: `inertia_proof : InertiaERU alphaBridge`.
-  - Correct: igualdad con el testigo `alphaBridge_inertia`.
+  - Field: `inertia_proof : InertiaERU alphaBridge`.
+  - Correctness: equality with witness `alphaBridge_inertia`.
 
 - **StrongInertiaCertificate_alpha**
-  - Campo: marcador `marker : Unit` (placeholder).
-  - Correct: `True` (placeholder).
+  - Field: marker `marker : Unit` (placeholder).
+  - Correctness: `True` (placeholder).
 
-## 3. Objetivo de desaxiomatización y prioridades
+## 3. De-axiomatization plan and priorities
 
-- Migrar los axiomas legacy (tipo C) a rutas certificadas:
-  - Proveer certificados concretos `_true` con datos numéricos (ventanas, κ, L_global) y lemas `*_true_correct_alpha`.
-  - Reemplazar axiomas directos (energía/inercia/modes) por lemas que consuman certificados correctos.
-  - Mantener una capa mínima de axiomas solo donde no haya certificados auto-generados.
-- Prioridades:
-  1) Energía kernel/global: certificados con κ/L + desigualdades numéricas.
-  2) Inercia bridge: empaquetar `alphaFluxCertificate`/ventanas en un certificado de datos.
-  3) Inercia fuerte: enlazar certificados prefactor/zeta/bridge-to-logR_alpha.
-  4) Eliminar gradualmente axiomas legacy (`*_legacy`, `*_of_no_modes`) sustituyéndolos por rutas certificadas.
+- Replace legacy (Type C) axioms with certificate-driven lemmas:
+  - Supply concrete `_true` certificates with numeric data (windows, κ, `L_global`) and lemmas `*_true_correct_alpha`.
+  - Replace direct energy/inertia/mode axioms with lemmas that consume correct certificates.
+  - Keep only the minimal analytic axioms not yet supported by generated certificates.
+- Priorities:
+  1) Kernel/global energy: certificates with κ/L and numeric inequalities.
+  2) Bridge inertia: package `alphaFluxCertificate` / window data in a certificate record.
+  3) Strong inertia: connect prefactor/zeta/bridge-to-`logR_alpha` certificates.
+  4) Eliminate legacy axioms (`*_legacy`, `*_of_no_modes`) once the certificate route is complete.

@@ -1,10 +1,12 @@
-# ERURH – Conditional RH Proof (Lean/Python)
+# ERURH - Conditional RH Proof (Lean/Python)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18010407.svg)](https://doi.org/10.5281/zenodo.18010407)
 
-This repository is a minimal, self-contained extraction of the ERURH project (from `eru-upgrade`). It preserves the Lean proof modules and the Python tooling needed to regenerate the rational certificates used in the conditional proof of the Riemann Hypothesis (RH).
+This repository is a minimal, self-contained project. It provides the Lean proof modules and the Python tooling needed to regenerate the rational certificates used in the conditional proof of the Riemann Hypothesis (RH).
+It also presents three analytic theorems (A, B, C) that underpin the Lean result and should be independently reviewed and verified.
 This repository includes no staging or experimental files; only the validated and review-ready components of the ERURH RH demo are included.
 
 ## Overview
-- Lean formalization: encodes the ERURH framework and the conditional implication `ERURH_GlobalAssumptions → RiemannHypothesis`.
+- Lean formalization: encodes the ERURH framework and the conditional implication `ERURH_GlobalAssumptions -> RiemannHypothesis`.
 - Python tooling: regenerates rational bounds and certificate values from the published numeric artefacts.
 - Documentation: explains the analytic assumptions, the certificate pipeline, and how to reproduce the build.
 
@@ -41,7 +43,7 @@ lake update
 lake exe cache get
 ```
 ### Linux/macOS
-
+```
 # 1) Python venv
 python3 -m venv .venv
 source .venv/bin/activate
@@ -53,6 +55,7 @@ python -m pip install -e .
 # 3) Fetch Lean dependencies / cache (optional but recommended)
 lake update
 lake exe cache get
+```
 
 ## Verification Pipeline
 From the repo root (venv active):
@@ -71,7 +74,7 @@ If tests are added later, omit `--skip-pytests` to run them.
 ## External Assumptions (high level)
 The Lean theorem formalizes a conditional implication of the form:
 
-**ERURH_GlobalAssumptions → RiemannHypothesis**
+**ERURH_GlobalAssumptions -> RiemannHypothesis**
 
 `ERURH_GlobalAssumptions` bundles:
 - Classical zeta-function input (explicit formula, growth and zero-counting bounds).
@@ -83,6 +86,32 @@ In addition, this repository includes a **proposed analytic proof** of three key
 - Theorems A, B, C (analytic write-up): `docs/core/ERURH_Analytic_Theorems_ABC.md`
 - Assumptions table and dependency map: `docs/core/ERURH_Assumptions_Report.md`
 - Main theorem overview and assumption references: `docs/core/ERURH_MainTheorem.md`
+
+## How to cite
+
+This repository is archived and citable via Zenodo.
+
+- **Concept DOI (recommended for general citation, always resolves to the latest version):**  
+  https://doi.org/10.5281/zenodo.18010407
+
+- **Version DOI (this specific release `v1.0-preprint`):**  
+  https://doi.org/10.5281/zenodo.18010408
+
+### BibTeX
+
+```bibtex
+@software{duran_erurh_2025,
+  author       = {Duran, Robert},
+  title        = {ERURH: Conditional RH demo (Lean) with analytic assumptions A, B, C},
+  year         = {2025},
+  version      = {v1.0-preprint},
+  url          = {https://github.com/RDCbum/RH_demo},
+  doi          = {10.5281/zenodo.18010407}
+}
+```
+Note. The Lean formalization proves a conditional implication
+ERURH_GlobalAssumptions -> RiemannHypothesis.
+The analytic theorems A, B, C are provided as proposed proofs requiring independent external verification.
 
 ## License
 
@@ -102,4 +131,5 @@ See: `LICENSE-PAPER` (CC BY 4.0).
 
 ## Copyright
 Copyright (c) 2025 Robert Duran (e-mail: duran.robert301@gmail.com)
+
 

@@ -1,0 +1,402 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\title{Three Classical Analytic Estimates for Explicit-Formula Coefficients of the Riemann Zeta Function}
+\author{Robert Duran\thanks{Email: \texttt{duran.robert301@gmail.com}.}}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We formulate three classical analytic estimates for coefficient families arising in explicit-formula expansions indexed by the non-trivial zeros of the Riemann zeta function: (i) a dyadic $L^2$ tail bound, (ii) a large-sieve--type mean-square inequality for exponential sums over zero ordinates \emph{without} any global spacing hypothesis, and (iii) a uniform mean-square tail bound for a weighted explicit-formula expansion. The arguments rely only on Stirling asymptotics for $\Gamma$, the Riemann--von Mangoldt formula (including unit-interval zero counts), and a classical large-sieve inequality for separated exponentials.
+\end{abstract}
+
+\section{Introduction}
+Let $\rho = \beta + i\gamma$ range over the non-trivial zeros of the Riemann zeta function, paired under the functional equation. Write the explicit-formula contribution to $\psi(x)$ in the form
+\[
+  \log R(s) = \sum_{\rho} a_\rho\, e^{(\rho-1)s} + \cdots, \qquad
+  j_{\mathrm{rel}}(s) = \sum_{\rho} \frac{\rho-1}{\rho}\, a_\rho\, e^{(\rho-1)s} + \cdots,
+\]
+and define coefficients
+\[
+  b_\rho := \frac{\rho-1}{\rho}\, G(\rho), \qquad
+  G(s) := \pi^{-s/2} \Gamma\!\left(\frac{s}{2}\right) H(s).
+\]
+Here $H(s)$ is a holomorphic factor coming from Mellin transforms of test functions, rational weights, and possible $\zeta'/\zeta$ terms, assumed to be of at most polynomial growth in vertical strips with $\Re(s+\kappa)\ge 1/2+\varepsilon$ for some $\kappa,\varepsilon>0$. We present three self-contained analytic estimates for these coefficients and their dyadic aggregates. No reference is made to ERURH or to RH in what follows.
+
+\section{Standing hypotheses and preliminaries}
+Let $\rho=\beta+i\gamma$ range over the non-trivial zeros of $\zeta(s)$, counted with multiplicity, and let
+\[
+  b_\rho := \frac{\rho-1}{\rho}\,G(\rho),
+  \qquad
+  G(s) := \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)H(s).
+\]
+The estimates in this note are stated and proved under the following \emph{explicit} hypotheses, which isolate exactly the analytic input required.
+
+\subsection*{Standing hypotheses}
+\noindent\textbf{(H1) (Holomorphic model with gamma factor).}
+The auxiliary factor $H(s)$ is holomorphic in a neighbourhood of the closed strip $0\le \Re s\le 1$, and the coefficients $b_\rho$ are defined by the above formula (in particular, the completed zeta-factor $\pi^{-s/2}\Gamma(s/2)$ is present in $G(s)$).
+
+\medskip
+\noindent\textbf{(H2) (Polynomial vertical growth of $H$).}
+There exist constants $C_H>0$ and $A_H\ge 0$ such that
+\[
+  |H(\sigma+it)| \le C_H(1+|t|)^{A_H}
+  \qquad (0\le \sigma\le 1,\ t\in\mathbb{R}).
+\]
+
+\medskip
+\noindent\textbf{(H3) (Riemann--von Mangoldt and unit-interval zero counts).}
+Let $N(T)$ denote the number of non-trivial zeros $\rho=\beta+i\gamma$ with $0<\beta<1$ and $0<\gamma\le T$, counted with multiplicity. We use the classical Riemann--von Mangoldt formula and its consequence that, for $|y|\ge 3$,
+\[
+  \#\{\rho:\ y<\Im(\rho)\le y+1\}\ \ll\ \log(|y|+2),
+\]
+with an absolute implied constant.
+
+\begin{remark}[Verifying the hypotheses in explicit-formula settings]\label{rem:verify-hyp}
+Hypothesis \textbf{(H1)} is automatic once one works with the completed zeta function
+$\Lambda(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)$, from which the gamma factor enters the explicit formula.
+Hypothesis \textbf{(H2)} holds (with room to spare) when $H(s)$ is a Mellin transform of a smooth compactly supported test function, since such Mellin transforms are entire and rapidly decaying in vertical strips. Rational weights contribute at most polynomial growth.
+
+If one wishes to incorporate additional factors such as $(\zeta'/\zeta)(s+\kappa)$ into $H(s)$, then for the present arguments it suffices that the resulting $H$ remain holomorphic in a neighbourhood of $0\le \Re s\le 1$ and satisfy \textbf{(H2)} there. A simple sufficient condition is $\kappa>1$, which places $s+\kappa$ in the zero-free half-plane $\Re>1$ for all $s$ in the strip.
+\end{remark}
+
+\medskip
+All implied constants may depend on $C_H,A_H$ (and hence on the specific choice of $H$), but are otherwise absolute.
+
+\medskip
+We record three standard lemmas (Stirling decay, local zero counting, and a classical large-sieve inequality for separated exponentials) that will be used repeatedly.
+\medskip
+
+\begin{lemma}[Stirling decay for the coefficients]\label{lem:decay}
+Assume Hypotheses \textbf{(H1)}--\textbf{(H2)}. In particular, $H(s)$ is holomorphic in a neighbourhood of the strip $0\le \Re s\le 1$ and, for some $A_H\ge 0$,
+\[
+  H(\sigma+it) \ll (1+|t|)^{A_H}
+  \qquad (0\le \sigma\le 1,\ t\in\mathbb{R}).
+\]
+Then there exist constants $c>0$ and $k\ge 0$ (depending only on $A_H$) such that for every non-trivial zero $\rho=\beta+i\gamma$ of $\zeta(s)$,
+\[
+  |b_\rho| \ll e^{-c|\gamma|}\,(1+|\gamma|)^k,
+  \qquad
+  |b_\rho|^2 \ll e^{-2c|\gamma|}\,(1+|\gamma|)^{2k}.
+\]
+\end{lemma}
+
+\begin{proof}
+Write $s=\sigma+it$ with $0\le \sigma\le 1$. By Stirling's formula in vertical strips (see, e.g., \cite[\S2.3]{Titchmarsh}),
+\[
+  \Bigl|\Gamma\!\Bigl(\frac{s}{2}\Bigr)\Bigr|
+  \ll (1+|t|)^{\sigma/2-1/2}\exp\!\Bigl(-\frac{\pi}{4}|t|\Bigr),
+\]
+and trivially $|\pi^{-s/2}|=\pi^{-\sigma/2}\asymp 1$ on $0\le \sigma\le 1$.
+Hence
+\[
+  |G(\sigma+it)|
+  = |\pi^{-s/2}|\cdot \Bigl|\Gamma\!\Bigl(\frac{s}{2}\Bigr)\Bigr|\cdot |H(s)|
+  \ll (1+|t|)^{A_H+1}\exp\!\Bigl(-\frac{\pi}{4}|t|\Bigr).
+\]
+For a zero $\rho=\beta+i\gamma$ we have $0<\beta<1$, and for $|\gamma|\ge 1$,
+\[
+  \Bigl|\frac{\rho-1}{\rho}\Bigr|
+  \le 1 + \frac{1}{|\rho|}
+  \le 2.
+\]
+Therefore,
+\[
+  |b_\rho|
+  = \Bigl|\frac{\rho-1}{\rho}\Bigr|\cdot |G(\rho)|
+  \ll (1+|\gamma|)^{A_H+1}\exp\!\Bigl(-\frac{\pi}{4}|\gamma|\Bigr),
+\]
+which implies the claimed bound with $c=\pi/4$ and $k=A_H+1$ (after adjusting the implied constant to cover the finitely many zeros with $|\gamma|<1$).
+\end{proof}
+
+\begin{lemma}[Local zero counting]\label{lem:localcount}
+Let $N(T)$ be the number of non-trivial zeros $\rho=\beta+i\gamma$ with $0<\beta<1$ and $0<\gamma\le T$, counted with multiplicity.
+Then, for $T\ge 3$,
+\[
+  N(T)=\frac{T}{2\pi}\log\frac{T}{2\pi}-\frac{T}{2\pi}+O(\log T),
+\]
+and consequently
+\[
+  N(T+1)-N(T)\ll \log T.
+\]
+In particular, for every $y\ge 3$ the interval $(y,y+1]$ contains $\ll \log y$ ordinates $\gamma$ (counted with multiplicity). By symmetry of the zeros under $\gamma\mapsto -\gamma$, the same bound holds for $y\le -3$, hence for all $|y|\ge 3$,
+\[
+  \#\{\rho:\ y<\Im(\rho)\le y+1\}\ \ll\ \log(|y|+2).
+\]
+\end{lemma}
+
+\begin{proof}
+This is the classical Riemann--von Mangoldt formula; see \cite[Ch.\ 9]{Titchmarsh}. Taking differences gives
+\[
+  N(T+1)-N(T)
+  = \frac{1}{2\pi}\log T + O(1),
+\]
+which implies $N(T+1)-N(T)\ll \log T$ for $T\ge 3$.
+\end{proof}
+
+\begin{lemma}[Large sieve for separated exponentials]\label{lem:largesieve}
+Let $\lambda_1,\dots,\lambda_N\in\mathbb{R}$ satisfy $|\lambda_m-\lambda_n|\ge \delta>0$ for all $m\neq n$. Then for any complex coefficients $a_1,\dots,a_N$ and any $L>0$,
+\[
+  \int_0^L \Bigl|\sum_{n=1}^N a_n e^{i\lambda_n u}\Bigr|^2\,du
+  \le \Bigl(L+\frac{2\pi}{\delta}\Bigr)\sum_{n=1}^N |a_n|^2.
+\]
+\end{lemma}
+\begin{proof}
+This is \cite[Theorem~1.3]{MontgomeryLNM227}; see also \cite[Ch.\ 7]{MontgomeryVaughan}.
+\end{proof}
+
+\section{Theorem A: Dyadic \texorpdfstring{$L^2$}{L2} tail bound}
+\begin{theorem}[Dyadic $L^2$ tail bound]\label{thm:A}
+Assume Hypotheses \textbf{(H1)}--\textbf{(H3)}. Then there exist constants $c>0$, $k\ge 0$ and $T_0\ge 3$ such that, for all $T\ge T_0$,
+\begin{equation}\label{eq:thmA-exp}
+  \sum_{\substack{\rho \\ T < |\gamma| \le 2T}} |b_\rho|^2
+  \;\ll\; T^{2k+1}(\log T)\,e^{-2cT}.
+\end{equation}
+In particular, there exist constants $C>0$ and $A>0$ such that, for all $T\ge T_0$,
+\[
+  \sum_{\substack{\rho \\ T < |\gamma| \le 2T}} |b_\rho|^2 \;\le\; C\,T(\log T)^A.
+\]
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:decay}, there exist $c>0$ and $k\ge 0$ such that
+\[
+  |b_\rho|^2 \ll e^{-2c|\gamma|}\,(1+|\gamma|)^{2k}
+\]
+for every non-trivial zero $\rho=\beta+i\gamma$.
+For $T<|\gamma|\le 2T$ we therefore have the uniform bound
+\[
+  |b_\rho|^2 \ll e^{-2cT}\,(1+2T)^{2k} \ll e^{-2cT}\,T^{2k}.
+\]
+Summing over the dyadic band and using the Riemann--von Mangoldt bound
+$N(2T)-N(T)\ll T\log T$ (which follows from Lemma~\ref{lem:localcount}) gives
+\[
+  \sum_{\substack{\rho\\ T<|\gamma|\le 2T}} |b_\rho|^2
+  \ll (N(2T)-N(T))\, e^{-2cT}\,T^{2k}
+  \ll T^{2k+1}(\log T)\,e^{-2cT}.
+\]
+In particular the dyadic $L^2$ tail is exponentially small in $T$.
+Since $e^{2cT}$ dominates any fixed power of $T$ and $\log T$, there exist constants
+$A>0$ and $T_0>0$ such that for all $T\ge T_0$,
+\[
+  T^{2k}(\log T)\,e^{-2cT} \le (\log T)^A,
+\]
+and hence
+\[
+  \sum_{\substack{\rho\\ T<|\gamma|\le 2T}} |b_\rho|^2 \le C\,T(\log T)^A
+\]
+for a suitable constant $C>0$.
+\end{proof}
+\begin{remark}
+The proof in fact yields an exponentially small dyadic tail in $T$; we record only a polynomial bound because it suffices for applications.
+\end{remark}
+
+\section{Theorem B: A large-sieve inequality for zero ordinates}
+Fix $L>0$ and a dyadic band $T<|\gamma|\le 2T$ with $T$ large. Define the spectral sum
+\[
+  F(u) = \sum_{T<|\gamma|\le 2T} b_\rho\, e^{i\gamma u}.
+\]
+
+\begin{theorem}[Large-sieve mean-square inequality for zero ordinates]\label{thm:B}
+Assume Hypothesis \textbf{(H3)}. Let $T\ge 3$ and $L\ge 1$. For the dyadic band $T<|\gamma|\le 2T$ define
+\[
+  F(u) = \sum_{\substack{\rho\\ T<|\gamma|\le 2T}} b_\rho\, e^{i\gamma u}.
+\]
+Then
+\begin{equation}\label{eq:thmB}
+  \frac{1}{L} \int_0^L |F(u)|^2 \, du
+    \;\ll\; (\log T)\sum_{\substack{\rho\\ T<|\gamma|\le 2T}} |b_\rho|^2,
+\end{equation}
+with an absolute implied constant. In particular, \eqref{eq:thmB} holds in any ``admissible range'' $1\ll L\ll T^\alpha$ with $0<\alpha<1$.
+\end{theorem}
+
+\begin{lemma}[Decomposition into $1$-separated subfamilies]\label{lem:partition}
+Let $\Lambda$ be a finite multiset of real numbers with the property that every interval of length $1$
+contains at most $M$ elements of $\Lambda$ (counted with multiplicity). Then $\Lambda$ can be written
+as a disjoint union
+\[
+  \Lambda=\Lambda_1\cup\cdots\cup \Lambda_M
+\]
+such that each $\Lambda_j$ is $1$-separated, i.e.\ $|\lambda-\lambda'|\ge 1$ for all distinct $\lambda,\lambda'\in\Lambda_j$.
+\end{lemma}
+
+\begin{proof}
+Order the elements of $\Lambda$ (with multiplicity) as $\lambda_1\le \lambda_2\le \cdots\le \lambda_N$.
+We construct the subfamilies $\Lambda_1,\dots,\Lambda_M$ greedily.
+
+Assume $\lambda_1,\dots,\lambda_{n-1}$ have been assigned so that each $\Lambda_j$ is $1$-separated.
+Consider $\lambda_n$. For each $j$, the $1$-separation implies that $\Lambda_j$ contains \emph{at most one}
+element in the interval $(\lambda_n-1,\lambda_n]$.
+Hence, if $\lambda_n$ cannot be placed into $\Lambda_j$ (i.e.\ would violate $1$-separation), then $\Lambda_j$
+already contains an element of $(\lambda_n-1,\lambda_n]$.
+
+But $(\lambda_n-1,\lambda_n]$ contains at most $M$ elements of $\Lambda$ by hypothesis, so at most $M-1$
+of the sets $\Lambda_j$ can be ``blocked'' in this way by previously placed elements.
+Therefore there exists at least one index $j$ for which $\Lambda_j$ contains no element of $(\lambda_n-1,\lambda_n]$,
+and we may assign $\lambda_n$ to that $\Lambda_j$ while preserving $1$-separation.
+
+Proceeding inductively assigns all elements to $\Lambda_1,\dots,\Lambda_M$, as required.
+\end{proof}
+
+\begin{proof}
+Let $\Gamma(T)$ denote the multiset of ordinates $\gamma\in\mathbb{R}$ (counted with multiplicity) of zeros
+$\rho=\beta+i\gamma$ with $T<|\gamma|\le 2T$.
+By Lemma~\ref{lem:localcount}, every interval of length $1$ in the ranges $[T,2T]$ and $[-2T,-T]$
+contains $\ll \log T$ ordinates. Thus there exists an absolute constant $C_0>0$ such that
+\[
+  M:=\sup_{y\in\mathbb{R}}\#\bigl(\Gamma(T)\cap (y,y+1]\bigr) \le C_0\log T
+\]
+for all sufficiently large $T$.
+
+Apply Lemma~\ref{lem:partition} to $\Gamma(T)$ to obtain a disjoint union
+$\Gamma(T)=\Gamma_1\cup\cdots\cup \Gamma_M$, where each $\Gamma_j$ is $1$-separated.
+Write accordingly
+\[
+  F(u)=\sum_{j=1}^M F_j(u),
+  \qquad
+  F_j(u):=\sum_{\substack{\rho\\ \gamma\in\Gamma_j}} b_\rho\,e^{i\gamma u}.
+\]
+By Cauchy--Schwarz,
+\[
+  |F(u)|^2 = \Bigl|\sum_{j=1}^M F_j(u)\Bigr|^2 \le M \sum_{j=1}^M |F_j(u)|^2,
+\]
+and hence
+\begin{equation}\label{eq:splitCS}
+  \int_0^L |F(u)|^2\,du \le M \sum_{j=1}^M \int_0^L |F_j(u)|^2\,du.
+\end{equation}
+
+For each fixed $j$, the ordinates in $\Gamma_j$ are $1$-separated, so Lemma~\ref{lem:largesieve} with $\delta=1$ gives
+\[
+  \int_0^L |F_j(u)|^2\,du \le (L+2\pi)\sum_{\substack{\rho\\ \gamma\in\Gamma_j}} |b_\rho|^2.
+\]
+Substituting into \eqref{eq:splitCS} and summing over $j$ yields
+\[
+  \int_0^L |F(u)|^2\,du
+  \le M(L+2\pi)\sum_{T<|\gamma|\le 2T} |b_\rho|^2.
+\]
+Dividing by $L$ and using $L\ge 1$ gives
+\[
+  \frac{1}{L}\int_0^L |F(u)|^2\,du
+  \le C\,(\log T)\sum_{T<|\gamma|\le 2T} |b_\rho|^2,
+\]
+for a suitable absolute constant (absorbing the factor $(1+2\pi/L)$). This is exactly \eqref{eq:thmB}.
+\end{proof}
+
+\begin{corollary}[Max-bound version]\label{cor:max}
+Under the assumptions of Theorem~\ref{thm:B}, one has
+\[
+  \frac{1}{L} \int_0^L |F(u)|^2 \, du
+    \;\ll\; T \,(\log T)^{2} \cdot \max_{T<|\gamma|\le 2T} |b_\rho|^2.
+\]
+\end{corollary}
+\begin{proof}
+This follows immediately from Theorem \ref{thm:B} and the trivial bound $\sum |b_\rho|^2 \le (N(2T)-N(T)) \max |b_\rho|^2 \ll T (\log T) \max |b_\rho|^2$.
+\end{proof}
+
+\section{Theorem C: A uniform RMS tail bound}
+Let $S\ge 3$ and $L>0$, and fix a parameter $B>0$. Define the tail observable
+\[
+  \widetilde F_{\mathrm{tail}}(s) \;:=\; s^{-2} \sum_{\substack{|\gamma|>S^B}} b_\rho\, e^{i\gamma s},
+\]
+and the windowed root-mean-square quantity
+\[
+  K_{\mathrm{tail}}(S,L)^2 \;:=\; \frac{1}{L} \int_{S}^{S+L} \bigl|\widetilde F_{\mathrm{tail}}(s)\bigr|^2 \, ds.
+\]
+
+\begin{theorem}[Uniform RMS tail bound]\label{thm:C}
+Assume Hypotheses \textbf{(H1)}--\textbf{(H3)} and fix $B>0$. Then there exist constants $c'>0$ and $S_0\ge 3$ such that, for all $S\ge S_0$ and all $L>0$,
+\begin{equation}\label{eq:thmC-exp}
+  K_{\mathrm{tail}}(S,L)^2 \;\ll\; S^{-4}\exp\!\bigl(-2c' S^{B}\bigr).
+\end{equation}
+In particular, $K_{\mathrm{tail}}(S,L)^2\le M_{\mathrm{tail}}^2$ uniformly in $S$ and $L$, for a suitable constant $M_{\mathrm{tail}}>0$.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:decay}, there exist $c>0$ and $k\ge 0$ such that
+\[
+  |b_\rho| \ll e^{-c|\gamma|}(1+|\gamma|)^{k}.
+\]
+We first show that the tail sum $\sum_{|\gamma|>S^B}|b_\rho|$ is exponentially small in $S^B$.
+Decompose the region $|\gamma|>S^B$ into dyadic bands $(2^m S^B,2^{m+1}S^B]$, $m\ge 0$. On each band we have
+$|b_\rho|\ll e^{-c2^mS^B}(2^mS^B)^k$, and by Lemma~\ref{lem:localcount} (equivalently, by Riemann--von Mangoldt),
+\[
+  \#\{\rho:\ 2^mS^B<|\gamma|\le 2^{m+1}S^B\}
+  \;=\; O\!\bigl(2^mS^B\log(2^mS^B)\bigr).
+\]
+Hence
+\[
+  \sum_{\substack{\rho\\ 2^mS^B<|\gamma|\le 2^{m+1}S^B}} |b_\rho|
+  \ll (2^mS^B)^{k+1}\log(2^mS^B)\,e^{-c2^mS^B}.
+\]
+Summing over $m\ge 0$ gives
+\[
+  \sum_{\substack{\rho\\ |\gamma|>S^B}} |b_\rho|
+  \ll \sum_{m=0}^\infty (2^mS^B)^{k+1}\log(2^mS^B)\,e^{-c2^mS^B}
+  \ll \exp(-c' S^B)
+\]
+for some $c'>0$ and all $S\ge S_0$, since the exponential factor decays super-geometrically in $m$.
+
+Now for $s\in[S,S+L]$ we have $|s^{-2}|\le S^{-2}$, and by absolute convergence,
+\[
+  |\widetilde F_{\mathrm{tail}}(s)|
+  \le S^{-2}\sum_{|\gamma|>S^B}|b_\rho|
+  \ll S^{-2}\exp(-c'S^B).
+\]
+Therefore
+\[
+  K_{\mathrm{tail}}(S,L)^2
+  =\frac1L\int_S^{S+L}|\widetilde F_{\mathrm{tail}}(s)|^2\,ds
+  \ll \frac1L\int_S^{S+L} S^{-4}e^{-2c'S^B}\,ds
+  \ll S^{-4}e^{-2c'S^B},
+\]
+which is \eqref{eq:thmC-exp}.
+\end{proof}
+
+\begin{remark}
+Because the coefficients $b_\rho$ decay exponentially in $|\gamma|$ under \textbf{(H1)}--\textbf{(H2)}, the tail bound above is essentially pointwise and does not require any mean-square input beyond absolute convergence. One may also derive comparable bounds by combining dyadic decompositions with Theorems~\ref{thm:A} and \ref{thm:B}, but the direct argument above is simpler.
+\end{remark}
+
+\section{Remarks}
+
+\begin{itemize}
+  \item The proofs use only classical inputs: Stirling's formula for $\Gamma$, the Riemann--von Mangoldt formula (including unit-interval zero counts), and the large sieve for separated exponentials (Lemma~\ref{lem:largesieve}).
+  \item Under \textbf{(H1)}--\textbf{(H2)}, the dyadic tails in Theorem~\ref{thm:A} are in fact exponentially small in the dyadic parameter.
+  \item The large-sieve inequality in Theorem~\ref{thm:B} does not assume any uniform lower bound on gaps between ordinates; it uses only the local counting information encoded in \textbf{(H3)}.
+  \item Variants with different test functions or normalizations of $b_\rho$ can be handled similarly by modifying $H(s)$ and verifying \textbf{(H1)}--\textbf{(H2)} for the resulting factor.
+\end{itemize}
+
+\begin{thebibliography}{9}
+
+\bibitem{Titchmarsh}
+E.\,C.~Titchmarsh,
+\emph{The Theory of the Riemann Zeta-Function},
+2nd ed., revised by D.\,R.~Heath-Brown,
+Oxford University Press, 1986.
+
+\bibitem{MontgomeryVaughan}
+H.\,L.~Montgomery and R.\,C.~Vaughan,
+\emph{Multiplicative Number Theory I.\ Classical Theory},
+Cambridge University Press, 2007.
+
+\bibitem{MontgomeryLNM227}
+H.\,L.~Montgomery,
+\emph{Topics in Multiplicative Number Theory},
+Lecture Notes in Mathematics 227,
+Springer, 1971.
+
+\end{thebibliography}
+
+\end{document}

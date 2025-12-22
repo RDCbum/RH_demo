@@ -1,0 +1,482 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\title{ERURH: A Conditional, Formalized Route to the Riemann Hypothesis}
+\author{Robert Duran}
+\date{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\Imc}{\operatorname{Im}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present a precise conditional proof of the Riemann Hypothesis for the
+completed zeta-like function $\xi_\alpha$ used in the ERURH framework. The
+argument reduces RH to a finite set of auditable numerical certificates and a
+small collection of classical analytic assumptions about the Riemann zeta
+function and its explicit formula. The logical chain is fully formalized in
+Lean (Lean~4.25.0-rc2 + mathlib). This paper states the exact hypotheses,
+explains the ERU energy/inertia machinery, and gives a rigorous, end-to-end
+proof of the conditional theorem.
+\end{abstract}
+
+\section{Introduction}
+The ERURH program reformulates the Riemann Hypothesis (RH) in terms of a
+finite set of numerically checkable certificates. The strategy is to translate
+the classical explicit formula for $\psi(x)$ into an ``energy--inertia''
+framework on the logarithmic scale $s = \log x$, and then show that the
+absence of supercritical exponential modes (modes with real part $>1/2$)
+forces the RH for a completed zeta-like function $\xi_\alpha$. The novel
+content is encapsulated in finite certificates; the classical analytic inputs
+are isolated as explicit assumptions. The entire logical chain is formalized
+in Lean.
+
+This paper is a rigorous, stand-alone description of the conditional proof.
+We make no unconditional claims; all analytic inputs are enumerated and treated
+as hypotheses. The main theorem mirrors the Lean theorem
+\texttt{RH\_from\_ERURH\_conditional}.
+
+\section{Notation and ERU observables}
+Let $\xi_\alpha$ denote the completed zeta-like function used in the ERURH
+alpha layer. Its analytic properties (functional equation, explicit formula,
+and RH equivalences) are listed in Assumption~\ref{assm:classical}.
+
+Let $\psi(x) = \sum_{p^k\le x} \log p$ and $E(x) = \psi(x) - x$. Define
+\begin{equation}
+  s = \log x, \qquad
+  \log R(s) = \frac{E(e^s)}{e^s}, \qquad
+  J_{\mathrm{rel}}(s) = \frac{d}{ds}\log R(s).
+\end{equation}
+The explicit formula for $\psi(x)$ can be written on the $s$-scale in the form
+\begin{equation}\label{eq:explicit-form}
+  \log R(s) = \sum_{\rho} a_\rho e^{(\rho-1)s} + \cdots, \qquad
+  J_{\mathrm{rel}}(s) = \sum_{\rho} \frac{\rho-1}{\rho}\, a_\rho e^{(\rho-1)s} + \cdots,
+\end{equation}
+where $\rho = \beta + i\gamma$ ranges over non-trivial zeros of $\zeta(s)$ and
+$\cdots$ denotes terms from trivial zeros and smooth test factors. We introduce
+coefficients
+\begin{equation}
+  b_\rho := \frac{\rho-1}{\rho}\,G(\rho), \qquad
+  G(s) := \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)H(s),
+\end{equation}
+with $H$ a holomorphic factor of at most polynomial growth in vertical strips.
+In the ERURH formalization, the existence of such an explicit formula is
+recorded as an external assumption (Assumption~\ref{assm:explicit}).
+
+\subsection*{Notation summary}
+\begin{itemize}
+  \item $\xi_\alpha$: the completed zeta-like function of the ERURH alpha layer.
+  \item $s=\log x$, $\log R(s)=E(e^s)/e^s$, $J_{\mathrm{rel}}(s)=d(\log R)/ds$.
+  \item $\rho=\beta+i\gamma$: a non-trivial zero of $\zeta(s)$.
+  \item $b_\rho$: explicit-formula coefficients associated to $\rho$.
+  \item $C_{\mathrm{env}}$: formal RMS envelope constant.
+\end{itemize}
+\noindent The symbol $\alpha$ is used both for the ERU mode parameter and for
+generic exponents (e.g., the admissible range in Theorem~\ref{thm:B}); these
+uses are unrelated and should not be confused with the fixed subscript in
+$\xi_\alpha$.
+
+\section{Main theorem (conditional)}
+\begin{theorem}[Conditional ERURH master theorem]\label{thm:main}
+Assume the classical zeta package (Assumption~\ref{assm:classical}), the ERU
+explicit formula (Assumption~\ref{assm:explicit}), spectral decay (Assumption
+\ref{assm:hb}), the large-sieve estimate (Assumption~\ref{assm:ls}), the RMS
+window hypotheses (Assumption~\ref{assm:a1a2}), and the correctness of the
+alpha certificates and numeric coverage (Assumption~\ref{assm:certs}). Then
+there are no ERU modes with weight $\alpha>1/2$, the ERU strong inertia bound
+holds, and the Riemann Hypothesis for $\xi_\alpha$ follows.
+\end{theorem}
+
+\begin{remark}
+A proof is given in Section~\ref{sec:proof-main} using the Plan~B RMS-local
+route and the gate-closure implications of the alpha certificates.
+\end{remark}
+
+\section{Energy, inertia, and ERU modes}
+The ERURH formalism introduces global energy functionals and ``gates'' that
+measure whether the observable $J_{\mathrm{rel}}$ (or its smoothed variants)
+stays under a prescribed envelope. A key notion is the existence of an
+exponential ERU mode.
+
+\begin{definition}[ERU mode]
+An \emph{ERU mode of weight $\alpha$} (denoted \texttt{ERU\_mode\_beta $\alpha$}
+ in Lean) is an asymptotic component of $\log R(s)$ that grows like
+$\exp((\alpha-\tfrac{1}{2})s)$ for large $s$. The ERURH theory is structured so
+that the presence of a mode with $\alpha>1/2$ forces energy blow-up beyond the
+allowable envelope.
+\end{definition}
+
+\begin{definition}[Strong inertia]
+\emph{Strong ERU inertia} (Lean: \texttt{InertiaERU\_alpha\_strong}) is a
+quantitative upper bound on $J_{\mathrm{rel}}(s)$ of the shape
+$|J_{\mathrm{rel}}(s)| \le C e^{-s/2}s^2$ for all sufficiently large $s$.
+\end{definition}
+
+A central formal lemma is that the absence of supercritical modes implies
+strong inertia, and strong inertia implies RH for $\xi_\alpha$ under the
+classical zeta assumptions (Assumption~\ref{assm:classical}).
+
+\section{Certificates and gates}
+ERURH isolates the new content into finite certificates, each of which is a
+finite list of rational inequalities derived from explicit computations.
+The alpha layer uses four certificates:
+\begin{itemize}
+  \item GlobalEnergyCertificate\_alpha,
+  \item KernelBlowupCertificate\_alpha,
+  \item BridgeInertiaCertificate\_alpha,
+  \item StrongInertiaCertificate\_alpha.
+\end{itemize}
+Correctness of these certificates is encoded as predicates in Lean. The
+certificates ensure that the global energy stays below a fixed envelope and
+that any supercritical mode would force a kernel energy blow-up. These
+implications are formalized as lemmas that close the ERURH gates.
+For the Plan~B route, only the GlobalEnergy and KernelBlowup certificates are
+required to close the renormalization gate; the bridge/strong inertia
+certificates are used in the direct alpha route.
+
+\section{Classical analytic estimates (Theorems A, B, C)}
+This section records the classical analytic estimates for the explicit-formula
+coefficients $b_\rho$ that underlie the spectral hypotheses used in ERURH. The
+statements match the more detailed companion preprint and are included here to
+make the analytic inputs explicit.
+
+\subsection*{Standing hypotheses}
+Let $\rho=\beta+i\gamma$ range over the non-trivial zeros of $\zeta(s)$,
+counted with multiplicity, and let
+\[
+  b_\rho := \frac{\rho-1}{\rho}\,G(\rho),
+  \qquad
+  G(s) := \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)H(s).
+\]
+\noindent\textbf{(H1) (Holomorphic model with gamma factor).}
+The auxiliary factor $H(s)$ is holomorphic in a neighbourhood of the closed
+strip $0\le \Re s\le 1$, and the coefficients $b_\rho$ are defined by the above
+formula (in particular, the completed zeta factor
+$\pi^{-s/2}\Gamma(s/2)$ is present in $G(s)$).
+
+\medskip
+\noindent\textbf{(H2) (Polynomial vertical growth of $H$).}
+There exist constants $C_H>0$ and $A_H\ge 0$ such that
+\[
+  |H(\sigma+it)| \le C_H(1+|t|)^{A_H}
+  \qquad (0\le \sigma\le 1,\ t\in\R).
+\]
+
+\medskip
+\noindent\textbf{(H3) (Riemann--von Mangoldt and unit-interval zero counts).}
+Let $N(T)$ denote the number of non-trivial zeros
+$\rho=\beta+i\gamma$ with $0<\beta<1$ and $0<\gamma\le T$, counted with
+multiplicity. We use the Riemann--von Mangoldt formula and its consequence
+that, for $|y|\ge 3$,
+\[
+  \#\{\rho:\ y<\Imc(\rho)\le y+1\}\ \ll\ \log(|y|+2),
+\]
+with an absolute implied constant.
+
+\medskip
+\begin{theorem}[Theorem A: Dyadic $L^2$ tail bound]\label{thm:A}
+Assume \textbf{(H1)}--\textbf{(H3)}. Then there exist constants $c>0$, $k\ge 0$,
+and $T_0\ge 3$ such that, for all $T\ge T_0$,
+\[
+  \sum_{\substack{\rho \\ T < |\gamma| \le 2T}} |b_\rho|^2
+  \;\ll\; T^{2k+1}(\log T)\,e^{-2cT}.
+\]
+In particular, there exist constants $C>0$ and $A>0$ such that, for all
+$T\ge T_0$,
+\[
+  \sum_{\substack{\rho \\ T < |\gamma| \le 2T}} |b_\rho|^2
+  \;\le\; C\,T(\log T)^A.
+\]
+\end{theorem}
+
+\begin{theorem}[Theorem B: Large-sieve mean-square bound]\label{thm:B}
+Assume \textbf{(H3)}. Let $T\ge 3$ and $L\ge 1$, and define
+\[
+  F(u) = \sum_{\substack{\rho\\ T<|\gamma|\le 2T}} b_\rho\, e^{i\gamma u}.
+\]
+Then
+\[
+  \frac{1}{L} \int_0^L |F(u)|^2 \, du
+    \;\ll\; (\log T)\sum_{\substack{\rho\\ T<|\gamma|\le 2T}} |b_\rho|^2,
+\]
+with an absolute implied constant. In particular, this holds in any admissible
+range $1\ll L\ll T^\alpha$ with $0<\alpha<1$.
+\end{theorem}
+
+\begin{theorem}[Theorem C: Uniform RMS tail bound]\label{thm:C}
+Assume \textbf{(H1)}--\textbf{(H3)} and fix $B>0$. Define
+\[
+  \widetilde F_{\mathrm{tail}}(s)
+  \;:=\; s^{-2} \sum_{\substack{|\gamma|>S^B}} b_\rho\, e^{i\gamma s},
+  \qquad
+  K_{\mathrm{tail}}(S,L)^2
+  := \frac{1}{L} \int_{S}^{S+L} \bigl|\widetilde F_{\mathrm{tail}}(s)\bigr|^2\,ds.
+\]
+Then there exist constants $c'>0$ and $S_0\ge 3$ such that, for all
+$S\ge S_0$ and all $L>0$,
+\[
+  K_{\mathrm{tail}}(S,L)^2 \;\ll\; S^{-4}\exp\!\bigl(-2c' S^{B}\bigr).
+\]
+In particular, $K_{\mathrm{tail}}(S,L)^2\le M_{\mathrm{tail}}^2$ uniformly in
+$S$ and $L$, for a suitable constant $M_{\mathrm{tail}}>0$.
+\end{theorem}
+
+These theorems provide the analytic content behind the spectral decay
+Assumption~\ref{assm:hb} and the large-sieve estimate
+Assumption~\ref{assm:ls}. Proofs are given in the companion preprint
+\texttt{Theorem\_ABC\_preprint.tex} in the same submission folder; we record
+only the statements here and treat them as classical inputs.
+
+\section{External analytic assumptions}
+The conditional theorem uses the following external packages. We list the
+assumptions explicitly to isolate analytic input from ERURH-specific logic.
+
+\begin{assumption}[Classical zeta package]\label{assm:classical}
+The completed function $\xi_\alpha$ satisfies the standard analytic properties
+of the Riemann zeta function: explicit formula for $\psi(x)$, functional
+equation, standard bounds for $\zeta'/\zeta$ in vertical strips, the
+Riemann--von Mangoldt zero counting formula (including local counts), and the
+classical equivalence between RH and bounds on $E(x)$.
+\end{assumption}
+
+\begin{assumption}[Explicit formula for the ERU observable]\label{assm:explicit}
+The ERU observable $\log R(s)$ and its derivative $J_{\mathrm{rel}}(s)$ admit an
+explicit formula of the form~\eqref{eq:explicit-form} in which the coefficients
+$b_\rho$ are expressed via $G(\rho)$ as above.
+\end{assumption}
+
+\begin{assumption}[Spectral decay: $H_b$]\label{assm:hb}
+The coefficient family $\{b_\rho\}$ satisfies:
+(i) a pointwise polynomial (or exponential) bound in $|\gamma|$;
+(ii) a dyadic $L^2$ tail bound
+\[\sum_{T<|\gamma|\le 2T} |b_\rho|^2 \le C T (\log T)^A\]
+for sufficiently large $T$.
+\end{assumption}
+
+\begin{assumption}[Large-sieve for zero ordinates]\label{assm:ls}
+For each dyadic band $T<|\gamma|\le 2T$ and each $L\ge 1$,
+\[\frac{1}{L}\int_0^L\Bigl|\sum_{T<|\gamma|\le 2T} b_\rho e^{i\gamma u}\Bigr|^2\,du
+  \ll (\log T)\sum_{T<|\gamma|\le 2T}|b_\rho|^2.\]
+This is a standard large-sieve inequality for separated exponentials combined
+with local zero counting.
+\end{assumption}
+
+\begin{assumption}[RMS window hypotheses]\label{assm:a1a2}
+Fix a family of windows $w=[S,S+L]$ with $1\ll L\ll S^\alpha$.
+There exist RMS quantities $\mathrm{RMS}_{\alpha},\mathrm{RMS}_{\mathrm{mode}},
+\mathrm{RMS}_{\mathrm{low}},\mathrm{RMS}_{\mathrm{tail}}$ and constants
+$c_{\mathrm{low}},c_{\mathrm{tail}},C_{\mathrm{env}}$ such that:
+\begin{itemize}
+  \item \textbf{A1 (mode growth):} there exists a window $w$ and a constant $K$
+  with $K>c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$ such that
+  $\mathrm{RMS}_{\mathrm{mode}}(w)=K$.
+  \item \textbf{A2-low:} $\mathrm{RMS}_{\mathrm{low}}(w)=c_{\mathrm{low}}$
+  uniformly.
+  \item \textbf{A2-tail:} $\mathrm{RMS}_{\mathrm{tail}}(w)=c_{\mathrm{tail}}$
+  uniformly.
+  \item \textbf{Decomposition:}
+  $\mathrm{RMS}_{\alpha}(w)=\mathrm{RMS}_{\mathrm{mode}}(w)-
+  (\mathrm{RMS}_{\mathrm{low}}(w)+\mathrm{RMS}_{\mathrm{tail}}(w))$.
+\end{itemize}
+These abstract hypotheses are the analytic inputs of the Plan~B route.
+\end{assumption}
+
+\begin{assumption}[Numeric certificates]\label{assm:certs}
+The alpha certificates (GlobalEnergy and KernelBlowup) are correct, and the
+numeric coverage assumptions required to close the renormalization gates hold.
+These are finite rational inequalities generated by the ERURH pipeline.
+\end{assumption}
+
+\begin{assumption}[Beta inertia package]\label{assm:beta}
+The beta-layer numerical inertia certificates are correct and supply any
+additional numeric bounds required by the pipeline. This package is external
+and is not used in the core alpha implication, but is included for completeness
+of the ERURH pipeline.
+\end{assumption}
+
+\section{Plan B: RMS-local route}
+The Plan~B proof decomposes the RMS of the ERU observable into mode/low/tail
+contributions. The following lemma is formalized in
+\texttt{ERURH\_A2Hypotheses.lean}.
+
+\begin{lemma}[A1/A2 imply an RMS violation]
+Under Assumption~\ref{assm:a1a2}, there exists a window $w$ with
+$\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$.
+\end{lemma}
+
+A window whose RMS exceeds the envelope forces a renormalization gate to open.
+This is a direct consequence of the definition of the gate predicate.
+
+\begin{lemma}[RMS violation opens a gate]
+If $\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$ for some window $w$, then the
+renormalization gate is open.
+\end{lemma}
+
+The correctness of the certificates (Assumption~\ref{assm:certs}) closes the
+renormalization gates; thus the RMS violation is incompatible with the closed
+gate regime. Consequently, supercritical modes cannot exist.
+
+\section{Proof of the main theorem}\label{sec:proof-main}
+We now prove Theorem~\ref{thm:main}. This is the mathematical counterpart of
+the Lean theorem \texttt{RH\_from\_ERURH\_conditional}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Assumption~\ref{assm:a1a2} yields a window with
+$\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$, hence the renormalization gate
+opens. Assumption~\ref{assm:certs} implies the gate is closed, so the
+hypotheses preclude any supercritical mode. Therefore no mode with
+$\alpha>1/2$ exists. The Lean lemma
+\texttt{InertiaERU\_alpha\_strong\_of\_no\_modes\_via\_certificates} yields
+strong ERU inertia from the absence of modes. Finally, the formal equivalence
+between strong ERU inertia and RH for $\xi_\alpha$ (under
+Assumption~\ref{assm:classical}) gives RH.
+\end{proof}
+
+\begin{remark}
+Assumptions~\ref{assm:explicit}--\ref{assm:ls} are classical analytic inputs
+(derivable from explicit formula technology, Stirling estimates, bounds for
+$\zeta'/\zeta$, and Riemann--von Mangoldt zero counts). The ERURH proof is a
+formal reduction: once these analytic statements and the finite certificates
+are established, RH follows mechanically.
+\end{remark}
+
+\begin{remark}
+In the formalization, the A1/A2 hypotheses are stated as unconditional window
+assumptions (mirroring the Lean definition of \texttt{A1\_mode} and
+\texttt{A2Low\_RMS}/\texttt{A2Tail\_RMS}). Analytically, A1 is intended to be
+derived from the existence of a supercritical mode, but the conditional theorem
+is stated with A1/A2 as explicit hypotheses.
+\end{remark}
+
+\begin{remark}
+Because A1/A2 are assumed outright, the conditional theorem can be vacuous
+unless the analytic derivations of A1/A2 are shown to be consistent with the
+closed-gate regime. Eliminating this potential vacuity is part of the analytic
+gap identified in Section~\ref{sec:status-gaps}.
+\end{remark}
+
+\section{Formal status and gaps}\label{sec:status-gaps}
+The ERURH development separates formal logic from external analytic and numeric
+inputs. The current status can be summarized as follows.
+\begin{itemize}
+  \item \textbf{Formalized in Lean:} definitions of the ERU observables,
+  energy/inertia machinery, gate predicates, the Plan~B RMS-local chain, and
+  the conditional theorem \texttt{RH\_from\_ERURH\_conditional}.
+  \item \textbf{External classical assumptions:} explicit formula, functional
+  equation, bounds for $\zeta'/\zeta$, and Riemann--von Mangoldt zero counts
+  (Assumption~\ref{assm:classical}), together with the explicit-formula
+  framework for $b_\rho$ (Assumption~\ref{assm:explicit}).
+  \item \textbf{Analytic gaps:} deriving the spectral decay hypothesis
+  (Assumption~\ref{assm:hb}) and the large-sieve estimate
+  (Assumption~\ref{assm:ls}) from classical inputs, and deriving A1/A2 from the
+  existence of supercritical modes in the analytic model.
+  \item \textbf{Numeric inputs:} correctness of the finite certificates and
+  numeric coverage assumptions (Assumption~\ref{assm:certs}), which are
+  generated by the ERURH pipeline as exact rational data.
+\end{itemize}
+
+\section{Formalization and reproducibility}
+The definitions and implications above are formalized in Lean. The main
+logical entry points are:
+\begin{itemize}
+  \item \texttt{ERURH\_MasterTheoremSummary.lean}:
+        \texttt{RH\_from\_ERURH\_conditional}.
+  \item \texttt{ERURH\_MasterTheoremPlanB.lean}:
+        Plan~B RMS-local route.
+  \item \texttt{ERURH\_A2Hypotheses.lean}:
+        A1/A2 hypotheses and RMS decomposition.
+  \item \texttt{ERURH\_GatesAlpha.lean} and \texttt{ERURH\_GatesFromRMS.lean}:
+        gate closure and RMS-to-gate implications.
+  \item Reproducibility gate:
+        \texttt{scripts/verify\_gate.py} regenerates artifacts and checks the
+        Lean build against the current certificate data.
+\end{itemize}
+The certificates are generated by reproducible scripts and imported as exact
+rational data. The formal statement does not rely on floating-point computation.
+
+\section{Conclusion}
+ERURH provides a formal, conditional path from explicit-formula analysis to RH.
+All non-ERURH analytic content is isolated in a short list of assumptions, and
+all ERURH-specific reasoning is formalized. The remaining work is to supply
+proofs (or certified bounds) for the analytic assumptions and to validate the
+finite certificates with fully verified numerical pipelines.
+
+\appendix
+\section{Dependency map}\label{app:dependencies}
+This appendix summarizes the logical dependencies among the main components.
+Arrows indicate implication or usage.
+
+\subsection*{High-level chain}
+\begin{itemize}
+  \item Classical zeta inputs (Assumption~\ref{assm:classical}) together with
+  the ERU explicit-formula assumption (Assumption~\ref{assm:explicit}) supply
+  the explicit-formula layer for $\log R$ and $J_{\mathrm{rel}}$.
+  \item Classical estimates (Theorems~\ref{thm:A}--\ref{thm:C})
+  $\Rightarrow$ spectral decay and large-sieve inputs
+  (Assumptions~\ref{assm:hb}--\ref{assm:ls}).
+  \item A1/A2 window hypotheses (Assumption~\ref{assm:a1a2})
+  $\Rightarrow$ RMS violation $\Rightarrow$ gate opens.
+  \item Certificates (Assumption~\ref{assm:certs})
+  $\Rightarrow$ gate closed.
+  \item RMS violation and gate closed $\Rightarrow$ contradiction; in the
+  Plan~B chain this excludes supercritical modes under A1/A2.
+  \item No supercritical mode $\Rightarrow$ strong inertia
+  $\Rightarrow$ RH for $\xi_\alpha$ (using Assumption~\ref{assm:classical}).
+\end{itemize}
+
+\subsection*{Lean file map}
+\begin{itemize}
+  \item Main theorem:
+  \texttt{lean/formal\_proofs/ERURH/ERURH\_MasterTheoremSummary.lean}
+  (theorem \texttt{RH\_from\_ERURH\_conditional}).
+  \item Plan B chain:
+  \texttt{lean/formal\_proofs/ERURH/ERURH\_MasterTheoremPlanB.lean},
+  \texttt{lean/formal\_proofs/ERURH/ERURH\_A2Hypotheses.lean}.
+  \item Gates:
+  \texttt{lean/formal\_proofs/ERURH/ERURH\_GatesAlpha.lean},
+  \texttt{lean/formal\_proofs/ERURH/ERURH\_GatesFromRMS.lean}.
+  \item Assumption bundles:
+  \texttt{lean/formal\_proofs/ERURH/ERURH\_ClassicalZetaAssumptions.lean},
+  \texttt{lean/formal\_proofs/ERURH/ERURH\_ExplicitFormulaAlpha.lean},
+  \texttt{lean/formal\_proofs/ERURH/ERURH\_LargeSieveGammaSketch.lean}.
+  \item Certificates:
+  \texttt{lean/formal\_proofs/ERURH/EnergyCertificatesAlpha.lean},
+  \texttt{lean/formal\_proofs/ERURH/InertiaCertificatesAlpha.lean}.
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{Titchmarsh}
+E. C. Titchmarsh,
+\emph{The Theory of the Riemann Zeta-Function},
+2nd ed., revised by D. R. Heath-Brown, Oxford University Press, 1986.
+
+\bibitem{MontgomeryVaughan}
+H. L. Montgomery and R. C. Vaughan,
+\emph{Multiplicative Number Theory I. Classical Theory},
+Cambridge University Press, 2007.
+
+\bibitem{Ivic}
+A. Ivic,
+\emph{The Riemann Zeta-Function: Theory and Applications},
+Dover, 2003.
+
+\end{thebibliography}
+
+\end{document}

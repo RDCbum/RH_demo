@@ -1,0 +1,7 @@
+import ERURH.ERURH_MasterTheoremSummary
+
+#check ERURH_GlobalAssumptions
+#print ERURH_GlobalAssumptions
+
+#check RH_from_ERURH_conditional
+#print RH_from_ERURH_conditional

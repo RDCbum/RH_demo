@@ -1,0 +1,1 @@
+docs/core/STEP1_Print.lean:1:0: error: object file 'C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\ERURH_MasterTheoremSummary.olean' of module ERURH.ERURH_MasterTheoremSummary does not exist

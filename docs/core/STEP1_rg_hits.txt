@@ -1,0 +1,448 @@
+
+=== FIND ERURH_GlobalAssumptions definition ===
+lean/formal_proofs/ERURH\ERURH_MasterTheoremSummary.lean:39:structure ERURH_GlobalAssumptions where
+lean/formal_proofs/ERURH\ERURH_MasterTheoremSummary.lean:39:structure ERURH_GlobalAssumptions where
+lean/formal_proofs/ERURH\ERURH_MasterTheoremSummary.lean:90:  (G : ERURH_GlobalAssumptions)
+
+=== FIND RH_from_ERURH_conditional ===
+lean/formal_proofs/ERURH\ERURH_MasterTheoremSummary.lean:89:theorem RH_from_ERURH_conditional
+
+=== FIND axiom/constant/opaque ===
+lean/formal_proofs/ERURH\AlphaAxioms.lean:8:axiom explicit_alpha : ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi
+lean/formal_proofs/ERURH\AlphaAxioms.lean:11:axiom rh_from_E_alpha : RHfromE xiAlpha AlphaPsi
+lean/formal_proofs/ERURH\AlphaAxioms.lean:14:axiom alphaInterfacesBase : AlphaInterfaces
+lean/formal_proofs/ERURH\ERURH_ExplicitFormulaAlpha.lean:21:constant ZeroOfZeta : Type
+lean/formal_proofs/ERURH\ERURH_ExplicitFormulaAlpha.lean:24:constant beta : ZeroOfZeta → ℝ
+lean/formal_proofs/ERURH\ERURH_ExplicitFormulaAlpha.lean:27:constant gamma : ZeroOfZeta → ℝ
+lean/formal_proofs/ERURH\ERURH_ExplicitFormulaAlpha.lean:49:axiom gamma_prefactor_bound : gamma_prefactor_growth_bound
+lean/formal_proofs/ERURH\ERURH_ExplicitFormulaAlpha.lean:56:constant b_rho : ZeroOfZeta → ℂ
+lean/formal_proofs/ERURH\ERUInertia.lean:46:axiom ERU_inertia_to_E_bound_alpha :
+lean/formal_proofs/ERURH\ERUInertia.lean:51:axiom ERU_inertia_of_E_bound_alpha :
+lean/formal_proofs/ERURH\ERUInertia.lean:73:axiom RH_to_E_bound_alpha :
+lean/formal_proofs/ERURH\ERUEnergyAlpha.lean:26:constant ERU_energy_global_alpha : R
+lean/formal_proofs/ERURH\EToRHChecklist.lean:47:axiom EToRH_L1_alpha_of_explicit :
+lean/formal_proofs/ERURH\EToRHChecklist.lean:52:axiom EToRH_L2_alpha_of_bounds :
+lean/formal_proofs/ERURH\EToRHChecklist.lean:57:axiom EToRH_L3_alpha_of_argument :
+lean/formal_proofs/ERURH\EToRHChecklist.lean:63:axiom EToRH_no_offline_zeros_alpha_of_stages :
+lean/formal_proofs/ERURH\EToRHChecklist.lean:70:axiom RHfromE_alpha_of_no_offline_zeros :
+lean/formal_proofs/ERURH\EToRHChecklist.lean:95:axiom rh_from_E_alpha_of_hypotheses :
+lean/formal_proofs/ERURH\EToRHChecklist.lean:107:    axiom yet, but shows how it can be factored. -/
+lean/formal_proofs/ERURH\ExplicitCoreBridge.lean:40:axiom explicit_rect_alpha_true : explicit_rect_alpha
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:25:axiom explicit_core_alpha : Prop
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:48:axiom xi_bounds_alpha : Prop
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:58:axiom Explicit_L2_alpha_of_bounds :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:63:axiom xi_argument_alpha : Prop
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:73:axiom Explicit_L3_alpha_of_argument :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:83:axiom xi_argument_alpha_of_hypotheses :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:88:axiom flux_to_bridge_bounds_alpha : Prop
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:98:axiom Explicit_L4_alpha_of_flux :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:109:axiom flux_to_bridge_alpha_of_hypotheses :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:140:axiom xi_bounds_alpha_of_hypotheses :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:144:axiom xi_argument_alpha_of_hypotheses :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:154:axiom Explicit_L1_alpha_of_explicit_core :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:161:axiom Explicit_L1_alpha_strong_to_L1 :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:190:axiom explicit_alpha_of_stages :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:282:axiom explicit_alpha_of_pieces :
+lean/formal_proofs/ERURH\ExplicitDecomposition.lean:291:axiom rh_from_E_alpha_of_pieces :
+lean/formal_proofs/ERURH\ERURH_BetaInertiaAssumptions.lean:31:axiom betaInertiaAssumptions_true : BetaInertiaAssumptions
+
+=== FIND RationalBounds / CertificateValues usage ===
+lean/formal_proofs/ERURH\BoundsConfig.lean:3:import ERURH.RationalBounds
+lean/formal_proofs/ERURH\EnergyCertificatesAlpha.lean:2:import ERURH.RationalBounds
+lean/formal_proofs/ERURH\EnergyCertificatesAlpha.lean:15:values used in `ERURH.RationalBounds`. -/
+lean/formal_proofs/ERURH\Certificate.lean:11:import ERURH.RationalBounds
+lean/formal_proofs/ERURH\CertificateValues.lean:7:import ERURH.RationalBounds
+lean/formal_proofs/ERURH\ERURH_GatesAlpha.lean:1:import ERURH.RationalBounds
+lean/formal_proofs/ERURH\ERUEnergyAlpha.lean:3:import ERURH.RationalBounds
+lean/formal_proofs/ERURH\ERURH_A2Hypotheses.lean:3:import ERURH.RationalBounds
+lean/formal_proofs/ERURH\FluxWindows.lean:4:import ERURH.RationalBounds
+lean/formal_proofs/ERURH\Main.lean:7:import ERURH.CertificateValues
+lean/formal_proofs/ERURH\WeightedBands.lean:18:import ERURH.RationalBounds
+
+=== FIND docs crossrefs (assumptions report / main theorem) ===
+docs\ERURH_A2_AnalyticPlan.md:1:ERURH A2 Analytic Plan (Ideas 1&2)
+docs\ERURH_A2_AnalyticPlan.md:4:1. Statement of A2 (low + tail)
+docs\ERURH_A2_AnalyticPlan.md:6:- **A2-low:** Control of the RMS contribution from the finite “low” part of jRel (small zeros and bounded spectrum). This delivers a uniform bound on the normalized RMS over the low range.
+docs\ERURH_A2_AnalyticPlan.md:7:- **A2-tail:** Control of the RMS contribution from the “tail” (|γ| > T) in the ERU-normalized RMS. Tail control is split into classical analytic packages (zero density, second moments, almost-orthogonality, and non-zero tails).
+docs\ERURH_A2_AnalyticPlan.md:9:2. Classical analytic inputs for A2-tail
+docs\ERURH_A2_AnalyticPlan.md:17:3. A2-tail statement (refined)
+docs\ERURH_A2_AnalyticPlan.md:26:- Combining **A2-low** + **A2-tail** with **A1-mode** (a mode β > 1/2 contributing positively) should force an RMS-window above the formal envelope, i.e. establish `RMSLocalHypothesis`.
+docs\ERURH_A2_AnalyticPlan.md:28:  The A1-mode growth lemma is recorded in `formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean`.
+docs\ERURH_AlphaCertificate_Strategy.md:12:- Delicate pieces: strong inertia and \(jRel_{\sup}\) bounds, tail controls, and prefactor envelopes still require sharper analytic estimates.
+docs\ERURH_AlphaCertificate_Strategy.md:16:1. Refine analytic tail bounds for \(\log R\) and \(J_{\mathrm{rel}}\) using explicit-formula estimates (zero sums plus tail integrals).
+docs\core\ERURH_Analytic_Theorems_ABC.md:28:Assume the zero-counting bound of Riemann–von Mangoldt type on each band and the classical spacing/large-sieve decorrelation (Cauchy–Schwarz plus zero-density/spacing) for the exponentials \(e^{i\gamma u}\) on \([0,L]\). Then there exist constants \(C>0\), \(A>0\), \(T_0>0\) such that, for every admissible band with \(T \ge T_0\),
+docs\core\ERURH_Analytic_Theorems_ABC.md:40:## Theorem C (A2-tail — uniform RMS tail bound)
+docs\core\ERURH_Analytic_Theorems_ABC.md:54:where \(M_{\mathrm{tail}}\) depends only on the constants in Theorems A and B and on the admissible-range parameters \(B,\alpha\), not on \(S,L\). This is the tail bound needed to supply the A2-tail hypothesis in `RMSLocalHypothesis`.
+docs\core\ERURH_Assumptions_Report.md:25:| `hb_pointwise : H_b_pointwise` | Pointwise decay of \(b_\rho\) | classical analytic theorem | assumed external |
+docs\core\ERURH_Assumptions_Report.md:26:| `hb_tail : H_b_L2_tail data` | Dyadic L² tail (HbWeak_L2_tail) | structured spectral consequence | assumed external |
+docs\core\ERURH_Assumptions_Report.md:27:| `hb_pointwise_weak : H_b_pointwise_weak` | Weak decay (derivable from pointwise) | derived from `hb_pointwise` | assumed external (auto-filled from `hb_pointwise`) |
+docs\core\ERURH_Assumptions_Report.md:34:| `ls_gamma_weak` | LSγ^weak RMS bound (default via `LSGammaWeak_of_simple`) | structured spectral consequence | assumed external |
+docs\core\ERURH_Assumptions_Report.md:45:Window / RMS assumptions (A1/A2) — WindowScalingAssumptions
+docs\core\ERURH_Assumptions_Report.md:50:| `hA1 : A1_mode ctx` | A1-mode growth hypothesis (β>1/2 mode forces RMS growth) | window hypothesis | assumed external (analytic gap) |
+docs\core\ERURH_Assumptions_Report.md:51:| `hLow : A2Low_RMS ctx` | RMS bound for low part | window hypothesis | assumed external |
+docs\core\ERURH_Assumptions_Report.md:52:| `hTail : A2Tail_RMS ctx` | RMS bound for tail part | window hypothesis | assumed external; current lemma uses placeholder tail bound |
+docs\core\ERURH_Assumptions_Report.md:66:- Window/RMS hypotheses A1/A2 are assumed; the A2-tail helper `A2Tail_RMS_from_Hb_LS_simple` currently uses a placeholder tail bound rather than deriving it from `H_b` + LSγ.
+docs\archive\ERURH_ExternalAssumptions_Snapshot.md:26:`gamma`, usada para controlar colas RMS en el modo A2-tail.
+docs\archive\ERURH_ExternalAssumptions_Snapshot.md:31:`WindowScalingAssumptions` fija el contexto RMS y las hipotesis A1/A2 sobre el crecimiento del modo,
+docs\archive\ERURH_ExternalAssumptions_Snapshot.md:70:- Se usa para controlar la cola A2-tail en Plan B (propagando bounds RMS a partir de `H_b`).
+docs\archive\ERURH_ExternalAssumptions_Snapshot.md:84:- Incluye `A1_mode` (crecimiento RMS del modo con `beta > 1/2`), `A2Low_RMS` (control de la parte
+docs\archive\ERURH_ExternalAssumptions_Snapshot.md:85:  low) y `A2Tail_RMS` (control tail, alimentado por `H_b` + LS_gamma).
+docs\archive\ERURH_ExternalAssumptions_Snapshot.md:104:  (A1 + A2-low/tail + LS_gamma sobre `H_b`).
+docs\archive\ERURH_Formalisms.md:1:# ERURH Formals v1
+docs\core\ERURH_AxiomsAndGaps.md:34:Flux checklist unpacking (`EnergyBoundChecklist_alpha_of_hypotheses`) and the bridge `ERU_energy_alpha_supported_by_flux` are lemmas proved in `EnergyBoundsAlpha.lean`. Bridge inertia (`InertiaERU_alphaBridge_of_certificate`) and the no-modes bridges (`alphaBridge_inertia_of_no_modes`, `InertiaERU_alpha_strong_of_no_modes`) are also lemmas backed by the explicit certificates.
+docs\core\ERURH_AxiomsAndGaps.md:41:- `mode_RMS_lower_bound` — `ERURH_ModeGrowthAlpha.lean`. A1-mode RMS growth estimate.
+docs\core\ERURH_AxiomsAndGaps.md:42:- `A2Tail_RMS_from_Hb_LS_simple` — `ERURH_A2Hypotheses.lean`. Currently a placeholder using `RMS_tail_bound_simple`; does not yet derive tail RMS from `H_b` + LS_γ.
+docs\core\ERURH_AxiomsAndGaps.md:43:- `RMSLocalHypothesis_of_A2` — `ERURH_A2Hypotheses.lean`. A1-mode + A2-low/tail ⇒ `RMSLocalHypothesis` (gap).
+docs\core\ERURH_AxiomsAndGaps.md:55:- Plan B analytic gaps: coefficient decay (`H_b_from_explicit_formula`), refined LS_γ (assumed via `LSGammaAssumptions`), A1-mode RMS growth, A2-tail bridge, RMS-local lemmas, gate-open lemmas. The decay hypothesis `H_b` enters via `SpectralAssumptionsAlpha`; there is no standalone axiom.
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:5:  → `tools/make_rational_bounds.py`
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:7:  → `tools/make_certificate_values.py`
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:9:  → `tools/make_flux_bounds.py`
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:11:- Bounds analíticos de ventanas/tail (`tools/bounds_config.json`):
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:12:  → `tools/make_lambda_bounds.py` + `tools/gen_walpha_close.py`
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:16:  → `tools/make_prefactor_bounds.py` + `tools/gen_wprefactor_close.py`
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:20:  → `tools/make_zeta_bounds.py` + `tools/gen_wzeta_close.py`
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:29:| `tools/make_rational_bounds.py` | `releases/erurh-v2-core/formal/{L_analytic_proof,kappa_book_proof,bridge_closed,s0_unified,formal_report_strict}.json` | `docs/paper/rational_bounds.json`, `formal_proofs/ERURH/RationalBounds.lean` | Provee `lGlobalFormalRat`, `kappaBookClosedRat`, etc. usados en `globalEnergyCertificate_true_alpha`, `kernelBlowupCertificate_true_alpha`, `CertificateValues`. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:30:| `tools/make_certificate_values.py` | `releases/erurh-v2-core/formal/bridge_closed.json`, `formal_report_strict.json`, `releases/erurh-v2-core/constants_global.json`, `docs/paper/rational_bounds.json` | `docs/paper/certificate_values.json`, `formal_proofs/ERURH/CertificateValues.lean` | Construye `certificateFromBundle`, verifica inflación y `s0`; alimenta `CertificateHypotheses` y energía alpha. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:31:| `tools/make_flux_bounds.py` | `releases/erurh-v2-core/alpha_cover_report.json`, `studies/buchstab_pointfix/out/logR_series.csv`, `studies/buchstab_pointfix/out/equivalence_report_check.json`, `releases/erurh-v2-core/constants_global.json` | `formal_proofs/ERURH/FluxBounds.lean` | Instancia `alphaFluxLaws` y `alphaBridge_inertia` → `BridgeInertiaCertificate_true_alpha`. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:32:| `tools/make_lambda_bounds.py` | `tools/bounds_config.json`, perfil (`--profile`), caché `tools/cache/lambda/<fingerprint>/` | `staging/ERURH/LambdaBounds.lean`, `staging/ERURH/LambdaIntervals_skeleton.lean`, `staging/ERURH/LambdaSamples_skeleton.lean`, cachés JSON por ventana/tail | Testigos de `lambdaCore` en ventanas/tail; usados por `LambdaWitnessBuildOn` → puente hacia `XiWitnessAssembly` y `StrongInertiaCertificate_alpha`. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:33:| `tools/gen_walpha_close.py` | Cachés de `make_lambda_bounds` (`tools/cache/lambda/**/{window}.json` + `tail.json` o `--cert` JSON) | `staging/ERURH/Staging/LambdaClose_<window>_all.lean` | Ensambla lemas por ventana (cap suprema) para `LambdaBounds` y `FluxWindows`. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:34:| `tools/make_prefactor_bounds.py` | `tools/bounds_config.json`, perfil (`--profile`), caché `tools/cache/prefactor/<fingerprint>/` | `staging/ERURH/PrefactorBounds.lean`, lemas helper `staging/ERURH/Staging/Prefactor*`, `prefactor_segments_*_tail.json` | Bounds de `prefactor_pad_fun`; consumidos por `XiPrefactor` y puente a `StrongInertiaCertificate_alpha`. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:35:| `tools/gen_wprefactor_close.py` | `prefactor_segments_*_tail.json` + cachés por ventana/tail | `staging/ERURH/Staging/PrefactorClose_<window>_all.lean` | Cierra ventanas/tail de prefactor frente a `pf_log_q`/tail; conecta con `FluxWindows`. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:36:| `tools/make_zeta_bounds.py` | `tools/bounds_config.json`, perfil (`--profile`), caché `tools/cache/zeta/<fingerprint>/` | `staging/ERURH/ZetaBounds.lean`, payloads de segmentos (`zeta_segments_*.json`), helpers opcionales | Bounds de `riemannZeta`/deriv en ventanas/tail; usados por `XiZetaIface` y `XiWitnessAssembly`. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:37:| `tools/gen_wzeta_close.py` | Segmentos de `make_zeta_bounds` (cache o bundle) | `staging/ERURH/Staging/ZetaClose_<window>_all.lean` | Cierra ventanas/tail de zeta frente a `zeta_log_q`/`zeta_j_q`. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:38:| `scripts/verify_gate.py` | Repo limpio, scripts anteriores disponibles | Ejecuta `make_rational_bounds`, `make_certificate_values`, `tools/render_paper.py`, `lake build`, `pytest tests`; falla si hay diffs nuevos | Gate reproducible de constantes/certificados y compilación Lean. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:39:| `tools/formal_gate.py` | `releases/erurh-v2-core` bundle + `formal_report_strict.json` (opcional) | `buchstab_pointfix/out/formal_gate_report.json` | Comprueba coherencia formal (`L_global`, `kappa_*`, `s0`) vs reportes analíticos. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:40:| Tests | `pytest tests` (core), `pytest tests tests_fin` (cuando se toca finanzas/entropía/utilidades), `python -m tools.e2e_cli_tests` | Reportes pytest / CLI e2e | Revisión auxiliar; no generan artefactos Lean pero gatean regresiones. |
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:44:2. **Bounds racionales** (crítico): `python tools/make_rational_bounds.py --release-dir releases/erurh-v2-core/formal --out docs/paper/rational_bounds.json --lean-out formal_proofs/ERURH/RationalBounds.lean`.
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:45:3. **Valores del certificado** (crítico): `python tools/make_certificate_values.py --release-dir releases/erurh-v2-core/formal --constants-path releases/erurh-v2-core/constants_global.json --bounds-path docs/paper/rational_bounds.json --out-json docs/paper/certificate_values.json --lean-out formal_proofs/ERURH/CertificateValues.lean`.
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:46:4. **Flux windows/tail** (crítico para `BridgeInertiaCertificate_true_alpha`): `python tools/make_flux_bounds.py` (lee `studies/buchstab_pointfix/out/logR_series.csv`, `equivalence_report_check.json`, `alpha_cover_report.json`).
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:47:5. **Lambda witness** (crítico para rama analítica/Strong): `python tools/make_lambda_bounds.py --profile release-strict --merge --windows 0,1,2,3,4,5,tail` (usa y rellena `tools/cache/lambda/<fingerprint>/`; genera `staging/ERURH/LambdaBounds.lean`).
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:48:6. **Prefactor pad** (crítico para rama prefactor): `python tools/make_prefactor_bounds.py --profile release --windows wAlpha49_shift0,wAlpha49_shift1,wAlpha50_shift0,wAlpha50_shift1,wAlpha51_shift0,wAlpha51_shift1 --merge --merge-windows wAlpha49_shift0,wAlpha49_shift1,wAlpha50_shift0,wAlpha50_shift1,wAlpha51_shift0,wAlpha51_shift1,tail` (genera `staging/ERURH/PrefactorBounds.lean` y bundle de segmentos).
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:49:7. **Zeta witness** (crítico para rama zeta): `python tools/make_zeta_bounds.py --profile release-strict --merge --windows wAlpha49_shift0,wAlpha49_shift1,wAlpha50_shift0,wAlpha50_shift1,wAlpha51_shift0,wAlpha51_shift1,tail` (genera `staging/ERURH/ZetaBounds.lean` + bundles).
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:51:   - Lambda: `python tools/gen_walpha_close.py --window wAlpha49_shift0 --emit-window-close` (repetir por ventana).  
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:52:   - Prefactor: `python tools/gen_wprefactor_close.py --window wAlpha49_shift0 --emit-window-close` (repetir por ventana).  
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:53:   - Zeta: `python tools/gen_wzeta_close.py --window wAlpha49_shift0 --emit-window-close` (repetir por ventana).
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:57:12. **Tests Python** (auxiliar pero recomendados): `pytest tests` o `pytest tests tests_fin`; para cola CLI `python -m tools.e2e_cli_tests`.
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:71:- **Orquestador único**: añadir `python tools/eru_pipeline.py --profile alpha` que encadene 2–11, con flags `--no-strong` (saltarse lambda/prefactor/zeta) y `--ci-fast` (perfiles `ci-fast` y `--skip-pytests`).
+docs\archive\ERURH_IndustrialPipeline_Alpha.md:73:- **Checksums y locking**: después de generar caches `tools/cache/{lambda,prefactor,zeta}/<fingerprint>`, emitir un `fingerprint.txt` con `bounds_config` y hash del script para detectar ejecuciones obsoletas.
+docs\archive\ERURH_Preprint_Alpha.md:5:The Riemann Hypothesis (RH) for the completed zeta-like function \(\xi_\alpha\) is recast in the ERURH framework through a collection of finite, auditable certificates. ERURH-alpha introduces bridge invariants \(\log R(s)\) and \(J_{\mathrm{rel}}(s)\), energy and inertia functionals, and connects them to the zero distribution of the zeta function on the logarithmic scale \(s = \log x\). The core reduction states that if four finite certificates are correct, then RH holds for \(\xi_\alpha\).
+docs\archive\ERURH_Preprint_Alpha.md:20:- Global energy and kernel controls to regulate contributions from modes with real part \(\beta > 1/2\).
+docs\archive\ERURH_Preprint_Alpha.md:21:- Windowed bounds for bridge quantities \(\log R\) and \(J_{\mathrm{rel}}\) on finite intervals.
+docs\archive\ERURH_Preprint_Alpha.md:76:### 5.1. Bridge invariants and goals
+docs\archive\ERURH_Preprint_Alpha.md:89:Lean treats \(jRel\) as an abstract field of the bridge (`ERUBridge.jRel : \mathbb{R} \to \mathbb{R}`) with pointwise bounds on each window/tail: \(jRelBoundWindow \approx 7.886\times 10^{-4}\), \(jRelBoundTail \approx 6.819\times 10^{-3}\) (`FluxWindows.lean`, `FluxBounds.lean`, `InertiaCertificatesAlpha.lean`), with no smoothing or kernels. The Python evaluators use:
+docs\archive\ERURH_Preprint_Alpha.md:91:- explicit mode: \(jRel_{\text{main}}(s) = -2\,\Re\big((\rho-1)/\rho \cdot e^{(\rho-1)s}\big)\) over positive-\(\gamma\) zeros up to height \(T\), heuristic tails, no trivial-zero corrections; all diagnostics (smoothing, energy, Chebyshev, etc.) are built on this main term, with smoothing as post-processing only.
+docs\archive\ERURH_Preprint_Alpha.md:94:### 5.4. Zeros-based explicit evaluator with analytic tails (v2-lite)
+docs\archive\ERURH_Preprint_Alpha.md:96:We implemented `ExplicitBridgeEvaluatorAlpha` (see `tools/explicit_bridge_evaluator.py`), decomposing
+docs\archive\ERURH_Preprint_Alpha.md:104:This yields \(|\log R(s)| \le |\text{main}_{\log R}| + E_{\text{tail}}\). For \(J_{\mathrm{rel}}\) the same L1-style tail is typically too large relative to the tiny certified bounds, so we introduced a refined RMS-style model (see `docs/ERURH_AnalyticTails_Alpha.md`):
+docs\archive\ERURH_Preprint_Alpha.md:114:To probe the typical scale of \(J_{\mathrm{rel}}\), we use `tools/numeric_check_bridge_bounds_jRel_smoothed.py` (explicit evaluator, analytic tail):
+docs\archive\ERURH_Preprint_Alpha.md:132:`tools/numeric_jRel_tail_split.py` splits the explicit \(J_{\mathrm{rel}}\) into
+docs\archive\ERURH_Preprint_Alpha.md:144:The bridgestrong morphism in Lean (`bridge_to_strong` in `InertiaCertificatesAlpha.lean`) is an implication of predicates, not a functional transform \(jRel_{\text{bridge}} \mapsto jRel_{\text{strong}}\). Parameters \(C_{\text{strong}}\) and \(S0_{\text{strong}}\) are set at the certificate level, but Lean does not define a concrete \(jRel_{\text{strong}}(s)\). Our attempt to build a numeric `jRel_strong` (see `tools/eru_strong_inertia_numeric.py`) raises `NotImplementedError` to reflect the absence of a canonical functional map. All numerics reported here refer to the bridge-style explicit \(jRel_{\text{main}}(s)\).
+docs\archive\ERURH_Preprint_Alpha.md:150:- A serious numerical audit of \(J_{\mathrm{rel}}\) will require many more zeros (larger \(T\)), sharper tails, possible smoothing/spectral filters, and ideally interval arithmetic and advanced summation. In the present alpha version, \(J_{\mathrm{rel}}\) is treated as a formal analytic object: numerics are qualitative probes, not verifications.
+docs\archive\ERURH_Preprint_Alpha.md:158:- and established an initial numerical layer validating \(\log R\) bounds while highlighting the need for stronger tools for \(J_{\mathrm{rel}}\).
+docs\archive\ERURH_Preprint_Alpha.md:161:- high-precision numerical verification of \(J_{\mathrm{rel}}\): many more zeros (larger \(T\)), stable/FFT-accelerated summation, rigorously justified tails, and interval arithmetic;
+docs\ERURH_AxiomsAndGaps.md:45:- `mode_RMS_lower_bound` - ERURH_ModeGrowthAlpha.lean. A1-mode RMS growth; integral estimate left as gap.
+docs\ERURH_AxiomsAndGaps.md:46:- `A2Tail_RMS_from_Hb_LS_simple` - ERURH_A2Hypotheses.lean. Closed: lemma from `H_b` via simple LS_γ packaged tail bound.
+docs\ERURH_AxiomsAndGaps.md:47:- `RMSLocalHypothesis_of_A2` - ERURH_A2Hypotheses.lean. A1-mode + A2-low/tail -> RMSLocalHypothesis (analytic gap).
+docs\ERURH_AxiomsAndGaps.md:59:- **Plan B analytic gaps (`sorry`)**: coefficient decay (`H_b_from_explicit_formula`), refined LS_γ (`LSGammaAssumptions` provides the hypothesis), classical ζ-theory package (`ClassicalZetaAssumptions`), A1-mode RMS growth, A2-tail bridge, RMS-local lemmas, gate-open lemmas. These must be closed to remove Plan B analytic assumptions. The decay hypothesis `H_b` now enters via `SpectralAssumptionsAlpha` (no standalone axiom).
+docs\archive\ERURH_Preprint_AlphaToBeta.md:76:Se implementó un piloto de intervalos en `tools/jrel_eru_interval_pilot.py` que evalúa \(j_{\mathrm{Rel,ERU}}(s)\) con multiprecisión (mp_dps ≈ 80), estima error de cola + error numérico y produce intervalos \([v_{\min}, v_{\max}]\) para cada punto.
+docs\archive\ERURH_Preprint_AlphaToBeta.md:105:- diseñar y calibrar kernels ERU,
+docs\ERURH_AnalyticTails_Alpha.md:1:# ERURH-alpha · Analytic tails (v2-lite)
+docs\ERURH_ExplicitFormula_Plan.md:7:- Define `E(x) = ψ(x) - x`; then `logR(s) = E(e^s) / e^s`. This expresses the ERU observable in terms of zero contributions plus controlled tails.
+docs\ERURH_ExplicitFormula_Plan.md:23:4. Role of H_b in A2-tail and Plan B
+docs\ERURH_ExplicitFormula_Plan.md:25:- H_b, combined with zero-density estimates and a large-sieve-type lemma on γ, yields the tail RMS control (A2-tail) described in `docs/ERURH_A2_AnalyticPlan.md`.
+docs\ERURH_ExplicitFormula_Plan.md:26:- With A2-tail (plus A2-low and A1-mode), one aims to establish `RMSLocalHypothesis`, which feeds into the Plan B master theorem `RH_from_planB_RMS`.
+docs\ERURH_ExplicitFormula_Plan.md:27:- At present, H_b is taken as an analytic hypothesis; its future derivation from explicit-formula analysis will close the A2-tail gap.
+docs\core\ERURH_MainTheorem.md:15:- The spectral tails LSγ^weak and H_b^weak are treated as classical assumptions packaged in `LSGammaAssumptions` and `SpectralAssumptionsAlpha` (growth of \(b_\rho\) and dyadic zero counts), not proved in Lean.
+docs\core\ERURH_MainTheorem.md:22:  - (B) Structured spectral consequences: `HbWeak_L2_tail` and `LSGammaWeak`, which factor the classical input through growth bounds, zero-counting, and simple LS_γ lemmas. They are not separate axioms: `hb_tail : H_b_L2_tail data` is a field of `SpectralAssumptionsAlpha`, and `ls_gamma_weak` is a field of `LSGammaAssumptions` (instantiated by default via `LSGammaWeak_of_simple`). Both are assumed because Lean does not yet formalize the analytic derivations.
+docs\core\ERURH_LSgamma_AnalyticTheorem.md:14:This LS\_\γ\^weak bound supplies the RMS control for A2-tail. In Lean it is assumed as the proposition `LSGammaWeak`, stored as field `ls_gamma_weak` in `LSGammaAssumptions` (not proved internally).
+docs\core\ERURH_LSgamma_AnalyticTheorem.md:36:6. Combine factors, absorb logs into \((\log T)^B\), and obtain LS\_\γ\^weak for A2-tail.
+docs\core\ERURH_LSgamma_AnalyticTheorem.md:41:- In Lean it is stored as `ls_gamma_weak` in `LSGammaAssumptions` and treated as an external proposition alongside `H_b_L2_tail`.
+docs\core\ERURH_LSgamma_AnalyticTheorem.md:42:- A2-tail and Plan B rely on this RMS tail bound; the conditional theorem `RH_from_ERURH_conditional` consumes it via `LSGammaAssumptions`.
+docs\ERURH_ExplicitCoefficients_Plan.md:24:- `A2Tail_RMS` is expected to follow from `H_b` plus zero-density and large-sieve-on-γ bounds (see `docs/ERURH_A2_AnalyticPlan.md`).
+docs\ERURH_ExplicitCoefficients_Plan.md:25:- Thus, the lemma “explicit coefficients ⇒ H_b” is a conceptual bridge from the explicit formula to tail RMS control (A2-tail), feeding into the Plan B route to RH.
+docs\core\ERURH_HOWTO_Reproduce.md:14:- `python tools/make_rational_bounds.py`
+docs\core\ERURH_HOWTO_Reproduce.md:15:- `python tools/make_certificate_values.py`
+docs\core\ERURH_HOWTO_Reproduce.md:25:- Leaves the proof conditional on the classical hypotheses enumerated in `docs/core/ERURH_MainTheorem.md`.
+docs\ERURH_ConditionalTheorem_Summary.md:6:ERURH-alpha modela el observable `\(\log R(s) = E(e^s)/e^s\)` y su derivada `jRel(s) = d/ds\,\log R(s)`, y construye una energía ERU sobre ventanas \([S,S+L]\) para controlar el decaimiento y la regularidad de este flujo. El núcleo Lean encapsula certificados de flujo, energía, inercia y RMS que verifican estas cotas en un marco discreto de ventanas. La energía se formula como integrales/promedios de \(|\log R|\) y \(|jRel|\) ponderados, y se compara con un sobre formal \(L_{\text{global}}\). Los certificados de flujo (Lema A/B) y de ventana garantizan que \(\log R\) y \(jRel\) respetan cotas racionales en cada ventana y en la cola. La cadena Plan B introduce hipótesis A1/A2 sobre la descomposición RMS: A1 controla un modo con \(\beta>1/2\) y A2 controla las partes low/tail. Los gates de renormalización e inercia se cierran al combinar certificados y las hipótesis RMS, produciendo ausencia de modos supercríticos. Finalmente, la equivalencia ERURH ↔ RH traduce inercia fuerte en la Hipótesis de Riemann para \(\xi_\alpha\). Todo esto está formalizado en Lean como una sucesión de lemas; la prueba es condicional a ciertos paquetes de supuestos externos que capturan la teoría clásica de \(\zeta\), el decaimiento espectral, el large-sieve en \(\gamma\) y los certificados numéricos beta.
+docs\ERURH_ConditionalTheorem_Summary.md:15:En Lean estos cuatro paquetes se agrupan en `ERURH_Assumptions` y, junto con las hipótesis de ventana A1/A2, en `ERURH_GlobalAssumptions`.
+docs\ERURH_ConditionalTheorem_Summary.md:17:Hipótesis de ventana (A1/A2) y contexto RMS
+docs\ERURH_ConditionalTheorem_Summary.md:19:El contexto `RMSLocalContext` fija las ventanas \([S,S+L]\) con \(1 \ll L \ll S^\alpha\) y las cantidades RMS de las contribuciones mode/low/tail. La hipótesis **A1-mode** afirma que para algún \(\beta>1/2\) la RMS local de la contribución del modo crece como \(e^{(\beta-1/2)S}/S^2\). Las hipótesis **A2-low** y **A2-tail** controlan las partes low/tail del espectro, garantizando que sin modos supercríticos la RMS permanece bajo el sobre. En Lean estas hipótesis se encapsulan en `WindowScalingAssumptions` (campos `ctx`, `hA1`, `hLow`, `hTail`).
+docs\ERURH_ConditionalTheorem_Summary.md:29:5. Un paquete de hipótesis de ventana y RMS `WindowScalingAssumptions` (A1/A2/H_range) en el contexto RMS ERURH.
+docs\ERURH_ConditionalTheorem_Summary.md:39:donde `ERURH_GlobalAssumptions` agrupa precisamente los paquetes clásico, espectral, LS\(_\gamma\), beta y las hipótesis de ventana A1/A2.
+docs\ERURH_ConditionalTheorem_Summary.md:54:- `ERURH_A2Hypotheses.lean`
+docs\core\ERURH_HbWeak_AnalyticTheorem.md:10:This dyadic L² tail bound is the hypothesis \(H_b^{\mathrm{weak}}\); in Lean it is required as the assumed field `hb_tail : H_b_L2_tail` (alias `HbWeak_L2_tail`) inside `SpectralAssumptionsAlpha` (not proved internally).
+docs\core\ERURH_HbWeak_AnalyticTheorem.md:31:- In Lean, `H_b_L2_tail` is a field of `SpectralAssumptionsAlpha` (`hb_tail`), representing this classical theorem.
+docs\core\ERURH_HbWeak_AnalyticTheorem.md:32:- A2-tail and Plan B use `hb_tail` together with `LSGammaAssumptions` and window ranges to control the RMS tail.
+docs\ERURH_Formalisms_Analytic.md:49:- Automatizar la verificacion conjunta `tools.formal_gate` + `formal_runner --prefer-analytic-*` como paso previo a cualquier nueva release.
+docs\ERURH_Formalisms.md:1:# ERURH Formals v1
+docs\core\ERURH_PlanB_Assumptions.md:14:- A1-mode: growth lemma for modes with β > 1/2 (`mode_RMS_lower_bound`).
+docs\core\ERURH_PlanB_Assumptions.md:16:3. Large-sieve and RMS tail (H_LS + H_A2)
+docs\core\ERURH_PlanB_Assumptions.md:19:- `A2Low_RMS`: RMS control for the low part of \(jRel\).
+docs\core\ERURH_PlanB_Assumptions.md:20:- `A2Tail_RMS`: RMS control for the tail part (β > 1/2, \(|\gamma| > T\)) via `H_b` + LS\_γ + normalisation.
+docs\core\ERURH_PlanB_Assumptions.md:25:- `NumericCoverageAlpha`: windows and tails coverage from `s` upward (e.g., `FluxWindows`).
+docs\core\ERURH_PlanB_Assumptions.md:29:- Assuming \(H_ζ,\mathrm{standard}\) + \(H_{\mathrm{ERU},\mathrm{explicit}}\) + \(H_{\mathrm{LS}}\) + \(H_{\mathrm{A2}}\) + \(H_{\mathrm{certs+num}}\), the Lean master theorem and the RMS/gates bridge give `RiemannHypothesis xiAlpha`.
+docs\ERURH_ExternalAssumptions_Snapshot.md:26:`gamma`, usada para controlar colas RMS en el modo A2-tail.
+docs\ERURH_ExternalAssumptions_Snapshot.md:31:`WindowScalingAssumptions` fija el contexto RMS y las hipotesis A1/A2 sobre el crecimiento del modo,
+docs\ERURH_ExternalAssumptions_Snapshot.md:70:- Se usa para controlar la cola A2-tail en Plan B (propagando bounds RMS a partir de `H_b`).
+docs\ERURH_ExternalAssumptions_Snapshot.md:84:- Incluye `A1_mode` (crecimiento RMS del modo con `beta > 1/2`), `A2Low_RMS` (control de la parte
+docs\ERURH_ExternalAssumptions_Snapshot.md:85:  low) y `A2Tail_RMS` (control tail, alimentado por `H_b` + LS_gamma).
+docs\ERURH_ExternalAssumptions_Snapshot.md:104:  (A1 + A2-low/tail + LS_gamma sobre `H_b`).
+docs\core\ERURH_RemainingAxioms_Internal.md:55:Refactor proposals for Group B
+docs\core\ERURH_PlanB_Conditional_Theorem.md:6:- Plan B gives an RMS/gates route to RH in the ERURH-alpha layer: combine growth of modes with β > 1/2, A2 low/tail bounds, and closed gates to exclude supercritical modes.
+docs\core\ERURH_PlanB_Conditional_Theorem.md:22:- A2-low and A2-tail (see `docs/notes/ERURH_A2_AnalyticPlan.md`).
+docs\core\ERURH_PlanB_Conditional_Theorem.md:24:- A1-mode growth (see `docs/notes/ERURH_LSgamma_and_Mode_Demos.md`).
+docs\core\ERURH_PlanB_Conditional_Theorem.md:29:- Statement (conditional Plan B): assuming the classical hypotheses \(H_ζ,\mathrm{standard}\) on ζ, the ERU-explicit hypotheses \(H_{\mathrm{ERU},\mathrm{explicit}}\), the A2 low/tail bounds and A1-mode growth, together with correct alpha certificates and assumed numeric coverage, we obtain `RiemannHypothesis xiAlpha`.
+docs\core\ERURH_PlanB_Conditional_Theorem.md:30:- Logical chain: \(H_ζ,\mathrm{standard}\) + \(H_{\mathrm{ERU},\mathrm{explicit}}\) + \(H_{\mathrm{LS}}/H_{\mathrm{A2}}\) + \(H_{\mathrm{certs+num}}\) ⇒ PlanB analytic assumptions + closed gates ⇒ `RMSLocalHypothesis` + closed gates ⇒ no modes with β > 1/2 ⇒ RH.
+docs\core\ERURH_Proof_Status.md:6:ERURH-alpha packages four finite certificates—GlobalEnergy, KernelBlowup, BridgeInertia, StrongInertia. In Lean there is a master implication: if these four alpha certificates are correct, then `RiemannHypothesis xiAlpha` holds. The ERU layer restates classical ψ/logR/jRel conditions in an energy/inertia language, but the equivalence to RH depends on classical spectral analysis (explicit formula, etc.). The goal is to instantiate the certificates with exact data (rational constants, windows, tails) and analytic proofs so that RH is obtained in Lean without extra axioms.
+docs\core\ERURH_Proof_Status.md:23:- Python scripts produce window bounds, v2-lite tails, beta RMS energies, and sup diagnostics for `jRel_alpha`. They currently rely on floating-point / multiprecision and heuristic models (v2-lite), not yet on interval arithmetic with formal proofs.
+docs\core\ERURH_Proof_Status.md:30:- Show inside Lean that all current ERURH axioms (β > 1/2 ⇒ kernel/energy blow-up, tails, prefactors, etc.) follow from those foundations.
+docs\core\ERURH_Proof_Status.md:33:- Build an interval-arithmetic pipeline for \( \log R / j_{\mathrm{rel}} \) and tails.
+docs\core\ERURH_Proof_Status.md:48:- An A2-focused wrapper `RH_from_planB_A2` lets one replace `RMSLocalHypothesis` with abstract A2-low/A2-tail controls (`formal_proofs/ERURH/ERURH_A2Hypotheses.lean`), mirroring the analytic roadmap in `docs/notes/ERURH_A2_AnalyticPlan.md`.
+docs\ERURH_jRel_Audit_Alpha.md:11:  and the window/tail laws assert pointwise absolute-value bounds (no extra kernels or integrals).
+docs\ERURH_jRel_Audit_Alpha.md:12:- Bridge/inertia certificates (`InertiaCertificatesAlpha.lean`, `FluxBounds.lean`) propagate these per-window/tail constants; the strong-inertia machinery then consumes these pointwise bounds as part of the conditional RH proof. No smoothing kernel is applied inside the certificate; it is a raw pointwise inequality on `jRel` over the `s`-intervals.
+docs\ERURH_jRel_Audit_Alpha.md:16:- `tools/numeric_check_bridge_bounds_jRel.py` (psi mode): `approx_jRel_alpha_psi(s)` = central difference of an exploratory `logR_psi(s) = (ψ(e^s) - e^s)/e^s` with prime powers; noisy and not aligned with the formal `jRel` beyond sharing the “derivative of logR” motif.
+docs\ERURH_jRel_Audit_Alpha.md:17:- `tools/explicit_bridge_evaluator.py` (explicit mode): `jRel_main(s)` = paired-zero explicit derivative
+docs\ERURH_jRel_Audit_Alpha.md:25:- **Tail/const factors:** Lean bounds are absolute-value bounds with fixed rationals. Python’s explicit evaluator uses a refined heuristic tail bound for |γ| > T (RMS-style), and ignores trivial-zero/constants; any missing constant terms or tail rigor means Python values are not certified upper bounds.
+docs\ERURH_jRel_Audit_Alpha.md:26:- **Conclusion:** The current Python evaluators approximate the intended `jRel_alpha(s)` as “(d/ds) logR(s)” on the real line, but they are **not** a faithful implementation of the Lean-certified object: they drop trivial/correction terms, truncate at T with heuristic tails, and add optional smoothing that is absent from the formal statement. They match the variable/derivative convention but not the rigor or full formula used implicitly by the certificate.
+docs\ERURH_Formalisms_Analytic_Bridge.md:9:El tope \(T_{\text{cap}}\) se fija en `tools/bounds_config.json` bajo la clave `boundsTcap`. Este valor es la fuente de verdad tanto para los generadores (`make_lambda_bounds.py`, `make_zeta_bounds.py`) como para `formal_proofs/ERURH/BoundsConfig.lean`, que contiene un guardia de compilación: si el archivo JSON y el valor Lean divergen, `lake build ERURH` aborta antes de propagar pruebas incoherentes.
+docs\ERURH_Formalisms_Analytic_Bridge.md:51:- Cada subintervalo se redondea por exceso a múltiplos de \(10^{-12}\) tras aplicar un pequeño margen multiplicativo/aditivo. El resultado se guarda en `tools/cache/{lambda,zeta}/<fingerprint>/window.json`, por lo que el workflow puede recalcular únicamente los shards afectados.
+docs\ERURH_Formalisms_Analytic_Bridge.md:56:`Invoke-ERURH-Pipeline.ps1` encapsula el flujo completo desde PowerShell: detecta `boundsTcap`, lista ventanas (`--list-windows` en los generadores), recalcula cada shard con `--resume` y `--tail-only`, reintenta en perfil `dev` si hay fallos puntuales y ejecuta `--merge`. Si `--merge` detecta `missing cache entry`, la función vuelve a lanzar el shard correspondiente y repite el merge una sola vez. Finalmente ejecuta `lake build ERURH` y `python -m tools.axioms_report`, mostrando el resumen de axiomas.
+docs\ERURH_Formalisms_Analytic_Bridge.md:60:1. `python -m tools.make_prefactor_bounds --profile ci-fast --resume --windows wAlpha49_shift{0,1} --emit-msamp-helpers --segments wAlpha49_shift{0,1}`
+docs\ERURH_Formalisms_Analytic_Bridge.md:61:2. `python -m tools.make_prefactor_bounds --profile ci-fast --resume --windows wAlpha49_shift{0,1} --emit-lip-helpers --segments wAlpha49_shift{0,1}`
+docs\ERURH_Formalisms_Analytic_Bridge.md:62:3. `python -m tools.make_prefactor_bounds --profile ci-fast --resume --tail-only --emit-{msamp,lip}-helpers --segments tail`
+docs\ERURH_Formalisms_Analytic_Bridge.md:63:4. `python -m tools.make_prefactor_bounds --profile ci-fast --resume --merge --merge-windows wAlpha49_shift{0,1},tail`
+docs\ERURH_Formalisms_Analytic_Bridge.md:65:6. `python -m tools.axioms_report` (resultado: `[propext, Classical.choice, Quot.sound]`).
+docs\ERURH_Formalisms_Analytic_Bridge.md:71:- Durante `--merge`, además de regenerar `LambdaBounds.lean`, se escribe `staging/ERURH/LambdaIntervals_skeleton.lean` con lemas esqueleto `lam_log_le_seg_*`/`lam_j_le_seg_*` por segmento y los lemas de ventana/cola correspondientes. Este módulo sigue sin importarse desde `ERURH.lean`; sirve como staging para el siguiente ciclo en el que reemplazaremos los `admit` por derivaciones reales.
+docs\ERURH_Formalisms_Analytic_Bridge.md:82:- Tanto `tools.make_lambda_bounds.py` como `tools.make_zeta_bounds.py` evalúan los supremos sobre cada ventana y sobre el intervalo de cola \([W.\mathrm{hi}, T_{\mathrm{cap}}]\), donde \(T_{\mathrm{cap}}\) proviene de los artefactos `explicit_mode_report.json` y queda registrado en `ExpRect.Tcap`.
+docs\ERURH_Gates_Conceptual.md:7:- **Energy gate**: watches the global ERU energy via the GlobalEnergy certificate. It is closed when the certified global energy stays below the allowed envelope; opening the gate signals that the energy budget has been exceeded.
+docs\ERURH_Gates_Conceptual.md:16: - Supporting demos: a simple LS_γ bound is implemented in Lean (`LS_gamma_simple_pointwise`), and the A1-mode growth sketch is recorded in `formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean` to track how β > 1/2 modes would force gate violations.
+docs\ERURH_HOWTO_Reproduce.md:16:- `python tools/make_rational_bounds.py`
+docs\ERURH_HOWTO_Reproduce.md:17:- `python tools/make_certificate_values.py`
+docs\ERURH_HOWTO_Reproduce.md:25:- The proof remains conditional on the classical theorems listed in `docs/ERURH_MainTheorem.md`.
+docs\ERURH_IndustrialPipeline_Alpha.md:5:  → `tools/make_rational_bounds.py`
+docs\ERURH_IndustrialPipeline_Alpha.md:7:  → `tools/make_certificate_values.py`
+docs\ERURH_IndustrialPipeline_Alpha.md:9:  → `tools/make_flux_bounds.py`
+docs\ERURH_IndustrialPipeline_Alpha.md:11:- Bounds analíticos de ventanas/tail (`tools/bounds_config.json`):
+docs\ERURH_IndustrialPipeline_Alpha.md:12:  → `tools/make_lambda_bounds.py` + `tools/gen_walpha_close.py`
+docs\ERURH_IndustrialPipeline_Alpha.md:16:  → `tools/make_prefactor_bounds.py` + `tools/gen_wprefactor_close.py`
+docs\ERURH_IndustrialPipeline_Alpha.md:20:  → `tools/make_zeta_bounds.py` + `tools/gen_wzeta_close.py`
+docs\ERURH_IndustrialPipeline_Alpha.md:29:| `tools/make_rational_bounds.py` | `releases/erurh-v2-core/formal/{L_analytic_proof,kappa_book_proof,bridge_closed,s0_unified,formal_report_strict}.json` | `docs/paper/rational_bounds.json`, `formal_proofs/ERURH/RationalBounds.lean` | Provee `lGlobalFormalRat`, `kappaBookClosedRat`, etc. usados en `globalEnergyCertificate_true_alpha`, `kernelBlowupCertificate_true_alpha`, `CertificateValues`. |
+docs\ERURH_IndustrialPipeline_Alpha.md:30:| `tools/make_certificate_values.py` | `releases/erurh-v2-core/formal/bridge_closed.json`, `formal_report_strict.json`, `releases/erurh-v2-core/constants_global.json`, `docs/paper/rational_bounds.json` | `docs/paper/certificate_values.json`, `formal_proofs/ERURH/CertificateValues.lean` | Construye `certificateFromBundle`, verifica inflación y `s0`; alimenta `CertificateHypotheses` y energía alpha. |
+docs\ERURH_IndustrialPipeline_Alpha.md:31:| `tools/make_flux_bounds.py` | `releases/erurh-v2-core/alpha_cover_report.json`, `studies/buchstab_pointfix/out/logR_series.csv`, `studies/buchstab_pointfix/out/equivalence_report_check.json`, `releases/erurh-v2-core/constants_global.json` | `formal_proofs/ERURH/FluxBounds.lean` | Instancia `alphaFluxLaws` y `alphaBridge_inertia` → `BridgeInertiaCertificate_true_alpha`. |
+docs\ERURH_IndustrialPipeline_Alpha.md:32:| `tools/make_lambda_bounds.py` | `tools/bounds_config.json`, perfil (`--profile`), caché `tools/cache/lambda/<fingerprint>/` | `staging/ERURH/LambdaBounds.lean`, `staging/ERURH/LambdaIntervals_skeleton.lean`, `staging/ERURH/LambdaSamples_skeleton.lean`, cachés JSON por ventana/tail | Testigos de `lambdaCore` en ventanas/tail; usados por `LambdaWitnessBuildOn` → puente hacia `XiWitnessAssembly` y `StrongInertiaCertificate_alpha`. |
+docs\ERURH_IndustrialPipeline_Alpha.md:33:| `tools/gen_walpha_close.py` | Cachés de `make_lambda_bounds` (`tools/cache/lambda/**/{window}.json` + `tail.json` o `--cert` JSON) | `staging/ERURH/Staging/LambdaClose_<window>_all.lean` | Ensambla lemas por ventana (cap suprema) para `LambdaBounds` y `FluxWindows`. |
+docs\ERURH_IndustrialPipeline_Alpha.md:34:| `tools/make_prefactor_bounds.py` | `tools/bounds_config.json`, perfil (`--profile`), caché `tools/cache/prefactor/<fingerprint>/` | `staging/ERURH/PrefactorBounds.lean`, lemas helper `staging/ERURH/Staging/Prefactor*`, `prefactor_segments_*_tail.json` | Bounds de `prefactor_pad_fun`; consumidos por `XiPrefactor` y puente a `StrongInertiaCertificate_alpha`. |
+docs\ERURH_IndustrialPipeline_Alpha.md:35:| `tools/gen_wprefactor_close.py` | `prefactor_segments_*_tail.json` + cachés por ventana/tail | `staging/ERURH/Staging/PrefactorClose_<window>_all.lean` | Cierra ventanas/tail de prefactor frente a `pf_log_q`/tail; conecta con `FluxWindows`. |
+docs\ERURH_IndustrialPipeline_Alpha.md:36:| `tools/make_zeta_bounds.py` | `tools/bounds_config.json`, perfil (`--profile`), caché `tools/cache/zeta/<fingerprint>/` | `staging/ERURH/ZetaBounds.lean`, payloads de segmentos (`zeta_segments_*.json`), helpers opcionales | Bounds de `riemannZeta`/deriv en ventanas/tail; usados por `XiZetaIface` y `XiWitnessAssembly`. |
+docs\ERURH_IndustrialPipeline_Alpha.md:37:| `tools/gen_wzeta_close.py` | Segmentos de `make_zeta_bounds` (cache o bundle) | `staging/ERURH/Staging/ZetaClose_<window>_all.lean` | Cierra ventanas/tail de zeta frente a `zeta_log_q`/`zeta_j_q`. |
+docs\ERURH_IndustrialPipeline_Alpha.md:38:| `scripts/verify_gate.py` | Repo limpio, scripts anteriores disponibles | Ejecuta `make_rational_bounds`, `make_certificate_values`, `tools/render_paper.py`, `lake build`, `pytest tests`; falla si hay diffs nuevos | Gate reproducible de constantes/certificados y compilación Lean. |
+docs\ERURH_IndustrialPipeline_Alpha.md:39:| `tools/formal_gate.py` | `releases/erurh-v2-core` bundle + `formal_report_strict.json` (opcional) | `buchstab_pointfix/out/formal_gate_report.json` | Comprueba coherencia formal (`L_global`, `kappa_*`, `s0`) vs reportes analíticos. |
+docs\ERURH_IndustrialPipeline_Alpha.md:40:| Tests | `pytest tests` (core), `pytest tests tests_fin` (cuando se toca finanzas/entropía/utilidades), `python -m tools.e2e_cli_tests` | Reportes pytest / CLI e2e | Revisión auxiliar; no generan artefactos Lean pero gatean regresiones. |
+docs\ERURH_IndustrialPipeline_Alpha.md:44:2. **Bounds racionales** (crítico): `python tools/make_rational_bounds.py --release-dir releases/erurh-v2-core/formal --out docs/paper/rational_bounds.json --lean-out formal_proofs/ERURH/RationalBounds.lean`.
+docs\ERURH_IndustrialPipeline_Alpha.md:45:3. **Valores del certificado** (crítico): `python tools/make_certificate_values.py --release-dir releases/erurh-v2-core/formal --constants-path releases/erurh-v2-core/constants_global.json --bounds-path docs/paper/rational_bounds.json --out-json docs/paper/certificate_values.json --lean-out formal_proofs/ERURH/CertificateValues.lean`.
+docs\ERURH_IndustrialPipeline_Alpha.md:46:4. **Flux windows/tail** (crítico para `BridgeInertiaCertificate_true_alpha`): `python tools/make_flux_bounds.py` (lee `studies/buchstab_pointfix/out/logR_series.csv`, `equivalence_report_check.json`, `alpha_cover_report.json`).
+docs\ERURH_IndustrialPipeline_Alpha.md:47:5. **Lambda witness** (crítico para rama analítica/Strong): `python tools/make_lambda_bounds.py --profile release-strict --merge --windows 0,1,2,3,4,5,tail` (usa y rellena `tools/cache/lambda/<fingerprint>/`; genera `staging/ERURH/LambdaBounds.lean`).
+docs\ERURH_IndustrialPipeline_Alpha.md:48:6. **Prefactor pad** (crítico para rama prefactor): `python tools/make_prefactor_bounds.py --profile release --windows wAlpha49_shift0,wAlpha49_shift1,wAlpha50_shift0,wAlpha50_shift1,wAlpha51_shift0,wAlpha51_shift1 --merge --merge-windows wAlpha49_shift0,wAlpha49_shift1,wAlpha50_shift0,wAlpha50_shift1,wAlpha51_shift0,wAlpha51_shift1,tail` (genera `staging/ERURH/PrefactorBounds.lean` y bundle de segmentos).
+docs\ERURH_IndustrialPipeline_Alpha.md:49:7. **Zeta witness** (crítico para rama zeta): `python tools/make_zeta_bounds.py --profile release-strict --merge --windows wAlpha49_shift0,wAlpha49_shift1,wAlpha50_shift0,wAlpha50_shift1,wAlpha51_shift0,wAlpha51_shift1,tail` (genera `staging/ERURH/ZetaBounds.lean` + bundles).
+docs\ERURH_IndustrialPipeline_Alpha.md:51:   - Lambda: `python tools/gen_walpha_close.py --window wAlpha49_shift0 --emit-window-close` (repetir por ventana).  
+docs\ERURH_IndustrialPipeline_Alpha.md:52:   - Prefactor: `python tools/gen_wprefactor_close.py --window wAlpha49_shift0 --emit-window-close` (repetir por ventana).  
+docs\ERURH_IndustrialPipeline_Alpha.md:53:   - Zeta: `python tools/gen_wzeta_close.py --window wAlpha49_shift0 --emit-window-close` (repetir por ventana).
+docs\ERURH_IndustrialPipeline_Alpha.md:57:12. **Tests Python** (auxiliar pero recomendados): `pytest tests` o `pytest tests tests_fin`; para cola CLI `python -m tools.e2e_cli_tests`.
+docs\ERURH_IndustrialPipeline_Alpha.md:71:- **Orquestador único**: añadir `python tools/eru_pipeline.py --profile alpha` que encadene 2–11, con flags `--no-strong` (saltarse lambda/prefactor/zeta) y `--ci-fast` (perfiles `ci-fast` y `--skip-pytests`).
+docs\ERURH_IndustrialPipeline_Alpha.md:73:- **Checksums y locking**: después de generar caches `tools/cache/{lambda,prefactor,zeta}/<fingerprint>`, emitir un `fingerprint.txt` con `bounds_config` y hash del script para detectar ejecuciones obsoletas.
+docs\ERURH_MainTheorem.md:14:- The spectral tails LS_γ^weak and H_b^weak are reduced to classical theorems (growth of b_ρ and dyadic zero counts).
+docs\ERURH_jRel_ERU_Design_AlphaToBeta.md:10:Familia de kernels ERU aceptables
+docs\ERURH_LSgamma_and_Mode_Demos.md:1:ERURH LS_γ and A1-mode Demonstrations
+docs\ERURH_LSgamma_and_Mode_Demos.md:18:  control in A2-tail.
+docs\ERURH_LSgamma_and_Mode_Demos.md:22:2. A1-mode lemma (β > 1/2 ⇒ exploding RMS)
+docs\ERURH_LSgamma_and_Mode_Demos.md:35:- The simple LS_γ lemma + `H_b` + ERU normalization yields A2-tail control.
+docs\ERURH_LSgamma_and_Mode_Demos.md:36:- A1-mode + A2-low + A2-tail ⇒ `RMSLocalHypothesis`.
+docs\ERURH_LargeSieveGamma_Plan.md:30:4. Role in A2-tail and Plan B
+docs\ERURH_LargeSieveGamma_Plan.md:33:  in `u` for the tail, leading to A2-tail.
+docs\ERURH_LargeSieveGamma_Plan.md:34:- Thus, the γ-large-sieve lemma is a key analytic package feeding `A2Tail_RMS`
+docs\ERURH_HbWeak_AnalyticTheorem.md:42:  `SpectralAssumptionsAlpha` (`hb_tail`), representando este teorema clásico.
+docs\ERURH_HbWeak_AnalyticTheorem.md:43:- A2-tail y Plan B consumen `hb_tail` junto con `LSGammaAssumptions` y los
+docs\ERURH_NumericVerification_Alpha.md:30:  - Ventanas y bounds vienen de `tools/make_flux_bounds.py`; usa `releases/erurh-v2-core/alpha_cover_report.json`, `studies/buchstab_pointfix/out/logR_series.csv`, `equivalence_report_check.json`. Las cotas se reflejan en `formal_proofs/ERURH/FluxWindows.lean` (`logRBoundWindow`, `jRelBoundWindow`, `logRBoundTail`, `jRelBoundTail`) y `FluxBounds.lean`.
+docs\ERURH_NumericVerification_Alpha.md:36:- `tools/make_rational_bounds.py`, `tools/make_certificate_values.py`: generan κ, `L_global`, `kappa_low`, `cEnvelopeClosedRat`, `tailStart` (JSON + `.lean`).
+docs\ERURH_NumericVerification_Alpha.md:37:- `tools/make_flux_bounds.py`: produce bounds de ventanas/cola para `logR`/`jRel` y alimenta `alphaFluxLaws`.
+docs\ERURH_NumericVerification_Alpha.md:38:- `tools/make_lambda_bounds.py`, `tools/make_prefactor_bounds.py`, `tools/make_zeta_bounds.py` + `gen_w*close.py`: generan bounds de prefactor/zeta/lambda y testigos que sustentan `alphaXiOn_concrete`.
+docs\ERURH_NumericVerification_Alpha.md:39:- Artefactos en CSV/JSON (`studies/...`, `tools/cache/...`) y módulos `.lean` auto-generados (`formal_proofs/ERURH/*.lean`, `staging/ERURH/Staging/*.lean`).
+docs\ERURH_NumericVerification_Alpha.md:41:- Opcionalmente, las ventanas pueden enriquecerse con colas v2-lite por ventana usando `tools/enrich_windows_with_tail_bounds_alpha.py` y consumirse en `make_flux_bounds.py` mediante `--tail-bounds-csv` y `--tail-mode` (static/v2-lite/combined). Por defecto, `make_flux_bounds.py` conserva la cola estática publicada.
+docs\ERURH_NumericVerification_Alpha.md:45:`tools/numeric_jRel_sup_envelope_alpha.py` evalúa por ventana la cantidad
+docs\ERURH_NumericVerification_Alpha.md:64:`tools/explicit_bridge_evaluator.py`, y evalúa logR(s) y J_rel(s) a partir de
+docs\ERURH_PlanB_Conditional_Theorem.md:6:- Plan B ofrece una ruta RMS/gates hacia RH en la capa ERURH-alpha: combinar crecimiento de modos β > 1/2 con cotas A2 (low/tail) y gates cerrados para excluir modos supercríticos.
+docs\ERURH_PlanB_Conditional_Theorem.md:22:- A2-low y A2-tail (ver `docs/ERURH_A2_AnalyticPlan.md`).
+docs\ERURH_PlanB_Conditional_Theorem.md:24:- A1-mode (ver `docs/ERURH_LSgamma_and_Mode_Demos.md`).
+docs\ERURH_PlanB_Conditional_Theorem.md:29:- Teorema (Plan B, versión condicional). Bajo las hipótesis analíticas externas H_ζ,standard sobre ζ, las hipótesis explícitas H_ERU,explicit sobre el observable ERU, las cotas A2-low/A2-tail y el modo A1, junto con certificados alpha correctos y cobertura numérica, se tiene `RiemannHypothesis xiAlpha`.
+docs\ERURH_PlanB_Conditional_Theorem.md:30:- Cadena lógica: H_ζ,standard + H_ERU,explicit + H_LS/A2 + H_certs+num ⇒ PlanB_AnalyticAssumptions + gates cerrados ⇒ RMSLocalHypothesis + gates cerrados ⇒ no hay modos β > 1/2 ⇒ RH.
+docs\ERURH_PlanB_Assumptions.md:14:- A1-mode: growth lemma for modes with β > 1/2 (mode_RMS_lower_bound).
+docs\ERURH_PlanB_Assumptions.md:16:3. Large-sieve and RMS tail (H_LS + H_A2)
+docs\ERURH_PlanB_Assumptions.md:19:- A2Low_RMS: RMS control for the low part of jRel.
+docs\ERURH_PlanB_Assumptions.md:20:- A2Tail_RMS: RMS control for the tail part (β > 1/2, |γ| > T) via H_b + LS_γ + normalisation.
+docs\ERURH_PlanB_Assumptions.md:25:- NumericCoverageAlpha: windows/tails coverage from s upwards (FluxWindows, etc.).
+docs\ERURH_PlanB_Assumptions.md:29:- Assume H_ζ,standard + H_ERU,explicit + H_LS + H_A2 + H_certs+num. Then, via the Lean master theorem and the RMS/gates bridge, we obtain RiemannHypothesis xiAlpha.
+docs\ERURH_PlanB_Gaps_Map.md:9:- Role: supplies coefficient decay hypothesis to A2-tail and beyond.
+docs\ERURH_PlanB_Gaps_Map.md:16:- Role: LS_γ feeds A2-tail control; simple RMS bound already available; refined LS_γ supplied externally.
+docs\ERURH_PlanB_Gaps_Map.md:24:- Role: provides the A1-mode growth bound needed for RMSLocalHypothesis.
+docs\ERURH_PlanB_Gaps_Map.md:28:- Proven/defined: delegates to the abstract context (`RMSLocalContext`) and `PlanB_AnalyticAssumptions`; `RMS_local_lemma` (and beta variant) now produce `RMSLocalHypothesis ctx` via `RMSLocalHypothesis_of_A2`.
+docs\ERURH_PlanB_Gaps_Map.md:32:A2/Tail/RMS bridge (ERURH_A2Hypotheses.lean)
+docs\ERURH_PlanB_Gaps_Map.md:34:- Proven/defined: abstract RMS context `RMSLocalContext`; `A2Low_RMS`, `A2Tail_RMS`, `A1_mode`, `RMSLocalHypothesis`, and the bridge `RMSLocalHypothesis_of_A2` (A1-mode + A2-low/tail ⇒ RMSLocalHypothesis).
+docs\ERURH_PlanB_Gaps_Map.md:35:- Proven: `A2Tail_RMS_from_Hb_LS_simple` (packages the simple LS_γ/H_b route to tail RMS via the context bound).
+docs\ERURH_PlanB_Gaps_Map.md:36:- Role: connects coefficient decay + LS_γ + A1-mode to RMSLocalHypothesis in an abstract RMS decomposition.
+docs\ERURH_PlanB_Gaps_Map.md:51:- Proven: conditional wrappers `RH_from_planB_RMS`, `RH_from_planB_A2`, `RH_from_planB_bundle` (consume PlanB_AnalyticAssumptions plus axioms/certificates/numeric coverage).
+docs\ERURH_PlanB_Gaps_Map.md:58:1. Explicit formula + coefficient decay (H_b) + LS_γ (refined) ⇒ A2Tail_RMS (gap: `H_b_from_explicit_formula`; refined LS_γ supplied via `LSGammaAssumptions`; simple tail bound already packaged).
+docs\ERURH_PlanB_Gaps_Map.md:59:2. A2Low_RMS + A2Tail_RMS + A1-mode growth ⇒ RMSLocalHypothesis (proved abstractly).
+docs\ERURH_Preprint_AlphaToBeta.md:76:Se implementó un piloto de intervalos en `tools/jrel_eru_interval_pilot.py` que evalúa \(j_{\mathrm{Rel,ERU}}(s)\) con multiprecisión (mp_dps ≈ 80), estima error de cola + error numérico y produce intervalos \([v_{\min}, v_{\max}]\) para cada punto.
+docs\ERURH_Preprint_AlphaToBeta.md:105:- diseñar y calibrar kernels ERU,
+docs\ERURH_RMSLocal_Proof.md:12:2. Noise bounds (A2-low and A2-tail)
+docs\ERURH_RMSLocal_Proof.md:14:- A2-low: there exists M_low such that RMS_low(S, L) ≤ M_low for S large and 1 ≪ L ≪ S^α.
+docs\ERURH_RMSLocal_Proof.md:15:- A2-tail: there exists M_tail such that RMS_tail(S, L) ≤ M_tail for S large and 1 ≪ L ≪ S^α.
+docs\ERURH_RMSLocal_Proof.md:18:3. A1-mode
+docs\ERURH_RMSLocal_Proof.md:21:- A1-mode theorem: there exist c > 0 and S0 > 0 such that for all S ≥ S0 and 1 ≤ L ≤ S^α,
+docs\ERURH_RMSLocal_Proof.md:30:- Conclusion: if a mode with β > 1/2 exists and A2-low/A2-tail hold, then there is a high window [S*, S*+L*] with RMS(S*, L*) > C_env, i.e. `RMSLocalHypothesis`.
+docs\ERURH_StrongInertiaCertificate_Beta.md:26:- Sirve de puente conceptual entre los artefactos numéricos (`tools/eru_jrel_smooth_numeric_alpha.py`, `tools/eru_jrel_energy_windows_beta.py`) y un posible certificado formal de energía en Lean dentro del namespace beta.
+docs\ERURH_RemainingAxioms_Internal.md:55:Refactor proposals for Grupo B
+docs\ERURH_Preprint_Alpha.md:5:The Riemann Hypothesis (RH) for the completed zeta-like function \(\xi_\alpha\) is recast in the ERURH framework through a collection of finite, auditable certificates. ERURH-alpha introduces bridge invariants \(\log R(s)\) and \(J_{\mathrm{rel}}(s)\), energy and inertia functionals, and connects them to the zero distribution of the zeta function on the logarithmic scale \(s = \log x\). The core reduction states that if four finite certificates are correct, then RH holds for \(\xi_\alpha\).
+docs\ERURH_Preprint_Alpha.md:20:- Global energy and kernel controls to regulate contributions from modes with real part \(\beta > 1/2\).
+docs\ERURH_Preprint_Alpha.md:21:- Windowed bounds for bridge quantities \(\log R\) and \(J_{\mathrm{rel}}\) on finite intervals.
+docs\ERURH_Preprint_Alpha.md:76:### 5.1. Bridge invariants and goals
+docs\ERURH_Preprint_Alpha.md:89:Lean treats \(jRel\) as an abstract field of the bridge (`ERUBridge.jRel : \mathbb{R} \to \mathbb{R}`) with pointwise bounds on each window/tail: \(jRelBoundWindow \approx 7.886\times 10^{-4}\), \(jRelBoundTail \approx 6.819\times 10^{-3}\) (`FluxWindows.lean`, `FluxBounds.lean`, `InertiaCertificatesAlpha.lean`), with no smoothing or kernels. The Python evaluators use:
+docs\ERURH_Preprint_Alpha.md:91:- explicit mode: \(jRel_{\text{main}}(s) = -2\,\Re\big((\rho-1)/\rho \cdot e^{(\rho-1)s}\big)\) over positive-\(\gamma\) zeros up to height \(T\), heuristic tails, no trivial-zero corrections; all diagnostics (smoothing, energy, Chebyshev, etc.) are built on this main term, with smoothing as post-processing only.
+docs\ERURH_Preprint_Alpha.md:94:### 5.4. Zeros-based explicit evaluator with analytic tails (v2-lite)
+docs\ERURH_Preprint_Alpha.md:96:We implemented `ExplicitBridgeEvaluatorAlpha` (see `tools/explicit_bridge_evaluator.py`), decomposing
+docs\ERURH_Preprint_Alpha.md:104:This yields \(|\log R(s)| \le |\text{main}_{\log R}| + E_{\text{tail}}\). For \(J_{\mathrm{rel}}\) the same L1-style tail is typically too large relative to the tiny certified bounds, so we introduced a refined RMS-style model (see `docs/ERURH_AnalyticTails_Alpha.md`):
+docs\ERURH_Preprint_Alpha.md:114:To probe the typical scale of \(J_{\mathrm{rel}}\), we use `tools/numeric_check_bridge_bounds_jRel_smoothed.py` (explicit evaluator, analytic tail):
+docs\ERURH_Preprint_Alpha.md:132:`tools/numeric_jRel_tail_split.py` splits the explicit \(J_{\mathrm{rel}}\) into
+docs\ERURH_Preprint_Alpha.md:144:The bridgestrong morphism in Lean (`bridge_to_strong` in `InertiaCertificatesAlpha.lean`) is an implication of predicates, not a functional transform \(jRel_{\text{bridge}} \mapsto jRel_{\text{strong}}\). Parameters \(C_{\text{strong}}\) and \(S0_{\text{strong}}\) are set at the certificate level, but Lean does not define a concrete \(jRel_{\text{strong}}(s)\). Our attempt to build a numeric `jRel_strong` (see `tools/eru_strong_inertia_numeric.py`) raises `NotImplementedError` to reflect the absence of a canonical functional map. All numerics reported here refer to the bridge-style explicit \(jRel_{\text{main}}(s)\).
+docs\ERURH_Preprint_Alpha.md:150:- A serious numerical audit of \(J_{\mathrm{rel}}\) will require many more zeros (larger \(T\)), sharper tails, possible smoothing/spectral filters, and ideally interval arithmetic and advanced summation. In the present alpha version, \(J_{\mathrm{rel}}\) is treated as a formal analytic object: numerics are qualitative probes, not verifications.
+docs\ERURH_Preprint_Alpha.md:158:- and established an initial numerical layer validating \(\log R\) bounds while highlighting the need for stronger tools for \(J_{\mathrm{rel}}\).
+docs\ERURH_Preprint_Alpha.md:161:- high-precision numerical verification of \(J_{\mathrm{rel}}\): many more zeros (larger \(T\)), stable/FFT-accelerated summation, rigorously justified tails, and interval arithmetic;
+docs\ERURH_Proof_Status.md:6:ERURH-alpha packages four finite certificates-GlobalEnergy, KernelBlowup, BridgeInertia, StrongInertia. In Lean there is a master implication: if these four alpha certificates are correct, then `RiemannHypothesis xiAlpha` holds. The ERU layer re-expresses classical ?/logR/jRel conditions in an energy/inertia language, but the logical equivalence to RH depends on classical spectral analysis (explicit formula, etc.). The end goal is to instantiate those certificates with exact data (rational constants, windows, tails) and analytic proofs so that RH is established in Lean without extra axioms.
+docs\ERURH_Proof_Status.md:26:- Python scripts produce window bounds, v2-lite tails, beta RMS energies, and sup diagnostics for jRel_alpha. They rely on floats/multiprecision and heuristic models (v2-lite), not yet on interval arithmetic with formal proofs.
+docs\ERURH_Proof_Status.md:34:- Show inside Lean that all current ERURH axioms (mode á>1/2 ? kernel/energy blow-up, tails, prefactors, etc.) follow from those foundations.
+docs\ERURH_Proof_Status.md:38:- Build an interval-arithmetic pipeline for logR/jRel and tails.
+docs\ERURH_Proof_Status.md:55:- An A2-focused wrapper `RH_from_planB_A2` allows replacing `RMSLocalHypothesis` with abstract A2-low/A2-tail controls (`formal_proofs/ERURH/ERURH_A2Hypotheses.lean`), mirroring the analytic roadmap in `docs/ERURH_A2_AnalyticPlan.md`.
+docs\ERURH_LSgamma_AnalyticTheorem.md:19:Esta cota LS_γ^weak suministra el control RMS de la cola A2-tail. En Lean se
+docs\ERURH_LSgamma_AnalyticTheorem.md:20:modela como `LSGammaWeak : Prop` y se incluye como campo `ls_gamma_weak` en
+docs\ERURH_LSgamma_AnalyticTheorem.md:45:   obteniendo la cota LS_γ^weak requerida para A2-tail.
+docs\ERURH_LSgamma_AnalyticTheorem.md:51:- En Lean se almacena como `ls_gamma_weak` dentro de `LSGammaAssumptions` y es
+docs\ERURH_LSgamma_AnalyticTheorem.md:53:- A2-tail y Plan B dependen de esta cota RMS de la cola para controlar la
+docs\ERURH_SmoothedJRel_Alpha.md:4:- Fix a kernel \(K: \mathbb{R} \to \mathbb{R}_{\ge 0}\), normalized \(\int K = 1\), localized (effective support tied to a window-scale parameter). In numerics we use a discrete Gaussian (radius 5, \(\sigma = 1.5\) in index units) as an approximation.
+docs\ERURH_SmoothedJRel_Alpha.md:7:  J_{\mathrm{rel}}^{K}(s) = (K * J_{\mathrm{rel}})(s) = \int_{\mathbb{R}} K(t)\, J_{\mathrm{rel}}(s-t)\, dt,
+docs\preprints\Theorem_ABC_preprint.tex:23:We formulate three classical analytic estimates for coefficient families arising in explicit-formula expansions indexed by the non-trivial zeros of the Riemann zeta function: (i) a dyadic $L^2$ tail bound, (ii) a large-sieve--type mean-square inequality for exponential sums over zero ordinates \emph{without} any global spacing hypothesis, and (iii) a uniform mean-square tail bound for a weighted explicit-formula expansion. The arguments rely only on Stirling asymptotics for $\Gamma$, the Riemann--von Mangoldt formula (including unit-interval zero counts), and a classical large-sieve inequality for separated exponentials.
+docs\preprints\Theorem_ABC_preprint.tex:50:The auxiliary factor $H(s)$ is holomorphic in a neighbourhood of the closed strip $0\le \Re s\le 1$, and the coefficients $b_\rho$ are defined by the above formula (in particular, the completed zeta-factor $\pi^{-s/2}\Gamma(s/2)$ is present in $G(s)$).
+docs\preprints\Theorem_ABC_preprint.tex:57:  \qquad (0\le \sigma\le 1,\ t\in\mathbb{R}).
+docs\preprints\Theorem_ABC_preprint.tex:73:If one wishes to incorporate additional factors such as $(\zeta'/\zeta)(s+\kappa)$ into $H(s)$, then for the present arguments it suffices that the resulting $H$ remain holomorphic in a neighbourhood of $0\le \Re s\le 1$ and satisfy \textbf{(H2)} there. A simple sufficient condition is $\kappa>1$, which places $s+\kappa$ in the zero-free half-plane $\Re>1$ for all $s$ in the strip.
+docs\preprints\Theorem_ABC_preprint.tex:80:We record three standard lemmas (Stirling decay, local zero counting, and a classical large-sieve inequality for separated exponentials) that will be used repeatedly.
+docs\preprints\Theorem_ABC_preprint.tex:84:Assume Hypotheses \textbf{(H1)}--\textbf{(H2)}. In particular, $H(s)$ is holomorphic in a neighbourhood of the strip $0\le \Re s\le 1$ and, for some $A_H\ge 0$,
+docs\preprints\Theorem_ABC_preprint.tex:87:  \qquad (0\le \sigma\le 1,\ t\in\mathbb{R}).
+docs\preprints\Theorem_ABC_preprint.tex:150:\begin{lemma}[Large sieve for separated exponentials]\label{lem:largesieve}
+docs\preprints\Theorem_ABC_preprint.tex:151:Let $\lambda_1,\dots,\lambda_N\in\mathbb{R}$ satisfy $|\lambda_m-\lambda_n|\ge \delta>0$ for all $m\neq n$. Then for any complex coefficients $a_1,\dots,a_N$ and any $L>0$,
+docs\preprints\Theorem_ABC_preprint.tex:158:This is \cite[Theorem~1.3]{MontgomeryLNM227}; see also \cite[Ch.\ 7]{MontgomeryVaughan}.
+docs\preprints\Theorem_ABC_preprint.tex:255:Let $\Gamma(T)$ denote the multiset of ordinates $\gamma\in\mathbb{R}$ (counted with multiplicity) of zeros
+docs\preprints\Theorem_ABC_preprint.tex:260:  M:=\sup_{y\in\mathbb{R}}\#\bigl(\Gamma(T)\cap (y,y+1]\bigr) \le C_0\log T
+docs\preprints\Theorem_ABC_preprint.tex:369:Because the coefficients $b_\rho$ decay exponentially in $|\gamma|$ under \textbf{(H1)}--\textbf{(H2)}, the tail bound above is essentially pointwise and does not require any mean-square input beyond absolute convergence. One may also derive comparable bounds by combining dyadic decompositions with Theorems~\ref{thm:A} and \ref{thm:B}, but the direct argument above is simpler.
+docs\preprints\Theorem_ABC_preprint.tex:375:  \item The proofs use only classical inputs: Stirling's formula for $\Gamma$, the Riemann--von Mangoldt formula (including unit-interval zero counts), and the large sieve for separated exponentials (Lemma~\ref{lem:largesieve}).
+docs\preprints\Theorem_ABC_preprint.tex:376:  \item Under \textbf{(H1)}--\textbf{(H2)}, the dyadic tails in Theorem~\ref{thm:A} are in fact exponentially small in the dyadic parameter.
+docs\preprints\ERURH_ABC_preprint_old.tex:44:  \item Riemann--von Mangoldt zero-counting in dyadic intervals: for $T$ large,
+docs\preprints\ERURH_ABC_preprint_old.tex:83:Expanding the mean square involves the kernel $K_L(t) = \frac{1}{L}\int_0^L e^{itu}\,du = e^{itL/2}\frac{\sin(tL/2)}{tL/2}$. A direct reference for exponentials with well-spaced real frequencies is Montgomery~\cite[Theorem~1.3]{MontgomeryLNM227}, which gives
+docs\preprints\ERURH_ABC_preprint_old.tex:114:\begin{theorem}[A2-tail]\label{thm:C}
+docs\preprints\ERURH_ABC_preprint_old.tex:127:  \item The proofs require only standard tools: Stirling, zero-density/spacing inputs for $\zeta'/\zeta$, Riemann--von Mangoldt, and basic large-sieve estimates for exponentials.
+docs\notes\ERURH_AlphaCertificate_Strategy.md:10:- Remaining fragile pieces: strong inertia and \(jRel\) sup bounds, tail controls, and prefactor envelopes still rely on classical analytic inputs and certified numerics that are not yet formalized in Lean.
+docs\notes\ERURH_AlphaCertificate_Strategy.md:13:1. Tighten analytic tail bounds for \(\log R\) and \(j_{\mathrm{rel}}\) using explicit-formula estimates (zero sums plus tail integrals), consistent with `SpectralAssumptionsAlpha` and `LSGammaAssumptions`.
+docs\notes\ERURH_A2_AnalyticPlan.md:1:ERURH A2 Analytic Plan (Ideas 1 & 2)
+docs\notes\ERURH_A2_AnalyticPlan.md:4:1. Statement of A2 (low + tail)
+docs\notes\ERURH_A2_AnalyticPlan.md:6:- **A2-low:** Uniform control of the RMS contribution from the low part of \(jRel\) (small zeros / bounded spectrum), yielding a normalized RMS bound on every window in range.
+docs\notes\ERURH_A2_AnalyticPlan.md:7:- **A2-tail:** Uniform control of the RMS contribution from the tail \((|\gamma| > T)\) in the ERU-normalized RMS. The tail bound is assembled from classical analytic packages: zero-density / zero-counting, growth of the explicit-formula coefficients, simple LSγ decorrelation, and residual non-zero terms.
+docs\notes\ERURH_A2_AnalyticPlan.md:9:2. Classical analytic inputs for A2-tail
+docs\notes\ERURH_A2_AnalyticPlan.md:11:- **H_b (dyadic quadratic mass):** For dyadic bands \((T, 2T]\), \(\sum_{(T,2T]} |b_\rho|^2 \ll (\log T)^A\). In Lean this is assumed as `hb_tail : H_b_L2_tail` inside `SpectralAssumptionsAlpha`.
+docs\notes\ERURH_A2_AnalyticPlan.md:13:- **LSγ (simple RMS bound):** Almost-orthogonality of \(e^{i\gamma u}\) on \(u \in [0,L]\); in Lean this is assumed via `ls_gamma_weak` in `LSGammaAssumptions` (defaulted by `LSGammaWeak_of_simple`).
+docs\notes\ERURH_A2_AnalyticPlan.md:16:3. A2-tail statement (refined)
+docs\notes\ERURH_A2_AnalyticPlan.md:25:- Combining **A2-low** + **A2-tail** with **A1-mode** (mode with β > 1/2) should produce a window whose RMS exceeds the formal envelope, i.e. establish `RMSLocalHypothesis`.
+docs\notes\ERURH_AnalyticTails_Alpha.md:1:ERURH-alpha · Analytic Tails (v2-lite)
+docs\notes\ERURH_AnalyticTails_Alpha.md:15:- leading factor \(e^{-s/2}\) (and possibly low-degree polynomials in \(s\));
+docs\notes\ERURH_AnalyticTails_Alpha.md:16:- \(T\)-dependence via integrals/sums over \(|\gamma|>T\);
+docs\notes\ERURH_AnalyticTails_Alpha.md:70:- **Next steps:** replace rough integrals with effective bounds using zero density and classical inputs; produce rational bounds; add interval arithmetic; connect \(B_J\) to the \(e^{-s/2}s^2\) scheme for calibration (`cEnvelopeClosedRat`).
+docs\notes\ERURH_AnalyticTails_Alpha.md:74:- Tail mass control ultimately depends on classical inputs (explicit formula, growth of Γ and ζ′/ζ, zero counts) and their structured consequences (`hb_tail` in `SpectralAssumptionsAlpha`, `ls_gamma_weak` in `LSGammaAssumptions`), which are assumed, not proved, in the current Lean development.
+docs\notes\ERURH_ConditionalTheorem_Summary.md:6:ERURH-alpha models the observable \(\log R(s) = E(e^s)/e^s\) and its derivative \(j_{\mathrm{rel}}(s) = \frac{d}{ds}\log R(s)\), and defines an ERU energy on windows \([S, S+L]\) to control decay and regularity. The Lean core encapsulates flux, energy, inertia, and RMS certificates that enforce rational bounds on windows and tails. Plan B adds RMS decomposition hypotheses: A1 controls a mode with \(\beta>1/2\); A2 controls low/tail parts. Renormalization/energy gates close when certificates and A1/A2 hold, eliminating supercritical modes; the ERURH ↔ RH equivalence then yields RH for \(\xi_\alpha\). This is formalized in Lean as a chain of lemmas conditional on classical analytic packages (ζ-theory, spectral decay, LSγ) and certified numeric inputs.
+docs\notes\ERURH_ConditionalTheorem_Summary.md:11:- **Spectral assumptions** (`SpectralAssumptionsAlpha`, `H_b`): decay/control of coefficients \(b_\rho\); the dyadic L² tail `hb_tail : H_b_L2_tail` is assumed as a field.
+docs\notes\ERURH_ConditionalTheorem_Summary.md:12:- **LSγ assumptions** (`LSGammaAssumptions`): LSγ^weak bound on spectral sums; assumed via `ls_gamma_weak` (defaulted by `LSGammaWeak_of_simple`).
+docs\notes\ERURH_ConditionalTheorem_Summary.md:14:These packages form `ERURH_Assumptions` and, together with A1/A2 window hypotheses, `ERURH_GlobalAssumptions`.
+docs\notes\ERURH_ConditionalTheorem_Summary.md:16:Window hypotheses (A1/A2) and RMS context
+docs\notes\ERURH_ConditionalTheorem_Summary.md:18:`RMSLocalContext` fixes windows \([S, S+L]\) with \(1 \ll L \ll S^\alpha\) and the RMS pieces (mode/low/tail). **A1-mode** asserts a mode with β > 1/2 yields RMS growth. **A2-low** and **A2-tail** bound the low/tail parts. In Lean these reside in `WindowScalingAssumptions` (fields `ctx`, `hA1`, `hLow`, `hTail`) inside `ERURH_GlobalAssumptions`.
+docs\notes\ERURH_ConditionalTheorem_Summary.md:24:2. `SpectralAssumptionsAlpha` guaranteeing \(H_b\) (including `hb_tail : H_b_L2_tail`).
+docs\notes\ERURH_ConditionalTheorem_Summary.md:25:3. `LSGammaAssumptions` providing LSγ^weak (`ls_gamma_weak`).
+docs\notes\ERURH_ConditionalTheorem_Summary.md:27:5. `WindowScalingAssumptions` (A1/A2/H_range) in the RMS context.
+docs\notes\ERURH_ConditionalTheorem_Summary.md:33:where `ERURH_GlobalAssumptions` bundles exactly the classical, spectral, LSγ, beta, and A1/A2 window hypotheses.
+docs\notes\ERURH_ConditionalTheorem_Summary.md:45:`RH_from_ERURH_conditional` lives in `formal_proofs/ERURH/ERURH_MasterTheoremSummary.lean`. Supporting files: `ERURH_PlanB_Assumptions.lean`, `ERURH_A2Hypotheses.lean`, `ERURH_ClassicalZetaAssumptions.lean`, `ERURH_ExplicitFormulaAlpha.lean`, `ERURH_LargeSieveGammaSketch.lean`, `ERURH_BetaInertiaAssumptions.lean`. Internal energy/RMS/gate/inertia components are proved in Lean; the unproved pieces are the classical analytic packages listed above.
+docs\notes\ERURH_ExplicitCoefficients_Plan.md:19:- In Lean this bridge is sketched (with a gap) from an explicit-formula hypothesis to `H_b`; currently `H_b` is assumed via `SpectralAssumptionsAlpha` (field `hb_tail : H_b_L2_tail`).
+docs\notes\ERURH_ExplicitCoefficients_Plan.md:24:- `A2Tail_RMS` is intended to follow from `H_b` plus LSγ/zero-density inputs (see `ERURH_A2_AnalyticPlan.md`), and feeds the Plan B route to RH.
+docs\notes\ERURH_ExplicitFormula_Plan.md:7:- Define \(E(x) = \psi(x) - x\); then \(\log R(s) = E(e^s) / e^s\). This expresses the ERU observable in terms of zero contributions plus controlled tails.
+docs\notes\ERURH_ExplicitFormula_Plan.md:19:- \(H_b\) is recorded in Lean as a Prop in `ERURH_ExplicitFormulaAlpha.lean` and is assumed via `SpectralAssumptionsAlpha` (field `hb_tail : H_b_L2_tail`).
+docs\notes\ERURH_ExplicitFormula_Plan.md:22:4. Role of \(H_b\) in A2-tail and Plan B
+docs\notes\ERURH_ExplicitFormula_Plan.md:24:- \(H_b\), combined with zero-density/zero-counting and LSγ bounds (`LSGammaAssumptions`), yields the tail RMS control (A2-tail) described in `ERURH_A2_AnalyticPlan.md`.
+docs\notes\ERURH_ExplicitFormula_Plan.md:25:- With A2-tail, A2-low, and A1-mode, one aims to establish `RMSLocalHypothesis`, which feeds the Plan B master theorem `RH_from_planB_RMS`.
+docs\notes\ERURH_Formalisms_Analytic.md:30:- Formalize the bridge envelope and margins as theorems over these rationals.
+docs\notes\ERURH_Formalisms_Analytic_Bridge.md:12:- The cap \(T_{\text{cap}}\) is set in `tools/bounds_config.json` (`boundsTcap`) and mirrored in `formal_proofs/ERURH/BoundsConfig.lean`; a build guard aborts `lake build ERURH` if they diverge.
+docs\notes\ERURH_Formalisms_Analytic_Bridge.md:52:- Each subinterval is rounded upward to multiples of \(10^{-12}\) after a small additive/multiplicative margin. Results are cached under `tools/cache/{lambda,zeta}/<fingerprint>/window.json`; shards can be recomputed incrementally.
+docs\notes\ERURH_Formalisms_Analytic_Bridge.md:57:`Invoke-ERURH-Pipeline.ps1` drives the end-to-end flow: detects `boundsTcap`, lists windows, recomputes shards with `--resume`/`--tail-only`, retries with `dev` on failures, merges once, then runs `lake build ERURH` and `python -m tools.axioms_report`. If a merge reports “missing cache entry,” the shard is rerun and merged once more.
+docs\notes\ERURH_Formalisms_Analytic_Bridge.md:62:- `--merge` regenerates `LambdaBounds.lean` and writes `staging/ERURH/LambdaIntervals_skeleton.lean` with skeleton lemmas `lam_log_le_seg_*`/`lam_j_le_seg_*` per segment and the corresponding window/tail lemmas. This staging module is not imported by `ERURH.lean`; it is a placeholder until proofs replace the admits.
+docs\notes\ERURH_Formalisms_Analytic_Bridge.md:72:- Values are rounded upward to rationals with denominator \(10^{12}\), with fixed tolerances to protect against floating error.
+docs\notes\ERURH_Formalisms_Analytic_Bridge.md:73:- Current ranges contain no zeros of \(ζ(1/2 + it)\); if a future interval touches a zero, one must exclude a neighborhood or bound \((ζ'/ζ)(1/2 + it)\) near the pole.
+docs\notes\ERURH_Gates_Conceptual.md:12:- These come from the certificates and artifacts (`RationalBounds`/`CertificateValues`) and are assumed inside `ERURH_GlobalAssumptions`; gate closure in Lean also assumes the placeholder numeric coverage (`NumericCoverageAlpha`).
+docs\notes\ERURH_Gates_Conceptual.md:13:- Supporting pieces: LSγ simple bound is implemented (`LS_gamma_simple_pointwise`), and the A1-mode growth is tracked in `ERURH_ModeGrowthAlpha.lean` to explain how β > 1/2 modes would force gate violations.
+docs\notes\ERURH_Gates_Conceptual.md:21:- Closed gates mean the alpha certificates operate inside their intended regime. The RH plan is: alpha certificates + (assumed) coverage ⇒ gates closed; RMS-local/A2 results would show any β > 1/2 mode opens a gate, contradicting closure; hence no such mode, yielding RH via the established ERURH equivalence.
+docs\notes\ERURH_Hb_AnalyticProgram.md:9:- `H_b_L2_tail`: dyadic L² tail bound \(\sum_{|\gamma|>T} |b_\rho|^2 \ll (\log T)^A\) (assumed as `hb_tail` in `SpectralAssumptionsAlpha`).
+docs\notes\ERURH_Hb_AnalyticProgram.md:18:Under ERU normalization \(\widetilde J_\alpha(s) = e^{s/2} jRel(s) / s^2\), coefficients take the form \(b_\rho = (\rho-1)\rho^{-1} G(\rho)\) with \(G(\rho)\) capturing \(\Gamma(\rho/2)\), \(\pi^{-\rho/2}\), and kernel regularization. `H_b_explicit` aims to state in Lean (as a classical assumption) that \(b_\rho\) equals a closed-form expression derived from the explicit formula (via `ClassicalZetaAssumptions`) and ERU normalization.
+docs\notes\ERURH_Hb_AnalyticProgram.md:34:Conceptually from `H_b_pointwise` + Riemann–von Mangoldt / zero-density and dyadic summation. In Lean this tail is assumed directly as `hb_tail : H_b_L2_tail` within `SpectralAssumptionsAlpha`.
+docs\notes\ERURH_Hb_AnalyticProgram.md:40:- **Step 3:** Encode `H_b_L2_tail` as the packaged spectral consequence (assumed field `hb_tail`); future formalisation could derive it from `H_b_pointwise` once classical theory is mechanized.
+docs\notes\ERURH_Hb_Pointwise_Program.md:38:\(\sum_{|\gamma|>T} |b_\rho|^2 \ll (\log T)^A\) (`H_b_L2_tail`), using dyadic bands. In Lean this tail is assumed as `hb_tail` inside `SpectralAssumptionsAlpha`.
+docs\notes\ERURH_InertiaCertificates_Spec.md:41:should suffice to deduce `RiemannHypothesis xiAlpha`, assuming the classical analytic package (`ClassicalZetaAssumptions`, `SpectralAssumptionsAlpha` with `hb_tail`, `LSGammaAssumptions`, etc.) bundled in `ERURH_GlobalAssumptions`. Today, some predicates are simplified (equalities to witnesses); they are intended to evolve into finite rational inequalities and coverings consistent with the existing flux/energy bounds and strong \( \log R_\alpha \) targets.
+docs\notes\ERURH_jRel_Audit_Alpha.md:15:- `tools/numeric_check_bridge_bounds_jRel.py` (psi mode): central difference of exploratory \(\logR_{\psi}(s) = (\psi(e^s)-e^s)/e^s\); noisy, heuristic.
+docs\notes\ERURH_jRel_Audit_Alpha.md:16:- `tools/explicit_bridge_evaluator.py` (explicit mode): `jRel_main(s) = -2 Re((ρ-1)/ρ · e^{(ρ-1)s})` summed over positive γ (ρ = 1/2 + iγ, |γ| ≤ T), paired for RH; tail handled separately; trivial/correction terms currently 0.
+docs\notes\ERURH_jRel_Audit_Alpha.md:22:- Definition: Lean leaves `jRel` abstract and certified only by bounds; Python instantiates `jRel` as a truncated explicit derivative, omitting trivial/correction terms and using heuristic tails.
+docs\notes\ERURH_jRel_Audit_Alpha.md:23:- Tail/constants: Lean bounds are fixed rationals; Python tail bounds are heuristic, and trivial terms are ignored, so Python values are not certified upper bounds.
+docs\notes\ERURH_jRel_ERU_Design_AlphaToBeta.md:9:Acceptable ERU kernels
+docs\notes\ERURH_jRel_ERU_Design_AlphaToBeta.md:13:- Optional probabilistic normalization \(\int_{\mathbb{R}} K(s)\,ds = 1\) for comparability.
+docs\notes\ERURH_LargeSieveGamma_Plan.md:25:4. Role in A2-tail and Plan B
+docs\notes\ERURH_LargeSieveGamma_Plan.md:27:- LSγ, together with \(H_b\) and zero-density, yields the RMS control for the tail (A2-tail).
+docs\notes\ERURH_LargeSieveGamma_Plan.md:28:- In Lean, LSγ^weak is assumed as `ls_gamma_weak` inside `LSGammaAssumptions` (defaulted via `LSGammaWeak_of_simple`); it feeds `A2Tail_RMS` and, via Plan B, the exclusion of modes with \(\beta > 1/2\).
+docs\notes\ERURH_NumericVerification_Alpha.md:4:Outline of how one could independently verify the four ERURH-alpha certificates. Goal: guide a technical reader on what to check, which scripts generate data, and alternative numerical methods to audit the published artifacts. All formal implications remain conditional on the classical analytic packages (`ClassicalZetaAssumptions`, `SpectralAssumptionsAlpha` with `hb_tail`, `LSGammaAssumptions`) and on the certified numeric inputs bundled in `ERURH_GlobalAssumptions`.
+docs\notes\ERURH_NumericVerification_Alpha.md:14:- **Per-window/tail bounds:** build meshes per window/tail, evaluate `logR`/`jRel` with high precision/intervals, check \(|\cdot|\) ≤ published bounds (`logRBoundWindow`, `jRelBoundWindow`, `logRBoundTail`, `jRelBoundTail`).
+docs\notes\ERURH_NumericVerification_Alpha.md:23:- `tools/make_rational_bounds.py`, `tools/make_certificate_values.py`: generate κ, `L_global`, `kappa_low`, `cEnvelopeClosedRat`, `tailStart` (JSON + `.lean`).
+docs\notes\ERURH_NumericVerification_Alpha.md:24:- `tools/make_flux_bounds.py`: window/tail bounds for `logR`/`jRel` (`alphaFluxLaws`).
+docs\notes\ERURH_NumericVerification_Alpha.md:25:- `tools/make_lambda_bounds.py`, `tools/make_prefactor_bounds.py`, `tools/make_zeta_bounds.py` (+ helpers): prefactor/ζ/λ bounds feeding `XiWitnessOn`.
+docs\notes\ERURH_NumericVerification_Alpha.md:26:- Artifacts: CSV/JSON (`studies/...`, `tools/cache/...`) and generated `.lean` modules (`formal_proofs/ERURH/*.lean`, `staging/ERURH/Staging/*.lean`).
+docs\notes\ERURH_NumericVerification_Alpha.md:27:- Optional window enrichment via `tools/enrich_windows_with_tail_bounds_alpha.py` (tail modes static/v2-lite/combined).
+docs\notes\ERURH_NumericVerification_Alpha.md:30:- `tools/numeric_jRel_sup_envelope_alpha.py` computes \(K_{\max}(w) = \max_{s \in w} e^{s/2}s^{-2}|J_{\mathrm{rel},\alpha}(s)|\).
+docs\notes\ERURH_NumericVerification_Alpha.md:31:- On windows wAlpha49–wAlpha51: \(K_{\max} \approx 0.35\!-\!0.49\), averages \(0.09\!-\!0.12\); tail \(K_{\max} \approx 0.08\). These exceed the strong-alpha target (\(\sim 10^{-3}\)); tails (v2-lite) are small, so main zeros dominate. Interpretation: the strong envelope is a logical condition for RH, not numerically observed with the exploratory evaluator.
+docs\notes\ERURH_NumericVerification_Alpha.md:34:- **GlobalEnergy:** recompute κ, `L_global`, `kappa_low` via independent code and compare to published rationals.
+docs\notes\ERURH_NumericVerification_Alpha.md:40:- `explicit` mode in `numeric_check_bridge_bounds_logR.py` / `numeric_check_bridge_bounds_jRel.py` uses truncated explicit sums (`tools/explicit_bridge_evaluator.py`) over zeros up to \(T\), with heuristic tails; floats only; serves as a stepping stone toward interval-certified evaluators.
+docs\notes\ERURH_LSgamma_and_Mode_Demos.md:1:ERURH LSγ and A1-mode Demonstrations
+docs\notes\ERURH_LSgamma_and_Mode_Demos.md:10:- With Riemann–von Mangoldt, \(\#\{\gamma_j \in (T_1,T_2]\} \lesssim (T_2-T_1)\log T_2\); combined with ERU normalization (\(S^{-4}\) factors), this suffices for tail RMS control in A2-tail.
+docs\notes\ERURH_LSgamma_and_Mode_Demos.md:11:- In Lean: `LS_gamma_simple_pointwise` and `LS_gamma_simple_RMS` live in `ERURH_LargeSieveGammaSketch.lean`; the refined LSγ^weak is assumed via `ls_gamma_weak` in `LSGammaAssumptions`.
+docs\notes\ERURH_LSgamma_and_Mode_Demos.md:13:2. A1-mode lemma (β > 1/2 ⇒ exploding RMS)
+docs\notes\ERURH_LSgamma_and_Mode_Demos.md:25:- Simple LSγ + \(H_b\) (`hb_tail` in `SpectralAssumptionsAlpha`) + ERU normalization ⇒ A2-tail control.
+docs\notes\ERURH_LSgamma_and_Mode_Demos.md:26:- A1-mode + A2-low + A2-tail ⇒ `RMSLocalHypothesis`.
+docs\notes\ERURH_PlanB_Gaps_Map.md:6:- Defined: abstract types/constants `ZeroOfZeta`, `beta`, `gamma`, `is_tail_zero`, `b_rho`; Prop `H_b`; package `SpectralAssumptionsAlpha` carrying `H_b` (assumed fields `hb_tail`, etc.).
+docs\notes\ERURH_PlanB_Gaps_Map.md:9:- Role: supplies coefficient decay hypotheses to A2-tail.
+docs\notes\ERURH_PlanB_Gaps_Map.md:14:- Axioms only: `LSGammaAssumptions` carries the refined LSγ hypothesis (`ls_gamma_weak` assumed, defaulted by `LSGammaWeak_of_simple`).
+docs\notes\ERURH_PlanB_Gaps_Map.md:15:- Role: LSγ feeds A2-tail; refined LSγ is assumed, not proved.
+docs\notes\ERURH_PlanB_Gaps_Map.md:20:- Sorrys: none; provides the A1-mode growth bound for `RMSLocalHypothesis`.
+docs\notes\ERURH_PlanB_Gaps_Map.md:24:- Defined: delegates to `RMSLocalContext` and `PlanB_AnalyticAssumptions`; `RMS_local_lemma` (and beta variant) produce `RMSLocalHypothesis` via `RMSLocalHypothesis_of_A2`.
+docs\notes\ERURH_PlanB_Gaps_Map.md:25:- Sorrys: none; the bridge is formal once A2 is available.
+docs\notes\ERURH_PlanB_Gaps_Map.md:27:A2/Tail/RMS bridge (`ERURH_A2Hypotheses.lean`)
+docs\notes\ERURH_PlanB_Gaps_Map.md:29:- Defined: `RMSLocalContext`, `A2Low_RMS`, `A2Tail_RMS`, `A1_mode`, `RMSLocalHypothesis`, and `RMSLocalHypothesis_of_A2` (A1-mode + A2-low/tail ⇒ RMSLocalHypothesis).
+docs\notes\ERURH_PlanB_Gaps_Map.md:30:- `A2Tail_RMS_from_Hb_LS_simple` currently uses the context’s `RMS_tail_bound_simple`; it is a placeholder rather than a derived tail bound from `H_b` + LSγ.
+docs\notes\ERURH_PlanB_Gaps_Map.md:44:- Proven: conditional wrappers `RH_from_planB_RMS`, `RH_from_planB_A2`, `RH_from_planB_bundle`; summary `RH_from_ERURH_conditional` packages external bundles (`ClassicalZetaAssumptions`, `SpectralAssumptionsAlpha`, `LSGammaAssumptions`, `BetaInertiaAssumptions`) plus window assumptions and certificates into RH.
+docs\notes\ERURH_PlanB_Gaps_Map.md:49:1. Explicit formula + coefficient decay (`H_b`) + LSγ^weak (assumed) ⇒ A2Tail_RMS (gap: `H_b_from_explicit_formula`; tail lemma currently a placeholder).
+docs\notes\ERURH_PlanB_Gaps_Map.md:50:2. A2Low_RMS + A2Tail_RMS + A1-mode growth ⇒ `RMSLocalHypothesis` (proved abstractly).
+docs\notes\ERURH_StrongInertiaCertificate_Beta.md:23:- It bridges numerical artifacts (`tools/eru_jrel_smooth_numeric_alpha.py`, `tools/eru_jrel_energy_windows_beta.py`) to a potential beta energy certificate in Lean.
+docs\notes\ERURH_RMSLocal_Proof.md:12:2. Noise bounds (A2-low and A2-tail)
+docs\notes\ERURH_RMSLocal_Proof.md:14:- **A2-low:** \(\exists M_{\mathrm{low}}\) such that \(\mathrm{RMS}_{\mathrm{low}}(S,L) \le M_{\mathrm{low}}\) for large \(S\), \(1 \ll L \ll S^\alpha\).
+docs\notes\ERURH_RMSLocal_Proof.md:15:- **A2-tail:** \(\exists M_{\mathrm{tail}}\) such that \(\mathrm{RMS}_{\mathrm{tail}}(S,L) \le M_{\mathrm{tail}}\) for large \(S\), \(1 \ll L \ll S^\alpha\).
+docs\notes\ERURH_RMSLocal_Proof.md:18:3. A1-mode
+docs\notes\ERURH_RMSLocal_Proof.md:21:- A1-mode theorem: ∃ \(c>0\), \(S_0>0\) s.t. for \(S ≥ S_0\) and \(1 ≤ L ≤ S^\alpha\),
+docs\notes\ERURH_RMSLocal_Proof.md:31:- Conclusion: if a mode with \(\beta > 1/2\) exists and A2-low/A2-tail hold, there is a window with RMS above the envelope (`RMSLocalHypothesis`). This is the analytic input consumed by the Plan B master theorem to force gate opening and rule out β > 1/2 modes.
+docs\notes\ERURH_SmoothedJRel_Alpha.md:6:- Choose a kernel \(K : \mathbb{R} \to \mathbb{R}_{\ge 0}\), symmetric, with \(\int K = 1\), localized (e.g., discrete Gaussian with radius 5, \(\sigma = 1.5\) in index units).
+docs\notes\ERURH_SmoothedJRel_Alpha.md:9:    J_{\mathrm{rel}}^{K}(s) = (K * J_{\mathrm{rel}})(s) = \int_{\mathbb{R}} K(t)\, J_{\mathrm{rel}}(s-t)\, dt,

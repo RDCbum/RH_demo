@@ -1,6 +1,6 @@
 // Lean compiler output
 // Module: ERURH.XiWitnessAssembly
-// Imports: public import Init public import Mathlib public import ERURH.XiCore public import ERURH.XiPrefactor public import ERURH.XiZetaIface public import ERURH.BoundsConfig public import ERURH.AnalyticWitness
+// Imports: public import Init public import Mathlib public import ERURH.XiCore public import ERURH.XiPrefactor public import ERURH.XiZetaIface public import ERURH.BoundsConfig public import ERURH.AnalyticWitness public import ERURH.ComplexAbsCompat
 #include <lean/lean.h>
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -43,6 +43,7 @@ lean_object* initialize_ERURH_XiPrefactor(uint8_t builtin, lean_object*);
 lean_object* initialize_ERURH_XiZetaIface(uint8_t builtin, lean_object*);
 lean_object* initialize_ERURH_BoundsConfig(uint8_t builtin, lean_object*);
 lean_object* initialize_ERURH_AnalyticWitness(uint8_t builtin, lean_object*);
+lean_object* initialize_ERURH_ComplexAbsCompat(uint8_t builtin, lean_object*);
 static bool _G_initialized = false;
 LEAN_EXPORT lean_object* initialize_ERURH_XiWitnessAssembly(uint8_t builtin, lean_object* w) {
 lean_object * res;
@@ -67,6 +68,9 @@ res = initialize_ERURH_BoundsConfig(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_ERURH_AnalyticWitness(builtin, lean_io_mk_world());
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_ERURH_ComplexAbsCompat(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 return lean_io_result_mk_ok(lean_box(0));

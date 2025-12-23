@@ -1,6 +1,6 @@
 // Lean compiler output
 // Module: ERURH.Numeric.Semantics
-// Imports: public import Init public import Mathlib public import Mathlib.Data.Real.Basic public import Mathlib.Data.Complex.Basic public import Mathlib.Data.Complex.Abs public import Mathlib.Analysis.SpecialFunctions.Log.Basic public import Mathlib.Analysis.SpecialFunctions.Complex.Log public import Mathlib.Analysis.SpecialFunctions.Gamma.Basic public import Mathlib.Analysis.Calculus.Deriv.Basic public import Mathlib.NumberTheory.LSeries.RiemannZeta public import ERURH.RH
+// Imports: public import Init public import Mathlib public import Mathlib.Data.Real.Basic public import Mathlib.Data.Complex.Basic public import Mathlib.Analysis.SpecialFunctions.Log.Basic public import Mathlib.Analysis.SpecialFunctions.Complex.Log public import Mathlib.Analysis.SpecialFunctions.Gamma.Basic public import Mathlib.Analysis.Calculus.Deriv.Basic public import Mathlib.NumberTheory.LSeries.RiemannZeta public import ERURH.RH
 #include <lean/lean.h>
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -17,7 +17,6 @@ lean_object* initialize_Init(uint8_t builtin, lean_object*);
 lean_object* initialize_Mathlib(uint8_t builtin, lean_object*);
 lean_object* initialize_Mathlib_Data_Real_Basic(uint8_t builtin, lean_object*);
 lean_object* initialize_Mathlib_Data_Complex_Basic(uint8_t builtin, lean_object*);
-lean_object* initialize_Mathlib_Data_Complex_Abs(uint8_t builtin, lean_object*);
 lean_object* initialize_Mathlib_Analysis_SpecialFunctions_Log_Basic(uint8_t builtin, lean_object*);
 lean_object* initialize_Mathlib_Analysis_SpecialFunctions_Complex_Log(uint8_t builtin, lean_object*);
 lean_object* initialize_Mathlib_Analysis_SpecialFunctions_Gamma_Basic(uint8_t builtin, lean_object*);
@@ -39,9 +38,6 @@ res = initialize_Mathlib_Data_Real_Basic(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_Mathlib_Data_Complex_Basic(builtin, lean_io_mk_world());
-if (lean_io_result_is_error(res)) return res;
-lean_dec_ref(res);
-res = initialize_Mathlib_Data_Complex_Abs(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_Mathlib_Analysis_SpecialFunctions_Log_Basic(builtin, lean_io_mk_world());

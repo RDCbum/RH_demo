@@ -1,0 +1,45 @@
+Obtaining file:///C:/Users/duran/RHdemoERU
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: numpy>=1.24 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from eru-upgrade==0.4.0) (2.2.3)
+Requirement already satisfied: pandas>=1.5 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from eru-upgrade==0.4.0) (2.2.3)
+Requirement already satisfied: scipy>=1.10 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from eru-upgrade==0.4.0) (1.15.3)
+Requirement already satisfied: scikit-learn>=1.3 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from eru-upgrade==0.4.0) (1.7.2)
+Requirement already satisfied: matplotlib>=3.8 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from eru-upgrade==0.4.0) (3.10.1)
+Requirement already satisfied: pyyaml>=6.0 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from eru-upgrade==0.4.0) (6.0.3)
+Requirement already satisfied: contourpy>=1.0.1 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from matplotlib>=3.8->eru-upgrade==0.4.0) (1.3.1)
+Requirement already satisfied: cycler>=0.10 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from matplotlib>=3.8->eru-upgrade==0.4.0) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from matplotlib>=3.8->eru-upgrade==0.4.0) (4.56.0)
+Requirement already satisfied: kiwisolver>=1.3.1 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from matplotlib>=3.8->eru-upgrade==0.4.0) (1.4.8)
+Requirement already satisfied: packaging>=20.0 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from matplotlib>=3.8->eru-upgrade==0.4.0) (24.2)
+Requirement already satisfied: pillow>=8 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from matplotlib>=3.8->eru-upgrade==0.4.0) (11.1.0)
+Requirement already satisfied: pyparsing>=2.3.1 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from matplotlib>=3.8->eru-upgrade==0.4.0) (3.2.1)
+Requirement already satisfied: python-dateutil>=2.7 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from matplotlib>=3.8->eru-upgrade==0.4.0) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from pandas>=1.5->eru-upgrade==0.4.0) (2025.1)
+Requirement already satisfied: tzdata>=2022.7 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from pandas>=1.5->eru-upgrade==0.4.0) (2025.2)
+Requirement already satisfied: six>=1.5 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from python-dateutil>=2.7->matplotlib>=3.8->eru-upgrade==0.4.0) (1.17.0)
+Requirement already satisfied: joblib>=1.2.0 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from scikit-learn>=1.3->eru-upgrade==0.4.0) (1.5.2)
+Requirement already satisfied: threadpoolctl>=3.1.0 in c:\users\duran\appdata\local\packages\pythonsoftwarefoundation.python.3.11_qbz5n2kfra8p0\localcache\local-packages\python311\site-packages (from scikit-learn>=1.3->eru-upgrade==0.4.0) (3.6.0)
+Building wheels for collected packages: eru-upgrade
+  Building editable for eru-upgrade (pyproject.toml): started
+  Building editable for eru-upgrade (pyproject.toml): finished with status 'done'
+  Created wheel for eru-upgrade: filename=eru_upgrade-0.4.0-0.editable-py3-none-any.whl size=9316 sha256=4ba7db833f8267c0cf84d635c20ec7085723421383e3c71baa88e6c09d91264d
+  Stored in directory: C:\Users\duran\AppData\Local\Temp\pip-ephem-wheel-cache-0wgnk0n2\wheels\50\a4\13\97ff175455755b0c7b9a59f012f3d3b96241cf00ae7d375244
+Successfully built eru-upgrade
+Installing collected packages: eru-upgrade
+  Attempting uninstall: eru-upgrade
+    Found existing installation: eru-upgrade 0.4.0
+    Uninstalling eru-upgrade-0.4.0:
+      Successfully uninstalled eru-upgrade-0.4.0
+  WARNING: The script eru-ik.exe is installed in 'C:\Users\duran\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed eru-upgrade-0.4.0
+
+[notice] A new release of pip is available: 25.2 -> 25.3
+[notice] To update, run: C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe -m pip install --upgrade pip

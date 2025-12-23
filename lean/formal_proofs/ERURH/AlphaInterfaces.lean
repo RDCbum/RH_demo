@@ -15,6 +15,7 @@ import ERURH.XiZetaIface
 import ERURH.XiWitnessAssembly
 import ERURH.BridgeToRH
 import ERURH.ERUTheory
+import ERURH.ComplexAbsCompat
 
 namespace ERURH
 

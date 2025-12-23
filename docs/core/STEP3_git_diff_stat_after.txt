@@ -1,0 +1,88 @@
+ .lake/build/ir/ERURH.setup.json                    |   4 +-
+ .lake/build/ir/ERURH/AlphaInterfaces.c             |   6 ++-
+ .lake/build/ir/ERURH/AlphaInterfaces.c.hash        |   2 +-
+ .lake/build/ir/ERURH/AlphaInterfaces.setup.json    |   4 +-
+ .lake/build/ir/ERURH/AnalyticWitness.c             |   6 ++-
+ .lake/build/ir/ERURH/AnalyticWitness.c.hash        |   2 +-
+ .lake/build/ir/ERURH/AnalyticWitness.setup.json    |   4 +-
+ .lake/build/ir/ERURH/BridgeToRH.setup.json         |   4 +-
+ .lake/build/ir/ERURH/ERUTheory.setup.json          |   4 +-
+ .lake/build/ir/ERURH/Equivalence.setup.json        |   4 +-
+ .lake/build/ir/ERURH/ExpRect.setup.json            |   4 +-
+ .lake/build/ir/ERURH/ExplicitBridge.setup.json     |   4 +-
+ .lake/build/ir/ERURH/Numeric/Semantics.c           |   6 +--
+ .lake/build/ir/ERURH/Numeric/Semantics.c.hash      |   2 +-
+ .lake/build/ir/ERURH/Numeric/Semantics.setup.json  |   2 -
+ .lake/build/ir/ERURH/XiCore.setup.json             |   4 +-
+ .lake/build/ir/ERURH/XiPrefactor.c                 |   6 ++-
+ .lake/build/ir/ERURH/XiPrefactor.c.hash            |   2 +-
+ .lake/build/ir/ERURH/XiPrefactor.setup.json        |   4 +-
+ .lake/build/ir/ERURH/XiWitnessAssembly.c           |   6 ++-
+ .lake/build/ir/ERURH/XiWitnessAssembly.c.hash      |   2 +-
+ .lake/build/ir/ERURH/XiWitnessAssembly.setup.json  |   4 +-
+ .lake/build/ir/ERURH/XiZetaIface.c                 |   6 ++-
+ .lake/build/ir/ERURH/XiZetaIface.c.hash            |   2 +-
+ .lake/build/ir/ERURH/XiZetaIface.setup.json        |   4 +-
+ .lake/build/ir/ERURH/ZetaLink.c                    |   6 ++-
+ .lake/build/ir/ERURH/ZetaLink.c.hash               |   2 +-
+ .lake/build/ir/ERURH/ZetaLink.setup.json           |   4 +-
+ .lake/build/lib/lean/ERURH.trace                   |  34 +++++++--------
+ .lake/build/lib/lean/ERURH/AlphaInterfaces.ilean   |   2 +-
+ .../lib/lean/ERURH/AlphaInterfaces.ilean.hash      |   2 +-
+ .lake/build/lib/lean/ERURH/AlphaInterfaces.olean   | Bin 197216 -> 197336 bytes
+ .../lib/lean/ERURH/AlphaInterfaces.olean.hash      |   2 +-
+ .lake/build/lib/lean/ERURH/AlphaInterfaces.trace   |  47 +++++++++++----------
+ .lake/build/lib/lean/ERURH/AnalyticWitness.ilean   |   2 +-
+ .../lib/lean/ERURH/AnalyticWitness.ilean.hash      |   2 +-
+ .lake/build/lib/lean/ERURH/AnalyticWitness.olean   | Bin 96168 -> 96288 bytes
+ .../lib/lean/ERURH/AnalyticWitness.olean.hash      |   2 +-
+ .lake/build/lib/lean/ERURH/AnalyticWitness.trace   |  19 +++++----
+ .lake/build/lib/lean/ERURH/BridgeToRH.trace        |   8 ++--
+ .lake/build/lib/lean/ERURH/ERUTheory.trace         |   6 +--
+ .lake/build/lib/lean/ERURH/Equivalence.trace       |   8 ++--
+ .lake/build/lib/lean/ERURH/ExpRect.trace           |   6 +--
+ .lake/build/lib/lean/ERURH/ExplicitBridge.trace    |   4 +-
+ .lake/build/lib/lean/ERURH/Numeric/Semantics.ilean |   2 +-
+ .../lib/lean/ERURH/Numeric/Semantics.ilean.hash    |   2 +-
+ .lake/build/lib/lean/ERURH/Numeric/Semantics.olean | Bin 42112 -> 42008 bytes
+ .../lib/lean/ERURH/Numeric/Semantics.olean.hash    |   2 +-
+ .lake/build/lib/lean/ERURH/Numeric/Semantics.trace |  13 +++---
+ .lake/build/lib/lean/ERURH/XiCore.trace            |   6 +--
+ .lake/build/lib/lean/ERURH/XiPrefactor.ilean       |   2 +-
+ .lake/build/lib/lean/ERURH/XiPrefactor.ilean.hash  |   2 +-
+ .lake/build/lib/lean/ERURH/XiPrefactor.olean       | Bin 420344 -> 420656 bytes
+ .lake/build/lib/lean/ERURH/XiPrefactor.olean.hash  |   2 +-
+ .lake/build/lib/lean/ERURH/XiPrefactor.trace       |  17 +++++---
+ .lake/build/lib/lean/ERURH/XiWitnessAssembly.ilean |   2 +-
+ .../lib/lean/ERURH/XiWitnessAssembly.ilean.hash    |   2 +-
+ .lake/build/lib/lean/ERURH/XiWitnessAssembly.olean | Bin 92520 -> 92640 bytes
+ .../lib/lean/ERURH/XiWitnessAssembly.olean.hash    |   2 +-
+ .lake/build/lib/lean/ERURH/XiWitnessAssembly.trace |  27 ++++++------
+ .lake/build/lib/lean/ERURH/XiZetaIface.ilean       |   2 +-
+ .lake/build/lib/lean/ERURH/XiZetaIface.ilean.hash  |   2 +-
+ .lake/build/lib/lean/ERURH/XiZetaIface.olean       | Bin 184240 -> 184360 bytes
+ .lake/build/lib/lean/ERURH/XiZetaIface.olean.hash  |   2 +-
+ .lake/build/lib/lean/ERURH/XiZetaIface.trace       |  17 +++++---
+ .lake/build/lib/lean/ERURH/ZetaLink.ilean          |   2 +-
+ .lake/build/lib/lean/ERURH/ZetaLink.ilean.hash     |   2 +-
+ .lake/build/lib/lean/ERURH/ZetaLink.olean          | Bin 104936 -> 105056 bytes
+ .lake/build/lib/lean/ERURH/ZetaLink.olean.hash     |   2 +-
+ .lake/build/lib/lean/ERURH/ZetaLink.trace          |  17 +++++---
+ eru_upgrade.egg-info/PKG-INFO                      |   2 +
+ eru_upgrade.egg-info/SOURCES.txt                   |   2 +
+ eru_upgrade.egg-info/top_level.txt                 |   3 ++
+ lean/formal_proofs/ERURH/AlphaInterfaces.lean      |   1 +
+ lean/formal_proofs/ERURH/AnalyticSplits.lean       |   1 +
+ lean/formal_proofs/ERURH/AnalyticWitness.lean      |   1 +
+ .../ERURH/ERURH_ExplicitFormulaAlpha.lean          |   1 +
+ .../ERURH/ERURH_LargeSieveGammaSketch.lean         |   1 +
+ .../ERURH/ERURH_MasterTheoremSummary.lean          |  18 ++++----
+ .../ERURH/LambdaIntervals_skeleton.lean            |   1 +
+ .../ERURH/LambdaSamples_skeleton.lean              |   1 +
+ lean/formal_proofs/ERURH/Numeric/Semantics.lean    |   1 -
+ lean/formal_proofs/ERURH/SmokeTests.lean           |   1 +
+ lean/formal_proofs/ERURH/XiPrefactor.lean          |   1 +
+ lean/formal_proofs/ERURH/XiWitnessAssembly.lean    |   1 +
+ lean/formal_proofs/ERURH/XiZetaIface.lean          |   1 +
+ lean/formal_proofs/ERURH/ZetaLink.lean             |   1 +
+ 87 files changed, 236 insertions(+), 183 deletions(-)

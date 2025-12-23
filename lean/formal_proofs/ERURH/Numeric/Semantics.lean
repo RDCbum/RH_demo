@@ -1,7 +1,6 @@
 import Mathlib
 import Mathlib.Data.Real.Basic
 import Mathlib.Data.Complex.Basic
-import Mathlib.Data.Complex.Abs
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Analysis.SpecialFunctions.Complex.Log
 import Mathlib.Analysis.SpecialFunctions.Gamma.Basic

@@ -4,6 +4,7 @@ import ERURH.LambdaBounds
 import ERURH.ZetaBounds
 import ERURH.BoundsConfig
 import ERURH.SmokePads
+import ERURH.ComplexAbsCompat
 
 noncomputable section
 

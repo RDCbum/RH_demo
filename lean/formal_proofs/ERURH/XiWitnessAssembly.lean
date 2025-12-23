@@ -4,6 +4,7 @@ import ERURH.XiPrefactor
 import ERURH.XiZetaIface
 import ERURH.BoundsConfig
 import ERURH.AnalyticWitness
+import ERURH.ComplexAbsCompat
 
 noncomputable section
 

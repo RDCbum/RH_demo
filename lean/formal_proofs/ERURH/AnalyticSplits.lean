@@ -6,6 +6,7 @@ import Mathlib.Analysis.SpecialFunctions.Gamma.Basic
 import Mathlib.Analysis.Calculus.Deriv.Basic
 import ERURH.RH
 import ERURH.XiCore
+import ERURH.ComplexAbsCompat
 
 namespace ERURH
 

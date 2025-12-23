@@ -1,9 +1,9 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["0015e078bbbc3e29.olean"],
-  "i": "5d6726131ace418b.ilean",
-  "c": "96365413f103219c.c"},
+ {"o": ["8597162f2da41b9f.olean"],
+  "i": "f9d017b8cab1d5f3.ilean",
+  "c": "fd654fef2541ffb4.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\XiZetaIface.lean -o C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\XiZetaIface.olean -i C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\XiZetaIface.ilean -c C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\XiZetaIface.c --setup C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\XiZetaIface.setup.json --json",
@@ -16,13 +16,16 @@
       ["imports",
        [["Mathlib transitive imports (legacy)", "a0ca2a892907ac51"],
         ["Mathlib:importAllArts", "df1cb5b10cdbedab"],
-        ["ERURH.XiCore transitive imports (legacy)", "7b78c111f276916e"],
+        ["ERURH.XiCore transitive imports (legacy)", "765ef51616f4549a"],
         ["ERURH.XiCore:importAllArts", "b58b2e13ab2b5722"],
         ["ERURH.BridgeScaffold transitive imports (legacy)",
          "d54112c6f34a30da"],
         ["ERURH.BridgeScaffold:importAllArts", "1b1e17b5294ebb9b"],
         ["ERURH.BoundsConfig transitive imports (legacy)", "ce03b3678bc2164a"],
-        ["ERURH.BoundsConfig:importAllArts", "e3d5205478008bde"]]]]],
+        ["ERURH.BoundsConfig:importAllArts", "e3d5205478008bde"],
+        ["ERURH.ComplexAbsCompat transitive imports (legacy)",
+         "ddac339eddba983b"],
+        ["ERURH.ComplexAbsCompat:importAllArts", "8be99167dfd39bf0"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -31,7 +34,7 @@
   ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
    "4bbac11c6209e48b"],
   ["C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\XiZetaIface.lean",
-   "5ca902683cc0e4f9"],
+   "4ad769ecdc62a3bd"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "15cc7eed86fa7c40"}
+ "depHash": "d6247389b06d589f"}

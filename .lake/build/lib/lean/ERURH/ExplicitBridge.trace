@@ -22,7 +22,7 @@
         ["ERURH.RH:importAllArts", "7293ff7a8c67e15d"],
         ["ERURH.PsiLayer transitive imports (legacy)", "ddac339eddba983b"],
         ["ERURH.PsiLayer:importAllArts", "d351e5d9a1f28ca6"],
-        ["ERURH.ExpRect transitive imports (legacy)", "687b2cccd4bea8df"],
+        ["ERURH.ExpRect transitive imports (legacy)", "33389746c3202ed3"],
         ["ERURH.ExpRect:importAllArts", "2143e6df59f28c53"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
@@ -35,4 +35,4 @@
    "2d3c1ce9b13d6e3f"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "a01fd228f12748cf"}
+ "depHash": "7a54b686d4af488a"}

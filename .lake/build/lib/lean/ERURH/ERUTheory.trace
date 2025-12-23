@@ -17,14 +17,14 @@
      [["eruUpgrade/ERURH:extraDep",
        [["@eruUpgrade:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["ERURH.BridgeToRH transitive imports (legacy)", "5597ee6ecdd16dea"],
+       [["ERURH.BridgeToRH transitive imports (legacy)", "05b05403c5557adf"],
         ["ERURH.BridgeToRH:importAllArts", "e34d9be948356f17"],
         ["ERURH.Inertia transitive imports (legacy)", "8a9caa9726b2bbf2"],
         ["ERURH.Inertia:importAllArts", "91e7178d5b45bbc7"],
         ["ERURH.PsiLayer transitive imports (legacy)", "ddac339eddba983b"],
         ["ERURH.PsiLayer:importAllArts", "d351e5d9a1f28ca6"],
         ["ERURH.ExplicitBridge transitive imports (legacy)",
-         "ef7c4566b4ee12c5"],
+         "3bd147d5720c1f8c"],
         ["ERURH.ExplicitBridge:importAllArts", "6eb10d00b7a17b5f"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
@@ -37,4 +37,4 @@
    "0601e713735d1870"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "20d1bf709f5c3f76"}
+ "depHash": "fe179c17f0ecd1b3"}

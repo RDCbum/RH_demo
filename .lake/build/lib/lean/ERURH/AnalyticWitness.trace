@@ -1,9 +1,9 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["767103d39bf60a35.olean"],
-  "i": "407c92c26722e76f.ilean",
-  "c": "39bc71465847edb2.c"},
+ {"o": ["2d0227966ef82186.olean"],
+  "i": "ae34beba79ea6262.ilean",
+  "c": "4f39fe39e3624037.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\AnalyticWitness.lean -o C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\AnalyticWitness.olean -i C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\AnalyticWitness.ilean -c C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\AnalyticWitness.c --setup C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\AnalyticWitness.setup.json --json",
@@ -16,10 +16,13 @@
       ["imports",
        [["Mathlib transitive imports (legacy)", "a0ca2a892907ac51"],
         ["Mathlib:importAllArts", "df1cb5b10cdbedab"],
-        ["ERURH.ZetaLink transitive imports (legacy)", "d75fb76c10494ba0"],
-        ["ERURH.ZetaLink:importAllArts", "54349a030715759d"],
+        ["ERURH.ZetaLink transitive imports (legacy)", "cb3c0df11d66af4d"],
+        ["ERURH.ZetaLink:importAllArts", "4bff14cb4cbeb780"],
         ["ERURH.BoundsConfig transitive imports (legacy)", "ce03b3678bc2164a"],
-        ["ERURH.BoundsConfig:importAllArts", "e3d5205478008bde"]]]]],
+        ["ERURH.BoundsConfig:importAllArts", "e3d5205478008bde"],
+        ["ERURH.ComplexAbsCompat transitive imports (legacy)",
+         "ddac339eddba983b"],
+        ["ERURH.ComplexAbsCompat:importAllArts", "8be99167dfd39bf0"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -28,7 +31,7 @@
   ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
    "4bbac11c6209e48b"],
   ["C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\AnalyticWitness.lean",
-   "38f1c8c0ed0a323a"],
+   "dfa9019dbd2c8eef"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "6e3ff2dfbc1a4116"}
+ "depHash": "cb94d244da26a2dd"}

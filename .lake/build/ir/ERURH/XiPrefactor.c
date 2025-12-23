@@ -1,6 +1,6 @@
 // Lean compiler output
 // Module: ERURH.XiPrefactor
-// Imports: public import Init public import Mathlib public import ERURH.XiCore public import ERURH.BridgeScaffold
+// Imports: public import Init public import Mathlib public import ERURH.XiCore public import ERURH.BridgeScaffold public import ERURH.ComplexAbsCompat
 #include <lean/lean.h>
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -59,6 +59,7 @@ lean_object* initialize_Init(uint8_t builtin, lean_object*);
 lean_object* initialize_Mathlib(uint8_t builtin, lean_object*);
 lean_object* initialize_ERURH_XiCore(uint8_t builtin, lean_object*);
 lean_object* initialize_ERURH_BridgeScaffold(uint8_t builtin, lean_object*);
+lean_object* initialize_ERURH_ComplexAbsCompat(uint8_t builtin, lean_object*);
 static bool _G_initialized = false;
 LEAN_EXPORT lean_object* initialize_ERURH_XiPrefactor(uint8_t builtin, lean_object* w) {
 lean_object * res;
@@ -74,6 +75,9 @@ res = initialize_ERURH_XiCore(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_ERURH_BridgeScaffold(builtin, lean_io_mk_world());
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_ERURH_ComplexAbsCompat(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 return lean_io_result_mk_ok(lean_box(0));

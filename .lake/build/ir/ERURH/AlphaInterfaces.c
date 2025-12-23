@@ -1,6 +1,6 @@
 // Lean compiler output
 // Module: ERURH.AlphaInterfaces
-// Imports: public import Init public import Mathlib public import ERURH.Inertia public import ERURH.RH public import ERURH.ZetaLink public import ERURH.PsiLayer public import ERURH.PsiLayerClassical public import ERURH.ExplicitBridge public import ERURH.BoundsConfig public import ERURH.FluxWindows public import ERURH.NumberTheory.Chebyshev public import ERURH.AnalyticWitness public import ERURH.XiCore public import ERURH.XiPrefactor public import ERURH.XiZetaIface public import ERURH.XiWitnessAssembly public import ERURH.BridgeToRH public import ERURH.ERUTheory
+// Imports: public import Init public import Mathlib public import ERURH.Inertia public import ERURH.RH public import ERURH.ZetaLink public import ERURH.PsiLayer public import ERURH.PsiLayerClassical public import ERURH.ExplicitBridge public import ERURH.BoundsConfig public import ERURH.FluxWindows public import ERURH.NumberTheory.Chebyshev public import ERURH.AnalyticWitness public import ERURH.XiCore public import ERURH.XiPrefactor public import ERURH.XiZetaIface public import ERURH.XiWitnessAssembly public import ERURH.BridgeToRH public import ERURH.ERUTheory public import ERURH.ComplexAbsCompat
 #include <lean/lean.h>
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -50,6 +50,7 @@ lean_object* initialize_ERURH_XiZetaIface(uint8_t builtin, lean_object*);
 lean_object* initialize_ERURH_XiWitnessAssembly(uint8_t builtin, lean_object*);
 lean_object* initialize_ERURH_BridgeToRH(uint8_t builtin, lean_object*);
 lean_object* initialize_ERURH_ERUTheory(uint8_t builtin, lean_object*);
+lean_object* initialize_ERURH_ComplexAbsCompat(uint8_t builtin, lean_object*);
 static bool _G_initialized = false;
 LEAN_EXPORT lean_object* initialize_ERURH_AlphaInterfaces(uint8_t builtin, lean_object* w) {
 lean_object * res;
@@ -107,6 +108,9 @@ res = initialize_ERURH_BridgeToRH(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_ERURH_ERUTheory(builtin, lean_io_mk_world());
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_ERURH_ComplexAbsCompat(builtin, lean_io_mk_world());
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 return lean_io_result_mk_ok(lean_box(0));

@@ -1,0 +1,1 @@
+=== default args with := trivial in master theorem files ===

@@ -1,4 +1,6 @@
 AGENTS.md
+LICENSE
+README.md
 pyproject.toml
 eru_upgrade.egg-info/PKG-INFO
 eru_upgrade.egg-info/SOURCES.txt

@@ -2,6 +2,7 @@ import Mathlib
 import Mathlib.Analysis.SpecialFunctions.Gamma
 import ERURH.ClassicalZetaAssumptions
 import ERURH.ERURH_GrowthProfiles
+import ERURH.ComplexAbsCompat
 
 /-
 # Capa de fórmula explícita para ERURH-alpha

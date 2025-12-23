@@ -2,6 +2,7 @@
 import Mathlib
 import ERURH.XiCore
 import ERURH.LambdaBounds
+import ERURH.ComplexAbsCompat
 
 open scoped Real
 open Complex

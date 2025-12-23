@@ -25,6 +25,7 @@ structure ERURH_Assumptions where
   classical  : ClassicalZetaAssumptions
   spectral   : SpectralAssumptionsAlpha
   ls_gamma   : LSGammaAssumptions
+  explicit_formula_ERU : Alpha.ExplicitFormulaERU
   beta_inert : BetaInertiaAssumptions
 
 /-- Bundle for the RMS/window scaling side (Plan B A1/A2 controls). -/
@@ -48,6 +49,7 @@ def makePlanBAnalyticBundle
   (classical : ClassicalZetaAssumptions)
   (spectral  : SpectralAssumptionsAlpha)
   (ls_gamma  : LSGammaAssumptions)
+  (explicit_formula_ERU : Alpha.ExplicitFormulaERU)
   (hA1 : A1_mode ctx)
   (hLow : A2Low_RMS ctx)
   (hTail : A2Tail_RMS ctx) :
@@ -58,7 +60,7 @@ by
     { spectral := spectral
       ls_gamma := ls_gamma
       classical := classical
-      explicit_formula_ERU := trivial
+      explicit_formula_ERU := explicit_formula_ERU
       A1_mode_growth := hA1
       A2_low_RMS := hLow
       A2_tail_RMS := hTail }
@@ -73,14 +75,14 @@ theorem RH_from_ERURH_assumptions
   (hA1 : A1_mode ctx)
   (hLow : A2Low_RMS ctx)
   (hTail : A2Tail_RMS ctx)
-  (hAxioms : AxiomsShimAccepted := trivial)
-  (hCerts : CertificatesCorrectAlpha := { global := globalEnergyCertificate_true_alpha, h_global := globalEnergyCertificate_true_correct_alpha, kernel := kernelBlowupCertificate_true_alpha, h_kernel := kernelBlowupCertificate_true_correct_alpha })
-  (hNumeric : NumericCoverageAlpha ctx := by exact fun w => by trivial) :
+  (hAxioms : AxiomsShimAccepted)
+  (hCerts : CertificatesCorrectAlpha)
+  (hNumeric : NumericCoverageAlpha ctx) :
   RiemannHypothesis xiAlpha :=
 by
   -- Build the analytic bundle from external assumptions and A1/A2 controls.
   have hAnalytic : PlanB_AnalyticAssumptions ctx :=
-    makePlanBAnalyticBundle ctx assm.classical assm.spectral assm.ls_gamma hA1 hLow hTail
+    makePlanBAnalyticBundle ctx assm.classical assm.spectral assm.ls_gamma assm.explicit_formula_ERU hA1 hLow hTail
   -- Apply the Plan B master theorem.
   exact RH_from_planB_bundle ctx hAnalytic hAxioms hCerts hNumeric
 
@@ -88,9 +90,9 @@ by
 plus RMS window assumptions imply `RiemannHypothesis xiAlpha`. -/
 theorem RH_from_ERURH_conditional
   (G : ERURH_GlobalAssumptions)
-  (hAxioms : AxiomsShimAccepted := trivial)
-  (hCerts : CertificatesCorrectAlpha := { global := globalEnergyCertificate_true_alpha, h_global := globalEnergyCertificate_true_correct_alpha, kernel := kernelBlowupCertificate_true_alpha, h_kernel := kernelBlowupCertificate_true_correct_alpha })
-  (hNumeric : NumericCoverageAlpha G.window.ctx := by exact fun _ => by trivial) :
+  (hAxioms : AxiomsShimAccepted)
+  (hCerts : CertificatesCorrectAlpha)
+  (hNumeric : NumericCoverageAlpha G.window.ctx) :
   RiemannHypothesis xiAlpha :=
 by
   rcases G with ⟨eru, window⟩

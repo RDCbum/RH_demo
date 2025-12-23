@@ -2,6 +2,7 @@ import Mathlib
 import ERURH.XiCore
 import ERURH.BridgeScaffold
 import ERURH.BoundsConfig
+import ERURH.ComplexAbsCompat
 
 namespace ERURH
 

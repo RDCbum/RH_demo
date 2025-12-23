@@ -8026,8 +8026,6 @@
   ["C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\Data\\Complex\\BigOperators.olean"],
   "Mathlib.Data.Complex.Basic":
   ["C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\Data\\Complex\\Basic.olean"],
-  "Mathlib.Data.Complex.Abs":
-  ["C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\Data\\Complex\\Abs.olean"],
   "Mathlib.Data.Char":
   ["C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\Data\\Char.olean"],
   "Mathlib.Data.Bundle":
@@ -14513,6 +14511,8 @@
   ["C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\Inertia.olean"],
   "ERURH.FluxWindows":
   ["C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\FluxWindows.olean"],
+  "ERURH.ComplexAbsCompat":
+  ["C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\ComplexAbsCompat.olean"],
   "ERURH.BridgeScaffold":
   ["C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\BridgeScaffold.olean"],
   "ERURH.BridgeCore":

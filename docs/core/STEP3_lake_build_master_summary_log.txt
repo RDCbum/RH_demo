@@ -1,0 +1,467 @@
+error: unknown package `ERURH`
+✖ [7493/7567] Running Mathlib.Data.Real.NNReal
+error: no such file or directory (error code: 2)
+  file: C:\Users\duran\RHdemoERU\.lake\packages\mathlib\Mathlib\Data\Real\NNReal.lean
+✖ [7494/7567] Running ERURH.Flux.LawvereMetric
+error: lean\formal_proofs\ERURH\Flux\LawvereMetric.lean: bad import 'Mathlib.Data.Real.NNReal'
+✖ [7495/7567] Running ERURH.ExplicitDecomposition
+error: lean\formal_proofs\ERURH\ExplicitDecomposition.lean: bad import 'ERURH.Flux.LawvereMetric'
+✖ [7496/7567] Running ERURH.ExplicitCoreBridge
+error: lean\formal_proofs\ERURH\ExplicitCoreBridge.lean: bad import 'ERURH.ExplicitDecomposition'
+✖ [7497/7567] Running ERURH.ExplicitToRHBridge
+error: lean\formal_proofs\ERURH\ExplicitToRHBridge.lean: bad import 'ERURH.ExplicitDecomposition'
+error: lean\formal_proofs\ERURH\ExplicitToRHBridge.lean: bad import 'ERURH.ExplicitCoreBridge'
+✖ [7499/7567] Running ERURH.LemmaAContraction
+error: lean\formal_proofs\ERURH\LemmaAContraction.lean: bad import 'ERURH.Flux.LawvereMetric'
+✖ [7500/7567] Running ERURH.LemmaBEnergy
+error: lean\formal_proofs\ERURH\LemmaBEnergy.lean: bad import 'ERURH.Flux.LawvereMetric'
+✖ [7501/7567] Running ERURH.FluxEnergyBridge
+error: lean\formal_proofs\ERURH\FluxEnergyBridge.lean: bad import 'ERURH.ExplicitDecomposition'
+error: lean\formal_proofs\ERURH\FluxEnergyBridge.lean: bad import 'ERURH.LemmaAContraction'
+error: lean\formal_proofs\ERURH\FluxEnergyBridge.lean: bad import 'ERURH.LemmaBEnergy'
+error: lean\formal_proofs\ERURH\FluxEnergyBridge.lean: bad import 'ERURH.Flux.LawvereMetric'
+✖ [7502/7567] Running ERURH.FluxToBridgeBridge
+error: lean\formal_proofs\ERURH\FluxToBridgeBridge.lean: bad import 'ERURH.ExplicitDecomposition'
+✖ [7503/7567] Running ERURH.AlphaAssumptions
+error: build cycle detected:
+  +ERURH.EToRHChecklist:exportInfo
+  +ERURH.AlphaAssumptions:importInfo
+  +ERURH.AlphaAssumptions:setup
+  +ERURH.AlphaAssumptions:leanArts
+  +ERURH.AlphaAssumptions:exportInfo
+  +ERURH.EToRHChecklist:importInfo
+  +ERURH.EToRHChecklist:setup
+  +ERURH.EToRHChecklist:leanArts
+  +ERURH.ERURH_ClassicalZetaAssumptions:importInfo
+  +ERURH.ERURH_ClassicalZetaAssumptions:setup
+  +ERURH.ERURH_ClassicalZetaAssumptions:leanArts
+  +ERURH.ERURH_ClassicalZetaAssumptions:exportInfo
+  +ERURH.ERURH_MasterTheoremSummary:importInfo
+  +ERURH.ERURH_MasterTheoremSummary:setup
+  +ERURH.ERURH_MasterTheoremSummary:leanArts
+  +ERURH.EToRHChecklist:exportInfo
+✖ [7504/7567] Running ERURH.EToRHChecklist
+error: lean\formal_proofs\ERURH\EToRHChecklist.lean: bad import 'ERURH.ExplicitToRHBridge'
+error: lean\formal_proofs\ERURH\EToRHChecklist.lean: bad import 'ERURH.AlphaAssumptions'
+error: lean\formal_proofs\ERURH\EToRHChecklist.lean: bad import 'ERURH.ExplicitDecomposition'
+✖ [7505/7567] Running ERURH.ERURH_ClassicalZetaAssumptions
+error: lean\formal_proofs\ERURH\ERURH_ClassicalZetaAssumptions.lean: bad import 'ERURH.ExplicitCoreBridge'
+error: lean\formal_proofs\ERURH\ERURH_ClassicalZetaAssumptions.lean: bad import 'ERURH.ExplicitDecomposition'
+error: lean\formal_proofs\ERURH\ERURH_ClassicalZetaAssumptions.lean: bad import 'ERURH.EToRHChecklist'
+✖ [7506/7567] Running Mathlib.Analysis.SpecialFunctions.Gamma
+error: no such file or directory (error code: 2)
+  file: C:\Users\duran\RHdemoERU\.lake\packages\mathlib\Mathlib\Analysis\SpecialFunctions\Gamma.lean
+✖ [7507/7567] Running ERURH.ClassicalZetaAssumptions
+error: no such file or directory (error code: 2)
+  file: C:\Users\duran\RHdemoERU\lean\formal_proofs\ERURH\ClassicalZetaAssumptions.lean
+✖ [7508/7567] Running ERURH.ERURH_ExplicitFormulaAlpha
+error: lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean: bad import 'Mathlib.Analysis.SpecialFunctions.Gamma'
+error: lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean: bad import 'ERURH.ClassicalZetaAssumptions'
+✖ [7509/7567] Running ERURH.ERURH_LargeSieveGammaSketch
+error: lean\formal_proofs\ERURH\ERURH_LargeSieveGammaSketch.lean: bad import 'ERURH.ERURH_ExplicitFormulaAlpha'
+✖ [7510/7567] Running ERURH.ERUInertia
+error: lean\formal_proofs\ERURH\ERUInertia.lean: bad import 'ERURH.ExplicitToRHBridge'
+error: lean\formal_proofs\ERURH\ERUInertia.lean: bad import 'ERURH.EToRHChecklist'
+✖ [7511/7567] Running ERURH.ERUEnergyAlpha
+error: build cycle detected:
+  +ERURH.EnergyCertificatesAlpha:exportInfo
+  +ERURH.ERUEnergyAlpha:importInfo
+  +ERURH.ERUEnergyAlpha:setup
+  +ERURH.ERUEnergyAlpha:leanArts
+  +ERURH.ERUEnergyAlpha:exportInfo
+  +ERURH.EnergyCertificatesAlpha:importInfo
+  +ERURH.EnergyCertificatesAlpha:setup
+  +ERURH.EnergyCertificatesAlpha:leanArts
+  +ERURH.ERURH_BetaInertiaAssumptions:importInfo
+  +ERURH.ERURH_BetaInertiaAssumptions:setup
+  +ERURH.ERURH_BetaInertiaAssumptions:leanArts
+  +ERURH.ERURH_BetaInertiaAssumptions:exportInfo
+  +ERURH.ERURH_MasterTheoremSummary:importInfo
+  +ERURH.ERURH_MasterTheoremSummary:setup
+  +ERURH.ERURH_MasterTheoremSummary:leanArts
+  +ERURH.EnergyCertificatesAlpha:exportInfo
+✖ [7512/7567] Running ERURH.EnergyCertificatesAlpha
+error: build cycle detected:
+  +ERURH.ERURH_BetaInertiaAssumptions:exportInfo
+  +ERURH.EnergyCertificatesAlpha:importInfo
+  +ERURH.EnergyCertificatesAlpha:setup
+  +ERURH.EnergyCertificatesAlpha:leanArts
+  +ERURH.EnergyCertificatesAlpha:exportInfo
+  +ERURH.ERURH_BetaInertiaAssumptions:importInfo
+  +ERURH.ERURH_BetaInertiaAssumptions:setup
+  +ERURH.ERURH_BetaInertiaAssumptions:leanArts
+  +ERURH.ERURH_MasterTheoremSummary:importInfo
+  +ERURH.ERURH_MasterTheoremSummary:setup
+  +ERURH.ERURH_MasterTheoremSummary:leanArts
+  +ERURH.ERURH_BetaInertiaAssumptions:exportInfo
+✖ [7513/7567] Running ERURH.InertiaCertificatesAlpha
+error: lean\formal_proofs\ERURH\InertiaCertificatesAlpha.lean: bad import 'ERURH.FluxEnergyBridge'
+✖ [7514/7567] Running ERURH.ERUModesAlpha
+error: lean\formal_proofs\ERURH\ERUModesAlpha.lean: bad import 'ERURH.ERUInertia'
+error: lean\formal_proofs\ERURH\ERUModesAlpha.lean: bad import 'ERURH.ERUEnergyAlpha'
+error: lean\formal_proofs\ERURH\ERUModesAlpha.lean: bad import 'ERURH.EnergyCertificatesAlpha'
+error: lean\formal_proofs\ERURH\ERUModesAlpha.lean: bad import 'ERURH.InertiaCertificatesAlpha'
+✖ [7515/7567] Running ERURH.Beta.GeneratedStrongInertiaBeta
+error: build cycle detected:
+  +ERURH.Beta.InertiaCertificatesBeta:exportInfo
+  +ERURH.Beta.GeneratedStrongInertiaBeta:importInfo
+  +ERURH.Beta.GeneratedStrongInertiaBeta:setup
+  +ERURH.Beta.GeneratedStrongInertiaBeta:leanArts
+  +ERURH.Beta.GeneratedStrongInertiaBeta:exportInfo
+  +ERURH.Beta.InertiaCertificatesBeta:importInfo
+  +ERURH.Beta.InertiaCertificatesBeta:setup
+  +ERURH.Beta.InertiaCertificatesBeta:leanArts
+  +ERURH.ERURH_BetaInertiaAssumptions:importInfo
+  +ERURH.ERURH_BetaInertiaAssumptions:setup
+  +ERURH.ERURH_BetaInertiaAssumptions:leanArts
+  +ERURH.ERURH_BetaInertiaAssumptions:exportInfo
+  +ERURH.ERURH_MasterTheoremSummary:importInfo
+  +ERURH.ERURH_MasterTheoremSummary:setup
+  +ERURH.ERURH_MasterTheoremSummary:leanArts
+  +ERURH.Beta.InertiaCertificatesBeta:exportInfo
+✖ [7516/7567] Running ERURH.Beta.InertiaCertificatesBeta
+error: build cycle detected:
+  +ERURH.ERURH_BetaInertiaAssumptions:exportInfo
+  +ERURH.Beta.InertiaCertificatesBeta:importInfo
+  +ERURH.Beta.InertiaCertificatesBeta:setup
+  +ERURH.Beta.InertiaCertificatesBeta:leanArts
+  +ERURH.Beta.InertiaCertificatesBeta:exportInfo
+  +ERURH.ERURH_BetaInertiaAssumptions:importInfo
+  +ERURH.ERURH_BetaInertiaAssumptions:setup
+  +ERURH.ERURH_BetaInertiaAssumptions:leanArts
+  +ERURH.ERURH_MasterTheoremSummary:importInfo
+  +ERURH.ERURH_MasterTheoremSummary:setup
+  +ERURH.ERURH_MasterTheoremSummary:leanArts
+  +ERURH.ERURH_BetaInertiaAssumptions:exportInfo
+✖ [7517/7567] Running ERURH.Beta.GlobalInertiaBeta
+error: lean\formal_proofs\ERURH\Beta\GlobalInertiaBeta.lean: bad import 'ERURH.Beta.InertiaCertificatesBeta'
+✖ [7518/7567] Running ERURH.Beta.GeneratedGlobalInertiaBeta
+error: lean\formal_proofs\ERURH\Beta\GeneratedGlobalInertiaBeta.lean: bad import 'ERURH.Beta.GlobalInertiaBeta'
+✖ [7519/7567] Running ERURH.Beta.CompositeCertificateBeta
+error: build cycle detected:
+  +ERURH.ERURH_BetaInertiaAssumptions:exportInfo
+  +ERURH.Beta.CompositeCertificateBeta:importInfo
+  +ERURH.Beta.CompositeCertificateBeta:setup
+  +ERURH.Beta.CompositeCertificateBeta:leanArts
+  +ERURH.Beta.CompositeCertificateBeta:exportInfo
+  +ERURH.ERURH_BetaInertiaAssumptions:importInfo
+  +ERURH.ERURH_BetaInertiaAssumptions:setup
+  +ERURH.ERURH_BetaInertiaAssumptions:leanArts
+  +ERURH.ERURH_MasterTheoremSummary:importInfo
+  +ERURH.ERURH_MasterTheoremSummary:setup
+  +ERURH.ERURH_MasterTheoremSummary:leanArts
+  +ERURH.ERURH_BetaInertiaAssumptions:exportInfo
+✖ [7520/7567] Running ERURH.ERURH_BetaInertiaAssumptions
+error: build cycle detected:
+  +ERURH.Beta.InertiaCertificatesBeta:precompileImports
+  +ERURH.ERURH_BetaInertiaAssumptions:precompileImports
+  +ERURH.Beta.GlobalInertiaBeta:precompileImports
+  +ERURH.Beta.GlobalInertiaBeta:setup
+  +ERURH.Beta.GlobalInertiaBeta:leanArts
+  +ERURH.Beta.GlobalInertiaBeta:exportInfo
+  +ERURH.Beta.CompositeCertificateBeta:importInfo
+  +ERURH.Beta.CompositeCertificateBeta:setup
+  +ERURH.Beta.CompositeCertificateBeta:leanArts
+  +ERURH.Beta.CompositeCertificateBeta:exportInfo
+  +ERURH.ERURH_BetaInertiaAssumptions:importInfo
+  +ERURH.ERURH_BetaInertiaAssumptions:setup
+  +ERURH.ERURH_BetaInertiaAssumptions:leanArts
+  +ERURH.ERURH_BetaInertiaAssumptions:exportInfo
+  +ERURH.ERURH_MasterTheoremSummary:importInfo
+  +ERURH.ERURH_MasterTheoremSummary:setup
+  +ERURH.ERURH_MasterTheoremSummary:leanArts
+  +ERURH.Beta.InertiaCertificatesBeta:precompileImports
+✖ [7521/7567] Running ERURH.ERURH_A2Hypotheses
+error: lean\formal_proofs\ERURH\ERURH_A2Hypotheses.lean: bad import 'ERURH.ERURH_ExplicitFormulaAlpha'
+✖ [7522/7567] Running ERURH.ERURH_ExplicitCoefficientsSketch
+error: lean\formal_proofs\ERURH\ERURH_ExplicitCoefficientsSketch.lean: bad import 'ERURH.ERURH_ExplicitFormulaAlpha'
+✖ [7523/7567] Running ERURH.ERURH_PlanB_Assumptions
+error: lean\formal_proofs\ERURH\ERURH_PlanB_Assumptions.lean: bad import 'ERURH.ERURH_A2Hypotheses'
+error: lean\formal_proofs\ERURH\ERURH_PlanB_Assumptions.lean: bad import 'ERURH.ERURH_ExplicitCoefficientsSketch'
+error: lean\formal_proofs\ERURH\ERURH_PlanB_Assumptions.lean: bad import 'ERURH.ERURH_ClassicalZetaAssumptions'
+✖ [7524/7567] Running ERURH.EnergyBoundsAlpha
+error: lean\formal_proofs\ERURH\EnergyBoundsAlpha.lean: bad import 'ERURH.ERUEnergyAlpha'
+error: lean\formal_proofs\ERURH\EnergyBoundsAlpha.lean: bad import 'ERURH.FluxEnergyBridge'
+✖ [7525/7567] Running ERURH.ERURH_AxiomsShim
+error: lean\formal_proofs\ERURH\ERURH_AxiomsShim.lean: bad import 'ERURH.ExplicitCoreBridge'
+error: lean\formal_proofs\ERURH\ERURH_AxiomsShim.lean: bad import 'ERURH.ExplicitDecomposition'
+error: lean\formal_proofs\ERURH\ERURH_AxiomsShim.lean: bad import 'ERURH.EToRHChecklist'
+error: lean\formal_proofs\ERURH\ERURH_AxiomsShim.lean: bad import 'ERURH.EnergyCertificatesAlpha'
+error: lean\formal_proofs\ERURH\ERURH_AxiomsShim.lean: bad import 'ERURH.ERUEnergyAlpha'
+error: lean\formal_proofs\ERURH\ERURH_AxiomsShim.lean: bad import 'ERURH.ERUInertia'
+error: lean\formal_proofs\ERURH\ERURH_AxiomsShim.lean: bad import 'ERURH.ERUModesAlpha'
+error: lean\formal_proofs\ERURH\ERURH_AxiomsShim.lean: bad import 'ERURH.InertiaCertificatesAlpha'
+error: lean\formal_proofs\ERURH\ERURH_AxiomsShim.lean: bad import 'ERURH.EnergyBoundsAlpha'
+✖ [7526/7567] Running ERURH.ERURH_GatesAlpha
+error: lean\formal_proofs\ERURH\ERURH_GatesAlpha.lean: bad import 'ERURH.EnergyCertificatesAlpha'
+error: lean\formal_proofs\ERURH\ERURH_GatesAlpha.lean: bad import 'ERURH.ERUEnergyAlpha'
+error: lean\formal_proofs\ERURH\ERURH_GatesAlpha.lean: bad import 'ERURH.EnergyBoundsAlpha'
+error: lean\formal_proofs\ERURH\ERURH_GatesAlpha.lean: bad import 'ERURH.ERURH_A2Hypotheses'
+✖ [7527/7567] Running ERURH.ERURH_RMSLocalLemma
+error: lean\formal_proofs\ERURH\ERURH_RMSLocalLemma.lean: bad import 'ERURH.ERURH_A2Hypotheses'
+error: lean\formal_proofs\ERURH\ERURH_RMSLocalLemma.lean: bad import 'ERURH.ERURH_PlanB_Assumptions'
+✖ [7528/7567] Running ERURH.ERURH_GatesFromRMS
+error: lean\formal_proofs\ERURH\ERURH_GatesFromRMS.lean: bad import 'ERURH.ERURH_RMSLocalLemma'
+error: lean\formal_proofs\ERURH\ERURH_GatesFromRMS.lean: bad import 'ERURH.ERURH_GatesAlpha'
+✖ [7529/7567] Running ERURH.ERURH_MasterTheoremPlanB
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremPlanB.lean: bad import 'ERURH.ERURH_AxiomsShim'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremPlanB.lean: bad import 'ERURH.ERURH_GatesAlpha'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremPlanB.lean: bad import 'ERURH.ERURH_GatesFromRMS'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremPlanB.lean: bad import 'ERURH.ERUModesAlpha'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremPlanB.lean: bad import 'ERURH.ERURH_A2Hypotheses'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremPlanB.lean: bad import 'ERURH.ERURH_PlanB_Assumptions'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremPlanB.lean: bad import 'ERURH.ERURH_RMSLocalLemma'
+✖ [7530/7567] Running ERURH.ERURH_MasterTheoremSummary
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremSummary.lean: bad import 'ERURH.ERURH_ClassicalZetaAssumptions'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremSummary.lean: bad import 'ERURH.ERURH_ExplicitFormulaAlpha'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremSummary.lean: bad import 'ERURH.ERURH_LargeSieveGammaSketch'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremSummary.lean: bad import 'ERURH.ERURH_BetaInertiaAssumptions'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremSummary.lean: bad import 'ERURH.ERURH_PlanB_Assumptions'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremSummary.lean: bad import 'ERURH.ERURH_A2Hypotheses'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremSummary.lean: bad import 'ERURH.ERURH_MasterTheoremPlanB'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremSummary.lean: bad import 'ERURH.InertiaCertificatesAlpha'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremSummary.lean: bad import 'ERURH.EnergyCertificatesAlpha'
+error: lean\formal_proofs\ERURH\ERURH_MasterTheoremSummary.lean: bad import 'ERURH.ERURH_GatesAlpha'
+⚠ [7536/7567] Replayed ERURH.FluxWindows
+warning: lean/formal_proofs/ERURH/FluxWindows.lean:51:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7537/7567] Replayed ERURH.BoundsConfig
+warning: lean/formal_proofs/ERURH/BoundsConfig.lean:24:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7539/7567] Replayed ERURH.ComplexAbsCompat
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:11:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:14:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:17:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7541/7567] Replayed ERURH.PsiLayer
+warning: lean/formal_proofs/ERURH/PsiLayer.lean:20:34: This simp argument is unused:
+  add_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [P.E_is_error x, add_comm, a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵add_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/PsiLayer.lean:20:49: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [P.E_is_error x, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [7543/7567] Replayed ERURH.NumberTheory.Chebyshev
+warning: lean/formal_proofs/ERURH/NumberTheory/Chebyshev.lean:32:25: This simp argument is unused:
+  add_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [E_def, add_comm, a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵add_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/NumberTheory/Chebyshev.lean:32:40: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [E_def, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [7546/7567] Replayed ERURH.FluxBounds
+warning: lean/formal_proofs/ERURH/FluxBounds.lean:31:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/FluxBounds.lean:36:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✖ [7552/7567] Building ERURH.ERURH_ModeGrowthAlpha (4.8s)
+trace: .> LEAN_PATH=C:\Users\duran\RHdemoERU\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\build\lib\lean c:\Users\duran\.elan\toolchains\leanprover--lean4---v4.25.0-rc2\bin\lean.exe C:\Users\duran\RHdemoERU\lean\formal_proofs\ERURH\ERURH_ModeGrowthAlpha.lean -o C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\ERURH_ModeGrowthAlpha.olean -i C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\ERURH_ModeGrowthAlpha.ilean -c C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\ERURH_ModeGrowthAlpha.c --setup C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\ERURH_ModeGrowthAlpha.setup.json --json
+error: lean/formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean:13:12: unknown namespace `BigOperators`
+error: lean/formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean:14:5: unknown namespace `MeasureTheory`
+error: lean/formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean:27:27: Unknown identifier `ℕ`
+error: lean/formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean:27:34: Unknown identifier `Real.exp`
+error: lean/formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean:30:75: unexpected identifier; expected '#guard_msgs', 'abbrev', 'add_decl_doc', 'axiom', 'binder_predicate', 'builtin_dsimproc', 'builtin_dsimproc_decl', 'builtin_grind_propagator', 'builtin_initialize', 'builtin_simproc', 'builtin_simproc_decl', 'class', 'coinductive', 'declare_simp_like_tactic', 'declare_syntax_cat', 'def', 'dsimproc', 'dsimproc_decl', 'elab', 'elab_rules', 'example', 'grind_propagator', 'inductive', 'infix', 'infixl', 'infixr', 'initialize', 'instance', 'macro', 'macro_rules', 'notation', 'opaque', 'postfix', 'prefix', 'recommended_spelling', 'register_error_explanation', 'register_tactic_tag', 'simproc', 'simproc_decl', 'structure', 'syntax', 'tactic_extension', 'theorem' or 'unif_hint'
+error: lean/formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean:80:9: expected token
+error: Lean exited with code 1
+⚠ [7556/7567] Replayed ERURH.ERUTheory
+warning: lean/formal_proofs/ERURH/ERUTheory.lean:10:29: `structure ... :=` has been deprecated in favor of `structure ... where`.
+
+Note: This linter can be disabled with `set_option linter.deprecated false`
+⚠ [7557/7567] Replayed ERURH.AlphaInterfaces
+warning: lean/formal_proofs/ERURH/AlphaInterfaces.lean:54:8: This simp argument is unused:
+  AlphaPsi_is_classicalPsi
+
+Hint: Omit it from the simp argument list.
+  simp [AlphaPsi_̵i̵s̵_̵c̵l̵a̵s̵s̵i̵c̵a̵l̵P̵s̵i̵,̵ ̵A̵l̵p̵h̵a̵P̵s̵i̵.psi_eq_nt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/AlphaInterfaces.lean:64:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✖ [7558/7567] Building ERURH.ERURH_GrowthProfiles (44s)
+trace: .> LEAN_PATH=C:\Users\duran\RHdemoERU\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\build\lib\lean c:\Users\duran\.elan\toolchains\leanprover--lean4---v4.25.0-rc2\bin\lean.exe C:\Users\duran\RHdemoERU\lean\formal_proofs\ERURH\ERURH_GrowthProfiles.lean -o C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\ERURH_GrowthProfiles.olean -i C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\ERURH_GrowthProfiles.ilean -c C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\ERURH_GrowthProfiles.c --setup C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\ERURH_GrowthProfiles.setup.json --json
+warning: lean/formal_proofs/ERURH/ERURH_GrowthProfiles.lean:6:24: `structure ... :=` has been deprecated in favor of `structure ... where`.
+
+Note: This linter can be disabled with `set_option linter.deprecated false`
+error: lean/formal_proofs/ERURH/ERURH_GrowthProfiles.lean:16:33: Unknown constant `Real.log`
+error: lean/formal_proofs/ERURH/ERURH_GrowthProfiles.lean:16:21: failed to synthesize
+  HPow ℝ ℝ ?m.11
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: lean/formal_proofs/ERURH/ERURH_GrowthProfiles.lean:35:5: unknown tactic
+error: lean/formal_proofs/ERURH/ERURH_GrowthProfiles.lean:33:49: unsolved goals
+f g : ℝ → ℝ
+pf : GrowthProfile
+Tf : ℝ
+hf : ∀ (T : ℝ), Tf ≤ T → sorry
+pg : GrowthProfile
+Tg : ℝ
+hg : ∀ (T : ℝ), Tg ≤ T → sorry
+T : ℝ
+hT : max Tf Tg ≤ T
+hTf : Tf ≤ T
+hTg : Tg ≤ T
+hfT hgT : sorry
+this : |f T * g T| = |f T| * |g T|
+⊢ |f T * g T| ≤ |f T| * |g T|
+error: lean/formal_proofs/ERURH/ERURH_GrowthProfiles.lean:22:0: unsolved goals
+f g : ℝ → ℝ
+pf : GrowthProfile
+Tf : ℝ
+hf : ∀ (T : ℝ), Tf ≤ T → sorry
+pg : GrowthProfile
+Tg : ℝ
+hg : ∀ (T : ℝ), Tg ≤ T → sorry
+T : ℝ
+hT : max Tf Tg ≤ T
+hTf : Tf ≤ T
+hTg : Tg ≤ T
+hfT hgT : sorry
+hmul_abs : |f T * g T| ≤ |f T| * |g T|
+⊢ sorry
+error: Lean exited with code 1
+✖ [7559/7567] Building ERURH.XiZetaIfaceOn (247s)
+trace: .> LEAN_PATH=C:\Users\duran\RHdemoERU\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\build\lib\lean c:\Users\duran\.elan\toolchains\leanprover--lean4---v4.25.0-rc2\bin\lean.exe C:\Users\duran\RHdemoERU\lean\formal_proofs\ERURH\XiZetaIfaceOn.lean -o C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\XiZetaIfaceOn.olean -i C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\XiZetaIfaceOn.ilean -c C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\XiZetaIfaceOn.c --setup C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\XiZetaIfaceOn.setup.json --json
+error: lean/formal_proofs/ERURH/XiZetaIfaceOn.lean:12:6: Unknown identifier `Staging.zeta_log_fun`
+error: lean/formal_proofs/ERURH/XiZetaIfaceOn.lean:15:6: Unknown identifier `Staging.zeta_j_fun`
+error: Lean exited with code 1
+✔ [7562/7567] Built ERURH.AlphaAxioms (243s)
+✖ [7563/7567] Building ERURH.ZetaBounds (247s)
+trace: .> LEAN_PATH=C:\Users\duran\RHdemoERU\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\build\lib\lean c:\Users\duran\.elan\toolchains\leanprover--lean4---v4.25.0-rc2\bin\lean.exe C:\Users\duran\RHdemoERU\lean\formal_proofs\ERURH\ZetaBounds.lean -o C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\ZetaBounds.olean -i C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\ZetaBounds.ilean -c C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\ZetaBounds.c --setup C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\ZetaBounds.setup.json --json
+warning: lean/formal_proofs/ERURH/ZetaBounds.lean:20:5: unused variable `h`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ZetaBounds.lean:26:5: unused variable `h`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+error: lean/formal_proofs/ERURH/ZetaBounds.lean:51:87: unsolved goals
+⊢ 1973102491 / 3906250000 ≤ 426435487679 / 250000000000
+error: lean/formal_proofs/ERURH/ZetaBounds.lean:57:81: unsolved goals
+⊢ 1169606798083 / 1000000000000 ≤ 6032211236253 / 50000000000
+error: lean/formal_proofs/ERURH/ZetaBounds.lean:63:76: unsolved goals
+⊢ 0 ≤ 1973102491 / 3906250000
+error: lean/formal_proofs/ERURH/ZetaBounds.lean:66:50: unsolved goals
+⊢ 0 ≤ 426435487679 / 250000000000
+error: lean/formal_proofs/ERURH/ZetaBounds.lean:69:48: unsolved goals
+⊢ 0 ≤ 426435487679 / 250000000000
+error: lean/formal_proofs/ERURH/ZetaBounds.lean:72:72: unsolved goals
+⊢ 0 ≤ 1169606798083 / 1000000000000
+error: lean/formal_proofs/ERURH/ZetaBounds.lean:75:46: unsolved goals
+⊢ 0 ≤ 6032211236253 / 50000000000
+error: lean/formal_proofs/ERURH/ZetaBounds.lean:78:44: unsolved goals
+⊢ 0 ≤ 6032211236253 / 50000000000
+error: Lean exited with code 1
+✖ [7564/7567] Building ERURH.Beta.InertiaSmooth (247s)
+trace: .> LEAN_PATH=C:\Users\duran\RHdemoERU\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\build\lib\lean c:\Users\duran\.elan\toolchains\leanprover--lean4---v4.25.0-rc2\bin\lean.exe C:\Users\duran\RHdemoERU\lean\formal_proofs\ERURH\Beta\InertiaSmooth.lean -o C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\Beta\InertiaSmooth.olean -i C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\Beta\InertiaSmooth.ilean -c C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\Beta\InertiaSmooth.c --setup C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\Beta\InertiaSmooth.setup.json --json
+error: lean/formal_proofs/ERURH/Beta/InertiaSmooth.lean:21:11: failed to generate `Inhabited` instance for `KernelERU`
+warning: lean/formal_proofs/ERURH/Beta/InertiaSmooth.lean:28:23: unused variable `bridge`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/Beta/InertiaSmooth.lean:28:44: unused variable `Kβ`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+error: Lean exited with code 1
+✖ [7565/7567] Building ERURH.AlphaWindowCover (248s)
+trace: .> LEAN_PATH=C:\Users\duran\RHdemoERU\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\duran\RHdemoERU\.lake\build\lib\lean c:\Users\duran\.elan\toolchains\leanprover--lean4---v4.25.0-rc2\bin\lean.exe C:\Users\duran\RHdemoERU\lean\formal_proofs\ERURH\AlphaWindowCover.lean -o C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\AlphaWindowCover.olean -i C:\Users\duran\RHdemoERU\.lake\build\lib\lean\ERURH\AlphaWindowCover.ilean -c C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\AlphaWindowCover.c --setup C:\Users\duran\RHdemoERU\.lake\build\ir\ERURH\AlphaWindowCover.setup.json --json
+error: lean/formal_proofs/ERURH/AlphaWindowCover.lean:15:52: unsolved goals
+⊢ ↑tailStart = 2 + ↑s0Bridge
+warning: lean/formal_proofs/ERURH/AlphaWindowCover.lean:17:4: This simp argument is unused:
+  add_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [tailStartR, FluxWindows.tailStart, FluxWindows.s0Bridge, add_comm, a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵add_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/AlphaWindowCover.lean:17:19: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [tailStartR, FluxWindows.tailStart, FluxWindows.s0Bridge, add_comm,
+  ̵  ̵ ̵ ̵add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: lean/formal_proofs/ERURH/AlphaWindowCover.lean:25:51: Type mismatch: After simplification, term
+  ht
+ has type
+  t < ↑tailStart
+but is expected to have type
+  t < ↑s0Bridge + 2
+error: lean/formal_proofs/ERURH/AlphaWindowCover.lean:33:12: Unknown identifier `Icc`
+error: lean/formal_proofs/ERURH/AlphaWindowCover.lean:46:22: Application type mismatch: The argument
+  LT.lt.trans this h_gt
+has type
+  ↑FluxWindows.s0Bridge + ↑89 / 100 < t
+but is expected to have type
+  (algebraMap ℚ ℝ) (FluxWindows.s0Bridge + 89 / 100) < t
+in the application
+  le_of_lt (LT.lt.trans this h_gt)
+error: lean/formal_proofs/ERURH/AlphaWindowCover.lean:51:12: Unknown identifier `Icc`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Mathlib.Data.Real.NNReal
+- ERURH.Flux.LawvereMetric
+- ERURH.ExplicitDecomposition
+- ERURH.ExplicitCoreBridge
+- ERURH.ExplicitToRHBridge
+- ERURH.LemmaAContraction
+- ERURH.LemmaBEnergy
+- ERURH.FluxEnergyBridge
+- ERURH.FluxToBridgeBridge
+- ERURH.AlphaAssumptions
+- ERURH.EToRHChecklist
+- ERURH.ERURH_ClassicalZetaAssumptions
+- Mathlib.Analysis.SpecialFunctions.Gamma
+- ERURH.ClassicalZetaAssumptions
+- ERURH.ERURH_ExplicitFormulaAlpha
+- ERURH.ERURH_LargeSieveGammaSketch
+- ERURH.ERUInertia
+- ERURH.ERUEnergyAlpha
+- ERURH.EnergyCertificatesAlpha
+- ERURH.InertiaCertificatesAlpha
+- ERURH.ERUModesAlpha
+- ERURH.Beta.GeneratedStrongInertiaBeta
+- ERURH.Beta.InertiaCertificatesBeta
+- ERURH.Beta.GlobalInertiaBeta
+- ERURH.Beta.GeneratedGlobalInertiaBeta
+- ERURH.Beta.CompositeCertificateBeta
+- ERURH.ERURH_BetaInertiaAssumptions
+- ERURH.ERURH_A2Hypotheses
+- ERURH.ERURH_ExplicitCoefficientsSketch
+- ERURH.ERURH_PlanB_Assumptions
+- ERURH.EnergyBoundsAlpha
+- ERURH.ERURH_AxiomsShim
+- ERURH.ERURH_GatesAlpha
+- ERURH.ERURH_RMSLocalLemma
+- ERURH.ERURH_GatesFromRMS
+- ERURH.ERURH_MasterTheoremPlanB
+- ERURH.ERURH_MasterTheoremSummary
+- ERURH.ERURH_ModeGrowthAlpha
+- ERURH.ERURH_GrowthProfiles
+- ERURH.XiZetaIfaceOn
+- ERURH.ZetaBounds
+- ERURH.Beta.InertiaSmooth
+- ERURH.AlphaWindowCover
+error: build failed

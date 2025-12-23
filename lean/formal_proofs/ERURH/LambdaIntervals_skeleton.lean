@@ -4,6 +4,7 @@ import ERURH.FluxWindows
 import ERURH.XiCore
 import ERURH.LambdaBounds
 import ERURH.Numeric.Interval
+import ERURH.ComplexAbsCompat
 
 open scoped Real
 open Complex

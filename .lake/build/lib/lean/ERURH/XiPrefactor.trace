@@ -1,9 +1,9 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["71f9e1aa2a13f01f.olean"],
-  "i": "252d1ec109058a14.ilean",
-  "c": "013fb135b557378f.c"},
+ {"o": ["5429a900d31ea4a8.olean"],
+  "i": "a4bacefb5b40d922.ilean",
+  "c": "1de667aa7249ea7f.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\XiPrefactor.lean -o C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\XiPrefactor.olean -i C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\XiPrefactor.ilean -c C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\XiPrefactor.c --setup C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\XiPrefactor.setup.json --json",
@@ -16,11 +16,14 @@
       ["imports",
        [["Mathlib transitive imports (legacy)", "a0ca2a892907ac51"],
         ["Mathlib:importAllArts", "df1cb5b10cdbedab"],
-        ["ERURH.XiCore transitive imports (legacy)", "7b78c111f276916e"],
+        ["ERURH.XiCore transitive imports (legacy)", "765ef51616f4549a"],
         ["ERURH.XiCore:importAllArts", "b58b2e13ab2b5722"],
         ["ERURH.BridgeScaffold transitive imports (legacy)",
          "d54112c6f34a30da"],
-        ["ERURH.BridgeScaffold:importAllArts", "1b1e17b5294ebb9b"]]]]],
+        ["ERURH.BridgeScaffold:importAllArts", "1b1e17b5294ebb9b"],
+        ["ERURH.ComplexAbsCompat transitive imports (legacy)",
+         "ddac339eddba983b"],
+        ["ERURH.ComplexAbsCompat:importAllArts", "8be99167dfd39bf0"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -29,7 +32,7 @@
   ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
    "4bbac11c6209e48b"],
   ["C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\XiPrefactor.lean",
-   "26dc37605b3e2d61"],
+   "ba8025fd40920810"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "36ad2a8654de5605"}
+ "depHash": "4967519a2ed2346e"}

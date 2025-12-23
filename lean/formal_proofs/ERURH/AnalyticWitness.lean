@@ -1,6 +1,7 @@
 import Mathlib
 import ERURH.ZetaLink
 import ERURH.BoundsConfig
+import ERURH.ComplexAbsCompat
 
 /-!
 # Analytic witness for the ERU ↔ ξ bridge

@@ -4,6 +4,7 @@ import ERURH.RH
 import ERURH.BoundsConfig
 import ERURH.FluxWindows
 import ERURH.Numeric.Semantics
+import ERURH.ComplexAbsCompat
 
 namespace ERURH
 

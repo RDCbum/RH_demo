@@ -1,9 +1,9 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["22b4a948ee21de75.olean"],
-  "i": "1e59639ee743fb95.ilean",
-  "c": "32a4fd01f28a1fba.c"},
+ {"o": ["76666c8b2713f6aa.olean"],
+  "i": "084a6fc8e64e9db6.ilean",
+  "c": "bd3f9cfe1a665f05.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\ZetaLink.lean -o C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\ZetaLink.olean -i C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\ZetaLink.ilean -c C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\ZetaLink.c --setup C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\ZetaLink.setup.json --json",
@@ -25,8 +25,11 @@
         ["ERURH.FluxWindows transitive imports (legacy)", "7cfa388372ddc098"],
         ["ERURH.FluxWindows:importAllArts", "d78097f343dc0371"],
         ["ERURH.Numeric.Semantics transitive imports (legacy)",
-         "8a90d9840a5dcea8"],
-        ["ERURH.Numeric.Semantics:importAllArts", "a0f7d1b2a28a6c06"]]]]],
+         "d37251fb7b8ced10"],
+        ["ERURH.Numeric.Semantics:importAllArts", "4b13d8bc63aa169e"],
+        ["ERURH.ComplexAbsCompat transitive imports (legacy)",
+         "ddac339eddba983b"],
+        ["ERURH.ComplexAbsCompat:importAllArts", "8be99167dfd39bf0"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -35,7 +38,7 @@
   ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
    "4bbac11c6209e48b"],
   ["C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\ZetaLink.lean",
-   "5c7d795c45eb4ebb"],
+   "5056993b2c51d14b"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "10ad8abdf182342b"}
+ "depHash": "0df959b707d561f7"}

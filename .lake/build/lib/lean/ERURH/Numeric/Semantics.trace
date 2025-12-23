@@ -1,9 +1,9 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["e6f0f3c325142bfb.olean"],
-  "i": "70b1302f2e765e5b.ilean",
-  "c": "79c9f4ef5ae25f6b.c"},
+ {"o": ["efbc9dddee5e9559.olean"],
+  "i": "5a9eff260b54fce4.ilean",
+  "c": "58d9e3d3fbd0f12e.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\Numeric\\Semantics.lean -o C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\Numeric\\Semantics.olean -i C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\Numeric\\Semantics.ilean -c C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\Numeric\\Semantics.c --setup C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\Numeric\\Semantics.setup.json --json",
@@ -22,9 +22,6 @@
         ["Mathlib.Data.Complex.Basic transitive imports (legacy)",
          "1d386963d74edfe6"],
         ["Mathlib.Data.Complex.Basic:importAllArts", "201a2112055f6669"],
-        ["Mathlib.Data.Complex.Abs transitive imports (legacy)",
-         "ebc5dd20bca096f5"],
-        ["Mathlib.Data.Complex.Abs:importAllArts", "816aae335c2f10d1"],
         ["Mathlib.Analysis.SpecialFunctions.Log.Basic transitive imports (legacy)",
          "32db38c67c188786"],
         ["Mathlib.Analysis.SpecialFunctions.Log.Basic:importAllArts",
@@ -55,7 +52,7 @@
   ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
    "4bbac11c6209e48b"],
   ["C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\Numeric\\Semantics.lean",
-   "5bc0d2eac7ee62df"],
+   "8ce8346d90607473"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "e69047f288e05a24"}
+ "depHash": "5b53c520925398c9"}

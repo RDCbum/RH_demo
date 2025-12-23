@@ -1,5 +1,8 @@
+LICENSES
+arxiv_submission
 data
 docs
+formal_proofs
 lean
 scripts
 tools

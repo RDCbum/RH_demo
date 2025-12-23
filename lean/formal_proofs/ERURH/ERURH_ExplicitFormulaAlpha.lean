@@ -1,6 +1,6 @@
 import Mathlib
-import Mathlib.Analysis.SpecialFunctions.Gamma
-import ERURH.ClassicalZetaAssumptions
+import Mathlib.Analysis.SpecialFunctions.Gamma.Basic
+import ERURH.ERURH_ClassicalZetaAssumptions
 import ERURH.ERURH_GrowthProfiles
 import ERURH.ComplexAbsCompat
 

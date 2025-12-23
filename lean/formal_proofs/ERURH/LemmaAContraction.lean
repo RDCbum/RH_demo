@@ -21,6 +21,8 @@ import ERURH.Flux.LawvereMetric
 
 namespace ERURH
 
+open scoped NNReal
+
 
 
 @[simp] theorem lemmaA_contraction_bound :

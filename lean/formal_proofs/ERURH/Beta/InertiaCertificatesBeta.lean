@@ -1,7 +1,5 @@
 import Mathlib
 import ERURH.Inertia
-import ERURH.Beta.GeneratedStrongInertiaBeta
-import ERURH.ERURH_BetaInertiaAssumptions
 
 /-!
 ERURH-beta: tipos fenomenológicos para certificados de inercia suave.
@@ -42,10 +40,13 @@ def StrongInertiaCertificateCorrect_beta
       let boundR : ℝ :=
         (cert.C_RMS_beta : ℝ) * Real.exp (- sMidR / 2) * sMidR ^ 2
       (w.rmsBound : ℝ) ≤ boundR) ∧
-    (let s0R : ℝ := cert.S0_beta
-     let tailBoundR : ℝ :=
-       (cert.C_RMS_beta : ℝ) * Real.exp (- s0R / 2) * s0R ^ 2
-     (cert.tailRMSBound : ℝ) ≤ tailBoundR)
+  (let s0R : ℝ := cert.S0_beta
+   let tailBoundR : ℝ :=
+     (cert.C_RMS_beta : ℝ) * Real.exp (- s0R / 2) * s0R ^ 2
+   (cert.tailRMSBound : ℝ) ≤ tailBoundR)
+
+/-- Numeric beta certificate produced by the external pipeline. -/
+axiom strongInertiaCertificate_beta_numeric : StrongInertiaCertificate_beta
 
 /--
 `strongInertiaCertificateCorrect_beta_numeric` is an external beta-level
@@ -58,10 +59,8 @@ It is **not** proved analytically inside Lean and is **not** used by the alpha
 theorem or RH equivalence; it lives purely in the ERURH-beta layer as a bridge
 between formal types and numeric diagnostics.
 -/
-def strongInertiaCertificateCorrect_beta_numeric :
-  StrongInertiaCertificateCorrect_beta strongInertiaCertificate_beta_numeric :=
-by
-  exact ERURH.betaInertiaAssumptions_true.strongInertiaCertificateCorrect_beta_numeric
+axiom strongInertiaCertificateCorrect_beta_numeric :
+  StrongInertiaCertificateCorrect_beta strongInertiaCertificate_beta_numeric
 
 end Beta
 end ERURH

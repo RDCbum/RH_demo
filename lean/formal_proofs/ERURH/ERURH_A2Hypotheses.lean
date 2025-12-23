@@ -1,4 +1,3 @@
-import ERURH.ERURH_ModeGrowthAlpha
 import ERURH.ERURH_ExplicitFormulaAlpha
 import ERURH.RationalBounds
 
@@ -86,4 +85,3 @@ by
   exact ctx.RMS_tail_bound_simple w
 
 end ERURH
-

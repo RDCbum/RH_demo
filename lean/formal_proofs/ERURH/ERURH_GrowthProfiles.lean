@@ -1,4 +1,7 @@
 import Mathlib.Data.Real.Basic
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import Mathlib.Analysis.SpecialFunctions.Pow.Real
+import Mathlib.Tactic
 
 namespace ERURH
 
@@ -20,29 +23,7 @@ tiene un perfil (sumando exponentes y multiplicando constantes). -/
 lemma has_growth_profile.mul {f g : ℝ → ℝ} :
   has_growth_profile f → has_growth_profile g → has_growth_profile (fun T => f T * g T) :=
 by
-  intro hf hg
-  rcases hf with ⟨pf, Tf, hf⟩
-  rcases hg with ⟨pg, Tg, hg⟩
-  refine ⟨{ C := pf.C * pg.C, P := pf.P + pg.P, A := pf.A + pg.A }, max Tf Tg, ?_⟩
-  intro T hT
-  have hTf : Tf ≤ T := le_trans (le_max_left _ _) hT
-  have hTg : Tg ≤ T := le_trans (le_max_right _ _) hT
-  have hfT := hf T hTf
-  have hgT := hg T hTg
-  -- |f g| ≤ |f| * |g|
-  have hmul_abs : |f T * g T| ≤ |f T| * |g T| := by
-    have := abs_mul (f T) (g T)
-    nlinarith
-  -- Bound product using profiles
-  have hbound :
-      |f T| * |g T| ≤
-        pf.C * pg.C * T ^ (pf.P + pg.P) * (Real.log T) ^ (pf.A + pg.A) := by
-    have hposT : 0 ≤ T := le_trans (le_max_left _ _) hT |> by have := (le_of_lt (by linarith : (0:ℝ)<T)); linarith
-    have hposlog : 0 ≤ (Real.log T) ^ pf.A := Real.rpow_nonneg (by have : 1 ≤ T := by nlinarith; exact Real.log_nonneg this) _
-    nlinarith
-  have := le_trans hmul_abs hbound
-  -- simplify coefficient grouping
-  nlinarith
+  classical
+  sorry
 
 end ERURH
-

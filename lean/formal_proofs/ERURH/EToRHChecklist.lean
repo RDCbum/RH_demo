@@ -1,6 +1,5 @@
 import ERURH.ExplicitToRHBridge
 import ERURH.AlphaAxioms
-import ERURH.AlphaAssumptions
 import ERURH.ExplicitDecomposition
 
 namespace ERURH
@@ -173,14 +172,6 @@ by
 def EToRHChecklist_alpha_true_via_stages :
   EToRHChecklist_alpha :=
 EToRHChecklist_alpha_of_hypotheses EToRH_hypotheses_alpha_true
-
-/-- `AlphaAnalyticAssumptions` proporciona el checklist E(x)⇒RH. -/
-theorem EToRHChecklist_alpha_of_AlphaAnalyticAssumptions
-  (hA : AlphaAnalyticAssumptions) :
-  EToRHChecklist_alpha :=
-by
-  rcases hA with ⟨hexplicit, hrh, hflux, hrect, hanalytic⟩
-  exact ⟨E_bound_strong_alpha_true, hrh⟩
 
 /-- La equivalencia analítica ERH para alpha está implementada por
     `RH_from_EToRHChecklist_alpha`. -/

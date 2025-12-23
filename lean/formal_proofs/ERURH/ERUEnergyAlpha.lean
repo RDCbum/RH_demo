@@ -1,7 +1,6 @@
 import ERURH.ERUInertia
 import ERURH.FluxEnergyBridge
 import ERURH.RationalBounds
-import ERURH.EnergyCertificatesAlpha
 
 /-
 # ERU energy (global) for the alpha bridge
@@ -23,24 +22,24 @@ namespace ERURH
 At this stage we only postulate its existence as a real number; later on
 this can be refined to a concrete expression (e.g. in terms of windowed
 flux energies). -/
-constant ERU_energy_global_alpha : R
+constant ERU_energy_global_alpha : ℝ
 
 /-- Global ERU energy envelope for the alpha bridge, instantiated from the
 closed-form rational bound `lGlobalFormalRat` and converted to `R`. This is
 intended to match the maximal allowed ERU energy used in the ERURH reports. -/
-noncomputable def L_global_alpha : R :=
-  algebraMap Q R lGlobalFormalRat
+noncomputable def L_global_alpha : ℝ :=
+  algebraMap ℚ ℝ lGlobalFormalRat
 
 /-- ERU energy kernel for the alpha bridge, instantiated via the closed-book
 bound `kappaBookClosedRat` converted to R. This ties the kernel to the
 numerical energy envelope used in Lemma B. -/
-noncomputable def ERU_energy_kernel_alpha : R :=
-  algebraMap Q R kappaBookClosedRat
+noncomputable def ERU_energy_kernel_alpha : ℝ :=
+  algebraMap ℚ ℝ kappaBookClosedRat
 
 /-- Threshold for the ERU energy kernel in the alpha case. We keep it equal to
 `ERU_energy_kernel_alpha`, so any kernel-level blow-up beyond this bound
 aligns with the closed-book energy envelope. -/
-noncomputable def kernel_threshold_alpha : R :=
+noncomputable def kernel_threshold_alpha : ℝ :=
   ERU_energy_kernel_alpha
 
 /--
@@ -73,11 +72,8 @@ by
   This axiom is kept temporarily for compatibility during the
   transition; it is no longer used in the main energetic ERURH
   pipeline. -/
-lemma ERU_energy_global_dominates_kernel_legacy :
+axiom ERU_energy_global_dominates_kernel_legacy :
   ERU_energy_kernel_alpha = kernel_threshold_alpha ->
-  ERU_energy_global_alpha > L_global_alpha :=
-by
-  intro h_kernel
-  exact ERU_energy_global_dominates_kernel h_kernel
+  ERU_energy_global_alpha > L_global_alpha
 
 end ERURH

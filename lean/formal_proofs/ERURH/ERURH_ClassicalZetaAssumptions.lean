@@ -1,7 +1,6 @@
 import ERURH.AlphaInterfaces
 import ERURH.ExplicitCoreBridge
 import ERURH.ExplicitDecomposition
-import ERURH.EToRHChecklist
 import ERURH.AlphaAxioms
 
 /-

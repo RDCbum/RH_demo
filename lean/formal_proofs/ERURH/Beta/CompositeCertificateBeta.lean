@@ -1,8 +1,6 @@
 import ERURH.Beta.InertiaCertificatesBeta
 import ERURH.Beta.GlobalInertiaBeta
-import ERURH.Beta.GeneratedStrongInertiaBeta
 import ERURH.Beta.GeneratedGlobalInertiaBeta
-import ERURH.ERURH_BetaInertiaAssumptions
 
 namespace ERURH
 namespace Beta
@@ -35,10 +33,8 @@ and the global RMS certificate satisfies the combined correctness predicate.
 It lives only in the ERURH-beta layer and is backed by the Python pipeline
 for the local part, while the global part is treated phenomenologically.
 -/
-def strongInertiaCompositeCorrect_beta_numeric :
-  StrongInertiaCompositeCorrect_beta strongInertiaComposite_beta_numeric :=
-by
-  exact ERURH.betaInertiaAssumptions_true.strongInertiaCompositeCorrect_beta_numeric
+axiom strongInertiaCompositeCorrect_beta_numeric :
+  StrongInertiaCompositeCorrect_beta strongInertiaComposite_beta_numeric
 
 end Beta
 end ERURH

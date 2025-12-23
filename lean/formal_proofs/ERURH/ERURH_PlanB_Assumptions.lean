@@ -1,6 +1,5 @@
 import ERURH.ERURH_A2Hypotheses
 import ERURH.ERURH_ExplicitCoefficientsSketch
-import ERURH.ERURH_ModeGrowthAlpha
 import ERURH.ERURH_ClassicalZetaAssumptions
 
 /-

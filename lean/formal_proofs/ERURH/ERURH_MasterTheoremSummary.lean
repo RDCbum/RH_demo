@@ -5,9 +5,6 @@ import ERURH.ERURH_BetaInertiaAssumptions
 import ERURH.ERURH_PlanB_Assumptions
 import ERURH.ERURH_A2Hypotheses
 import ERURH.ERURH_MasterTheoremPlanB
-import ERURH.InertiaCertificatesAlpha
-import ERURH.EnergyCertificatesAlpha
-import ERURH.ERURH_GatesAlpha
 
 /-
 # Master theorem summary: external packages → RH for `xiAlpha`

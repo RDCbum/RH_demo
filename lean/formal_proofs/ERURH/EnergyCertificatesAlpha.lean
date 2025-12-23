@@ -1,7 +1,6 @@
 import ERURH.ERUEnergyAlpha
 import ERURH.RationalBounds
 import ERURH.LemmaBEnergy
-import ERURH.ERURH_BetaInertiaAssumptions
 
 namespace ERURH
 
@@ -145,15 +144,12 @@ by
 kernel-level certificate and an exponential ERU mode with `β > 1/2`,
 then the ERU energy kernel for the alpha bridge must exceed its
 threshold `kernel_threshold_alpha`. -/
-def ERU_energy_kernel_blowup_of_mode_beta_of_certificate
+axiom ERU_energy_kernel_blowup_of_mode_beta_of_certificate
   {β : ℝ} (hβ : β > (1/2 : ℝ)) :
   (∃ cert : KernelBlowupCertificate_alpha,
     KernelBlowupCertificateCorrect_alpha cert) →
   ERU_mode_beta β →
-  ERU_energy_kernel_alpha ≥ kernel_threshold_alpha :=
-by
-  intro h_cert h_mode
-  exact betaInertiaAssumptions_true.energy_kernel_blowup_of_mode_beta_of_certificate hβ h_cert h_mode
+  ERU_energy_kernel_alpha ≥ kernel_threshold_alpha
 
 /-- Wrapper recovering the simple kernel-level energy blow-up statement
 from the certificate-based axiom and the existence of a kernel

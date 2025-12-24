@@ -71,3 +71,4 @@ docs/preprints/*_old.*
 **/*.olean
 **/*.ilean
 **/*.trace
+docs/core/STEP0_GATE_NO_SKIP.txt

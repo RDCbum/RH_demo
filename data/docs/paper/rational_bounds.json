@@ -67,10 +67,10 @@
     }
   },
   "sources": {
-    "L_analytic_proof": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\L_analytic_proof.json",
-    "kappa_book_proof": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\kappa_book_proof.json",
-    "bridge_closed": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\bridge_closed.json",
-    "s0_unified": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\s0_unified.json",
-    "formal_report_strict": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\formal_report_strict.json"
+    "L_analytic_proof": "C:\\dev\\RH_demo_clean\\data\\releases\\erurh-v2-core\\formal\\L_analytic_proof.json",
+    "kappa_book_proof": "C:\\dev\\RH_demo_clean\\data\\releases\\erurh-v2-core\\formal\\kappa_book_proof.json",
+    "bridge_closed": "C:\\dev\\RH_demo_clean\\data\\releases\\erurh-v2-core\\formal\\bridge_closed.json",
+    "s0_unified": "C:\\dev\\RH_demo_clean\\data\\releases\\erurh-v2-core\\formal\\s0_unified.json",
+    "formal_report_strict": "C:\\dev\\RH_demo_clean\\data\\releases\\erurh-v2-core\\formal\\formal_report_strict.json"
   }
 }

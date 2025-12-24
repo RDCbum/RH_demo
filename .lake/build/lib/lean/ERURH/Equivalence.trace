@@ -6,7 +6,7 @@
   "c": "2b4fd256aee96fc1.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\Equivalence.lean -o C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\Equivalence.olean -i C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\Equivalence.ilean -c C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\Equivalence.c --setup C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\Equivalence.setup.json --json",
+   ".> LEAN_PATH=C:\\dev\\RH_demo_clean\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\dev\\RH_demo_clean\\lean\\formal_proofs\\ERURH\\Equivalence.lean -o C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean\\ERURH\\Equivalence.olean -i C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean\\ERURH\\Equivalence.ilean -c C:\\dev\\RH_demo_clean\\.lake\\build\\ir\\ERURH\\Equivalence.c --setup C:\\dev\\RH_demo_clean\\.lake\\build\\ir\\ERURH\\Equivalence.setup.json --json",
    "level": "trace"}],
  "inputs":
  [["ERURH.Equivalence:deps",
@@ -14,10 +14,10 @@
      [["eruUpgrade/ERURH:extraDep",
        [["@eruUpgrade:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["ERURH.BridgeToRH transitive imports (legacy)", "05b05403c5557adf"],
+       [["ERURH.BridgeToRH transitive imports (legacy)", "45f228b3e2f14361"],
         ["ERURH.BridgeToRH:importAllArts", "e34d9be948356f17"],
         ["ERURH.AlphaInterfaces transitive imports (legacy)",
-         "03cbf714a84c3e91"],
+         "2bff563f6afe7cbd"],
         ["ERURH.AlphaInterfaces:importAllArts", "c51062258b146fc8"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
@@ -26,8 +26,8 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
    "4bbac11c6209e48b"],
-  ["C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\Equivalence.lean",
+  ["C:\\dev\\RH_demo_clean\\lean\\formal_proofs\\ERURH\\Equivalence.lean",
    "a949da0bfcbfbd0c"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "62b44a233c66a266"}
+ "depHash": "55f71781c27ae4bc"}

@@ -6,7 +6,7 @@
   "c": "d656a7e3803f227d.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\BoundsConfig.lean -o C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\BoundsConfig.olean -i C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\BoundsConfig.ilean -c C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\BoundsConfig.c --setup C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\BoundsConfig.setup.json --json",
+   ".> LEAN_PATH=C:\\dev\\RH_demo_clean\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\dev\\RH_demo_clean\\lean\\formal_proofs\\ERURH\\BoundsConfig.lean -o C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean\\ERURH\\BoundsConfig.olean -i C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean\\ERURH\\BoundsConfig.ilean -c C:\\dev\\RH_demo_clean\\.lake\\build\\ir\\ERURH\\BoundsConfig.c --setup C:\\dev\\RH_demo_clean\\.lake\\build\\ir\\ERURH\\BoundsConfig.setup.json --json",
    "level": "trace"},
   {"message":
    "lean/formal_proofs/ERURH/BoundsConfig.lean:24:2: try 'simp' instead of 'simpa'\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`",
@@ -17,9 +17,9 @@
      [["eruUpgrade/ERURH:extraDep",
        [["@eruUpgrade:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Mathlib transitive imports (legacy)", "a0ca2a892907ac51"],
+       [["Mathlib transitive imports (legacy)", "219f0ed9b2c3db67"],
         ["Mathlib:importAllArts", "df1cb5b10cdbedab"],
-        ["ERURH.FluxWindows transitive imports (legacy)", "7cfa388372ddc098"],
+        ["ERURH.FluxWindows transitive imports (legacy)", "4e4d7b9a77652b71"],
         ["ERURH.FluxWindows:importAllArts", "d78097f343dc0371"],
         ["ERURH.RationalBounds transitive imports (legacy)",
          "4242a7a44d5313ed"],
@@ -31,8 +31,8 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
    "4bbac11c6209e48b"],
-  ["C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\BoundsConfig.lean",
+  ["C:\\dev\\RH_demo_clean\\lean\\formal_proofs\\ERURH\\BoundsConfig.lean",
    "955e124949e59a92"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "739402872d6b55d5"}
+ "depHash": "62a1ac617fe4e916"}

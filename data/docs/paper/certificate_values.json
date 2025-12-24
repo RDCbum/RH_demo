@@ -42,8 +42,8 @@
     }
   },
   "sources": {
-    "bridge_closed": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\bridge_closed.json",
-    "formal_report_strict": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\formal\\formal_report_strict.json",
-    "constants_global": "C:\\Users\\duran\\RHdemoERU\\data\\releases\\erurh-v2-core\\constants_global.json"
+    "bridge_closed": "C:\\dev\\RH_demo_clean\\data\\releases\\erurh-v2-core\\formal\\bridge_closed.json",
+    "formal_report_strict": "C:\\dev\\RH_demo_clean\\data\\releases\\erurh-v2-core\\formal\\formal_report_strict.json",
+    "constants_global": "C:\\dev\\RH_demo_clean\\data\\releases\\erurh-v2-core\\constants_global.json"
   }
 }

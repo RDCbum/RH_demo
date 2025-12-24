@@ -1,0 +1,2 @@
+'ERURH.RH_from_ERURH_conditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ERURH.RH_from_ERURH_assumptions' depends on axioms: [propext, Classical.choice, Quot.sound]

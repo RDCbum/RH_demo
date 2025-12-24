@@ -6,7 +6,7 @@
   "c": "83a0319b7af642eb.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\XiCore.lean -o C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\XiCore.olean -i C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\XiCore.ilean -c C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\XiCore.c --setup C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\XiCore.setup.json --json",
+   ".> LEAN_PATH=C:\\dev\\RH_demo_clean\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\dev\\RH_demo_clean\\lean\\formal_proofs\\ERURH\\XiCore.lean -o C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean\\ERURH\\XiCore.olean -i C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean\\ERURH\\XiCore.ilean -c C:\\dev\\RH_demo_clean\\.lake\\build\\ir\\ERURH\\XiCore.c --setup C:\\dev\\RH_demo_clean\\.lake\\build\\ir\\ERURH\\XiCore.setup.json --json",
    "level": "trace"}],
  "inputs":
  [["ERURH.XiCore:deps",
@@ -14,15 +14,15 @@
      [["eruUpgrade/ERURH:extraDep",
        [["@eruUpgrade:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Mathlib transitive imports (legacy)", "a0ca2a892907ac51"],
+       [["Mathlib transitive imports (legacy)", "219f0ed9b2c3db67"],
         ["Mathlib:importAllArts", "df1cb5b10cdbedab"],
         ["Mathlib.NumberTheory.LSeries.RiemannZeta transitive imports (legacy)",
-         "b6fa931a7376712c"],
+         "2661e567b1c96550"],
         ["Mathlib.NumberTheory.LSeries.RiemannZeta:importAllArts",
          "eabf20149d4c53c7"],
-        ["ERURH.RH transitive imports (legacy)", "ddac339eddba983b"],
+        ["ERURH.RH transitive imports (legacy)", "cc82ba57b80628b3"],
         ["ERURH.RH:importAllArts", "7293ff7a8c67e15d"],
-        ["ERURH.ZetaLink transitive imports (legacy)", "cb3c0df11d66af4d"],
+        ["ERURH.ZetaLink transitive imports (legacy)", "b3cc71511832cb4a"],
         ["ERURH.ZetaLink:importAllArts", "4bff14cb4cbeb780"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
@@ -31,8 +31,8 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
    "4bbac11c6209e48b"],
-  ["C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\XiCore.lean",
+  ["C:\\dev\\RH_demo_clean\\lean\\formal_proofs\\ERURH\\XiCore.lean",
    "b4e1f447837269cd"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "b3c4fda593caea2f"}
+ "depHash": "88aa69d955e85cd1"}

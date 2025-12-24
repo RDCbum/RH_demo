@@ -6,7 +6,7 @@
   "c": "4f39fe39e3624037.c"},
  "log":
  [{"message":
-   ".> LEAN_PATH=C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\AnalyticWitness.lean -o C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\AnalyticWitness.olean -i C:\\Users\\duran\\RHdemoERU\\.lake\\build\\lib\\lean\\ERURH\\AnalyticWitness.ilean -c C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\AnalyticWitness.c --setup C:\\Users\\duran\\RHdemoERU\\.lake\\build\\ir\\ERURH\\AnalyticWitness.setup.json --json",
+   ".> LEAN_PATH=C:\\dev\\RH_demo_clean\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean c:\\Users\\duran\\.elan\\toolchains\\leanprover--lean4---v4.25.0-rc2\\bin\\lean.exe C:\\dev\\RH_demo_clean\\lean\\formal_proofs\\ERURH\\AnalyticWitness.lean -o C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean\\ERURH\\AnalyticWitness.olean -i C:\\dev\\RH_demo_clean\\.lake\\build\\lib\\lean\\ERURH\\AnalyticWitness.ilean -c C:\\dev\\RH_demo_clean\\.lake\\build\\ir\\ERURH\\AnalyticWitness.c --setup C:\\dev\\RH_demo_clean\\.lake\\build\\ir\\ERURH\\AnalyticWitness.setup.json --json",
    "level": "trace"}],
  "inputs":
  [["ERURH.AnalyticWitness:deps",
@@ -14,14 +14,14 @@
      [["eruUpgrade/ERURH:extraDep",
        [["@eruUpgrade:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["Mathlib transitive imports (legacy)", "a0ca2a892907ac51"],
+       [["Mathlib transitive imports (legacy)", "219f0ed9b2c3db67"],
         ["Mathlib:importAllArts", "df1cb5b10cdbedab"],
-        ["ERURH.ZetaLink transitive imports (legacy)", "cb3c0df11d66af4d"],
+        ["ERURH.ZetaLink transitive imports (legacy)", "b3cc71511832cb4a"],
         ["ERURH.ZetaLink:importAllArts", "4bff14cb4cbeb780"],
-        ["ERURH.BoundsConfig transitive imports (legacy)", "ce03b3678bc2164a"],
+        ["ERURH.BoundsConfig transitive imports (legacy)", "98d88f5e30d78329"],
         ["ERURH.BoundsConfig:importAllArts", "e3d5205478008bde"],
         ["ERURH.ComplexAbsCompat transitive imports (legacy)",
-         "ddac339eddba983b"],
+         "cc82ba57b80628b3"],
         ["ERURH.ComplexAbsCompat:importAllArts", "8be99167dfd39bf0"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
@@ -30,8 +30,8 @@
       ["module plugins", "00000000000006bb"]]]]],
   ["Lean 4.25.0, commit 744f98064b056ee27fc8c97f524797c8cc96f436",
    "4bbac11c6209e48b"],
-  ["C:\\Users\\duran\\RHdemoERU\\lean\\formal_proofs\\ERURH\\AnalyticWitness.lean",
+  ["C:\\dev\\RH_demo_clean\\lean\\formal_proofs\\ERURH\\AnalyticWitness.lean",
    "dfa9019dbd2c8eef"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "cb94d244da26a2dd"}
+ "depHash": "f5f15181701bfb09"}

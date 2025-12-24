@@ -59,3 +59,9 @@ formal_proofs/
 Thumbs.db
 
 docs/preprints/*_old.*
+
+# Additional Lean build artefacts
+**/*.olean
+**/*.ilean
+**/*.c
+**/*.trace

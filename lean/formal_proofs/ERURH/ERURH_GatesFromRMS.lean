@@ -5,7 +5,7 @@ import ERURH.ERURH_GatesAlpha
 # Gates from RMS (Plan B, Ideas 1 & 2)
 
 This module connects the RMS-local information to the alpha gates. It assumes
-the RMS-local lemma (currently stated with a `sorry` in
+the RMS-local lemma (currently stated with a `gap` in
 `ERURH_RMSLocalLemma.lean`) and records the structural consequence: if a
 β > 1/2 mode forces some window RMS above the formal envelope, then a gate
 must open. No new axioms are introduced here; any pending analytic content

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -12,6 +13,31 @@ from typing import Sequence
 REPO_ROOT = Path(__file__).resolve().parents[1]
 LEAN_OUT_DIR = REPO_ROOT / "lean" / "formal_proofs" / "ERURH"
 DATA_OUT_DIR = REPO_ROOT / "data" / "docs" / "paper"
+
+SORRY_CHECK_OUT = REPO_ROOT / "docs" / "core" / "STEP6_gate_sorry_check.txt"
+
+
+def scan_no_sorry(root: Path, output_path: Path) -> None:
+    pattern = re.compile(r"\b(sorry|admit)\b")
+    hits = []
+    scan_root = root / "lean" / "formal_proofs" / "ERURH"
+    for file_path in scan_root.rglob("*.lean"):
+        try:
+            lines = file_path.read_text(encoding="utf-8", errors="ignore").splitlines()
+        except OSError:
+            continue
+        for idx, line in enumerate(lines, start=1):
+            if pattern.search(line):
+                rel = file_path.relative_to(root)
+                hits.append(f"{rel}:{idx}: {line.strip()}")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    if hits:
+        output_path.write_text("SORRY/ADMIT FOUND\n" + "\n".join(hits) + "\n", encoding="utf-8")
+        print(f"Found sorry/admit in {len(hits)} lines; see {output_path}", file=sys.stderr)
+        for entry in hits:
+            print(entry, file=sys.stderr)
+        sys.exit(1)
+    output_path.write_text("OK: no sorry/admit found under lean/formal_proofs/ERURH\n", encoding="utf-8")
 
 
 def run(cmd: Sequence[str], *, cwd: Path) -> None:
@@ -79,6 +105,8 @@ def main() -> None:
             run([sys.executable, "-m", "pytest", "tests"], cwd=REPO_ROOT)
     except subprocess.CalledProcessError as exc:
         sys.exit(exc.returncode)
+
+    scan_no_sorry(REPO_ROOT, SORRY_CHECK_OUT)
 
     if not args.skip_diff_check:
         for path in tracked_outputs:

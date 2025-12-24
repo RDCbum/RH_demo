@@ -1,0 +1,146 @@
+structure ERURH.ERURH_GlobalAssumptions : Type 1
+number of parameters: 0
+fields:
+  ERURH.ERURH_GlobalAssumptions.eru : ERURH.ERURH_Assumptions
+  ERURH.ERURH_GlobalAssumptions.window : ERURH.WindowScalingAssumptions
+constructor:
+  ERURH.ERURH_GlobalAssumptions.mk (eru : ERURH.ERURH_Assumptions) (window : ERURH.WindowScalingAssumptions) :
+    ERURH.ERURH_GlobalAssumptions
+structure ERURH.ERURH_Assumptions : Type
+number of parameters: 0
+fields:
+  ERURH.ERURH_Assumptions.classical : ERURH.ClassicalZetaAssumptions
+  ERURH.ERURH_Assumptions.spectral : ERURH.Alpha.SpectralAssumptionsAlpha
+  ERURH.ERURH_Assumptions.ls_gamma : ERURH.Alpha.LSGammaAssumptions
+  ERURH.ERURH_Assumptions.explicit_formula_ERU : ERURH.Alpha.ExplicitFormulaERU
+  ERURH.ERURH_Assumptions.beta_inert : ERURH.BetaInertiaAssumptions
+constructor:
+  ERURH.ERURH_Assumptions.mk (classical : ERURH.ClassicalZetaAssumptions)
+    (spectral : ERURH.Alpha.SpectralAssumptionsAlpha) (ls_gamma : ERURH.Alpha.LSGammaAssumptions)
+    (explicit_formula_ERU : ERURH.Alpha.ExplicitFormulaERU) (beta_inert : ERURH.BetaInertiaAssumptions) :
+    ERURH.ERURH_Assumptions
+structure ERURH.WindowScalingAssumptions : Type 1
+number of parameters: 0
+fields:
+  ERURH.WindowScalingAssumptions.ctx : ERURH.RMSLocalContext
+  ERURH.WindowScalingAssumptions.hA1 : ERURH.A1_mode self.ctx
+  ERURH.WindowScalingAssumptions.hLow : ERURH.A2Low_RMS self.ctx
+  ERURH.WindowScalingAssumptions.hTail : ERURH.A2Tail_RMS self.ctx
+constructor:
+  ERURH.WindowScalingAssumptions.mk (ctx : ERURH.RMSLocalContext) (hA1 : ERURH.A1_mode ctx) (hLow : ERURH.A2Low_RMS ctx)
+    (hTail : ERURH.A2Tail_RMS ctx) : ERURH.WindowScalingAssumptions
+ERURH.ClassicalZetaAssumptions : Type
+structure ERURH.ClassicalZetaAssumptions : Type
+number of parameters: 0
+fields:
+  ERURH.ClassicalZetaAssumptions.explicit_alpha : ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha
+      ERURH.AlphaPsi
+  ERURH.ClassicalZetaAssumptions.rh_from_E_alpha : ERURH.RHfromE ERURH.xiAlpha ERURH.AlphaPsi
+  ERURH.ClassicalZetaAssumptions.alphaInterfacesBase : ERURH.AlphaInterfaces
+  ERURH.ClassicalZetaAssumptions.explicit_rect_alpha : ERURH.explicit_rect_alpha
+  ERURH.ClassicalZetaAssumptions.explicit_core_alpha : Prop
+  ERURH.ClassicalZetaAssumptions.xi_bounds_alpha : Prop
+  ERURH.ClassicalZetaAssumptions.xi_argument_alpha : Prop
+  ERURH.ClassicalZetaAssumptions.flux_to_bridge_bounds_alpha : Prop
+  ERURH.ClassicalZetaAssumptions.zero_band_count_bound : ERURH.ZeroBandCountBound
+constructor:
+  ERURH.ClassicalZetaAssumptions.mk
+    (explicit_alpha : ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi)
+    (rh_from_E_alpha : ERURH.RHfromE ERURH.xiAlpha ERURH.AlphaPsi) (alphaInterfacesBase : ERURH.AlphaInterfaces)
+    (explicit_rect_alpha : ERURH.explicit_rect_alpha)
+    (explicit_core_alpha xi_bounds_alpha xi_argument_alpha flux_to_bridge_bounds_alpha : Prop)
+    (zero_band_count_bound : ERURH.ZeroBandCountBound) : ERURH.ClassicalZetaAssumptions
+ERURH.Alpha.SpectralAssumptionsAlpha : Type
+structure ERURH.Alpha.SpectralAssumptionsAlpha : Type
+number of parameters: 0
+fields:
+  ERURH.Alpha.SpectralAssumptionsAlpha.data : ERURH.Alpha.HbExplicitData
+  ERURH.Alpha.SpectralAssumptionsAlpha.prefactor_bound : ERURH.Alpha.gamma_prefactor_growth_bound
+  ERURH.Alpha.SpectralAssumptionsAlpha.explicit_growth : ERURH.Alpha.explicit_b_rho_growth_bound self.data
+  ERURH.Alpha.SpectralAssumptionsAlpha.hb_pointwise : ERURH.Alpha.H_b_pointwise
+  ERURH.Alpha.SpectralAssumptionsAlpha.hb_tail : ERURH.Alpha.H_b_L2_tail self.data
+  ERURH.Alpha.SpectralAssumptionsAlpha.hb_pointwise_weak : ERURH.Alpha.H_b_pointwise_weak :=
+    ⋯
+constructor:
+  ERURH.Alpha.SpectralAssumptionsAlpha.mk (data : ERURH.Alpha.HbExplicitData)
+    (prefactor_bound : ERURH.Alpha.gamma_prefactor_growth_bound)
+    (explicit_growth : ERURH.Alpha.explicit_b_rho_growth_bound data) (hb_pointwise : ERURH.Alpha.H_b_pointwise)
+    (hb_tail : ERURH.Alpha.H_b_L2_tail data) (hb_pointwise_weak : ERURH.Alpha.H_b_pointwise_weak) :
+    ERURH.Alpha.SpectralAssumptionsAlpha
+ERURH.Alpha.LSGammaAssumptions : Type
+structure ERURH.Alpha.LSGammaAssumptions : Type
+number of parameters: 0
+fields:
+  ERURH.Alpha.LSGammaAssumptions.LS_gamma_fine : Prop
+  ERURH.Alpha.LSGammaAssumptions.ls_gamma_weak : ERURH.Alpha.LSGammaWeak
+constructor:
+  ERURH.Alpha.LSGammaAssumptions.mk (LS_gamma_fine : Prop) (ls_gamma_weak : ERURH.Alpha.LSGammaWeak) :
+    ERURH.Alpha.LSGammaAssumptions
+ERURH.BetaInertiaAssumptions : Prop
+structure ERURH.BetaInertiaAssumptions : Prop
+number of parameters: 0
+fields:
+  ERURH.BetaInertiaAssumptions.strongInertiaCertificateCorrect_beta_numeric : ERURH.Beta.StrongInertiaCertificateCorrect_beta
+      ERURH.Beta.strongInertiaCertificate_beta_numeric
+  ERURH.BetaInertiaAssumptions.strongInertiaCompositeCorrect_beta_numeric : ERURH.Beta.StrongInertiaCompositeCorrect_beta
+      ERURH.Beta.strongInertiaComposite_beta_numeric
+  ERURH.BetaInertiaAssumptions.energy_kernel_blowup_of_mode_beta_of_certificate : ∀ {β : ℝ},
+      β > 1 / 2 →
+        (∃ cert, ERURH.KernelBlowupCertificateCorrect_alpha cert) →
+          ERURH.ERU_mode_beta β → ERURH.ERU_energy_kernel_alpha ≥ ERURH.kernel_threshold_alpha
+constructor:
+  ERURH.BetaInertiaAssumptions.mk
+    (strongInertiaCertificateCorrect_beta_numeric :
+      ERURH.Beta.StrongInertiaCertificateCorrect_beta ERURH.Beta.strongInertiaCertificate_beta_numeric)
+    (strongInertiaCompositeCorrect_beta_numeric :
+      ERURH.Beta.StrongInertiaCompositeCorrect_beta ERURH.Beta.strongInertiaComposite_beta_numeric)
+    (energy_kernel_blowup_of_mode_beta_of_certificate :
+      ∀ {β : ℝ},
+        β > 1 / 2 →
+          (∃ cert, ERURH.KernelBlowupCertificateCorrect_alpha cert) →
+            ERURH.ERU_mode_beta β → ERURH.ERU_energy_kernel_alpha ≥ ERURH.kernel_threshold_alpha) :
+    ERURH.BetaInertiaAssumptions
+ERURH.AxiomsShimAccepted : Type
+structure ERURH.AxiomsShimAccepted : Type
+number of parameters: 0
+fields:
+  ERURH.AxiomsShimAccepted.explicit_alpha : ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi
+  ERURH.AxiomsShimAccepted.rh_from_E_alpha : ERURH.RHfromE ERURH.xiAlpha ERURH.AlphaPsi
+  ERURH.AxiomsShimAccepted.alphaInterfacesBase : ERURH.AlphaInterfaces
+constructor:
+  ERURH.AxiomsShimAccepted.mk
+    (explicit_alpha : ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi)
+    (rh_from_E_alpha : ERURH.RHfromE ERURH.xiAlpha ERURH.AlphaPsi) (alphaInterfacesBase : ERURH.AlphaInterfaces) :
+    ERURH.AxiomsShimAccepted
+ERURH.CertificatesCorrectAlpha : Prop
+structure ERURH.CertificatesCorrectAlpha : Prop
+number of parameters: 0
+fields:
+  ERURH.CertificatesCorrectAlpha.h_global : ERURH.GlobalEnergyCertificateCorrect_alpha
+      ERURH.globalEnergyCertificate_true_alpha
+  ERURH.CertificatesCorrectAlpha.h_kernel : ERURH.KernelBlowupCertificateCorrect_alpha
+      ERURH.kernelBlowupCertificate_true_alpha
+constructor:
+  ERURH.CertificatesCorrectAlpha.mk
+    (h_global : ERURH.GlobalEnergyCertificateCorrect_alpha ERURH.globalEnergyCertificate_true_alpha)
+    (h_kernel : ERURH.KernelBlowupCertificateCorrect_alpha ERURH.kernelBlowupCertificate_true_alpha) :
+    ERURH.CertificatesCorrectAlpha
+ERURH.NumericCoverageAlpha (ctx : ERURH.RMSLocalContext) : Prop
+def ERURH.NumericCoverageAlpha : ERURH.RMSLocalContext → Prop :=
+fun ctx => ERURH.Alpha.RMS_envelope_closed ctx
+ERURH.RH_from_ERURH_conditional (G : ERURH.ERURH_GlobalAssumptions) (hAxioms : ERURH.AxiomsShimAccepted)
+  (hCerts : ERURH.CertificatesCorrectAlpha) (hNumeric : ERURH.NumericCoverageAlpha G.window.ctx) :
+  ERURH.RiemannHypothesis ERURH.xiAlpha
+theorem ERURH.RH_from_ERURH_conditional : ∀ (G : ERURH.ERURH_GlobalAssumptions) (hAxioms : ERURH.AxiomsShimAccepted),
+  ERURH.CertificatesCorrectAlpha → ERURH.NumericCoverageAlpha G.window.ctx → ERURH.RiemannHypothesis ERURH.xiAlpha :=
+fun G hAxioms hCerts hNumeric =>
+  ERURH.ERURH_GlobalAssumptions.casesOn (motive := fun x =>
+    ERURH.NumericCoverageAlpha x.window.ctx → ERURH.RiemannHypothesis ERURH.xiAlpha) G
+    (fun eru window hNumeric =>
+      ERURH.WindowScalingAssumptions.casesOn (motive := fun x =>
+        ERURH.NumericCoverageAlpha { eru := eru, window := x }.window.ctx → ERURH.RiemannHypothesis ERURH.xiAlpha)
+        window
+        (fun ctx hA1 hLow hTail hNumeric =>
+          ERURH.RH_from_ERURH_assumptions eru ctx hA1 hLow hTail hAxioms hCerts hNumeric)
+        hNumeric)
+    hNumeric

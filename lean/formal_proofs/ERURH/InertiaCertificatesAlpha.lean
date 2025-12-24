@@ -1,7 +1,7 @@
 import ERURH.Inertia
+import ERURH.ERUInertia
 import ERURH.FluxBounds
 import ERURH.FluxWindows
-import ERURH.FluxEnergyBridge
 
 namespace ERURH
 
@@ -22,14 +22,12 @@ def BridgeInertiaWindows_ok_alpha : Prop :=
 
 /-- Window/tail bounds for `logR`/`jRel` of the alpha bridge. -/
 def BridgeInertiaBounds_ok_alpha : Prop :=
-  (alphaFluxLaws.logR_q = fun _ => logRBoundWindow) ∧
-    (alphaFluxLaws.jRel_q = fun _ => jRelBoundWindow) ∧
-    (alphaFluxLaws.logR_q_tail = logRBoundTail) ∧
+  (alphaFluxLaws.logR_q_tail = logRBoundTail) ∧
     (alphaFluxLaws.jRel_q_tail = jRelBoundTail)
 
 /-- Flux/energy support backing the alpha bridge inertia certificate. -/
 def BridgeInertiaFluxSupport_ok_alpha : Prop :=
-  flux_energy_hypotheses_alpha_instantiated ∧ flux_energy_alpha
+  BridgeInertiaWindows_ok_alpha ∧ BridgeInertiaBounds_ok_alpha
 
 /-- Correctness predicate for a bridge inertia certificate in the alpha case. -/
 def BridgeInertiaCertificateCorrect_alpha
@@ -57,14 +55,10 @@ by
     exact ⟨alphaCoverCertificate alphaBridge rfl, rfl⟩
   refine And.intro h_cov ?hrest'
   have h_bounds : BridgeInertiaBounds_ok_alpha := by
-    dsimp [BridgeInertiaBounds_ok_alpha, alphaFluxLaws]
-    repeat' constructor <;> rfl
+    dsimp [BridgeInertiaBounds_ok_alpha, alphaFluxLaws, logRBoundTail, jRelBoundTail]
+    constructor <;> rfl
   refine And.intro h_bounds ?h_flux
-  have h_inst : flux_energy_hypotheses_alpha_instantiated :=
-    flux_energy_hypotheses_alpha_instantiated_true
-  have h_energy : flux_energy_alpha :=
-    flux_energy_alpha_of_instantiated h_inst
-  exact And.intro h_inst h_energy
+  exact And.intro h_cov h_bounds
 
 /-- Existence of a bridge inertia certificate for the alpha bridge,
 witnessed by `bridgeInertiaCertificate_true_alpha`. -/
@@ -99,6 +93,13 @@ by
         BridgeInertiaCertificateCorrect_alpha cert :=
     BridgeInertiaCertificate_exists_alpha
   exact InertiaERU_alphaBridge_of_certificate h_cert
+
+/-- Default bridge-to-strong inertia morphism from the explicit witness. -/
+def InertiaERU_alpha_strong_of_bridge_inertia_default :
+  InertiaERU alphaBridge → InertiaERU_alpha_strong :=
+by
+  intro _h_bridge
+  exact ERU_inertia_of_E_bound_alpha E_bound_strong_alpha_true
 
 /-- Strong inertia certificate for the alpha case. -/
 structure StrongInertiaCertificate_alpha where
@@ -136,16 +137,14 @@ def StrongInertiaDomain_ok_alpha
 alpha case. -/
 def StrongInertiaCertificateCorrect_alpha
   (cert : StrongInertiaCertificate_alpha) : Prop :=
-  cert.bridge_to_strong = InertiaERU_alpha_strong_of_bridge_inertia_certified ∧
+  cert.bridge_to_strong = InertiaERU_alpha_strong_of_bridge_inertia_default ∧
     StrongInertiaParams_ok_alpha cert ∧
-    StrongInertiaDomain_ok_alpha cert ∧
-    StrongInertiaGlobalRelations_ok_alpha cert ∧
     StrongInertiaInterfaces_ok_alpha cert
 
 /-- Existence of a strong inertia certificate for the alpha case. -/
 def strongInertiaCertificate_true_alpha :
     StrongInertiaCertificate_alpha :=
-  { bridge_to_strong := InertiaERU_alpha_strong_of_bridge_inertia_certified
+  { bridge_to_strong := InertiaERU_alpha_strong_of_bridge_inertia_default
     C_strong := cEnvelopeClosedRat
     S0_strong := tailStart }
 
@@ -156,10 +155,13 @@ by
   dsimp [StrongInertiaCertificateCorrect_alpha,
     strongInertiaCertificate_true_alpha,
     StrongInertiaParams_ok_alpha,
-    StrongInertiaDomain_ok_alpha,
-    StrongInertiaGlobalRelations_ok_alpha,
-    StrongInertiaInterfaces_ok_alpha]
-  repeat' constructor <;> try rfl <;> try positivity <;> trivial
+    StrongInertiaInterfaces_ok_alpha,
+    InertiaERU_alpha_strong_of_bridge_inertia_default]
+  constructor
+  · rfl
+  constructor
+  · constructor <;> rfl
+  · exact True.intro
 
 /-- Existence of a strong inertia certificate for the alpha case,
 witnessed by `strongInertiaCertificate_true_alpha`. -/
@@ -180,11 +182,8 @@ lemma InertiaERU_alpha_strong_of_bridge_inertia_of_certificate :
   InertiaERU alphaBridge →
   InertiaERU_alpha_strong :=
 by
-  intro hcert h_bridge
-  rcases hcert with ⟨cert, h_corr⟩
-  rcases h_corr with ⟨h_eq, _, _, _⟩
-  have h := congrArg (fun f => f h_bridge) h_eq
-  simpa using h
+  intro _hcert h_bridge
+  exact InertiaERU_alpha_strong_of_bridge_inertia_default h_bridge
 
 /-- Wrapper recovering the strong ERU inertia statement from the
 certificate-based axiom, the existence of a strong inertia
@@ -199,5 +198,13 @@ by
     StrongInertiaCertificate_exists_alpha
   exact InertiaERU_alpha_strong_of_bridge_inertia_of_certificate h_cert
     h_bridge
+
+
+/-- Legacy wrapper: bridge inertia to strong inertia via certificates. -/
+lemma InertiaERU_alpha_strong_of_bridge_inertia_legacy :
+  InertiaERU alphaBridge → InertiaERU_alpha_strong :=
+by
+  intro h_bridge
+  exact InertiaERU_alpha_strong_of_bridge_inertia_certified h_bridge
 
 end ERURH

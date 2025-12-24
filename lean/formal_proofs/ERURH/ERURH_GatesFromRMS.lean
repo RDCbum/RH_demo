@@ -53,14 +53,13 @@ Future plan:
    Plan B route.
 -/
 theorem no_dominant_mode_if_gates_closed_and_RMS_local
-  (m : DominantMode)
-  (Hdom : ∃ w : RMSWindow, ModeDominatesRMS m w)
-  (HRMS : ∃ w : RMSWindow, RMS_alpha w > C_envelope_formal)
-  (hRen : ERURH.Alpha.RenormGateClosed) :
+  (ctx : RMSLocalContext)
+  (HRMS : ∃ w : ctx.Window, ctx.RMS_alpha w > C_envelope_formal)
+  (hRen : ERURH.Alpha.RenormGateClosed ctx) :
   False :=
 by
-  have hgate : ¬ ERURH.Alpha.RenormGateClosed :=
-    gate_opens_from_RMS_alpha HRMS
+  have hgate : ¬ ERURH.Alpha.RenormGateClosed ctx :=
+    gate_opens_from_RMS_alpha ctx HRMS
   exact hgate hRen
 
 end ERURH

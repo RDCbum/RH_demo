@@ -20,8 +20,8 @@ namespace ERURH
 /-- Combined external assumptions required for the ERURH → RH chain. -/
 structure ERURH_Assumptions where
   classical  : ClassicalZetaAssumptions
-  spectral   : SpectralAssumptionsAlpha
-  ls_gamma   : LSGammaAssumptions
+  spectral   : Alpha.SpectralAssumptionsAlpha
+  ls_gamma   : Alpha.LSGammaAssumptions
   explicit_formula_ERU : Alpha.ExplicitFormulaERU
   beta_inert : BetaInertiaAssumptions
 
@@ -44,13 +44,13 @@ would be supplied by the analytic pipeline in practice). -/
 def makePlanBAnalyticBundle
   (ctx : RMSLocalContext)
   (classical : ClassicalZetaAssumptions)
-  (spectral  : SpectralAssumptionsAlpha)
-  (ls_gamma  : LSGammaAssumptions)
+  (spectral  : Alpha.SpectralAssumptionsAlpha)
+  (ls_gamma  : Alpha.LSGammaAssumptions)
   (explicit_formula_ERU : Alpha.ExplicitFormulaERU)
   (hA1 : A1_mode ctx)
   (hLow : A2Low_RMS ctx)
   (hTail : A2Tail_RMS ctx) :
-  PlanB_AnalyticAssumptions ctx :=
+  Alpha.PlanB_AnalyticAssumptions ctx :=
 by
   -- We package the external assumptions; the constructor expects spectral/ls_gamma/classical.
   refine
@@ -65,7 +65,7 @@ by
 /-- Global master theorem: from the external ERURH assumption bundles and the
 existing certificate/gate infrastructure, we derive RH for `xiAlpha`. This is
 conditional on supplying suitable A1/A2/RMS data and the external packages. -/
-@[simp] /-- Versión técnica con contexto RMS explícito. -/
+@[simp]
 theorem RH_from_ERURH_assumptions
   (assm : ERURH_Assumptions)
   (ctx : RMSLocalContext)
@@ -78,7 +78,7 @@ theorem RH_from_ERURH_assumptions
   RiemannHypothesis xiAlpha :=
 by
   -- Build the analytic bundle from external assumptions and A1/A2 controls.
-  have hAnalytic : PlanB_AnalyticAssumptions ctx :=
+  have hAnalytic : Alpha.PlanB_AnalyticAssumptions ctx :=
     makePlanBAnalyticBundle ctx assm.classical assm.spectral assm.ls_gamma assm.explicit_formula_ERU hA1 hLow hTail
   -- Apply the Plan B master theorem.
   exact RH_from_planB_bundle ctx hAnalytic hAxioms hCerts hNumeric

@@ -1,6 +1,7 @@
 import ERURH.ERUInertia
 import ERURH.ERUModesAlpha
 import ERURH.ERUEnergyAlpha
+import ERURH.EnergyBoundsAlpha
 
 namespace ERURH
 
@@ -49,9 +50,10 @@ namespace ERURH
 
   The proof is delegated to `RH_from_ERU_energy` in `ERUModesAlpha`.
 -/
-theorem RH_from_ERU_energy_executive :
+theorem RH_from_ERU_energy_executive
+  (h_energy : EnergyBoundHypotheses_alpha) :
   RiemannHypothesis xiAlpha :=
 by
-  simpa using RH_from_ERU_energy
+  simpa using RH_from_ERU_energy h_energy
 
 end ERURH

@@ -1,4 +1,5 @@
 import ERURH.ERUEnergyAlpha
+import ERURH.ERUModesCore
 import ERURH.RationalBounds
 import ERURH.LemmaBEnergy
 
@@ -33,7 +34,9 @@ system of rational inequalities enforcing the desired global energy
 dominance. -/
 def GlobalEnergyCertificateCorrect_alpha
   (cert : GlobalEnergyCertificate_alpha) : Prop :=
-  cert.h_kappa ∧ cert.h_L ∧ kappaLowFormalRat ≤ cert.kappa_book
+  cert.kappa_book = kappaBookClosedRat ∧
+    cert.L_global = lGlobalFormalRat ∧
+    kappaLowFormalRat ≤ cert.kappa_book
 
 /-- Concrete global energy certificate for the alpha bridge, instantiated
 with the auto-generated rational bounds. -/
@@ -75,7 +78,7 @@ rational constraints that link off-line exponential modes to kernel blow-up
 at this κ-book level. -/
 def KernelBlowupCertificateCorrect_alpha
   (cert : KernelBlowupCertificate_alpha) : Prop :=
-  cert.h_kappa
+  cert.kappa_book = kappaBookClosedRat
 
 /-- Existence of a global energy certificate for the alpha bridge, witnessed
 by the concrete `globalEnergyCertificate_true_alpha`. -/
@@ -101,7 +104,6 @@ def kernelBlowupCertificate_true_alpha : KernelBlowupCertificate_alpha :=
 lemma kernelBlowupCertificate_true_correct_alpha :
   KernelBlowupCertificateCorrect_alpha kernelBlowupCertificate_true_alpha :=
 by
-  dsimp [KernelBlowupCertificateCorrect_alpha, kernelBlowupCertificate_true_alpha]
   rfl
 
 /-- Existence of a kernel-level energy blow-up certificate for the
@@ -113,6 +115,16 @@ by
   exact ⟨kernelBlowupCertificate_true_alpha,
     kernelBlowupCertificate_true_correct_alpha⟩
 
+/-- Wrapper recovering the simple global energy dominance statement
+from the certificate-based axiom and the existence of a certificate. -/
+lemma ERU_energy_global_dominates_kernel :
+  ERU_energy_kernel_alpha ≥ kernel_threshold_alpha →
+  ERU_energy_global_alpha > L_global_alpha :=
+by
+  intro _h_kernel
+  -- Use the legacy axiom; the threshold is definitionally the kernel value.
+  exact ERU_energy_global_dominates_kernel_legacy rfl
+
 /-- Certificate-based global energy dominance: if there exists a
 correct global energy certificate and the kernel-level energy exceeds
 its threshold, then the global ERU energy of the alpha bridge must
@@ -123,22 +135,8 @@ lemma ERU_energy_global_dominates_kernel_of_certificate :
   ERU_energy_kernel_alpha ≥ kernel_threshold_alpha →
   ERU_energy_global_alpha > L_global_alpha :=
 by
-  intro _ h_kernel
-  -- Delegate to the wrapper that uses the concrete certificate.
+  intro _h_cert h_kernel
   exact ERU_energy_global_dominates_kernel h_kernel
-
-/-- Wrapper recovering the simple global energy dominance statement
-from the certificate-based axiom and the existence of a certificate. -/
-lemma ERU_energy_global_dominates_kernel :
-  ERU_energy_kernel_alpha ≥ kernel_threshold_alpha →
-  ERU_energy_global_alpha > L_global_alpha :=
-by
-  intro h_kernel
-  have h_cert :
-      ∃ cert : GlobalEnergyCertificate_alpha,
-        GlobalEnergyCertificateCorrect_alpha cert :=
-    GlobalEnergyCertificate_exists_alpha
-  exact ERU_energy_global_dominates_kernel_of_certificate h_cert h_kernel
 
 /-- Certificate-based kernel energy blow-up: if there exists a correct
 kernel-level certificate and an exponential ERU mode with `β > 1/2`,

@@ -19,6 +19,14 @@ conteo de ceros en bandas) se espera obtener también la cola L² débil
 
 namespace ERURH
 
+/-- Placeholder type for zeta zeros used in classical assumptions. -/
+structure ZeroOfZeta where
+  gamma : ℝ
+
+/-- Imaginary part accessor for a zeta zero. -/
+def gamma (ρ : ZeroOfZeta) : ℝ := ρ.gamma
+
+
 /-- Bound clásico de conteo de ceros en bandas dyádicas (ZB):
 existen `C, A, T0` tales que para todo `T ≥ T0` y todo conjunto finito de ceros
 en la banda `(T, 2T]`, su cardinal está acotado por `C * T * (Real.log T) ^ A`. -/

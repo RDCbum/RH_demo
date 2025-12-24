@@ -64,17 +64,16 @@ by
 lemma energy_gate_closed_of_certificates
   {certE : GlobalEnergyCertificate_alpha}
   (hE : GlobalEnergyCertificateCorrect_alpha certE)
+  (h_energy : EnergyBoundHypotheses_alpha)
   : ERURH.Alpha.EnergyGateClosed :=
 by
-  -- Use the structured flux-based bound and rewrite the envelope via the certificate.
+  -- Use the explicit energy-bound hypothesis and rewrite via the certificate.
   rcases hE with ⟨_, hLE, _⟩
-  have h_energy : ERU_energy_global_alpha ≤ algebraMap ℚ ℝ certE.L_global := by
-    -- `ERU_energy_alpha_bounded_from_hypotheses` is the current bridge from flux
-    -- certificates to the global energy bound; it still encapsulates analytic input.
-    have h := ERU_energy_alpha_bounded_from_hypotheses
-    simpa [L_global_alpha, hLE] using h
+  have h_energy_bound : ERU_energy_global_alpha ≤ algebraMap ℚ ℝ certE.L_global := by
+    have h := ERU_energy_alpha_bounded_from_hypotheses h_energy
+    simpa [L_global_alpha, hLE] using (le_of_eq h)
   -- The gate condition uses `L_global_alpha`, aligned with the certificate via `hLE`.
-  simpa [EnergyGateClosed, L_global_alpha, hLE] using h_energy
+  simpa [EnergyGateClosed, L_global_alpha, hLE] using h_energy_bound
 
 end Alpha
 end ERURH

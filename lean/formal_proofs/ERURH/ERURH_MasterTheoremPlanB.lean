@@ -21,17 +21,23 @@ gap inside `gate_opens_from_RMS_alpha` imported from `ERURH_GatesFromRMS`.
 
 namespace ERURH
 
-/-- Abstract acceptance of the centralized alpha axioms. Once `AxiomsShim` is
-imported, this is merely a marker hypothesis to keep the dependency explicit. -/
-def AxiomsShimAccepted : Prop := True
+/-- Acceptance of the centralized alpha axioms, bundled as explicit data. -/
+structure AxiomsShimAccepted where
+  explicit_alpha : ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi
+  rh_from_E_alpha : RHfromE xiAlpha AlphaPsi
+  alphaInterfacesBase : AlphaInterfaces
+
+noncomputable def axiomsShimAccepted_true : AxiomsShimAccepted := by
+  exact ⟨explicit_alpha, rh_from_E_alpha, alphaInterfacesBase⟩
 
 /-- Bundle of alpha certificates assumed correct for Plan B. This includes the
 global energy and kernel blow-up certificates used to close the gates. -/
-structure CertificatesCorrectAlpha where
-  global : GlobalEnergyCertificate_alpha
-  h_global : GlobalEnergyCertificateCorrect_alpha global
-  kernel : KernelBlowupCertificate_alpha
-  h_kernel : KernelBlowupCertificateCorrect_alpha kernel
+structure CertificatesCorrectAlpha : Prop where
+  h_global : GlobalEnergyCertificateCorrect_alpha globalEnergyCertificate_true_alpha
+  h_kernel : KernelBlowupCertificateCorrect_alpha kernelBlowupCertificate_true_alpha
+
+theorem certificatesCorrectAlpha_true : CertificatesCorrectAlpha := by
+  exact ⟨globalEnergyCertificate_true_correct_alpha, kernelBlowupCertificate_true_correct_alpha⟩
 
 /-- Placeholder for any additional numeric coverage assumptions (windows, tails,
 RMS normalization) needed to instantiate the RMS-local and gate arguments. Here
@@ -53,14 +59,14 @@ theorem RH_from_planB_RMS
 by
   -- Gates are closed using the certificate bundle.
   have h_renorm : Alpha.RenormGateClosed ctx :=
-    renorm_gate_closed_of_certificates ctx hNumeric hCerts.h_global hCerts.h_kernel
+    Alpha.renorm_gate_closed_of_certificates ctx hNumeric hCerts.h_global hCerts.h_kernel
   -- Absence of ERU modes with β > 1/2 follows by contradiction using RMS-local
   -- and gate opening.
   have h_no_modes : ∀ β : ℝ, β > (1/2 : ℝ) → ¬ ERU_mode_beta β := by
     intro β hβ hmode
     -- RMS-local hypothesis gives a window breaking the envelope.
     obtain ⟨w, h_rms⟩ := hRMS
-    have h_gate : ¬ Alpha.RenormGateClosed :=
+    have h_gate : ¬ Alpha.RenormGateClosed ctx :=
       gate_opens_from_RMS_alpha ctx ⟨w, h_rms⟩
     exact h_gate h_renorm
   -- Translate absence of modes into strong inertia, then RH.

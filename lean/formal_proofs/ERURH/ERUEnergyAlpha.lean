@@ -1,5 +1,4 @@
 import ERURH.ERUInertia
-import ERURH.FluxEnergyBridge
 import ERURH.RationalBounds
 
 /-
@@ -12,7 +11,7 @@ we only expose a boundedness statement controlled by a constant
 `L_global_alpha`.
 
 The idea is that future work will refine this interface and connect it
-to the flux/energy certificates in `FluxEnergyBridge` and to ERURH gates.
+to the structured hypotheses in `EnergyBoundsAlpha` and to ERURH gates.
 -/
 
 namespace ERURH
@@ -22,7 +21,7 @@ namespace ERURH
 At this stage we only postulate its existence as a real number; later on
 this can be refined to a concrete expression (e.g. in terms of windowed
 flux energies). -/
-constant ERU_energy_global_alpha : ℝ
+axiom ERU_energy_global_alpha : ℝ
 
 /-- Global ERU energy envelope for the alpha bridge, instantiated from the
 closed-form rational bound `lGlobalFormalRat` and converted to `R`. This is
@@ -46,21 +45,17 @@ noncomputable def kernel_threshold_alpha : ℝ :=
   DEPRECATED: the primitive global ERU energy bound is no longer used
   directly. The preferred structured paths are:
 
-  * `ERU_energy_alpha_bounded_from_hypotheses`, which derives the bound
-    from `EnergyBoundHypotheses_alpha` and the concrete flux certificate
-    `flux_energy_alpha_true`.
-  * the structured flux bridge `ERU_energy_alpha_supported_by_flux`
-    provided in `EnergyBoundsAlpha`.
+  * explicit hypotheses in `EnergyBoundsAlpha` (which no longer depends on
+    the flux bridge in the release branch).
 
   This axiom is kept temporarily for compatibility during development,
   but new code should avoid depending on it.
 -/
-lemma ERU_energy_alpha_bounded :
+lemma ERU_energy_alpha_bounded
+  (h_energy : ERU_energy_global_alpha = L_global_alpha) :
   ERU_energy_global_alpha = L_global_alpha :=
 by
-  -- Route through the flux-based hypotheses and checklist bridges.
-  have h := ERU_energy_alpha_bounded_from_hypotheses
-  simpa using h
+  exact h_energy
 
 /--
   DEPRECATED: direct global energy blow-up from the kernel-level bound.

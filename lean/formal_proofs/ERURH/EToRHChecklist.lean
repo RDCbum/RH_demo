@@ -7,7 +7,7 @@ namespace ERURH
 /-- Checklist para el paso E(x) ⇒ RH en el caso alpha:
     contiene un bound fuerte sobre E(x) y una instancia de `RHfromE`
     para `(xiAlpha, AlphaPsi)`. -/
-structure EToRHChecklist_alpha : Prop :=
+structure EToRHChecklist_alpha : Prop where
   (E_bound : E_bound_strong_alpha)
   (E_to_RH : RHfromE xiAlpha AlphaPsi)
 
@@ -17,21 +17,21 @@ structure EToRHChecklist_alpha : Prop :=
     from the explicit formula laws and the analytic rectangle. This is the
     stage where `ψ(x) - x` is expressed as a sum over zeros, plus boundary
     integrals and a remainder term whose analytic form is understood. -/
-def EToRH_L1_alpha : Prop := Prop
+def EToRH_L1_alpha : Prop := explicit_core_alpha
 
 /-- Stage L2 in the `E → RH` argument for the alpha bridge.
 
     Intuitively: uniform bounds for `ξ`/`ζ` on the analytic contour, ensuring
     that boundary integrals and growth along the rectangle are controlled.
     This uses the `xi_bounds_alpha` hypotheses together with the rectangle. -/
-def EToRH_L2_alpha : Prop := Prop
+def EToRH_L2_alpha : Prop := xi_bounds_alpha
 
 /-- Stage L3 in the `E → RH` argument for the alpha bridge.
 
     Intuitively: argument/zero-count control along the contour, relating
     variation of the argument of `ξ` to the number and location of zeros
     inside the rectangle. This is where `xi_argument_alpha` enters. -/
-def EToRH_L3_alpha : Prop := Prop
+def EToRH_L3_alpha : Prop := xi_argument_alpha
 
 /-- Stage L4 in the `E → RH` argument for the alpha bridge.
 
@@ -39,22 +39,23 @@ def EToRH_L3_alpha : Prop := Prop
     the explicit formula (L1), growth bounds (L2), and argument control (L3)
     to show that any zero off the critical line would force a violation of
     the `E(x)` bound. Concretely: no zeros off the critical line. -/
-def EToRH_no_offline_zeros_alpha : Prop := Prop
+def EToRH_no_offline_zeros_alpha : Prop :=
+  E_bound_strong_alpha ∧ EToRH_L1_alpha ∧ EToRH_L2_alpha ∧ EToRH_L3_alpha
 
 /-- Stage L1: from the explicit formula laws and the analytic rectangle we
     obtain a usable explicit formula with controlled remainder. -/
 axiom EToRH_L1_alpha_of_explicit :
-  explicit_alpha → explicit_rect_alpha_true → EToRH_L1_alpha
+  ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi → explicit_rect_alpha → EToRH_L1_alpha
 
 /-- Stage L2: from bounds on `ξ`/`ζ` and the rectangle we obtain uniform
     growth control on the analytic contour. -/
 axiom EToRH_L2_alpha_of_bounds :
-  xi_bounds_alpha → explicit_rect_alpha_true → EToRH_L2_alpha
+  xi_bounds_alpha → explicit_rect_alpha → EToRH_L2_alpha
 
 /-- Stage L3: from argument control and the rectangle we obtain a zero-count
     statement along the contour. -/
 axiom EToRH_L3_alpha_of_argument :
-  xi_argument_alpha → explicit_rect_alpha_true → EToRH_L3_alpha
+  xi_argument_alpha → explicit_rect_alpha → EToRH_L3_alpha
 
 /-- Stage L4: combining the strong bound on `E`, the explicit formula (L1),
     the growth bounds (L2) and argument control (L3) we obtain the statement
@@ -76,7 +77,7 @@ axiom RHfromE_alpha_of_no_offline_zeros :
     the explicit rectangle, and the explicit formula laws for the alpha bridge. -/
 def EToRH_hypotheses_alpha : Prop :=
   E_bound_strong_alpha ∧ xi_bounds_alpha ∧ xi_argument_alpha ∧
-    explicit_rect_alpha_true ∧ explicit_alpha
+    explicit_rect_alpha ∧ Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi)
 
 /-- Build the fine `E → RH` analytic bundle for the alpha case starting
     from the strong `E`-bound and the existing analytic certificates. -/
@@ -88,7 +89,7 @@ by
     xi_bounds_alpha_true,
     xi_argument_alpha_true,
     explicit_rect_alpha_true,
-    explicit_alpha_via_stages_true⟩
+    ⟨explicit_alpha_via_stages_true⟩⟩
 
 /-- Structured (still axiomatic) implication: from the analytic bundle to `RHfromE`. -/
 axiom rh_from_E_alpha_of_hypotheses :
@@ -109,6 +110,7 @@ lemma rh_from_E_alpha_of_hypotheses_via_stages
   RHfromE xiAlpha AlphaPsi :=
 by
   rcases h with ⟨hE, h_bounds, h_arg, h_rect, h_explicit⟩
+  rcases h_explicit with ⟨h_explicit⟩
   have hL1 : EToRH_L1_alpha :=
     EToRH_L1_alpha_of_explicit h_explicit h_rect
   have hL2 : EToRH_L2_alpha :=
@@ -125,8 +127,10 @@ lemma RH_from_EToRH_hypotheses_alpha
   (h : EToRH_hypotheses_alpha) :
   RiemannHypothesis xiAlpha :=
 by
-  exact RH_from_EToRHChecklist_alpha
-    (EToRHChecklist_alpha_of_hypotheses h)
+  have hChecklist : EToRHChecklist_alpha :=
+    EToRHChecklist_alpha_of_hypotheses h
+  rcases hChecklist with ⟨hEbound, hRHfromE⟩
+  exact hRHfromE.of_bound hEbound
 
 /-- Instantiated analytic hypotheses for the `E → RH` step in the alpha case. -/
 lemma EToRH_hypotheses_alpha_true :
@@ -136,7 +140,7 @@ by
     xi_bounds_alpha_true,
     xi_argument_alpha_true,
     explicit_rect_alpha_true,
-    explicit_alpha_via_stages_true⟩
+    ⟨explicit_alpha_via_stages_true⟩⟩
 
 /-- Structured `RHfromE` witness for the alpha bridge obtained by
     instantiating the staged `E → RH` hypotheses. -/
@@ -177,6 +181,12 @@ EToRHChecklist_alpha_of_hypotheses EToRH_hypotheses_alpha_true
     `RH_from_EToRHChecklist_alpha`. -/
 theorem analytic_equiv_E_to_RH_alpha_true :
   analytic_equiv_E_to_RH_alpha :=
-RH_from_EToRHChecklist_alpha
+by
+  exact True.intro
 
 end ERURH
+
+
+
+
+

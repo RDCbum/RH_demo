@@ -33,7 +33,7 @@ Analytic roadmap (not formalized here):
    the analytic content of `H_b`.
 
 This lemma is a placeholder; the analytic argument is external. -/
-theorem H_b_from_explicit_formula
+def H_b_from_explicit_formula
   (hEF : ExplicitFormulaERU) :
   H_b :=
 by
@@ -43,3 +43,4 @@ by
 
 end Alpha
 end ERURH
+

@@ -10,7 +10,7 @@ theorem E_bound_strong_alpha_of_explicitWitness :
     (Nonempty (ExplicitWitness alphaBridge xiAlpha AlphaPsi)) →
       E_bound_strong_alpha := by
   intro h
-  rcases h with w
+  rcases h with ⟨w⟩
   refine ⟨w.C, ?_⟩
   intro x hx
   exact w.estimate (x := x) hx
@@ -27,7 +27,7 @@ by
 /-- Bound fuerte sobre `E(x)` para alpha, obtenido a partir del testigo explícito construido previamente. -/
 theorem E_bound_strong_alpha_true : E_bound_strong_alpha :=
 by
-  rcases explicit_integral_representation_alpha_true with W
+  rcases explicit_integral_representation_alpha_true with ⟨W⟩
   exact explicit_witness_to_E_bound_alpha W
 
 /-- Si tenemos un bound fuerte sobre `E(x)` para `AlphaPsi`, entonces
@@ -42,7 +42,7 @@ by
   rcases hE with ⟨C, hC⟩
   refine ⟨C, ?_⟩
   intro x hx
-  have hEdef : AlphaPsi.E x = AlphaPsi.psi x - x := AlphaPsi.E_def x
+  have hEdef : AlphaPsi.E x = AlphaPsi.psi x - x := AlphaPsi.E_is_error x
   have h := hC (x := x) hx
   simpa [hEdef] using h
 
@@ -59,3 +59,4 @@ by
   simpa [AlphaPsi.psi_eq_nt_pointwise] using hC (x := x) hx
 
 end ERURH
+

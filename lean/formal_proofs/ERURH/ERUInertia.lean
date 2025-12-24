@@ -1,15 +1,10 @@
-import ERURH.PsiLayer
+import ERURH.ERUModesCore
 import ERURH.ExplicitToRHBridge
 import ERURH.EToRHChecklist
 import ERURH.Inertia
 import ERURH.FluxWindows
 
 namespace ERURH
-
-/-- ERU-style log-residual for the alpha bridge: `logR(s) = E(e^s) / e^s`. -/
-noncomputable def logR_alpha (s : ℝ) : ℝ :=
-  let x := Real.exp s
-  AlphaPsi.E x / x
 
 /-- Strong ERU inertia hypothesis for the alpha bridge.
 
@@ -21,22 +16,7 @@ def InertiaERU_alpha_strong : Prop :=
     |logR_alpha s| ≤
       (algebraMap ℚ ℝ C) * Real.exp (-s / 2) * (Real.log (Real.exp s)) ^ 2
 
-/--
-  DEPRECATED: direct bridge-to-strong inertia bridge for the alpha case.
-  New code should use the certificate-based wrapper
-  `InertiaERU_alpha_strong_of_bridge_inertia_certified` from
-  `InertiaCertificatesAlpha`, which factors the statement through an
-  explicit strong inertia certificate.
-
-  This axiom is kept temporarily for compatibility during the
-  transition; it is no longer used in the main energetic ERURH
-  pipeline. -/
-lemma InertiaERU_alpha_strong_of_bridge_inertia_legacy :
-  InertiaERU alphaBridge → InertiaERU_alpha_strong :=
-by
-  intro h_bridge
-  -- Use the certified bridge→strong inertia path from the certificates module.
-  exact InertiaERU_alpha_strong_of_bridge_inertia_certified h_bridge
+-- Legacy wrapper moved to `InertiaCertificatesAlpha` to avoid import cycles.
 
 /-- From strong ERU inertia (bound on `logR_alpha`) we can derive the
     classical strong bound on `E(x)` for the alpha Chebyshev layer.

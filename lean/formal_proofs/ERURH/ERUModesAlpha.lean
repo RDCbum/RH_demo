@@ -1,18 +1,10 @@
 import ERURH.ERUInertia
 import ERURH.ERUEnergyAlpha
+import ERURH.EnergyBoundsAlpha
 import ERURH.EnergyCertificatesAlpha
 import ERURH.InertiaCertificatesAlpha
 
 namespace ERURH
-
-/-- Abstract ERU exponential mode of weight `β` for the alpha bridge.
-
-Intuitively, `ERU_mode_beta β` says that the residual `logR_alpha s`
-contains a component that grows like `exp ((β - 1/2) * s)` for large `s`.
-At this stage we keep this purely as an asymptotic lower bound. -/
-def ERU_mode_beta (β : ℝ) : Prop :=
-  ∃ s0 : ℝ, ∀ {s : ℝ}, s ≥ s0 →
-    |logR_alpha s| ≥ Real.exp ((β - (1/2 : ℝ)) * s)
 
 /-- Kernel-level energy blow-up: any exponential ERU mode with `β > 1/2`
 forces the ERU energy kernel to exceed its abstract threshold
@@ -21,7 +13,7 @@ forces the ERU energy kernel to exceed its abstract threshold
 This axiom is intended as a more concrete intermediate step between
 modes and the global energy bound, to be refined in terms of windows
 and flux certificates in future work. -/
-/--
+/-
   DEPRECATED: direct kernel-level energy blow-up from an exponential
   ERU mode with `β > 1/2`. New code should use the certificate-based
   version `ERU_energy_kernel_blowup_of_mode_beta` from
@@ -37,9 +29,7 @@ lemma ERU_energy_kernel_blowup_of_mode_beta_legacy
   ERU_mode_beta β → ERU_energy_kernel_alpha ≥ kernel_threshold_alpha :=
 by
   intro h_mode
-  have h_eq : ERU_energy_kernel_alpha = kernel_threshold_alpha :=
-    ERU_energy_kernel_blowup_of_mode_beta hβ h_mode
-  simpa [h_eq] using (le_rfl : ERU_energy_kernel_alpha ≥ ERU_energy_kernel_alpha)
+  exact ERU_energy_kernel_blowup_of_mode_beta hβ h_mode
 
 /-- From kernel-level energy blow-up to global energy blow-up: this combines
 `ERU_energy_kernel_blowup_of_mode_beta` with the abstract domination of the
@@ -61,7 +51,7 @@ to exceed the allowed envelope `L_global_alpha`.
 This axiom is intended to capture the analytic ERURH principle that
 off-line modes (β > 1/2) cannot be accommodated within the global
 energy budget. -/
-/--
+/-
   DEPRECATED: the direct axiom for global energy blow-up is no longer used.
   The preferred structured variant is
   `ERU_energy_blowup_of_mode_beta_via_kernel`, which factors the blow-up
@@ -80,7 +70,8 @@ by
 /-- There can be no exponential ERU mode with weight `β > 1/2`:
 such a mode would violate the global energy bound. -/
 theorem no_ERU_mode_beta_of_gt_half
-  {β : ℝ} (hβ : β > (1/2 : ℝ)) :
+  {β : ℝ} (hβ : β > (1/2 : ℝ))
+  (h_energy : EnergyBoundHypotheses_alpha) :
   ¬ ERU_mode_beta β :=
 by
   intro h_mode
@@ -88,7 +79,7 @@ by
   have h_explosion : ERU_energy_global_alpha > L_global_alpha :=
     ERU_energy_blowup_of_mode_beta_via_kernel hβ h_mode
   have h_bound : ERU_energy_global_alpha ≤ L_global_alpha :=
-    ERU_energy_alpha_bounded_from_hypotheses
+    le_of_eq (ERU_energy_alpha_bounded_from_hypotheses h_energy)
   exact lt_irrefl _ (lt_of_le_of_lt h_bound h_explosion)
 
 /-- Abstract bridge: the absence of exponential ERU modes with `β > 1/2` is
@@ -147,13 +138,14 @@ by
 energy bound, the energy blow-up gate for exponential modes with
 `β > 1/2`, and the ERURH equivalence, we obtain the Riemann
 Hypothesis for `xiAlpha`. -/
-theorem RH_from_ERU_energy :
+theorem RH_from_ERU_energy
+  (h_energy : EnergyBoundHypotheses_alpha) :
   RiemannHypothesis xiAlpha :=
 by
   -- Step 1: package `no_ERU_mode_beta_of_gt_half` as a uniform statement.
   have h_no_modes : ∀ β : ℝ, β > (1/2 : ℝ) → ¬ ERU_mode_beta β := by
     intro β hβ
-    exact no_ERU_mode_beta_of_gt_half hβ
+    exact no_ERU_mode_beta_of_gt_half hβ h_energy
   -- Step 2: obtain strong ERU inertia from the absence of modes.
   have h_inertia : InertiaERU_alpha_strong :=
     InertiaERU_alpha_strong_of_no_modes_via_certificates h_no_modes

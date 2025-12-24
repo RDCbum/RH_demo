@@ -65,3 +65,9 @@ docs/preprints/*_old.*
 **/*.ilean
 **/*.c
 **/*.trace
+
+# Lean/Lake build artifacts
+.lake/
+**/*.olean
+**/*.ilean
+**/*.trace

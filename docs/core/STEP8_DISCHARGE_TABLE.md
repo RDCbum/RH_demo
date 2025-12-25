@@ -19,4 +19,4 @@
 | ERURH.xi_argument_alpha | axiom | lean/formal_proofs/ERURH/ExplicitDecomposition.lean:62 | refactor | Xi argument assumption should live in the explicit formula bundle. |
 | ERURH.xi_bounds_alpha_of_hypotheses | axiom | lean/formal_proofs/ERURH/ExplicitDecomposition.lean:126 | refactor | Hypotheses -> xi bounds should be proven or bundled. |
 | ERURH.xi_argument_alpha_of_hypotheses | axiom | lean/formal_proofs/ERURH/ExplicitDecomposition.lean:130 | refactor | Hypotheses -> xi argument should be proven or bundled. |
-| ERURH.Beta.strongInertiaCertificate_beta_numeric | axiom | lean/formal_proofs/ERURH/Beta/InertiaCertificatesBeta.lean:49 | BLOCKER | Placeholder numeric certificate; must be replaced by generated data or removed from release. |
+| ERURH.Beta.strongInertiaCertificate_beta_numeric | axiom | lean/formal_proofs/ERURH/Beta/InertiaCertificatesBeta.lean:49 | refactor/assumption | Resolved by STEP9-C: beta certificate is now an explicit bundle assumption (see STEP9C_BETA_GAP.md). |

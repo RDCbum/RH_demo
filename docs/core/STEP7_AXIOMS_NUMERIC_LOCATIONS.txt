@@ -1,15 +1,42 @@
-ERU_inertia_of_E_bound_alpha => lean/formal_proofs/ERURH\InertiaCertificatesAlpha.lean:102:  exact ERU_inertia_of_E_bound_alpha E_bound_strong_alpha_true
-ERU_inertia_to_E_bound_alpha => lean/formal_proofs/ERURH\ERUInertia.lean:26:axiom ERU_inertia_to_E_bound_alpha :
-RH_to_E_bound_alpha => lean/formal_proofs/ERURH\ERUInertia.lean:53:axiom RH_to_E_bound_alpha :
-alphaInterfacesBase => lean/formal_proofs/ERURH\AlphaAxioms.lean:14:axiom alphaInterfacesBase : AlphaInterfaces
-explicit_alpha_via_stages_true => lean/formal_proofs/ERURH\EToRHChecklist.lean:92:    ?explicit_alpha_via_stages_true??
-rh_from_E_alpha_of_hypotheses => lean/formal_proofs/ERURH\ERURH_AxiomsShim.lean:32:  EToRH_no_offline_zeros_alpha_of_stages RHfromE_alpha_of_no_offline_zeros rh_from_E_alpha_of_hypotheses)
-xi_argument_alpha => lean/formal_proofs/ERURH\ERURH_AxiomsShim.lean:26:export ERURH (explicit_core_alpha xi_bounds_alpha xi_argument_alpha flux_to_bridge_bounds_alpha)
-xi_argument_alpha_of_hypotheses => lean/formal_proofs/ERURH\ERURH_AxiomsShim.lean:30:  xi_argument_alpha_of_hypotheses)
-xi_bounds_alpha => lean/formal_proofs/ERURH\AlphaAssumptions.lean:33:  refine ?E_bound_strong_alpha_true, xi_bounds_alpha, xi_argument_alpha, h_rect, h_explicit?
-xi_bounds_alpha_of_hypotheses => lean/formal_proofs/ERURH\ERURH_AxiomsShim.lean:29:  rh_from_E_alpha_of_pieces flux_to_bridge_alpha_of_hypotheses xi_bounds_alpha_of_hypotheses
-ZeroOfZeta => lean/formal_proofs/ERURH\ERURH_ClassicalZetaAssumptions.lean:23:structure ZeroOfZeta where
-b_rho => lean/formal_proofs/ERURH\ERURH_ExplicitFormulaAlpha.lean:58:axiom b_rho : ZeroOfZeta ? ?
-Alpha.beta => NOT_FOUND
-Alpha.gamma => NOT_FOUND
-strongInertiaCertificate_beta_numeric => lean/formal_proofs/ERURH\Beta\CompositeCertificateBeta.lean:24:  localCert  := strongInertiaCertificate_beta_numeric,
+=== Classical.choice ===
+NOT_FOUND
+=== ERURH.Alpha.b_rho ===
+NOT_FOUND
+=== ERURH.Alpha.beta ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\Beta\CompositeCertificateBeta.lean:1: import ERURH.Beta.InertiaCertificatesBeta
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\Beta\CompositeCertificateBeta.lean:2: import ERURH.Beta.GlobalInertiaBeta
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\Beta\CompositeCertificateBeta.lean:5: namespace Beta
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\Beta\CompositeCertificateBeta.lean:7: /-- Composite beta certificate aggregating local (per-window) and global RMS information. -/
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\Beta\CompositeCertificateBeta.lean:14: /-- Phenomenological correctness: both local and global beta certificates are correct. -/
+=== ERURH.Alpha.gamma ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\Numeric\Semantics.lean:6: import Mathlib.Analysis.SpecialFunctions.Gamma.Basic
+=== ERURH.Alpha.ZeroOfZeta ===
+NOT_FOUND
+=== ERURH.alphaInterfacesBase ===
+NOT_FOUND
+=== ERURH.ERU_inertia_of_E_bound_alpha ===
+NOT_FOUND
+=== ERURH.ERU_inertia_to_E_bound_alpha ===
+NOT_FOUND
+=== ERURH.explicit_alpha_via_stages_true ===
+NOT_FOUND
+=== ERURH.rh_from_E_alpha_of_hypotheses ===
+NOT_FOUND
+=== ERURH.RH_to_E_bound_alpha ===
+NOT_FOUND
+=== ERURH.xi_argument_alpha ===
+NOT_FOUND
+=== ERURH.xi_argument_alpha_of_hypotheses ===
+NOT_FOUND
+=== ERURH.xi_bounds_alpha ===
+NOT_FOUND
+=== ERURH.xi_bounds_alpha_of_hypotheses ===
+NOT_FOUND
+=== Lean.ofReduceBool ===
+NOT_FOUND
+=== Lean.trustCompiler ===
+NOT_FOUND
+=== propext ===
+NOT_FOUND
+=== Quot.sound ===
+NOT_FOUND

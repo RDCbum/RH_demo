@@ -13,11 +13,10 @@
   - `ERURH.xi_argument_alpha` -> `lean/formal_proofs/ERURH/ExplicitDecomposition.lean:62`
   - `ERURH.xi_bounds_alpha_of_hypotheses` -> `lean/formal_proofs/ERURH/ExplicitDecomposition.lean:126`
   - `ERURH.xi_argument_alpha_of_hypotheses` -> `lean/formal_proofs/ERURH/ExplicitDecomposition.lean:130`
-  - `ERURH.Alpha.ZeroOfZeta` -> `lean/formal_proofs/ERURH/ERURH_ClassicalZetaAssumptions.lean:23`
+  - `ERURH.Alpha.ZeroOfZeta` -> `lean/formal_proofs/ERURH/ERURH_ExplicitFormulaAlpha.lean:23`
   - `ERURH.Alpha.beta` -> `lean/formal_proofs/ERURH/ERURH_ExplicitFormulaAlpha.lean:26`
   - `ERURH.Alpha.gamma` -> `lean/formal_proofs/ERURH/ERURH_ExplicitFormulaAlpha.lean:29`
   - `ERURH.Alpha.b_rho` -> `lean/formal_proofs/ERURH/ERURH_ExplicitFormulaAlpha.lean:58`
-  - `ERURH.Beta.strongInertiaCertificate_beta_numeric` -> `lean/formal_proofs/ERURH/Beta/InertiaCertificatesBeta.lean:49`
 
 ## Alpha certificates
 - `ERURH.GlobalEnergyCertificateCorrect_alpha`
@@ -32,13 +31,6 @@ Axiom footprint: only `propext`, `Classical.choice`, `Quot.sound`.
 
 Axiom footprint: only `propext`, `Classical.choice`, `Quot.sound`.
 
-## Beta certificates (if present)
-- `ERURH.Beta.StrongInertiaCertificateCorrect_beta`
-- `ERURH.Beta.StrongInertiaCompositeCorrect_beta`
-- `ERURH.Beta.strongInertiaCertificate_beta_numeric`
-- `ERURH.Beta.strongInertiaComposite_beta_numeric`
-
-Axiom footprint:
-- Correctness props depend only on `propext`, `Classical.choice`, `Quot.sound`.
-- `ERURH.Beta.strongInertiaCertificate_beta_numeric` is an axiom (`lean/formal_proofs/ERURH/Beta/InertiaCertificatesBeta.lean:49`).
-- `ERURH.Beta.strongInertiaComposite_beta_numeric` depends on `strongInertiaCertificate_beta_numeric` (`lean/formal_proofs/ERURH/Beta/CompositeCertificateBeta.lean:22`).
+## Beta certificates (explicit assumptions)
+- Beta enters via `ERURH.BetaInertiaAssumptions` as an explicit bundle.
+- No global beta numeric constants remain in release; see `docs/core/STEP9C_BETA_GAP.md`.

@@ -6,6 +6,6 @@
   - python tools/make_certificate_values.py
   - lake build ERURH
   - python scripts/verify_gate.py --skip-pytests
-- lake build ERURH: [ ] verified in this release run
+- lake build ERURH: [x] verified in this release run
 - Paper build (CI or local): [ ] verified (CI: build-paper workflow or local latexmk)
 - Tarball contents: see dist/arxiv_submission.tar.gz (list with tar -tf)

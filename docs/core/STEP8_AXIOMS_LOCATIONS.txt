@@ -1,0 +1,46 @@
+=== Classical.choice ===
+NOT_FOUND
+=== ERURH.Alpha.b_rho ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean:58: axiom b_rho : ZeroOfZeta → ℂ
+=== ERURH.Alpha.beta ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\AlphaZeros.lean:10: axiom beta : ZeroOfZeta -> Real
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean:26: axiom beta : ZeroOfZeta → ℝ
+=== ERURH.Alpha.gamma ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\AlphaZeros.lean:13: axiom gamma : ZeroOfZeta -> Real
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ERURH_ClassicalZetaAssumptions.lean:27: def gamma (ρ : ZeroOfZeta) : ℝ := ρ.gamma
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean:29: axiom gamma : ZeroOfZeta → ℝ
+=== ERURH.Alpha.ZeroOfZeta ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\AlphaZeros.lean:7: axiom ZeroOfZeta : Type
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ERURH_ClassicalZetaAssumptions.lean:23: structure ZeroOfZeta where
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean:23: axiom ZeroOfZeta : Type
+=== ERURH.alphaInterfacesBase ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\AlphaAxioms.lean:14: axiom alphaInterfacesBase : AlphaInterfaces
+=== ERURH.Beta.strongInertiaCertificate_beta_numeric ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\Beta\GeneratedStrongInertiaBeta.lean:7: noncomputable def strongInertiaCertificate_beta_numeric : StrongInertiaCertificate_beta :=
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\Beta\InertiaCertificatesBeta.lean:49: axiom strongInertiaCertificate_beta_numeric : StrongInertiaCertificate_beta
+=== ERURH.ERU_inertia_of_E_bound_alpha ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ERUInertia.lean:31: axiom ERU_inertia_of_E_bound_alpha :
+=== ERURH.ERU_inertia_to_E_bound_alpha ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ERUInertia.lean:26: axiom ERU_inertia_to_E_bound_alpha :
+=== ERURH.explicit_alpha_via_stages_true ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ExplicitDecomposition.lean:220: axiom explicit_alpha_via_stages_true :
+=== ERURH.rh_from_E_alpha_of_hypotheses ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\EToRHChecklist.lean:95: axiom rh_from_E_alpha_of_hypotheses :
+=== ERURH.RH_to_E_bound_alpha ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ERUInertia.lean:53: axiom RH_to_E_bound_alpha :
+=== ERURH.xi_argument_alpha ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ExplicitDecomposition.lean:62: axiom xi_argument_alpha : Prop
+=== ERURH.xi_argument_alpha_of_hypotheses ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ExplicitDecomposition.lean:130: axiom xi_argument_alpha_of_hypotheses :
+=== ERURH.xi_bounds_alpha ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ExplicitDecomposition.lean:47: axiom xi_bounds_alpha : Prop
+=== ERURH.xi_bounds_alpha_of_hypotheses ===
+C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\ExplicitDecomposition.lean:126: axiom xi_bounds_alpha_of_hypotheses :
+=== Lean.ofReduceBool ===
+NOT_FOUND
+=== Lean.trustCompiler ===
+NOT_FOUND
+=== propext ===
+NOT_FOUND
+=== Quot.sound ===
+NOT_FOUND

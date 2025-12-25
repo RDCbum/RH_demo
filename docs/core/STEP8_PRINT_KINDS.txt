@@ -1,0 +1,20 @@
+axiom Classical.choice.{u} : {α : Sort u} → Nonempty α → α
+axiom ERURH.Alpha.b_rho : ERURH.Alpha.ZeroOfZeta → ℂ
+axiom ERURH.Alpha.beta : ERURH.Alpha.ZeroOfZeta → ℝ
+axiom ERURH.Alpha.gamma : ERURH.Alpha.ZeroOfZeta → ℝ
+axiom ERURH.Alpha.ZeroOfZeta : Type
+axiom ERURH.alphaInterfacesBase : ERURH.AlphaInterfaces
+axiom ERURH.Beta.strongInertiaCertificate_beta_numeric : ERURH.Beta.StrongInertiaCertificate_beta
+axiom ERURH.ERU_inertia_of_E_bound_alpha : ERURH.E_bound_strong_alpha → ERURH.InertiaERU_alpha_strong
+axiom ERURH.ERU_inertia_to_E_bound_alpha : ERURH.InertiaERU_alpha_strong → ERURH.E_bound_strong_alpha
+axiom ERURH.explicit_alpha_via_stages_true : ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi
+axiom ERURH.rh_from_E_alpha_of_hypotheses : ERURH.EToRH_hypotheses_alpha → ERURH.RHfromE ERURH.xiAlpha ERURH.AlphaPsi
+axiom ERURH.RH_to_E_bound_alpha : ERURH.RiemannHypothesis ERURH.xiAlpha → ERURH.E_bound_strong_alpha
+axiom ERURH.xi_argument_alpha : Prop
+axiom ERURH.xi_argument_alpha_of_hypotheses : ERURH.xi_argument_hypotheses_alpha → ERURH.xi_argument_alpha
+axiom ERURH.xi_bounds_alpha : Prop
+axiom ERURH.xi_bounds_alpha_of_hypotheses : ERURH.xi_bounds_hypotheses_alpha → ERURH.xi_bounds_alpha
+axiom Lean.ofReduceBool : ∀ (a b : Bool), Lean.reduceBool a = b → a = b
+axiom Lean.trustCompiler : True
+axiom propext : ∀ {a b : Prop}, (a ↔ b) → a = b
+axiom Quot.sound.{u} : ∀ {α : Sort u} {r : α → α → Prop} {a b : α}, r a b → Quot.mk r a = Quot.mk r b

@@ -1,0 +1,6 @@
+
+> lean\formal_proofs\ERURH\Beta\InertiaCertificatesBeta.lean:49:axiom strongInertiaCertificate_beta_numeric : StrongInertiaCertificate_beta
+  lean\formal_proofs\ERURH\Beta\InertiaCertificatesBeta.lean:50:
+  lean\formal_proofs\ERURH\Beta\InertiaCertificatesBeta.lean:51:/--
+  lean\formal_proofs\ERURH\Beta\InertiaCertificatesBeta.lean:52:`strongInertiaCertificateCorrect_beta_numeric` is an external beta-level
+

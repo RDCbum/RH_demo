@@ -1,0 +1,20 @@
+
+    Directory: C:\dev\RH_demo_clean\data\releases\erurh-v2-core\formal
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          23/12/2025    19:54           1126 bridge_closed.json
+-a---          23/12/2025    19:54            952 bridge_formal.json
+-a---          23/12/2025    19:54           2056 formal_gate_report_analytic.json
+-a---          23/12/2025    19:54           3063 formal_gate_report_strict.json
+-a---          23/12/2025    19:54           1062 formal_report_analytic.json
+-a---          23/12/2025    19:54           1126 formal_report_strict.json
+-a---          23/12/2025    19:54           1126 formal_report.json
+-a---          23/12/2025    19:54           1064 kappa_book_proof.json
+-a---          23/12/2025    19:54              2 kappa_book.json
+-a---          23/12/2025    19:54            255 kappa_formal.json
+-a---          23/12/2025    19:54           4496 L_analytic_proof.json
+-a---          23/12/2025    19:54              2 L_analytic.json
+-a---          23/12/2025    19:54            360 L_formal.json
+-a---          23/12/2025    19:54            734 s0_unified.json
+

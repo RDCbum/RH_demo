@@ -1,0 +1,39 @@
+{
+  "strong_inertia": {
+    "C_RMS_beta": {
+      "numerator": 1,
+      "denominator": 10
+    },
+    "S0_beta": {
+      "numerator": 1,
+      "denominator": 1
+    },
+    "kernel_id": "beta_demo_v1",
+    "tail_rms_bound": {
+      "numerator": 0,
+      "denominator": 1
+    },
+    "windows": []
+  },
+  "global_inertia": {
+    "C_Global_beta": {
+      "numerator": 1,
+      "denominator": 10
+    },
+    "S0_global": {
+      "numerator": 1,
+      "denominator": 1
+    },
+    "Smax_global": {
+      "numerator": 1,
+      "denominator": 1
+    },
+    "sRef": {
+      "numerator": 1,
+      "denominator": 1
+    }
+  },
+  "sources": {
+    "beta_inertia_certificate": "C:\\dev\\RH_demo_clean\\data\\releases\\erurh-v2-core\\formal\\beta_inertia_certificate.json"
+  }
+}

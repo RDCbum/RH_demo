@@ -2,6 +2,7 @@ import ERURH.EnergyCertificatesAlpha
 import ERURH.ERUModesAlpha
 import ERURH.Beta.InertiaCertificatesBeta
 import ERURH.Beta.CompositeCertificateBeta
+import ERURH.Beta.GeneratedBetaCertificate
 
 /-
 # Beta inertia assumptions (external numeric package)
@@ -35,7 +36,16 @@ structure BetaInertiaAssumptions where
       ERU_mode_beta β →
       ERU_energy_kernel_alpha ≥ kernel_threshold_alpha
 
-/-- External numeric beta assumptions bundle. -/
-axiom betaInertiaAssumptions_true : BetaInertiaAssumptions
+/-- External numeric beta assumptions bundle (generated from frozen JSON). -/
+def betaInertiaAssumptions_true : BetaInertiaAssumptions := by
+  refine
+    { bundle :=
+        { cert := Beta.strongInertiaCertificate_beta_numeric
+          h_cert := Beta.strongInertiaCertificate_beta_numeric_correct
+          comp := Beta.strongInertiaComposite_beta_numeric
+          h_comp := Beta.strongInertiaComposite_beta_numeric_correct }
+      energy_kernel_blowup_of_mode_beta_of_certificate := ?_ }
+  intro β hβ h_cert h_mode
+  exact ERU_energy_kernel_blowup_of_mode_beta_of_certificate hβ h_cert h_mode
 
 end ERURH

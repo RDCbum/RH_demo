@@ -1,0 +1,44 @@
+theorem ERURH.RH_from_ERURH_conditional : ∀ (G : ERURH.ERURH_GlobalAssumptions) (hAxioms : ERURH.AxiomsShimAccepted),
+  ERURH.CertificatesCorrectAlpha → ERURH.NumericCoverageAlpha G.window.ctx → ERURH.RiemannHypothesis ERURH.xiAlpha :=
+fun G hAxioms hCerts hNumeric =>
+  ERURH.ERURH_GlobalAssumptions.casesOn (motive := fun x =>
+    ERURH.NumericCoverageAlpha x.window.ctx → ERURH.RiemannHypothesis ERURH.xiAlpha) G
+    (fun eru window hNumeric =>
+      ERURH.WindowScalingAssumptions.casesOn (motive := fun x =>
+        ERURH.NumericCoverageAlpha { eru := eru, window := x }.window.ctx → ERURH.RiemannHypothesis ERURH.xiAlpha)
+        window
+        (fun ctx hA1 hLow hTail hNumeric =>
+          ERURH.RH_from_ERURH_assumptions eru ctx hA1 hLow hTail hAxioms hCerts hNumeric)
+        hNumeric)
+    hNumeric
+structure ERURH.ERURH_GlobalAssumptions : Type 1
+number of parameters: 0
+fields:
+  ERURH.ERURH_GlobalAssumptions.eru : ERURH.ERURH_Assumptions
+  ERURH.ERURH_GlobalAssumptions.window : ERURH.WindowScalingAssumptions
+constructor:
+  ERURH.ERURH_GlobalAssumptions.mk (eru : ERURH.ERURH_Assumptions) (window : ERURH.WindowScalingAssumptions) :
+    ERURH.ERURH_GlobalAssumptions
+structure ERURH.ERURH_Assumptions : Type
+number of parameters: 0
+fields:
+  ERURH.ERURH_Assumptions.classical : ERURH.ClassicalZetaAssumptions
+  ERURH.ERURH_Assumptions.spectral : ERURH.Alpha.SpectralAssumptionsAlpha
+  ERURH.ERURH_Assumptions.ls_gamma : ERURH.Alpha.LSGammaAssumptions
+  ERURH.ERURH_Assumptions.explicit_formula_ERU : ERURH.Alpha.ExplicitFormulaERU
+  ERURH.ERURH_Assumptions.beta_inert : ERURH.BetaInertiaAssumptions
+constructor:
+  ERURH.ERURH_Assumptions.mk (classical : ERURH.ClassicalZetaAssumptions)
+    (spectral : ERURH.Alpha.SpectralAssumptionsAlpha) (ls_gamma : ERURH.Alpha.LSGammaAssumptions)
+    (explicit_formula_ERU : ERURH.Alpha.ExplicitFormulaERU) (beta_inert : ERURH.BetaInertiaAssumptions) :
+    ERURH.ERURH_Assumptions
+structure ERURH.WindowScalingAssumptions : Type 1
+number of parameters: 0
+fields:
+  ERURH.WindowScalingAssumptions.ctx : ERURH.RMSLocalContext
+  ERURH.WindowScalingAssumptions.hA1 : ERURH.A1_mode self.ctx
+  ERURH.WindowScalingAssumptions.hLow : ERURH.A2Low_RMS self.ctx
+  ERURH.WindowScalingAssumptions.hTail : ERURH.A2Tail_RMS self.ctx
+constructor:
+  ERURH.WindowScalingAssumptions.mk (ctx : ERURH.RMSLocalContext) (hA1 : ERURH.A1_mode ctx) (hLow : ERURH.A2Low_RMS ctx)
+    (hTail : ERURH.A2Tail_RMS ctx) : ERURH.WindowScalingAssumptions

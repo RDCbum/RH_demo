@@ -109,6 +109,36 @@ A proof is given in Section~\ref{sec:proof-main} using the Plan~B RMS-local
 route and the gate-closure implications of the alpha certificates.
 \end{remark}
 
+\section{Formal verification in Lean}
+The conditional ERURH master theorem is formalized in Lean 4 (mathlib).
+The precise bundles and statement are generated directly from the Lean source.
+We record the core statement here and refer to the assumptions ledger in
+\texttt{docs/core/ASSUMPTIONS_LEDGER.md}.
+
+\begin{quote}\small\ttfamily
+theorem ERURH.RH\_from\_ERURH\_conditional :
+  forall (G : ERURH.ERURH\_GlobalAssumptions) (hAxioms : ERURH.AxiomsShimAccepted),
+    ERURH.CertificatesCorrectAlpha -> ERURH.NumericCoverageAlpha G.window.ctx ->
+    ERURH.RiemannHypothesis ERURH.xiAlpha
+\end{quote}
+
+\begin{quote}\small\ttfamily
+structure ERURH.ERURH\_GlobalAssumptions where
+  eru : ERURH.ERURH\_Assumptions
+  window : ERURH.WindowScalingAssumptions
+\end{quote}
+
+\noindent The beta layer is now an explicit hypothesis bundle (no frozen numeric input is present
+in \texttt{data/releases/erurh-v2-core/formal}); see \texttt{docs/core/STEP9C_BETA_GAP.md}.
+
+\section{Reproducibility / Gate}
+The reproducible pipeline regenerates the numeric artifacts and rebuilds the Lean development:
+\begin{verbatim}
+python tools/make_rational_bounds.py
+python tools/make_certificate_values.py
+lake build ERURH
+python scripts/verify_gate.py --skip-pytests
+\end{verbatim}
 \section{Energy, inertia, and ERU modes}
 The ERURH formalism introduces global energy functionals and ``gates'' that
 measure whether the observable $J_{\mathrm{rel}}$ (or its smoothed variants)
@@ -480,3 +510,4 @@ Dover, 2003.
 \end{thebibliography}
 
 \end{document}
+

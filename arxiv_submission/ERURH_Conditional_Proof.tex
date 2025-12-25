@@ -1,7 +1,8 @@
 \documentclass[11pt]{article}
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 \usepackage[margin=1in]{geometry}
-\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\\usepackage{fancyvrb}
 
 \title{ERURH: A Conditional, Formalized Route to the Riemann Hypothesis}
 \author{Robert Duran}
@@ -110,26 +111,18 @@ route and the gate-closure implications of the alpha certificates.
 \end{remark}
 
 \section{Formal verification in Lean}
-The conditional ERURH master theorem is formalized in Lean 4 (mathlib).
-The precise bundles and statement are generated directly from the Lean source.
-We record the core statement here and refer to the assumptions ledger in
-\texttt{docs/core/ASSUMPTIONS_LEDGER.md}.
+The conditional ERURH master theorem is formalized in Lean 4 (mathlib). The
+exact statement and axiom footprint below are machine-generated and included
+in the arXiv bundle.
 
-\begin{quote}\small\ttfamily
-theorem ERURH.RH\_from\_ERURH\_conditional :
-  forall (G : ERURH.ERURH\_GlobalAssumptions) (hAxioms : ERURH.AxiomsShimAccepted),
-    ERURH.CertificatesCorrectAlpha -> ERURH.NumericCoverageAlpha G.window.ctx ->
-    ERURH.RiemannHypothesis ERURH.xiAlpha
-\end{quote}
+{\small\VerbatimInput{lean_master_statement.txt}}
 
-\begin{quote}\small\ttfamily
-structure ERURH.ERURH\_GlobalAssumptions where
-  eru : ERURH.ERURH\_Assumptions
-  window : ERURH.WindowScalingAssumptions
-\end{quote}
+\noindent Axiom footprint for the master theorem:
+
+{\small\VerbatimInput{lean_master_axioms.txt}}
 
 \noindent The beta layer is now an explicit hypothesis bundle (no frozen numeric input is present
-in \texttt{data/releases/erurh-v2-core/formal}); see \texttt{docs/core/STEP9C_BETA_GAP.md}.
+in \texttt{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger section below.
 
 \section{Reproducibility / Gate}
 The reproducible pipeline regenerates the numeric artifacts and rebuilds the Lean development:
@@ -139,7 +132,9 @@ python tools/make_certificate_values.py
 lake build ERURH
 python scripts/verify_gate.py --skip-pytests
 \end{verbatim}
-\section{Energy, inertia, and ERU modes}
+
+\input{assumptions_ledger.tex}
+\\section{Energy, inertia, and ERU modes}
 The ERURH formalism introduces global energy functionals and ``gates'' that
 measure whether the observable $J_{\mathrm{rel}}$ (or its smoothed variants)
 stays under a prescribed envelope. A key notion is the existence of an
@@ -510,4 +505,5 @@ Dover, 2003.
 \end{thebibliography}
 
 \end{document}
+
 

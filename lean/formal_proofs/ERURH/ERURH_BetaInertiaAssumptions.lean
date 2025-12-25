@@ -7,19 +7,27 @@ import ERURH.Beta.CompositeCertificateBeta
 # Beta inertia assumptions (external numeric package)
 
 This package bundles the external beta-level numeric assumptions:
-* correctness of the generated beta inertia certificates (strong and composite),
-* the certificate-based kernel energy blow-up for β > 1/2.
+* correctness of the beta inertia certificates (strong and composite),
+* the certificate-based kernel energy blow-up for beta > 1/2.
 
 These are treated as external numeric inputs, not proved within the alpha core.
 -/
 
+namespace ERURH.Beta
+
+/-- Bundle of beta numeric data and correctness proofs (explicit assumptions). -/
+structure BetaInertiaBundle where
+  cert : StrongInertiaCertificate_beta
+  h_cert : StrongInertiaCertificateCorrect_beta cert
+  comp : StrongInertiaComposite_beta
+  h_comp : StrongInertiaCompositeCorrect_beta comp
+
+end ERURH.Beta
+
 namespace ERURH
 
 structure BetaInertiaAssumptions where
-  strongInertiaCertificateCorrect_beta_numeric :
-    Beta.StrongInertiaCertificateCorrect_beta Beta.strongInertiaCertificate_beta_numeric
-  strongInertiaCompositeCorrect_beta_numeric :
-    Beta.StrongInertiaCompositeCorrect_beta Beta.strongInertiaComposite_beta_numeric
+  bundle : Beta.BetaInertiaBundle
   energy_kernel_blowup_of_mode_beta_of_certificate :
     ∀ {β : ℝ}, β > (1/2 : ℝ) →
       (∃ cert : KernelBlowupCertificate_alpha,

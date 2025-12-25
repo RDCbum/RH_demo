@@ -1,0 +1,7 @@
+
+lean\formal_proofs\ERURH\Beta\CompositeCertificateBeta.lean:24:  localCert  := strongInertiaCertificate_beta_numeric,
+lean\formal_proofs\ERURH\Beta\GeneratedStrongInertiaBeta.lean:7:noncomputable def strongInertiaCertificate_beta_numeric : StrongInertiaCertificate_beta :=
+lean\formal_proofs\ERURH\Beta\InertiaCertificatesBeta.lean:49:axiom strongInertiaCertificate_beta_numeric : StrongInertiaCertificate_beta
+lean\formal_proofs\ERURH\Beta\InertiaCertificatesBeta.lean:53:assumption: the numerically generated certificate `strongInertiaCertificate_beta_numeric`
+lean\formal_proofs\ERURH\Beta\InertiaCertificatesBeta.lean:63:  StrongInertiaCertificateCorrect_beta strongInertiaCertificate_beta_numeric
+

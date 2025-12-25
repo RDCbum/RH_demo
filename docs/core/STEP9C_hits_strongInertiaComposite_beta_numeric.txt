@@ -1,0 +1,4 @@
+
+lean\formal_proofs\ERURH\Beta\CompositeCertificateBeta.lean:22:noncomputable def strongInertiaComposite_beta_numeric : StrongInertiaComposite_beta :=
+lean\formal_proofs\ERURH\Beta\CompositeCertificateBeta.lean:37:  StrongInertiaCompositeCorrect_beta strongInertiaComposite_beta_numeric
+

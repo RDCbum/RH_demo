@@ -1,0 +1,179 @@
+⚠ [7497/7538] Replayed ERURH.FluxWindows
+warning: lean/formal_proofs/ERURH/FluxWindows.lean:51:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7498/7538] Replayed ERURH.BoundsConfig
+warning: lean/formal_proofs/ERURH/BoundsConfig.lean:24:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7500/7538] Replayed ERURH.ComplexAbsCompat
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:11:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:14:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:17:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7502/7538] Replayed ERURH.PsiLayer
+warning: lean/formal_proofs/ERURH/PsiLayer.lean:20:34: This simp argument is unused:
+  add_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [P.E_is_error x, add_comm, a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵add_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/PsiLayer.lean:20:49: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [P.E_is_error x, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [7504/7538] Replayed ERURH.NumberTheory.Chebyshev
+warning: lean/formal_proofs/ERURH/NumberTheory/Chebyshev.lean:32:25: This simp argument is unused:
+  add_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [E_def, add_comm, a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵add_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/NumberTheory/Chebyshev.lean:32:40: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [E_def, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [7514/7538] Replayed ERURH.ERUTheory
+warning: lean/formal_proofs/ERURH/ERUTheory.lean:10:29: `structure ... :=` has been deprecated in favor of `structure ... where`.
+
+Note: This linter can be disabled with `set_option linter.deprecated false`
+⚠ [7515/7538] Replayed ERURH.AlphaInterfaces
+warning: lean/formal_proofs/ERURH/AlphaInterfaces.lean:54:8: This simp argument is unused:
+  AlphaPsi_is_classicalPsi
+
+Hint: Omit it from the simp argument list.
+  simp [AlphaPsi_̵i̵s̵_̵c̵l̵a̵s̵s̵i̵c̵a̵l̵P̵s̵i̵,̵ ̵A̵l̵p̵h̵a̵P̵s̵i̵.psi_eq_nt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/AlphaInterfaces.lean:64:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7518/7538] Replayed ERURH.FluxBounds
+warning: lean/formal_proofs/ERURH/FluxBounds.lean:31:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/FluxBounds.lean:36:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7519/7538] Replayed ERURH.Flux.LawvereMetric
+warning: lean/formal_proofs/ERURH/Flux/LawvereMetric.lean:11:37: `structure ... :=` has been deprecated in favor of `structure ... where`.
+
+Note: This linter can be disabled with `set_option linter.deprecated false`
+warning: lean/formal_proofs/ERURH/Flux/LawvereMetric.lean:17:58: `structure ... :=` has been deprecated in favor of `structure ... where`.
+
+Note: This linter can be disabled with `set_option linter.deprecated false`
+⚠ [7520/7538] Replayed ERURH.ExplicitDecomposition
+warning: lean/formal_proofs/ERURH/ExplicitDecomposition.lean:42:4: unused variable `W`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ExplicitDecomposition.lean:261:3: unused variable `hcore`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ExplicitDecomposition.lean:262:3: unused variable `hxi`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ExplicitDecomposition.lean:263:3: unused variable `harg`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ExplicitDecomposition.lean:264:3: unused variable `hflux`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ExplicitDecomposition.lean:265:3: unused variable `henergy`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ExplicitDecomposition.lean:266:3: unused variable `hEquiv`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [7521/7538] Replayed ERURH.ExplicitCoreBridge
+warning: lean/formal_proofs/ERURH/ExplicitCoreBridge.lean:68:4: unused variable `data`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ExplicitCoreBridge.lean:73:4: unused variable `data`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [7523/7538] Replayed ERURH.ERURH_GrowthProfiles
+warning: lean/formal_proofs/ERURH/ERURH_GrowthProfiles.lean:9:24: `structure ... :=` has been deprecated in favor of `structure ... where`.
+
+Note: This linter can be disabled with `set_option linter.deprecated false`
+warning: lean/formal_proofs/ERURH/ERURH_GrowthProfiles.lean:63:38: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7525/7538] Replayed ERURH.ERURH_LargeSieveGammaSketch
+warning: lean/formal_proofs/ERURH/ERURH_LargeSieveGammaSketch.lean:49:21: unused variable `T1`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ERURH_LargeSieveGammaSketch.lean:49:24: unused variable `T2`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ERURH_LargeSieveGammaSketch.lean:49:27: unused variable `L`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ERURH_LargeSieveGammaSketch.lean:60:3: unused variable `hHb`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/formal_proofs/ERURH/ERURH_LargeSieveGammaSketch.lean:61:3: unused variable `hRange`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [7538/7552] Replayed ERURH.ERUModesAlpha
+warning: lean/formal_proofs/ERURH/ERUModesAlpha.lean:118:3: unused variable `h_no_modes`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [7547/7552] Replayed ERURH.ERURH_GatesAlpha
+warning: lean/formal_proofs/ERURH/ERURH_GatesAlpha.lean:44:3: unused variable `hK`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✖ [7552/7552] Building ERURH.RH_Unconditional (62s)
+trace: .> LEAN_PATH=C:\dev\RH_demo_clean\.lake\packages\Cli\.lake\build\lib\lean;C:\dev\RH_demo_clean\.lake\packages\batteries\.lake\build\lib\lean;C:\dev\RH_demo_clean\.lake\packages\Qq\.lake\build\lib\lean;C:\dev\RH_demo_clean\.lake\packages\aesop\.lake\build\lib\lean;C:\dev\RH_demo_clean\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\dev\RH_demo_clean\.lake\packages\importGraph\.lake\build\lib\lean;C:\dev\RH_demo_clean\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\dev\RH_demo_clean\.lake\packages\plausible\.lake\build\lib\lean;C:\dev\RH_demo_clean\.lake\packages\mathlib\.lake\build\lib\lean;C:\dev\RH_demo_clean\.lake\build\lib\lean c:\Users\duran\.elan\toolchains\leanprover--lean4---v4.25.0-rc2\bin\lean.exe C:\dev\RH_demo_clean\lean\formal_proofs\ERURH\RH_Unconditional.lean -o C:\dev\RH_demo_clean\.lake\build\lib\lean\ERURH\RH_Unconditional.olean -i C:\dev\RH_demo_clean\.lake\build\lib\lean\ERURH\RH_Unconditional.ilean -c C:\dev\RH_demo_clean\.lake\build\ir\ERURH\RH_Unconditional.c --setup C:\dev\RH_demo_clean\.lake\build\ir\ERURH\RH_Unconditional.setup.json --json
+error: lean/formal_proofs/ERURH/RH_Unconditional.lean:10:4: unsolved goals
+case classical
+⊢ ClassicalZetaAssumptions
+
+case spectral
+⊢ Alpha.SpectralAssumptionsAlpha
+
+case ls_gamma
+⊢ Alpha.LSGammaAssumptions
+
+case explicit_formula_ERU
+⊢ Alpha.ExplicitFormulaERU
+
+case beta_inert
+⊢ BetaInertiaAssumptions
+error: lean/formal_proofs/ERURH/RH_Unconditional.lean:11:4: unsolved goals
+case ctx
+⊢ RMSLocalContext
+
+case hA1
+⊢ A1_mode ?ctx
+
+case hLow
+⊢ A2Low_RMS ?ctx
+
+case hTail
+⊢ A2Tail_RMS ?ctx
+error: lean/formal_proofs/ERURH/RH_Unconditional.lean:6:60: unsolved goals
+case hAxioms
+⊢ AxiomsShimAccepted
+
+case hCerts
+⊢ CertificatesCorrectAlpha
+
+case hNumeric
+⊢ NumericCoverageAlpha { eru := sorry, window := sorry }.window.ctx
+error: Lean exited with code 1
+Some required targets logged failures:
+- ERURH.RH_Unconditional
+error: build failed

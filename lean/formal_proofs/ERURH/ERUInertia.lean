@@ -1,6 +1,7 @@
 import ERURH.ERUModesCore
 import ERURH.ExplicitToRHBridge
 import ERURH.EToRHChecklist
+import ERURH.AxiomsShimBundle
 import ERURH.Inertia
 import ERURH.FluxWindows
 
@@ -33,8 +34,9 @@ axiom ERU_inertia_of_E_bound_alpha :
 
 /-- From strong ERU inertia for the alpha bridge we can derive the Riemann
     Hypothesis for `xiAlpha`, by passing through the classical `E`-bound
-    and the `E → RH` checklist. -/
-theorem ERU_to_RH_alpha
+    and the `E → RH` checklist, parameterized by the axioms bundle. -/
+theorem ERU_to_RH_alpha_of_axioms
+  (hAxioms : AxiomsShimAccepted)
   (h_inertia : InertiaERU_alpha_strong) :
   RiemannHypothesis xiAlpha :=
 by
@@ -42,10 +44,17 @@ by
   have hE : E_bound_strong_alpha :=
     ERU_inertia_to_E_bound_alpha h_inertia
   -- 2) strong `E`-bound + analytic certificates ⇒ fine bundle
-  have hBundle : EToRH_hypotheses_alpha :=
-    EToRH_hypotheses_alpha_of_E_bound hE
+  have hBundle : EToRH_hypotheses_alpha hAxioms :=
+    EToRH_hypotheses_alpha_of_E_bound hAxioms hE
   -- 3) bundle ⇒ RH
-  exact RH_from_EToRH_hypotheses_alpha hBundle
+  exact RH_from_EToRH_hypotheses_alpha hAxioms hBundle
+
+/-- Legacy wrapper using the global axioms bundle. -/
+theorem ERU_to_RH_alpha
+  (h_inertia : InertiaERU_alpha_strong) :
+  RiemannHypothesis xiAlpha :=
+by
+  exact ERU_to_RH_alpha_of_axioms axiomsShimAccepted_true h_inertia
 
 /-- Classical direction: from the Riemann Hypothesis for `xiAlpha` we obtain
     the strong `E`-bound for the alpha Chebyshev error term. This models the
@@ -61,6 +70,14 @@ theorem RH_to_ERU_alpha
 by
   have hE : E_bound_strong_alpha := RH_to_E_bound_alpha hRH
   exact ERU_inertia_of_E_bound_alpha hE
+
+/-- Equivalence between the strong ERU inertia hypothesis for the alpha
+    bridge and the Riemann Hypothesis for `xiAlpha`, parameterized by the
+    axioms bundle. -/
+theorem ERU_RH_equiv_alpha_of_axioms
+  (hAxioms : AxiomsShimAccepted) :
+  InertiaERU_alpha_strong ↔ RiemannHypothesis xiAlpha :=
+⟨ERU_to_RH_alpha_of_axioms hAxioms, RH_to_ERU_alpha⟩
 
 /-- Equivalence between the strong ERU inertia hypothesis for the alpha
     bridge and the Riemann Hypothesis for `xiAlpha`. -/

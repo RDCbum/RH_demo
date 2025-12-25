@@ -26,18 +26,24 @@ def AlphaAnalyticAssumptions : Prop :=
 
 /-- Extract the `E → RH` analytic bundle from the global alpha analytic assumptions. -/
 lemma EToRH_hypotheses_alpha_of_AlphaAnalyticAssumptions
+  (hAxioms : AxiomsShimAccepted)
   (h : AlphaAnalyticAssumptions) :
-  EToRH_hypotheses_alpha :=
+  EToRH_hypotheses_alpha hAxioms :=
 by
   rcases h with ⟨h_explicit, h_rh, h_flux, h_rect, h_equiv⟩
-  refine ⟨E_bound_strong_alpha_true, xi_bounds_alpha, xi_argument_alpha, h_rect, h_explicit⟩
+  refine ⟨E_bound_strong_alpha_true,
+    hAxioms.h_xi_bounds_alpha,
+    hAxioms.h_xi_argument_alpha,
+    h_rect,
+    ⟨hAxioms.explicit_alpha_via_stages⟩⟩
 
 /-- Build the existing `EToRHChecklist_alpha` from the global assumptions via the fine bundle. -/
 lemma EToRHChecklist_alpha_of_AlphaAnalyticAssumptions_via_bundle
+  (hAxioms : AxiomsShimAccepted)
   (h : AlphaAnalyticAssumptions) :
   EToRHChecklist_alpha :=
-EToRHChecklist_alpha_of_hypotheses
-  (EToRH_hypotheses_alpha_of_AlphaAnalyticAssumptions h)
+EToRHChecklist_alpha_of_hypotheses hAxioms
+  (EToRH_hypotheses_alpha_of_AlphaAnalyticAssumptions hAxioms h)
 
 /-- Teorema resumen para el caso alpha: bajo las hipótesis analíticas
     empaquetadas en `AlphaAnalyticAssumptions` y la inercia del bridge,

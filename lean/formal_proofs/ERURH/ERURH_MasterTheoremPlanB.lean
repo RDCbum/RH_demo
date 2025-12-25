@@ -1,4 +1,5 @@
 import ERURH.ERURH_AxiomsShim
+import ERURH.AxiomsShimBundle
 import ERURH.ERURH_GatesAlpha
 import ERURH.ERURH_GatesFromRMS
 import ERURH.ERUModesAlpha
@@ -20,15 +21,6 @@ gap inside `gate_opens_from_RMS_alpha` imported from `ERURH_GatesFromRMS`.
 -/
 
 namespace ERURH
-
-/-- Acceptance of the centralized alpha axioms, bundled as explicit data. -/
-structure AxiomsShimAccepted where
-  explicit_alpha : ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi
-  rh_from_E_alpha : RHfromE xiAlpha AlphaPsi
-  alphaInterfacesBase : AlphaInterfaces
-
-noncomputable def axiomsShimAccepted_true : AxiomsShimAccepted := by
-  exact ⟨explicit_alpha, rh_from_E_alpha, alphaInterfacesBase⟩
 
 /-- Bundle of alpha certificates assumed correct for Plan B. This includes the
 global energy and kernel blow-up certificates used to close the gates. -/
@@ -71,9 +63,9 @@ by
     exact h_gate h_renorm
   -- Translate absence of modes into strong inertia, then RH.
   have h_inertia : InertiaERU_alpha_strong :=
-    InertiaERU_alpha_strong_of_no_modes_via_certificates (by
+    InertiaERU_alpha_strong_of_no_modes_via_certificates hAxioms (by
       intro β hβ; exact h_no_modes β hβ)
-  exact (ERU_RH_equiv_alpha).1 h_inertia
+  exact (ERU_RH_equiv_alpha_of_axioms hAxioms).1 h_inertia
 
 /-- A2-based wrapper: replace the RMS-local hypothesis with the abstract A2-low
 and A2-tail controls. -/

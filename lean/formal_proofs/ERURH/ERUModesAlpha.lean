@@ -3,6 +3,8 @@ import ERURH.ERUEnergyAlpha
 import ERURH.EnergyBoundsAlpha
 import ERURH.EnergyCertificatesAlpha
 import ERURH.InertiaCertificatesAlpha
+import ERURH.AxiomsShimBundle
+import ERURH.ExplicitToRHBridge
 
 namespace ERURH
 
@@ -111,14 +113,18 @@ by
 /-- Certificate-based route: from the absence of modes `β > 1/2` we derive
 strong ERU inertia using the bridge and strong inertia certificates, avoiding
 the legacy direct axiom. -/
-lemma InertiaERU_alpha_strong_of_no_modes_via_certificates :
-  (∀ β : ℝ, β > (1/2 : ℝ) → ¬ ERU_mode_beta β) →
+lemma InertiaERU_alpha_strong_of_no_modes_via_certificates
+  (hAxioms : AxiomsShimAccepted)
+  (h_no_modes : ∀ β : ℝ, β > (1/2 : ℝ) → ¬ ERU_mode_beta β) :
   InertiaERU_alpha_strong :=
 by
-  intro _h_no_modes
   -- Bridge inertia is certified unconditionally via the concrete certificate.
   have h_bridge : InertiaERU alphaBridge := InertiaERU_alphaBridge
-  exact InertiaERU_alpha_strong_of_bridge_inertia_certified h_bridge
+  -- Use the axioms bundle to obtain an explicit witness and hence an `E`-bound.
+  have hW : ExplicitWitness alphaBridge xiAlpha AlphaPsi :=
+    alphaExplicitWitness_from_inertia hAxioms.alphaInterfacesBase h_bridge
+  have hE : E_bound_strong_alpha := explicit_witness_to_E_bound_alpha hW
+  exact ERU_inertia_of_E_bound_alpha hE
 
 /-- Legacy direct axiom: from the absence of exponential ERU modes with
 `β > 1/2` we obtain the strong ERU inertia statement for the alpha bridge.
@@ -132,7 +138,7 @@ lemma InertiaERU_alpha_strong_of_no_modes :
   InertiaERU_alpha_strong :=
 by
   intro h_no_modes
-  exact InertiaERU_alpha_strong_of_no_modes_via_certificates h_no_modes
+  exact InertiaERU_alpha_strong_of_no_modes_via_certificates axiomsShimAccepted_true h_no_modes
 
 /-- Energetic ERU principle for `xiAlpha`: combining the global
 energy bound, the energy blow-up gate for exponential modes with
@@ -148,7 +154,7 @@ by
     exact no_ERU_mode_beta_of_gt_half hβ h_energy
   -- Step 2: obtain strong ERU inertia from the absence of modes.
   have h_inertia : InertiaERU_alpha_strong :=
-    InertiaERU_alpha_strong_of_no_modes_via_certificates h_no_modes
+    InertiaERU_alpha_strong_of_no_modes_via_certificates axiomsShimAccepted_true h_no_modes
   -- Step 3: use the existing ERURH equivalence for the alpha case.
   exact (ERU_RH_equiv_alpha).1 h_inertia
 

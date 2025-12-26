@@ -1,0 +1,30 @@
+lean/formal_proofs/ERURH/RH_Unconditional.lean:10:4: error: unsolved goals
+case classical
+⊢ ClassicalZetaAssumptions
+
+case spectral
+⊢ Alpha.SpectralAssumptionsAlpha
+
+case ls_gamma
+⊢ Alpha.LSGammaAssumptions
+
+case explicit_formula_ERU
+⊢ Alpha.ExplicitFormulaERU
+lean/formal_proofs/ERURH/RH_Unconditional.lean:12:4: error: unsolved goals
+case ctx
+⊢ RMSLocalContext
+
+case hA1
+⊢ A1_mode ?ctx
+
+case hLow
+⊢ A2Low_RMS ?ctx
+
+case hTail
+⊢ A2Tail_RMS ?ctx
+lean/formal_proofs/ERURH/RH_Unconditional.lean:6:60: error: unsolved goals
+case hAxioms
+⊢ AxiomsShimAccepted
+
+case hNumeric
+⊢ NumericCoverageAlpha { eru := sorry, window := sorry }.window.ctx

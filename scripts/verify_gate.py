@@ -114,6 +114,13 @@ def main() -> None:
         run(
             [
                 sys.executable,
+                "tools/check_rms_context.py",
+            ],
+            cwd=REPO_ROOT,
+        )
+        run(
+            [
+                sys.executable,
                 "tools/make_beta_certificate.py",
             ],
             cwd=REPO_ROOT,

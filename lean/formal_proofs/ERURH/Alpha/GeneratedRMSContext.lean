@@ -3,10 +3,11 @@
 
 import Mathlib
 import ERURH.ERURH_A2Hypotheses
+import ERURH.ERURH_GatesAlpha
 
 def n_windows : Nat := 1
 
-@[simp] def cEnvelopeCtxRat : ℚ := ((1) : ℚ) / (1)
+@[simp] def cEnvelopeCtxRat : ℚ := ((43040528) : ℚ) / (902400129)
 @[simp] def cLowRat : ℚ := ((1) : ℚ) / (10)
 @[simp] def cTailRat : ℚ := ((1) : ℚ) / (10)
 
@@ -14,7 +15,7 @@ def cEnvelopeCtx : ℝ := (cEnvelopeCtxRat : ℝ)
 def cLow : ℝ := (cLowRat : ℝ)
 def cTail : ℝ := (cTailRat : ℝ)
 
-def rmsModeList : List ℚ := [((1) : ℚ) / (1)]
+def rmsModeList : List ℚ := [((1332805409) : ℚ) / (9024001290)]
 def rmsLowList : List ℚ := [((1) : ℚ) / (20)]
 def rmsTailList : List ℚ := [((1) : ℚ) / (20)]
 
@@ -66,6 +67,17 @@ theorem ctx_real_A2Low : _root_.ERURH.A2Low_RMS ctx_real := by
 theorem ctx_real_A2Tail : _root_.ERURH.A2Tail_RMS ctx_real := by
   simpa [_root_.ERURH.A2Tail_RMS] using ctx_real.RMS_tail_bound_simple
 
+theorem ctx_real_RMS_envelope_closed : _root_.ERURH.Alpha.RMS_envelope_closed ctx_real := by
+  intro w
+  have h_rat : cEnvelopeCtxRat = _root_.ERURH.cEnvelopeFormalRat := by
+    native_decide
+  have h_rat_real : (cEnvelopeCtxRat : ℝ) = (_root_.ERURH.cEnvelopeFormalRat : ℝ) := by
+    exact_mod_cast h_rat
+  have h_eq : cEnvelopeCtx = _root_.ERURH.C_envelope_formal := by
+    simpa [cEnvelopeCtx, _root_.ERURH.C_envelope_formal] using h_rat_real
+  simpa [ctx_real] using (le_of_eq h_eq)
+
 abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real : _root_.ERURH.RMSLocalContext := _root_.ctx_real
 abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Low : _root_.ERURH.A2Low_RMS ERURH.Alpha.GeneratedRMSContext.ctx_real := _root_.ctx_real_A2Low
 abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Tail : _root_.ERURH.A2Tail_RMS ERURH.Alpha.GeneratedRMSContext.ctx_real := _root_.ctx_real_A2Tail
+abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real_RMS_envelope_closed : _root_.ERURH.Alpha.RMS_envelope_closed ERURH.Alpha.GeneratedRMSContext.ctx_real := _root_.ctx_real_RMS_envelope_closed

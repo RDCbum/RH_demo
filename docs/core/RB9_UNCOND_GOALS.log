@@ -1,0 +1,4 @@
+lean/formal_proofs/ERURH/RH_Unconditional.lean:8:10: error: don't know how to synthesize placeholder
+context:
+case hAxioms
+⊢ AxiomsShimAccepted

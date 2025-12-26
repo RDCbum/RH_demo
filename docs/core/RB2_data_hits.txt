@@ -1,0 +1,26 @@
+
+data\releases\erurh-v2-core\formal\beta_inertia_certificate.json:3:    "C_RMS_beta": {"numerator": 1, "denominator": 10},
+data\releases\erurh-v2-core\formal\beta_inertia_certificate.json:6:    "tail_rms_bound": {"numerator": 0, "denominator": 1},
+data\releases\erurh-v2-core\formal\beta_inertia_certificate.json:7:    "windows": []
+data\releases\erurh-v2-core\formal\bridge_closed.json:2:  "C_envelope_closed": "0.047695613749186421541958354101922854282320773892561598071489257721130596194295849",
+data\releases\erurh-v2-core\formal\bridge_formal.json:2:  "C_envelope_formal": "0.047695613749186421541958354101922854282320773892561598071489257721130596194295849",
+data\releases\erurh-v2-core\formal\bridge_formal.json:8:  "proof_notes": "C_envelope base=0.04716204253738731; inflation=1.0113135730153359554015573855432290453965506513276367523650187731599284777868966; eps_phi\u22480.00556279900290982215; eps_L\u22480.00041654961003773879753741175056097974374524870111097352030060763648105601078312837; eps_kappa\u22480.0053002031765866498085471694670766648110923926688795026729757526624435371004179887; s0=13.815510557964274 | analytic closed bridge applied"
+data\releases\erurh-v2-core\formal\formal_gate_report_analytic.json:15:      "name": "lemma_C_envelope_inflation",
+data\releases\erurh-v2-core\formal\formal_gate_report_analytic.json:17:      "detail": "C_envelope_formal=0.047695613749186421541958354101922854282320773892561598071489257721130596194295849, baseline=0.04716204253738731"
+data\releases\erurh-v2-core\formal\formal_gate_report_analytic.json:36:    "C_envelope_formal": "0.047695613749186421541958354101922854282320773892561598071489257721130596194295849",
+data\releases\erurh-v2-core\formal\formal_gate_report_strict.json:15:      "name": "lemma_C_envelope_inflation",
+data\releases\erurh-v2-core\formal\formal_gate_report_strict.json:17:      "detail": "C_envelope_formal=0.047695613749186421541958354101922854282320773892561598071489257721130596194295849, baseline=0.04716204253738731"
+data\releases\erurh-v2-core\formal\formal_gate_report_strict.json:56:    "C_envelope_formal": "0.047695613749186421541958354101922854282320773892561598071489257721130596194295849",
+data\releases\erurh-v2-core\formal\formal_report_analytic.json:7:  "C_envelope_formal": "0.047695613749186421541958354101922854282320773892561598071489257721130596194295849",
+data\releases\erurh-v2-core\formal\formal_report_strict.json:7:  "C_envelope_formal": "0.047695613749186421541958354101922854282320773892561598071489257721130596194295849",
+data\releases\erurh-v2-core\formal\formal_report.json:7:  "C_envelope_formal": "0.047695613749186421541958354101922854282320773892561598071489257721130596194295849",
+data\releases\erurh-v2-core\formal\kappa_book_proof.json:10:  "boundary_control": "Central derivative; boundary contributions bounded by same window for s>=s0.",
+data\releases\erurh-v2-core\formal\L_analytic_proof.json:88:    "coverage": "multi-alpha with overlapping windows"
+data\docs\paper\beta_certificate.json:3:    "C_RMS_beta": {
+data\docs\paper\beta_certificate.json:12:    "tail_rms_bound": {
+data\docs\paper\beta_certificate.json:16:    "windows": []
+data\docs\paper\certificate_values.json:8:    "c_envelope_base": {
+data\docs\paper\certificate_values.json:13:    "c_envelope_closed": {
+data\docs\paper\rational_bounds.json:33:    "C_envelope_closed": {
+data\docs\paper\rational_bounds.json:63:    "C_envelope_formal": {
+

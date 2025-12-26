@@ -48,13 +48,13 @@ theorem strongInertiaCertificate_beta_numeric_correct :
         · simp
         · have hC_nonneg : (0:ℝ) ≤ (((1 : ℚ) / (10 : ℚ)) : ℝ) := by
             norm_num
-          have hExp_nonneg : (0:ℝ) ≤ Real.exp (- ((((1 : ℚ) / (1 : ℚ)) : ℝ) / 2)) := by
+          have hExp_nonneg : (0:ℝ) ≤ Real.exp (- (((1 : ℚ) / (1 : ℚ)) : ℝ) / 2) := by
             exact le_of_lt (Real.exp_pos _)
           have hSq_nonneg : (0:ℝ) ≤ ((((1 : ℚ) / (1 : ℚ)) : ℝ) ^ 2) := by
             norm_num
-          have hCE : 0 ≤ (((1 : ℚ) / (10 : ℚ)) : ℝ) * Real.exp (-((((1 : ℚ) / (1 : ℚ)) : ℝ) / 2)) := by
+          have hCE : 0 ≤ (((1 : ℚ) / (10 : ℚ)) : ℝ) * Real.exp (- (((1 : ℚ) / (1 : ℚ)) : ℝ) / 2) := by
             exact mul_nonneg hC_nonneg hExp_nonneg
-          have hProd : 0 ≤ (((1 : ℚ) / (10 : ℚ)) : ℝ) * Real.exp (-((((1 : ℚ) / (1 : ℚ)) : ℝ) / 2)) * ((((1 : ℚ) / (1 : ℚ)) : ℝ) ^ 2) := by
+          have hProd : 0 ≤ (((1 : ℚ) / (10 : ℚ)) : ℝ) * Real.exp (- (((1 : ℚ) / (1 : ℚ)) : ℝ) / 2) * ((((1 : ℚ) / (1 : ℚ)) : ℝ) ^ 2) := by
             exact mul_nonneg hCE hSq_nonneg
           simpa using hProd
 

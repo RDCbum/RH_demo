@@ -20,16 +20,16 @@ namespace ERURH
      mode with `β > 1/2` would force the global energy to exceed the envelope.
   3. Together with the boundedness axiom, this excludes all modes with
      `β > 1/2` (`no_ERU_mode_beta_of_gt_half`).
-  4. An axiom bridges the absence of such modes to strong ERU inertia
-     (`InertiaERU_alpha_strong_of_no_modes`).
-  5. By the equivalence `ERU_RH_equiv_alpha`, strong ERU inertia yields
+  4. Axioms in the accepted bundle bridge the absence of such modes to
+     strong ERU inertia (`InertiaERU_alpha_strong_of_no_modes`).
+  5. By the equivalence `ERU_RH_equiv_alpha_of_axioms`, strong ERU inertia yields
      `RiemannHypothesis xiAlpha`.
 
-  Analytic content is encapsulated in existing axioms:
+  Analytic content is encapsulated in existing assumptions:
   - `ERU_energy_alpha_bounded`
   - `ERU_energy_blowup_of_mode_beta`
   - `InertiaERU_alpha_strong_of_no_modes`
-  plus the structural equivalence `ERU_RH_equiv_alpha`.
+  plus the structural equivalence `ERU_RH_equiv_alpha_of_axioms`.
   -/
 
 /-- 
@@ -42,18 +42,19 @@ namespace ERURH
   and finally (via the ERURH equivalence), the Riemann Hypothesis
   for `xiAlpha`.
 
-  All analytic content is encapsulated in the existing axioms:
+  All analytic content is encapsulated in the existing assumptions:
   - `ERU_energy_alpha_bounded`
   - `ERU_energy_blowup_of_mode_beta`
   - `InertiaERU_alpha_strong_of_no_modes`
-  plus the structural equivalence `ERU_RH_equiv_alpha`.
+  plus the structural equivalence `ERU_RH_equiv_alpha_of_axioms`.
 
   The proof is delegated to `RH_from_ERU_energy` in `ERUModesAlpha`.
 -/
 theorem RH_from_ERU_energy_executive
+  (hAxioms : AxiomsShimAccepted)
   (h_energy : EnergyBoundHypotheses_alpha) :
   RiemannHypothesis xiAlpha :=
 by
-  simpa using RH_from_ERU_energy h_energy
+  simpa using RH_from_ERU_energy hAxioms h_energy
 
 end ERURH

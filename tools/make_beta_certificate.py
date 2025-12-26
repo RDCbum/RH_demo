@@ -230,19 +230,19 @@ def write_lean_module(payload: Mapping[str, object], lean_path: Path) -> None:
     lines.append("        · have hC_nonneg : (0:ℝ) ≤ "
                  f"({_rat_literal(c_rms_num, c_rms_den)} : ℝ) := by\n"
                  "            norm_num")
-    lines.append("          have hExp_nonneg : (0:ℝ) ≤ Real.exp (- ("
-                 f"({_rat_literal(s0_num, s0_den)} : ℝ) / 2)) := by\n"
+    lines.append("          have hExp_nonneg : (0:ℝ) ≤ Real.exp (- "
+                 f"({_rat_literal(s0_num, s0_den)} : ℝ) / 2) := by\n"
                  "            exact le_of_lt (Real.exp_pos _)")
     lines.append("          have hSq_nonneg : (0:ℝ) ≤ ("
                  f"({_rat_literal(s0_num, s0_den)} : ℝ) ^ 2) := by\n"
                  "            norm_num")
     lines.append("          have hCE : 0 ≤ "
-                 f"({_rat_literal(c_rms_num, c_rms_den)} : ℝ) * Real.exp (-"
-                 f"(({_rat_literal(s0_num, s0_den)} : ℝ) / 2)) := by\n"
+                 f"({_rat_literal(c_rms_num, c_rms_den)} : ℝ) * Real.exp (- "
+                 f"({_rat_literal(s0_num, s0_den)} : ℝ) / 2) := by\n"
                  "            exact mul_nonneg hC_nonneg hExp_nonneg")
     lines.append("          have hProd : 0 ≤ "
-                 f"({_rat_literal(c_rms_num, c_rms_den)} : ℝ) * Real.exp (-"
-                 f"(({_rat_literal(s0_num, s0_den)} : ℝ) / 2)) * "
+                 f"({_rat_literal(c_rms_num, c_rms_den)} : ℝ) * Real.exp (- "
+                 f"({_rat_literal(s0_num, s0_den)} : ℝ) / 2) * "
                  f"(({_rat_literal(s0_num, s0_den)} : ℝ) ^ 2) := by\n"
                  "            exact mul_nonneg hCE hSq_nonneg")
     lines.append("          simpa using hProd")

@@ -1,5 +1,7 @@
 import ERURH.ExplicitDecomposition
 import ERURH.ExplicitCoreBridge
+import ERURH.ERUInertiaCore
+import ERURH.RH
 
 namespace ERURH
 
@@ -25,23 +27,17 @@ structure AxiomsShimAccepted where
     E_bound_strong_alpha ∧ xi_bounds_alpha ∧ xi_argument_alpha ∧
       explicit_rect_alpha ∧ Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi) →
     RHfromE xiAlpha AlphaPsi
+  /-- ERU inertia implies the classical strong E-bound. -/
+  h_inertia_to_E : InertiaERU_alpha_strong → E_bound_strong_alpha
+  /-- Classical strong E-bound implies ERU inertia. -/
+  h_inertia_of_E : E_bound_strong_alpha → InertiaERU_alpha_strong
+  /-- RH implies the classical strong E-bound. -/
+  h_RH_to_E : RiemannHypothesis xiAlpha → E_bound_strong_alpha
 
 /-- Combined analytic hypotheses for deriving `RHfromE` in the alpha case,
 parameterized by the axioms bundle. -/
 def EToRH_hypotheses_alpha (hAxioms : AxiomsShimAccepted) : Prop :=
   E_bound_strong_alpha ∧ hAxioms.xi_bounds_alpha ∧ hAxioms.xi_argument_alpha ∧
     explicit_rect_alpha ∧ Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi)
-
-noncomputable def axiomsShimAccepted_true : AxiomsShimAccepted := by
-  exact
-    { alphaInterfacesBase := alphaInterfacesBase
-      explicit_alpha_via_stages := explicit_alpha_via_stages_true
-      xi_bounds_alpha := xi_bounds_alpha
-      h_xi_bounds_alpha := xi_bounds_alpha_true
-      xi_argument_alpha := xi_argument_alpha
-      h_xi_argument_alpha := xi_argument_alpha_true
-      xi_bounds_alpha_of_hypotheses := xi_bounds_alpha_of_hypotheses
-      xi_argument_alpha_of_hypotheses := xi_argument_alpha_of_hypotheses
-      rh_from_E_alpha_of_hypotheses := rh_from_E_alpha_of_hypotheses }
 
 end ERURH

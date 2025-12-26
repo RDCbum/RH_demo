@@ -133,22 +133,25 @@ by
   exact hRHfromE.of_bound hEbound
 
 /-- Instantiated analytic hypotheses for the `E → RH` step in the alpha case. -/
-lemma EToRH_hypotheses_alpha_true :
-  EToRH_hypotheses_alpha axiomsShimAccepted_true :=
+lemma EToRH_hypotheses_alpha_true
+  (hAxioms : AxiomsShimAccepted) :
+  EToRH_hypotheses_alpha hAxioms :=
 by
-  exact EToRH_hypotheses_alpha_of_E_bound axiomsShimAccepted_true E_bound_strong_alpha_true
+  exact EToRH_hypotheses_alpha_of_E_bound hAxioms E_bound_strong_alpha_true
 
 /-- Structured `RHfromE` witness for the alpha bridge obtained by
     instantiating the staged `E → RH` hypotheses. -/
-lemma rh_from_E_alpha_via_stages_true :
+lemma rh_from_E_alpha_via_stages_true
+  (hAxioms : AxiomsShimAccepted) :
   RHfromE xiAlpha AlphaPsi :=
-rh_from_E_alpha_of_hypotheses_via_stages axiomsShimAccepted_true EToRH_hypotheses_alpha_true
+rh_from_E_alpha_of_hypotheses_via_stages hAxioms (EToRH_hypotheses_alpha_true hAxioms)
 
 /-- Riemann Hypothesis for `xiAlpha` obtained by instantiating the staged
     `E → RH` hypotheses in the alpha case. -/
-lemma RH_from_EToRH_via_stages_true :
+lemma RH_from_EToRH_via_stages_true
+  (hAxioms : AxiomsShimAccepted) :
   RiemannHypothesis xiAlpha :=
-RH_from_EToRH_hypotheses_alpha axiomsShimAccepted_true EToRH_hypotheses_alpha_true
+RH_from_EToRH_hypotheses_alpha hAxioms (EToRH_hypotheses_alpha_true hAxioms)
 
 /-- Del checklist E(x)⇒RH se obtiene directamente la RH para `xiAlpha`. -/
 theorem RH_from_EToRHChecklist_alpha :
@@ -169,9 +172,10 @@ by
     This version does not use the global axiom `rh_from_E_alpha` directly,
     but instead builds the checklist from the fine analytic bundle
     `EToRH_hypotheses_alpha_true` and the staged pipeline. -/
-def EToRHChecklist_alpha_true_via_stages :
+def EToRHChecklist_alpha_true_via_stages
+  (hAxioms : AxiomsShimAccepted) :
   EToRHChecklist_alpha :=
-EToRHChecklist_alpha_of_hypotheses axiomsShimAccepted_true EToRH_hypotheses_alpha_true
+EToRHChecklist_alpha_of_hypotheses hAxioms (EToRH_hypotheses_alpha_true hAxioms)
 
 /-- La equivalencia analítica ERH para alpha está implementada por
     `RH_from_EToRHChecklist_alpha`. -/

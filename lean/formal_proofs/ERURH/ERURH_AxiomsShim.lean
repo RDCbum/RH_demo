@@ -38,11 +38,11 @@ export ERURH (ERU_energy_kernel_blowup_of_mode_beta_legacy ERU_energy_blowup_of_
 
 -- Inertia / mode assumptions
 export ERURH (alphaBridge_inertia_of_no_modes InertiaERU_alpha_strong_of_no_modes)
-export ERURH (InertiaERU_alpha_strong_of_bridge_inertia_legacy ERU_inertia_to_E_bound_alpha
-  ERU_inertia_of_E_bound_alpha RH_to_E_bound_alpha)
+export ERURH (InertiaERU_alpha_strong_of_bridge_inertia_legacy)
 
 -- Energy bounds checklist
 export ERURH (ERU_energy_alpha_bounded_of_checklist EnergyBoundChecklist_alpha_of_hypotheses)
 
 end AxiomsShim
 end ERURH
+

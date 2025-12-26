@@ -137,6 +137,16 @@ python scripts/verify_gate.py --skip-pytests
 \end{verbatim}
 
 \input{assumptions_ledger.tex}
+
+\\subsection*{Classical/citable lemmas used as assumptions}
+The Lean bundle \\texttt{AxiomsShimAccepted} includes the following classical/citable
+implications, recorded as explicit hypotheses:
+\\begin{itemize}
+  \\item \\texttt{InertiaERU\\_alpha\\_strong} \\Rightarrow \\texttt{E\\_bound\\_strong\\_alpha}.
+  \\item \\texttt{E\\_bound\\_strong\\_alpha} \\Rightarrow \\texttt{InertiaERU\\_alpha\\_strong}.
+  \\item \\texttt{RiemannHypothesis xiAlpha} \\Rightarrow \\texttt{E\\_bound\\_strong\\_alpha}.
+\\end{itemize}
+
 \\section{Energy, inertia, and ERU modes}
 The ERURH formalism introduces global energy functionals and ``gates'' that
 measure whether the observable $J_{\mathrm{rel}}$ (or its smoothed variants)
@@ -508,6 +518,7 @@ Dover, 2003.
 \end{thebibliography}
 
 \end{document}
+
 
 
 

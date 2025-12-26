@@ -1,5 +1,6 @@
 import ERURH.Inertia
 import ERURH.ERUInertia
+import ERURH.AxiomsShimBundle
 import ERURH.FluxBounds
 import ERURH.FluxWindows
 
@@ -95,11 +96,12 @@ by
   exact InertiaERU_alphaBridge_of_certificate h_cert
 
 /-- Default bridge-to-strong inertia morphism from the explicit witness. -/
-def InertiaERU_alpha_strong_of_bridge_inertia_default :
+def InertiaERU_alpha_strong_of_bridge_inertia_default
+  (hAxioms : AxiomsShimAccepted) :
   InertiaERU alphaBridge → InertiaERU_alpha_strong :=
 by
   intro _h_bridge
-  exact ERU_inertia_of_E_bound_alpha E_bound_strong_alpha_true
+  exact hAxioms.h_inertia_of_E E_bound_strong_alpha_true
 
 /-- Strong inertia certificate for the alpha case. -/
 structure StrongInertiaCertificate_alpha where
@@ -136,21 +138,25 @@ def StrongInertiaDomain_ok_alpha
 /-- Correctness predicate for a strong inertia certificate in the
 alpha case. -/
 def StrongInertiaCertificateCorrect_alpha
+  (hAxioms : AxiomsShimAccepted)
   (cert : StrongInertiaCertificate_alpha) : Prop :=
-  cert.bridge_to_strong = InertiaERU_alpha_strong_of_bridge_inertia_default ∧
+  cert.bridge_to_strong = InertiaERU_alpha_strong_of_bridge_inertia_default hAxioms ∧
     StrongInertiaParams_ok_alpha cert ∧
     StrongInertiaInterfaces_ok_alpha cert
 
 /-- Existence of a strong inertia certificate for the alpha case. -/
-def strongInertiaCertificate_true_alpha :
+def strongInertiaCertificate_true_alpha
+  (hAxioms : AxiomsShimAccepted) :
     StrongInertiaCertificate_alpha :=
-  { bridge_to_strong := InertiaERU_alpha_strong_of_bridge_inertia_default
+  { bridge_to_strong := InertiaERU_alpha_strong_of_bridge_inertia_default hAxioms
     C_strong := cEnvelopeClosedRat
     S0_strong := tailStart }
 
 /-- Correctness of the concrete strong inertia certificate. -/
-lemma strongInertiaCertificate_true_correct_alpha :
-  StrongInertiaCertificateCorrect_alpha strongInertiaCertificate_true_alpha :=
+lemma strongInertiaCertificate_true_correct_alpha
+  (hAxioms : AxiomsShimAccepted) :
+  StrongInertiaCertificateCorrect_alpha hAxioms
+    (strongInertiaCertificate_true_alpha hAxioms) :=
 by
   dsimp [StrongInertiaCertificateCorrect_alpha,
     strongInertiaCertificate_true_alpha,
@@ -165,46 +171,50 @@ by
 
 /-- Existence of a strong inertia certificate for the alpha case,
 witnessed by `strongInertiaCertificate_true_alpha`. -/
-theorem StrongInertiaCertificate_exists_alpha :
+theorem StrongInertiaCertificate_exists_alpha
+  (hAxioms : AxiomsShimAccepted) :
   ∃ cert : StrongInertiaCertificate_alpha,
-    StrongInertiaCertificateCorrect_alpha cert :=
+    StrongInertiaCertificateCorrect_alpha hAxioms cert :=
 by
-  exact ⟨strongInertiaCertificate_true_alpha,
-    strongInertiaCertificate_true_correct_alpha⟩
+  exact ⟨strongInertiaCertificate_true_alpha hAxioms,
+    strongInertiaCertificate_true_correct_alpha hAxioms⟩
 
 /-- Certificate-based strong inertia: if there exists a correct
 strong inertia certificate and the alpha ERU bridge satisfies the
 inertia predicate, then we obtain the strong ERU inertia statement
 for `logR_alpha`. -/
-lemma InertiaERU_alpha_strong_of_bridge_inertia_of_certificate :
+lemma InertiaERU_alpha_strong_of_bridge_inertia_of_certificate
+  (hAxioms : AxiomsShimAccepted) :
   (∃ cert : StrongInertiaCertificate_alpha,
-    StrongInertiaCertificateCorrect_alpha cert) →
+    StrongInertiaCertificateCorrect_alpha hAxioms cert) →
   InertiaERU alphaBridge →
   InertiaERU_alpha_strong :=
 by
   intro _hcert h_bridge
-  exact InertiaERU_alpha_strong_of_bridge_inertia_default h_bridge
+  exact InertiaERU_alpha_strong_of_bridge_inertia_default hAxioms h_bridge
 
 /-- Wrapper recovering the strong ERU inertia statement from the
 certificate-based axiom, the existence of a strong inertia
 certificate, and the bridge inertia. -/
-lemma InertiaERU_alpha_strong_of_bridge_inertia_certified :
+lemma InertiaERU_alpha_strong_of_bridge_inertia_certified
+  (hAxioms : AxiomsShimAccepted) :
   InertiaERU alphaBridge → InertiaERU_alpha_strong :=
 by
   intro h_bridge
   have h_cert :
       ∃ cert : StrongInertiaCertificate_alpha,
-        StrongInertiaCertificateCorrect_alpha cert :=
-    StrongInertiaCertificate_exists_alpha
-  exact InertiaERU_alpha_strong_of_bridge_inertia_of_certificate h_cert
-    h_bridge
+        StrongInertiaCertificateCorrect_alpha hAxioms cert :=
+    StrongInertiaCertificate_exists_alpha hAxioms
+  exact InertiaERU_alpha_strong_of_bridge_inertia_of_certificate hAxioms
+    h_cert h_bridge
 
 
 /-- Legacy wrapper: bridge inertia to strong inertia via certificates. -/
-lemma InertiaERU_alpha_strong_of_bridge_inertia_legacy :
+lemma InertiaERU_alpha_strong_of_bridge_inertia_legacy
+  (hAxioms : AxiomsShimAccepted) :
   InertiaERU alphaBridge → InertiaERU_alpha_strong :=
 by
   intro h_bridge
-  exact InertiaERU_alpha_strong_of_bridge_inertia_certified h_bridge
+  exact InertiaERU_alpha_strong_of_bridge_inertia_certified hAxioms h_bridge
 
 end ERURH

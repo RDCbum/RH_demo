@@ -101,14 +101,15 @@ by
 absence of modes `β > 1/2`, via the bridge inertia for `alphaBridge`. This
 makes explicit the two-step structure (no modes → bridge inertia → strong
 inertia). -/
-lemma InertiaERU_alpha_strong_of_no_modes_via_bridge :
+lemma InertiaERU_alpha_strong_of_no_modes_via_bridge
+  (hAxioms : AxiomsShimAccepted) :
   (∀ β : ℝ, β > (1/2 : ℝ) → ¬ ERU_mode_beta β) →
   InertiaERU_alpha_strong :=
 by
   intro h_no_modes
   have h_bridge : InertiaERU alphaBridge :=
     alphaBridge_inertia_of_no_modes h_no_modes
-  exact InertiaERU_alpha_strong_of_bridge_inertia_certified h_bridge
+  exact InertiaERU_alpha_strong_of_bridge_inertia_certified hAxioms h_bridge
 
 /-- Certificate-based route: from the absence of modes `β > 1/2` we derive
 strong ERU inertia using the bridge and strong inertia certificates, avoiding
@@ -124,7 +125,7 @@ by
   have hW : ExplicitWitness alphaBridge xiAlpha AlphaPsi :=
     alphaExplicitWitness_from_inertia hAxioms.alphaInterfacesBase h_bridge
   have hE : E_bound_strong_alpha := explicit_witness_to_E_bound_alpha hW
-  exact ERU_inertia_of_E_bound_alpha hE
+  exact hAxioms.h_inertia_of_E hE
 
 /-- Legacy direct axiom: from the absence of exponential ERU modes with
 `β > 1/2` we obtain the strong ERU inertia statement for the alpha bridge.
@@ -133,18 +134,20 @@ Conceptually, this says that ruling out all off-line exponential modes is
 enough to recover the quantitative bound encoded in `InertiaERU_alpha_strong`.
 The lemma `InertiaERU_alpha_strong_of_no_modes_via_bridge` exposes a more
 structured two-step variant via `alphaBridge`. -/
-lemma InertiaERU_alpha_strong_of_no_modes :
+lemma InertiaERU_alpha_strong_of_no_modes
+  (hAxioms : AxiomsShimAccepted) :
   (∀ β : ℝ, β > (1/2 : ℝ) → ¬ ERU_mode_beta β) →
   InertiaERU_alpha_strong :=
 by
   intro h_no_modes
-  exact InertiaERU_alpha_strong_of_no_modes_via_certificates axiomsShimAccepted_true h_no_modes
+  exact InertiaERU_alpha_strong_of_no_modes_via_certificates hAxioms h_no_modes
 
 /-- Energetic ERU principle for `xiAlpha`: combining the global
 energy bound, the energy blow-up gate for exponential modes with
 `β > 1/2`, and the ERURH equivalence, we obtain the Riemann
 Hypothesis for `xiAlpha`. -/
 theorem RH_from_ERU_energy
+  (hAxioms : AxiomsShimAccepted)
   (h_energy : EnergyBoundHypotheses_alpha) :
   RiemannHypothesis xiAlpha :=
 by
@@ -154,8 +157,8 @@ by
     exact no_ERU_mode_beta_of_gt_half hβ h_energy
   -- Step 2: obtain strong ERU inertia from the absence of modes.
   have h_inertia : InertiaERU_alpha_strong :=
-    InertiaERU_alpha_strong_of_no_modes_via_certificates axiomsShimAccepted_true h_no_modes
+    InertiaERU_alpha_strong_of_no_modes_via_certificates hAxioms h_no_modes
   -- Step 3: use the existing ERURH equivalence for the alpha case.
-  exact (ERU_RH_equiv_alpha).1 h_inertia
+  exact (ERU_RH_equiv_alpha_of_axioms hAxioms).1 h_inertia
 
 end ERURH

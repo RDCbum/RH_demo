@@ -37,7 +37,7 @@ structure BetaInertiaAssumptions where
       ERU_energy_kernel_alpha ≥ kernel_threshold_alpha
 
 /-- External numeric beta assumptions bundle (generated from frozen JSON). -/
-def betaInertiaAssumptions_true : BetaInertiaAssumptions := by
+noncomputable def betaInertiaAssumptions_true : BetaInertiaAssumptions := by
   refine
     { bundle :=
         { cert := Beta.strongInertiaCertificate_beta_numeric
@@ -49,3 +49,4 @@ def betaInertiaAssumptions_true : BetaInertiaAssumptions := by
   exact ERU_energy_kernel_blowup_of_mode_beta_of_certificate hβ h_cert h_mode
 
 end ERURH
+

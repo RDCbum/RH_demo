@@ -1,0 +1,7 @@
+lean/formal_proofs/ERURH/RH_Unconditional.lean:15:10: error: don't know how to synthesize placeholder
+context:
+case hAxioms
+ctx : RMSLocalContext := Alpha.GeneratedRMSContext.ctx_real
+hLow : A2Low_RMS ctx
+hTail : A2Tail_RMS ctx
+⊢ AxiomsShimAccepted

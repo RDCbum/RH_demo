@@ -1,0 +1,9 @@
+ERURH.A1_mode (ctx : RMSLocalContext) : Prop
+ERURH.A2Low_RMS (ctx : RMSLocalContext) : Prop
+ERURH.A2Tail_RMS (ctx : RMSLocalContext) : Prop
+ERURH.Alpha.RMS_envelope_closed (ctx : RMSLocalContext) : Prop
+ERURH.RMSLocalContext.RMS_decomp (self : RMSLocalContext) (w : self.Window) :
+  self.RMS_alpha w ≥ self.RMS_mode w - (self.RMS_low w + self.RMS_tail w)
+lean/formal_proofs/ERURH/Alpha/CtxRealNonVacuityAudit.lean:27:16: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`

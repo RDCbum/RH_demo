@@ -1,0 +1,15 @@
+{
+  "version": "rms_context_schema_v1",
+  "n_windows": 1,
+  "C_envelope_ctx": "1/1",
+  "c_low": "1/10",
+  "c_tail": "1/10",
+  "windows": [
+    {
+      "id": 0,
+      "RMS_mode": "1/1",
+      "RMS_low": "1/20",
+      "RMS_tail": "1/20"
+    }
+  ]
+}

@@ -30,6 +30,6 @@ Schema version: rms_context_schema_v1
   RMS_mode[w] <= C_envelope_ctx + RMS_low[w] + RMS_tail[w].
 
 ## Non-vacuity constraints
-- A1_mode requires a witness window with
-  RMS_mode[w] > c_low + c_tail + C_envelope_formal.
 - A2 requires RMS_low[w] <= c_low and RMS_tail[w] <= c_tail for all w.
+- A1_mode is not enforced by the generator; it is treated as an analytic
+  implication in Route B (see RB4/RB6 notes).

@@ -1,0 +1,9 @@
+ERURH.Alpha.GeneratedRMSContext.ctx_real : ERURH.RMSLocalContext
+ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Low : ERURH.A2Low_RMS ERURH.Alpha.GeneratedRMSContext.ctx_real
+ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Tail : ERURH.A2Tail_RMS ERURH.Alpha.GeneratedRMSContext.ctx_real
+@[reducible] def ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Low : ERURH.A2Low_RMS
+  ERURH.Alpha.GeneratedRMSContext.ctx_real :=
+ctx_real_A2Low
+@[reducible] def ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Tail : ERURH.A2Tail_RMS
+  ERURH.Alpha.GeneratedRMSContext.ctx_real :=
+ctx_real_A2Tail

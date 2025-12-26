@@ -18,6 +18,6 @@ This ledger summarizes what is discharged by which external layer after beta gat
 
 ## Gate + certificates (alpha + RMS + beta)
 - `CertificatesCorrectAlpha` discharges the alpha numeric certificates (global energy + kernel blowup).
-- `NumericCoverageAlpha` discharges RMS coverage (`Alpha.RMS_envelope_closed`).
-- `A2Low_RMS` and `A2Tail_RMS` are discharged from frozen `rms_context.json` via `tools/make_rms_context.py`.
+- `NumericCoverageAlpha` (RMS envelope closed), `A2Low_RMS`, and `A2Tail_RMS` are discharged from frozen
+  `rms_context.json` via `tools/make_rms_context.py`.
 - `BetaInertiaAssumptions` is discharged from frozen beta JSON via `tools/make_beta_certificate.py` in `verify_gate.py`.

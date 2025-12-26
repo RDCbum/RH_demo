@@ -19,14 +19,17 @@ namespace Alpha
 open scoped BigOperators
 
 
-/-- Ceros no triviales de ζ(s). -/
-axiom ZeroOfZeta : Type
+/-- Ceros no triviales de ζ(s), empaquetados con sus parámetros. -/
+structure ZeroOfZeta where
+  beta : ℝ
+  gamma : ℝ
+  b_rho : ℂ
 
 /-- Parte real de un cero ρ = β + iγ. -/
-axiom beta : ZeroOfZeta → ℝ
+def beta (ρ : ZeroOfZeta) : ℝ := ρ.beta
 
 /-- Altura (parte imaginaria) de un cero ρ = β + iγ. -/
-axiom gamma : ZeroOfZeta → ℝ
+def gamma (ρ : ZeroOfZeta) : ℝ := ρ.gamma
 
 /-- Inmersión compleja de un cero ρ = β + iγ. -/
 noncomputable def rho_complex (ρ : ZeroOfZeta) : ℂ :=
@@ -55,7 +58,7 @@ def is_tail_zero (T0 : ℝ) (ρ : ZeroOfZeta) : Prop :=
   beta ρ > (1/2 : ℝ) ∧ |gamma ρ| > T0
 
 /-- Coeficiente ERU `b_ρ` asociado a un cero en la fórmula explícita (abstracto). -/
-axiom b_rho : ZeroOfZeta → ℂ
+def b_rho (ρ : ZeroOfZeta) : ℂ := ρ.b_rho
 
 /-- Expresión candidata para `b_ρ`, construida a partir del prefactor Γ·π. -/
 noncomputable def explicit_b_rho_expression (ρ : ZeroOfZeta) : ℂ :=

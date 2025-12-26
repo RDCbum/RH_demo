@@ -1,0 +1,42 @@
+
+## lake env lean lean/formal_proofs/ERURH/Alpha/RMSContextSpecAudit.lean
+structure ERURH.RMSLocalContext : Type 1
+number of parameters: 0
+fields:
+  ERURH.RMSLocalContext.Window : Type
+  ERURH.RMSLocalContext.RMS_alpha : self.Window ? ?
+  ERURH.RMSLocalContext.RMS_mode : self.Window ? ?
+  ERURH.RMSLocalContext.RMS_low : self.Window ? ?
+  ERURH.RMSLocalContext.RMS_tail : self.Window ? ?
+  ERURH.RMSLocalContext.c_low : ?
+  ERURH.RMSLocalContext.c_tail : ?
+  ERURH.RMSLocalContext.c_low_nonneg : 0 ? self.c_low
+  ERURH.RMSLocalContext.c_tail_nonneg : 0 ? self.c_tail
+  ERURH.RMSLocalContext.RMS_tail_bound_simple : ? (w : self.Window), self.RMS_tail w ? self.c_tail
+  ERURH.RMSLocalContext.RMS_decomp : ? (w : self.Window),
+      self.RMS_alpha w ? self.RMS_mode w - (self.RMS_low w + self.RMS_tail w)
+constructor:
+  ERURH.RMSLocalContext.mk (Window : Type) (RMS_alpha RMS_mode RMS_low RMS_tail : Window ? ?) (c_low c_tail : ?)
+    (c_low_nonneg : 0 ? c_low) (c_tail_nonneg : 0 ? c_tail)
+    (RMS_tail_bound_simple : ? (w : Window), RMS_tail w ? c_tail)
+    (RMS_decomp : ? (w : Window), RMS_alpha w ? RMS_mode w - (RMS_low w + RMS_tail w)) : RMSLocalContext
+def ERURH.A1_mode : RMSLocalContext ? Prop :=
+fun ctx => ? w, ? K > ctx.c_low + ctx.c_tail + C_envelope_formal, ctx.RMS_mode w ? K
+def ERURH.A2Low_RMS : RMSLocalContext ? Prop :=
+fun ctx => ? (w : ctx.Window), ctx.RMS_low w ? ctx.c_low
+def ERURH.A2Tail_RMS : RMSLocalContext ? Prop :=
+fun ctx => ? (w : ctx.Window), ctx.RMS_tail w ? ctx.c_tail
+def ERURH.Alpha.RMS_envelope_closed : RMSLocalContext ? Prop :=
+fun ctx => ? (w : ctx.Window), ctx.RMS_alpha w ? C_envelope_formal
+lean/formal_proofs/ERURH/Alpha/RMSContextSpecAudit.lean:21:25: error: unsolved goals
+ctx : RMSLocalContext
+? ? w K, ctx.c_low + ctx.c_tail + C_envelope_formal < K ? K ? ctx.RMS_mode w
+lean/formal_proofs/ERURH/Alpha/RMSContextSpecAudit.lean:24:27: error: unsolved goals
+ctx : RMSLocalContext
+? ? (w : ctx.Window), ctx.RMS_low w ? ctx.c_low
+lean/formal_proofs/ERURH/Alpha/RMSContextSpecAudit.lean:27:28: error: unsolved goals
+ctx : RMSLocalContext
+? ? (w : ctx.Window), ctx.RMS_tail w ? ctx.c_tail
+lean/formal_proofs/ERURH/Alpha/RMSContextSpecAudit.lean:30:43: error: unsolved goals
+ctx : RMSLocalContext
+? ? (w : ctx.Window), ctx.RMS_alpha w ? C_envelope_formal

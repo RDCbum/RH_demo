@@ -1,7 +1,6 @@
 \section{Assumptions Ledger}
 \begin{itemize}
   \item \textbf{A/B/C (analytic packages).} The analytic inputs used by Plan~B: spectral decay (A), large-sieve bounds (B), and RMS tail/window controls (C).
-  \item \textbf{Classical / citable.} Zeta explicit-formula setup and classical implications (e.g. ERU inertia $\leftrightarrow$ $E$-bounds; RH $\Rightarrow$ $E$-bounds), together with the zero-parameterization objects $\beta,\gamma$ and coefficients $b_\rho$.
-  \item \textbf{Gate + certificates (alpha + RMS).} The alpha certificates and RMS coverage are discharged by the reproducible pipeline (\texttt{verify\_gate.py}), which regenerates the rational bounds and certificate values and checks the Lean build.
-  \item \textbf{Beta (explicit assumptions).} The beta certificate package is an explicit hypothesis bundle. There is no frozen beta input in the release bundle yet, so the beta certificate data remain external in this arXiv version.
+  \item \textbf{Classical / citable.} Zeta explicit-formula setup and classical implications (including the ERU inertia $\leftrightarrow$ $E$-bound links and RH $\Rightarrow$ $E$-bounds). The zero-parameterization objects $\beta,\gamma$ and coefficients $b_\rho$ remain part of this classical package.
+  \item \textbf{Gate + certificates (alpha + RMS + beta).} The alpha certificates and RMS coverage are discharged by the reproducible pipeline (\texttt{verify\_gate.py}), which regenerates the rational bounds and certificate values and checks the Lean build. The beta inertia bundle is now generated from frozen JSON via \texttt{tools/make\_beta\_certificate.py} and is discharged in the same gate.
 \end{itemize}

@@ -1,6 +1,6 @@
 # Assumptions Ledger (release/arxiv)
 
-This ledger summarizes what is discharged by which external layer after the beta de-axiomatization.
+This ledger summarizes what is discharged by which external layer after beta gate integration and inertia/E bundling.
 
 ## A/B/C (analytic packages, discharged externally)
 - A: `Alpha.SpectralAssumptionsAlpha` and related spectral bounds (hb tail / pointwise data) from the paper A package.
@@ -11,15 +11,9 @@ This ledger summarizes what is discharged by which external layer after the beta
 - `ClassicalZetaAssumptions` (zeta zeros and classical explicit-formula framework).
 - Explicit-formula objects and bounds used by the alpha interface:
   - `ERURH.Alpha.ZeroOfZeta`, `ERURH.Alpha.beta`, `ERURH.Alpha.gamma`, `ERURH.Alpha.b_rho`.
-- ERU inertia / E-bound equivalences:
-  - `ERURH.ERU_inertia_to_E_bound_alpha`, `ERURH.ERU_inertia_of_E_bound_alpha`, `ERURH.RH_to_E_bound_alpha`.
+- ERU inertia / E-bound implications are now explicit fields in `AxiomsShimAccepted` (no global axioms).
 
-## Gate + certificates (alpha + RMS)
+## Gate + certificates (alpha + RMS + beta)
 - `CertificatesCorrectAlpha` discharges the alpha numeric certificates (global energy + kernel blowup).
 - `NumericCoverageAlpha` discharges RMS coverage (`Alpha.RMS_envelope_closed`).
-- These are regenerated and checked by `scripts/verify_gate.py`.
-
-## Beta (explicit assumptions)
-- `BetaInertiaAssumptions` is now explicit and carries a bundle of beta certificates and correctness proofs.
-- There is no frozen beta input in `data/releases/erurh-v2-core/formal/`, so beta remains external.
-- See `docs/core/STEP9C_BETA_GAP.md` for the missing beta inputs and expected JSON schema.
+- `BetaInertiaAssumptions` is discharged from frozen beta JSON via `tools/make_beta_certificate.py` in `verify_gate.py`.

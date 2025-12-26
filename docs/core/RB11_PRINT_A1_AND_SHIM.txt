@@ -1,0 +1,62 @@
+axiom ERURH.A1_mode_of_supercritical : ∀ β > 1 / 2,
+  ERURH.ERU_mode_beta β → ERURH.A1_mode ERURH.Alpha.GeneratedRMSContext.ctx_real
+structure ERURH.AxiomsShimAccepted : Type
+number of parameters: 0
+fields:
+  ERURH.AxiomsShimAccepted.alphaInterfacesBase : ERURH.AlphaInterfaces
+  ERURH.AxiomsShimAccepted.explicit_alpha_via_stages : ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha
+      ERURH.AlphaPsi
+  ERURH.AxiomsShimAccepted.xi_bounds_alpha : Prop
+  ERURH.AxiomsShimAccepted.h_xi_bounds_alpha : self.xi_bounds_alpha
+  ERURH.AxiomsShimAccepted.xi_argument_alpha : Prop
+  ERURH.AxiomsShimAccepted.h_xi_argument_alpha : self.xi_argument_alpha
+  ERURH.AxiomsShimAccepted.xi_bounds_alpha_of_hypotheses : ERURH.xi_bounds_hypotheses_alpha → self.xi_bounds_alpha
+  ERURH.AxiomsShimAccepted.xi_argument_alpha_of_hypotheses : ERURH.xi_argument_hypotheses_alpha → self.xi_argument_alpha
+  ERURH.AxiomsShimAccepted.rh_from_E_alpha_of_hypotheses : ERURH.E_bound_strong_alpha ∧
+        self.xi_bounds_alpha ∧
+          self.xi_argument_alpha ∧
+            ERURH.explicit_rect_alpha ∧
+              Nonempty (ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi) →
+      ERURH.RHfromE ERURH.xiAlpha ERURH.AlphaPsi
+  ERURH.AxiomsShimAccepted.h_inertia_to_E : ERURH.InertiaERU_alpha_strong → ERURH.E_bound_strong_alpha
+  ERURH.AxiomsShimAccepted.h_inertia_of_E : ERURH.E_bound_strong_alpha → ERURH.InertiaERU_alpha_strong
+  ERURH.AxiomsShimAccepted.h_RH_to_E : ERURH.RiemannHypothesis ERURH.xiAlpha → ERURH.E_bound_strong_alpha
+constructor:
+  ERURH.AxiomsShimAccepted.mk (alphaInterfacesBase : ERURH.AlphaInterfaces)
+    (explicit_alpha_via_stages : ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi)
+    (xi_bounds_alpha : Prop) (h_xi_bounds_alpha : xi_bounds_alpha) (xi_argument_alpha : Prop)
+    (h_xi_argument_alpha : xi_argument_alpha)
+    (xi_bounds_alpha_of_hypotheses : ERURH.xi_bounds_hypotheses_alpha → xi_bounds_alpha)
+    (xi_argument_alpha_of_hypotheses : ERURH.xi_argument_hypotheses_alpha → xi_argument_alpha)
+    (rh_from_E_alpha_of_hypotheses :
+      ERURH.E_bound_strong_alpha ∧
+          xi_bounds_alpha ∧
+            xi_argument_alpha ∧
+              ERURH.explicit_rect_alpha ∧
+                Nonempty (ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi) →
+        ERURH.RHfromE ERURH.xiAlpha ERURH.AlphaPsi)
+    (h_inertia_to_E : ERURH.InertiaERU_alpha_strong → ERURH.E_bound_strong_alpha)
+    (h_inertia_of_E : ERURH.E_bound_strong_alpha → ERURH.InertiaERU_alpha_strong)
+    (h_RH_to_E : ERURH.RiemannHypothesis ERURH.xiAlpha → ERURH.E_bound_strong_alpha) : ERURH.AxiomsShimAccepted
+def ERURH.A1_mode : ERURH.RMSLocalContext → Prop :=
+fun ctx => ∃ w, ∃ K > ctx.c_low + ctx.c_tail + ERURH.C_envelope_formal, ctx.RMS_mode w ≥ K
+structure ERURH.RMSLocalContext : Type 1
+number of parameters: 0
+fields:
+  ERURH.RMSLocalContext.Window : Type
+  ERURH.RMSLocalContext.RMS_alpha : self.Window → ℝ
+  ERURH.RMSLocalContext.RMS_mode : self.Window → ℝ
+  ERURH.RMSLocalContext.RMS_low : self.Window → ℝ
+  ERURH.RMSLocalContext.RMS_tail : self.Window → ℝ
+  ERURH.RMSLocalContext.c_low : ℝ
+  ERURH.RMSLocalContext.c_tail : ℝ
+  ERURH.RMSLocalContext.c_low_nonneg : 0 ≤ self.c_low
+  ERURH.RMSLocalContext.c_tail_nonneg : 0 ≤ self.c_tail
+  ERURH.RMSLocalContext.RMS_tail_bound_simple : ∀ (w : self.Window), self.RMS_tail w ≤ self.c_tail
+  ERURH.RMSLocalContext.RMS_decomp : ∀ (w : self.Window),
+      self.RMS_alpha w ≥ self.RMS_mode w - (self.RMS_low w + self.RMS_tail w)
+constructor:
+  ERURH.RMSLocalContext.mk (Window : Type) (RMS_alpha RMS_mode RMS_low RMS_tail : Window → ℝ) (c_low c_tail : ℝ)
+    (c_low_nonneg : 0 ≤ c_low) (c_tail_nonneg : 0 ≤ c_tail)
+    (RMS_tail_bound_simple : ∀ (w : Window), RMS_tail w ≤ c_tail)
+    (RMS_decomp : ∀ (w : Window), RMS_alpha w ≥ RMS_mode w - (RMS_low w + RMS_tail w)) : ERURH.RMSLocalContext

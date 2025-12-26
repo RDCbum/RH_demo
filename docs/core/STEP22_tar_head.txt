@@ -1,0 +1,7 @@
+./
+./assumptions_ledger.tex
+./ERURH_ABC_preprint_old.tex
+./ERURH_Conditional_Proof.tex
+./lean_master_axioms.txt
+./lean_master_statement.txt
+./Theorem_ABC_preprint.tex

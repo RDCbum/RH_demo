@@ -9,11 +9,7 @@ From `arxiv_submission/lean_master_axioms.txt`:
  Classical.choice,
  Lean.ofReduceBool,
  Lean.trustCompiler,
- Quot.sound,
- ERURH.Alpha.ZeroOfZeta,
- ERURH.Alpha.b_rho,
- ERURH.Alpha.beta,
- ERURH.Alpha.gamma]
+ Quot.sound]
 ```
 
 ## Legend (Category)
@@ -38,3 +34,4 @@ From `arxiv_submission/lean_master_axioms.txt`:
 | `AxiomsShimAccepted` | C | `lean/formal_proofs/ERURH/AxiomsShimBundle.lean` | Explicit/checklist axioms bundle; classical/citable obligations | `docs/core/STEP18_UNCONDITIONAL_GOALS.log` |
 | `CertificatesCorrectAlpha` | D | `lean/formal_proofs/ERURH/ERURH_MasterTheoremPlanB.lean` | Gate/certs (`certificatesCorrectAlpha_true`) from frozen JSON + `verify_gate.py` | `docs/core/STEP22_axioms_excerpt.txt` |
 | `NumericCoverageAlpha {{ eru := sorry, window := sorry }}.window.ctx` | D | `lean/formal_proofs/ERURH/ERURH_MasterTheoremPlanB.lean` / `lean/formal_proofs/ERURH/ERURH_GatesAlpha.lean` | RMS envelope coverage from gate pipeline | `docs/core/STEP22_axioms_excerpt.txt` |
+

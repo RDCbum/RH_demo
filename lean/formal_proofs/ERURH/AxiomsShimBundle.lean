@@ -1,6 +1,9 @@
 import ERURH.ExplicitDecomposition
 import ERURH.ExplicitCoreBridge
+import ERURH.ERUModesCore
 import ERURH.ERUInertiaCore
+import ERURH.ERURH_A2Hypotheses
+import ERURH.Alpha.GeneratedRMSContext
 import ERURH.RH
 
 namespace ERURH
@@ -33,6 +36,10 @@ structure AxiomsShimAccepted where
   h_inertia_of_E : E_bound_strong_alpha → InertiaERU_alpha_strong
   /-- RH implies the classical strong E-bound. -/
   h_RH_to_E : RiemannHypothesis xiAlpha → E_bound_strong_alpha
+  /-- Supercritical ERU mode implies A1-mode for the fixed RMS context. -/
+  a1_mode_of_supercritical :
+    ∀ (β : ℝ), β > (1/2 : ℝ) →
+      ERU_mode_beta β → A1_mode Alpha.GeneratedRMSContext.ctx_real
 
 /-- Combined analytic hypotheses for deriving `RHfromE` in the alpha case,
 parameterized by the axioms bundle. -/

@@ -158,7 +158,6 @@ def write_lean_module(payload: Mapping[str, object], lean_path: Path) -> None:
     lines.append("")
     lines.append("import Mathlib")
     lines.append("import ERURH.ERURH_A2Hypotheses")
-    lines.append("import ERURH.ERURH_GatesAlpha")
     lines.append("")
     lines.append(f"def n_windows : Nat := {n_windows}")
     lines.append("")
@@ -219,22 +218,6 @@ def write_lean_module(payload: Mapping[str, object], lean_path: Path) -> None:
     lines.append("  simpa [_root_.ERURH.A2Tail_RMS] using ctx_real.RMS_tail_bound_simple")
     lines.append("")
     lines.append(
-        "theorem ctx_real_RMS_envelope_closed :"
-        " _root_.ERURH.Alpha.RMS_envelope_closed ctx_real := by"
-    )
-    lines.append("  intro w")
-    lines.append("  have h_rat : cEnvelopeCtxRat = _root_.ERURH.cEnvelopeFormalRat := by")
-    lines.append("    native_decide")
-    lines.append(
-        "  have h_rat_real : (cEnvelopeCtxRat : ℝ) ="
-        " (_root_.ERURH.cEnvelopeFormalRat : ℝ) := by"
-    )
-    lines.append("    exact_mod_cast h_rat")
-    lines.append("  have h_eq : cEnvelopeCtx = _root_.ERURH.C_envelope_formal := by")
-    lines.append("    simpa [cEnvelopeCtx, _root_.ERURH.C_envelope_formal] using h_rat_real")
-    lines.append("  simpa [ctx_real] using (le_of_eq h_eq)")
-    lines.append("")
-    lines.append(
         "abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real : _root_.ERURH.RMSLocalContext :="
         " _root_.ctx_real"
     )
@@ -247,11 +230,6 @@ def write_lean_module(payload: Mapping[str, object], lean_path: Path) -> None:
         "abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Tail :"
         " _root_.ERURH.A2Tail_RMS ERURH.Alpha.GeneratedRMSContext.ctx_real :="
         " _root_.ctx_real_A2Tail"
-    )
-    lines.append(
-        "abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real_RMS_envelope_closed :"
-        " _root_.ERURH.Alpha.RMS_envelope_closed ERURH.Alpha.GeneratedRMSContext.ctx_real :="
-        " _root_.ctx_real_RMS_envelope_closed"
     )
     lines.append("")
 

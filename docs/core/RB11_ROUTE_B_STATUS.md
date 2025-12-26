@@ -15,8 +15,8 @@ Remaining Route B hypotheses (driver goals)
   bundle; external package in the paper and not discharged in Lean.
 
 Remaining gap inside the core
-- `ERURH.A1_mode_of_supercritical` (lean/formal_proofs/ERURH/A1FromSupercriticalMode.lean:9):
-  analytic gap; not proven in paper/Lean yet.
+- `AxiomsShimAccepted.a1_mode_of_supercritical`
+  (lean/formal_proofs/ERURH/AxiomsShimBundle.lean:40): analytic gap; not proven in paper/Lean yet.
 
 Gate confirmation
 - Commands: `LAKE_JOBS=1 lake build ERURH`; `LAKE_JOBS=1 python scripts/verify_gate.py --skip-pytests`.

@@ -124,6 +124,26 @@ These files are produced by running \texttt{lake env lean docs/core/PrintMasterS
 
 {\small\VerbatimInput{lean_master_axioms.txt}}
 
+\noindent Axioms shim bundle (Lean export):
+
+{\small\VerbatimInput{lean_axioms_shim_bundle.txt}}
+
+\noindent Discharge map for \texttt{AxiomsShimAccepted}:
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Field(s) & Discharge path \\
+\hline
+\texttt{alphaInterfacesBase}, \texttt{explicit\_alpha\_via\_stages} & Assumption~\ref{assm:explicit} (explicit formula package). \\
+\texttt{xi\_bounds\_alpha}, \texttt{xi\_argument\_alpha} and their hypothesis bridges & Classical/citable implications (Assumptions Ledger). \\
+\texttt{rh\_from\_E\_alpha\_of\_hypotheses} & Classical/citable implications (Assumptions Ledger). \\
+\texttt{h\_inertia\_to\_E}, \texttt{h\_inertia\_of\_E}, \texttt{h\_RH\_to\_E} & Classical/citable implications (Assumptions Ledger). \\
+\texttt{a1\_mode\_of\_supercritical} & Route B analytic gap (Assumptions Ledger). \\
+\hline
+\end{tabular}
+\end{center}
+
 \noindent The beta layer is now an explicit hypothesis bundle (no frozen numeric input is present
 in \texttt{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger section below.
 

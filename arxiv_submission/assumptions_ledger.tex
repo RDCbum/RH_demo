@@ -1,7 +1,7 @@
 \section{Assumptions Ledger}
 \begin{itemize}
   \item \textbf{A/B/C (analytic packages).} The analytic inputs used by Plan~B: spectral decay (A) and large-sieve bounds (B). RMS window bounds are now frozen in gate/data (see below).
-  \item \textbf{Analytic gap (Route B).} Supercritical mode $\Rightarrow$ A1-mode for the fixed RMS context (\texttt{A1\_mode\_of\_supercritical}).
+  \item \textbf{Analytic gap (Route B).} Supercritical mode $\Rightarrow$ A1-mode for the fixed RMS context (field \texttt{AxiomsShimAccepted.a1\_mode\_of\_supercritical}).
   \item \textbf{Classical / citable.} Zeta explicit-formula setup and classical implications (including the ERU inertia $\leftrightarrow$ $E$-bound links and RH $\Rightarrow$ $E$-bounds). The zero-parameterization objects $\beta,\gamma$ and coefficients $b_\rho$ remain part of this classical package.
   \item \textbf{Gate + certificates (alpha + RMS + beta).} The alpha certificates and RMS coverage are discharged by the reproducible pipeline (\texttt{verify\_gate.py}), which regenerates the rational bounds and certificate values and checks the Lean build. RMS A2-low/A2-tail are generated from frozen \texttt{rms\_context.json} via \texttt{tools/make\_rms\_context.py}. The beta inertia bundle is generated from frozen JSON via \texttt{tools/make\_beta\_certificate.py} and is discharged in the same gate.
 \end{itemize}

@@ -1,0 +1,43 @@
+structure ERURH.AxiomsShimAccepted : Type
+number of parameters: 0
+fields:
+  ERURH.AxiomsShimAccepted.alphaInterfacesBase : ERURH.AlphaInterfaces
+  ERURH.AxiomsShimAccepted.explicit_alpha_via_stages : ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha
+      ERURH.AlphaPsi
+  ERURH.AxiomsShimAccepted.xi_bounds_alpha : Prop
+  ERURH.AxiomsShimAccepted.h_xi_bounds_alpha : self.xi_bounds_alpha
+  ERURH.AxiomsShimAccepted.xi_argument_alpha : Prop
+  ERURH.AxiomsShimAccepted.h_xi_argument_alpha : self.xi_argument_alpha
+  ERURH.AxiomsShimAccepted.xi_bounds_alpha_of_hypotheses : ERURH.xi_bounds_hypotheses_alpha → self.xi_bounds_alpha
+  ERURH.AxiomsShimAccepted.xi_argument_alpha_of_hypotheses : ERURH.xi_argument_hypotheses_alpha → self.xi_argument_alpha
+  ERURH.AxiomsShimAccepted.rh_from_E_alpha_of_hypotheses : ERURH.E_bound_strong_alpha ∧
+        self.xi_bounds_alpha ∧
+          self.xi_argument_alpha ∧
+            ERURH.explicit_rect_alpha ∧
+              Nonempty (ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi) →
+      ERURH.RHfromE ERURH.xiAlpha ERURH.AlphaPsi
+  ERURH.AxiomsShimAccepted.h_inertia_to_E : ERURH.InertiaERU_alpha_strong → ERURH.E_bound_strong_alpha
+  ERURH.AxiomsShimAccepted.h_inertia_of_E : ERURH.E_bound_strong_alpha → ERURH.InertiaERU_alpha_strong
+  ERURH.AxiomsShimAccepted.h_RH_to_E : ERURH.RiemannHypothesis ERURH.xiAlpha → ERURH.E_bound_strong_alpha
+  ERURH.AxiomsShimAccepted.a1_mode_of_supercritical : ∀ β > 1 / 2,
+      ERURH.ERU_mode_beta β → ERURH.A1_mode ERURH.Alpha.GeneratedRMSContext.ctx_real
+constructor:
+  ERURH.AxiomsShimAccepted.mk (alphaInterfacesBase : ERURH.AlphaInterfaces)
+    (explicit_alpha_via_stages : ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi)
+    (xi_bounds_alpha : Prop) (h_xi_bounds_alpha : xi_bounds_alpha) (xi_argument_alpha : Prop)
+    (h_xi_argument_alpha : xi_argument_alpha)
+    (xi_bounds_alpha_of_hypotheses : ERURH.xi_bounds_hypotheses_alpha → xi_bounds_alpha)
+    (xi_argument_alpha_of_hypotheses : ERURH.xi_argument_hypotheses_alpha → xi_argument_alpha)
+    (rh_from_E_alpha_of_hypotheses :
+      ERURH.E_bound_strong_alpha ∧
+          xi_bounds_alpha ∧
+            xi_argument_alpha ∧
+              ERURH.explicit_rect_alpha ∧
+                Nonempty (ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi) →
+        ERURH.RHfromE ERURH.xiAlpha ERURH.AlphaPsi)
+    (h_inertia_to_E : ERURH.InertiaERU_alpha_strong → ERURH.E_bound_strong_alpha)
+    (h_inertia_of_E : ERURH.E_bound_strong_alpha → ERURH.InertiaERU_alpha_strong)
+    (h_RH_to_E : ERURH.RiemannHypothesis ERURH.xiAlpha → ERURH.E_bound_strong_alpha)
+    (a1_mode_of_supercritical :
+      ∀ β > 1 / 2, ERURH.ERU_mode_beta β → ERURH.A1_mode ERURH.Alpha.GeneratedRMSContext.ctx_real) :
+    ERURH.AxiomsShimAccepted

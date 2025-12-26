@@ -1,11 +1,12 @@
 # arXiv Release Checklist
 
-- Commit: 049483df19261766c6f32c3707fa9d408f3ae9cd
+- Commit: f81a7831ba7906b8c959cf742f3b198a6f72aeb3
 - Pipeline commands (README/AGENTS):
   - python tools/make_rational_bounds.py
   - python tools/make_certificate_values.py
   - lake build ERURH
   - python scripts/verify_gate.py --skip-pytests
 - lake build ERURH: [x] verified in this release run
+- verify_gate.py --skip-pytests: [x] verified in this release run
 - Paper build (CI or local): [ ] verified (CI: build-paper workflow or local latexmk)
-- Tarball contents: see dist/arxiv_submission.tar.gz (list with tar -tf)
+- Tarball contents: [x] verified (tar -tf dist/arxiv_submission.tar.gz)

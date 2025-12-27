@@ -1,0 +1,7 @@
+docs/core/P22_WindowBridge_Try.lean:6:83: error: unsolved goals
+β : ℝ
+hβ : β > 1 / 2
+hmode : ERU_mode_beta β
+s : ℝ
+hs : s ∈ GeneratedRMSContext.ctx_real_window_interval ctx_real_window
+⊢ |logR_alpha s| ≥ Real.exp ((β - 1 / 2) * s)

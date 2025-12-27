@@ -93,6 +93,13 @@ def main() -> None:
         run(
             [
                 sys.executable,
+                "tools/check_no_noncore_axioms.py",
+            ],
+            cwd=REPO_ROOT,
+        )
+        run(
+            [
+                sys.executable,
                 "tools/make_rational_bounds.py",
             ],
             cwd=REPO_ROOT,
@@ -115,13 +122,6 @@ def main() -> None:
             [
                 sys.executable,
                 "tools/check_rms_context.py",
-            ],
-            cwd=REPO_ROOT,
-        )
-        run(
-            [
-                sys.executable,
-                "tools/check_no_noncore_axioms.py",
             ],
             cwd=REPO_ROOT,
         )

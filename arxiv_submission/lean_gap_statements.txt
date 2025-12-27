@@ -1,12 +1,11 @@
+ERURH.Alpha.mode_to_rms_mode (β : ℝ) (hβ : β > 1 / 2) (hmode : ERURH.ERU_mode_beta β) :
+  ∃ w,
+    ∃
+      K >
+        ERURH.Alpha.GeneratedRMSContext.ctx_real.c_low + ERURH.Alpha.GeneratedRMSContext.ctx_real.c_tail +
+          ERURH.C_envelope_formal,
+      ERURH.Alpha.GeneratedRMSContext.ctx_real.RMS_mode w ≥ K
 ERURH.no_supercritical_beta (β : ℝ) : β > 1 / 2 → ¬ERURH.ERU_mode_beta β
-mode_to_rms_mode : ∀ β > 1 / 2,
-  ERURH.ERU_mode_beta β →
-    ∃ w,
-      ∃
-        K >
-          ERURH.Alpha.GeneratedRMSContext.ctx_real.c_low + ERURH.Alpha.GeneratedRMSContext.ctx_real.c_tail +
-            ERURH.C_envelope_formal,
-        ERURH.Alpha.GeneratedRMSContext.ctx_real.RMS_mode w ≥ K
 structure ERURH.AxiomsShimAccepted : Type
 number of parameters: 0
 fields:

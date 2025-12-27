@@ -168,6 +168,9 @@ We structure the argument into three lemmas, matching the Lean targets exported 
   \item \textbf{Lemma C (contradiction).} Combine Lemma~B with the Lean lemma
   \texttt{ctx\_real\_not\_A1\_mode} to reach a contradiction, hence no such mode exists.
 \end{enumerate}
+In Lean, the only explicit gap is Lemma~B (\texttt{ERURH.Alpha.mode\_to\_rms\_mode});
+Lemma~C is already proved as \texttt{ctx\_real\_not\_A1\_mode}, and the proposition is
+the derived theorem \texttt{ERURH.no\_supercritical\_beta}.
 This replaces the earlier A1 framing; see \texttt{docs/core/RB20\_A1\_EQUIVALENCE.md} in the
 repository for the formal equivalence under \texttt{ctx\_real\_not\_A1\_mode}.
 \end{proof}

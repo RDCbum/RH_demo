@@ -3,30 +3,32 @@
 Try file: `docs/core/P14_B1_BRIDGE_Try.lean`
 Log: `docs/core/P14_B1_BRIDGE_TRY.log`
 
-## First blocking goal
+## First blocking goal (updated)
 ```lean
-⊢ Alpha.GeneratedRMSContext.ctx_real.RMS_mode Alpha.ctx_real_window ≥ K
+⊢ Alpha.SupercriticalModeAppliesOnCtxRealWindow
 ```
 
 ## Why this blocks
-- `rms_semantic` is defined as the infimum of `|logR_alpha|` over the window interval.
-- `ctx_real.RMS_mode` is a numeric table generated from JSON with no semantic linkage.
-- There is no lemma (or certificate) stating that the table bounds or equals the semantic RMS.
+- `ERU_mode_beta` only provides lower bounds for `s ≥ s0`, while the RMS window interval
+  is a fixed compact interval coming from gate data.
+- The explicit bridge now isolates the missing analytic step:
+  `SupercriticalModeAppliesOnCtxRealWindow` states that a supercritical mode forces
+  the pointwise lower bound on the **specific** window interval.
+- The table/semantic bridge is now handled by the gate-certified lemma
+  `GeneratedRMSModeBridge.ctx_real_rms_mode_ge_semantic`, assuming
+  `ctx_real_logR_alpha_upper`.
 
 ## Minimal bridge needed
-A statement tying the data table to the semantic definition, for example:
+The remaining analytic bridge is now explicit:
 ```lean
-lemma ctx_real_rms_mode_ge_semantic
-  (w : Alpha.GeneratedRMSContext.ctx_real.Window) :
-  Alpha.GeneratedRMSContext.ctx_real.RMS_mode w ≥ Alpha.rms_semantic w
-```
-or, equivalently, a certified hypothesis that for each window:
-```lean
-forall s ∈ window_interval w, |logR_alpha s| ≥ K -> ctx_real.RMS_mode w ≥ K
+def SupercriticalModeAppliesOnCtxRealWindow : Prop :=
+  ∀ β, β > 1/2 → ERU_mode_beta β →
+    ∀ s ∈ ctx_real_window_interval ctx_real_window,
+      |logR_alpha s| ≥ exp((β - 1/2) * s)
 ```
 
 ## Proposed route (least downstream change)
-- Keep the numeric table as is, but add a certificate/prop generated from data that
-  `ctx_real.RMS_mode` lower-bounds the semantic RMS on each window.
-- This certificate can be added to the JSON and mirrored in Lean, then used to close
-  the bridge without introducing new axioms.
+- Keep the numeric table as is (already certified by gate).
+- Treat `ctx_real_logR_alpha_upper` as a gate-certified side condition.
+- Leave `SupercriticalModeAppliesOnCtxRealWindow` as the sole remaining analytic gap
+  in Lean (explicit hypothesis, no axioms).

@@ -1,5 +1,6 @@
 import ERURH.Alpha.GeneratedRMSContext
 import ERURH.Alpha.ModeToRMSMode
+import ERURH.Alpha.ModeToRMSMode_WindowBridge
 import ERURH.Alpha.RMS_Incompatibility
 import ERURH.ERUModesAlpha
 import ERURH.ERURH_MasterTheoremPlanB
@@ -10,10 +11,13 @@ namespace ERURH
 the fixed RMS context, then there are no supercritical modes and RH follows. -/
 theorem RH_unconditional_core
   (hAxioms : AxiomsShimAccepted)
-  (hB1 : Alpha.PointwiseToRMSMode Alpha.GeneratedRMSContext.ctx_real Alpha.ctx_real_window)
+  (h_upper : _root_.ctx_real_logR_alpha_upper Alpha.ctx_real_window)
+  (h_bridge : Alpha.SupercriticalModeAppliesOnCtxRealWindow)
   (hNumeric : NumericCoverageAlpha Alpha.GeneratedRMSContext.ctx_real) :
   RiemannHypothesis xiAlpha := by
   let ctx := Alpha.GeneratedRMSContext.ctx_real
+  have hB1 : Alpha.PointwiseToRMSMode Alpha.GeneratedRMSContext.ctx_real Alpha.ctx_real_window :=
+    Alpha.pointwise_to_RMS_mode_of_ctx_real_logR_alpha_upper_and_window_bridge h_upper h_bridge
   have hLow : A2Low_RMS ctx := by
     simpa [ctx] using Alpha.GeneratedRMSContext.ctx_real_A2Low
   have hTail : A2Tail_RMS ctx := by

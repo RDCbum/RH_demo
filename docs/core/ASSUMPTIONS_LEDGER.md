@@ -8,7 +8,8 @@ This ledger summarizes what is discharged by which external layer after beta gat
 - C: reserved (RMS window bounds now frozen in gate/data; see below).
 
 ## Analytic gap (Route B)
-- `ERURH.Alpha.pointwise_to_RMS_mode` (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_PointwiseToRMS.lean:10`;
+- explicit hypothesis `ERURH.Alpha.PointwiseToRMSMode ERURH.Alpha.GeneratedRMSContext.ctx_real
+  ERURH.Alpha.ctx_real_window` (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_PointwiseToRMS.lean:10`;
   exported in `arxiv_submission/lean_gap_statements.txt`). This is Lemma B.1 (pointwise-to-RMS bridge),
   and it implies `ERURH.no_supercritical_beta` via Lemma B and `ctx_real_not_A1_mode`
   (see `docs/core/RB20_A1_EQUIVALENCE.md`).

@@ -82,13 +82,14 @@ def PlanB_AnalyticAssumptions.of_simple_LS_Hb
   (ctx : RMSLocalContext)
   (hExp : ExplicitFormulaERU)
   (hHb  : H_b)
+  (h_prefactor_bound : gamma_prefactor_growth_bound)
   (hLS  : LSGammaAssumptions)
   (hClassical : ClassicalZetaAssumptions)
   (hA1  : A1_mode ctx)
   (hLow : A2Low_RMS ctx) :
   PlanB_AnalyticAssumptions ctx :=
 PlanB_AnalyticAssumptions.of_simple_LS ctx
-  (SpectralAssumptionsAlpha.of_Hb hHb)
+  (SpectralAssumptionsAlpha.of_Hb h_prefactor_bound hHb)
   hLS
   hClassical
   hExp hA1 hLow

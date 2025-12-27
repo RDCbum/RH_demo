@@ -31,7 +31,7 @@ lemma EToRH_hypotheses_alpha_of_AlphaAnalyticAssumptions
   EToRH_hypotheses_alpha hAxioms :=
 by
   rcases h with ⟨h_explicit, h_rh, h_flux, h_rect, h_equiv⟩
-  refine ⟨E_bound_strong_alpha_true,
+  refine ⟨E_bound_strong_alpha_true hAxioms.alphaInterfacesBase,
     hAxioms.h_xi_bounds_alpha,
     hAxioms.h_xi_argument_alpha,
     h_rect,

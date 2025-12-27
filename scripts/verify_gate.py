@@ -121,6 +121,13 @@ def main() -> None:
         run(
             [
                 sys.executable,
+                "tools/check_no_noncore_axioms.py",
+            ],
+            cwd=REPO_ROOT,
+        )
+        run(
+            [
+                sys.executable,
                 "tools/make_beta_certificate.py",
             ],
             cwd=REPO_ROOT,

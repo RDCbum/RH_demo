@@ -10,6 +10,7 @@ namespace ERURH
 the fixed RMS context, then there are no supercritical modes and RH follows. -/
 theorem RH_unconditional_core
   (hAxioms : AxiomsShimAccepted)
+  (hB1 : Alpha.PointwiseToRMSMode Alpha.GeneratedRMSContext.ctx_real Alpha.ctx_real_window)
   (hNumeric : NumericCoverageAlpha Alpha.GeneratedRMSContext.ctx_real) :
   RiemannHypothesis xiAlpha := by
   let ctx := Alpha.GeneratedRMSContext.ctx_real
@@ -20,7 +21,7 @@ theorem RH_unconditional_core
   have h_no_modes : ∀ β : ℝ, β > (1/2 : ℝ) → ¬ ERU_mode_beta β := by
     intro β hβ h_mode
     have hA1 : A1_mode ctx := by
-      simpa [ctx] using Alpha.mode_to_rms_mode β hβ h_mode
+      simpa [ctx] using Alpha.mode_to_rms_mode hB1 β hβ h_mode
     have hClosed : Alpha.RMS_envelope_closed ctx := by
       simpa [ctx, NumericCoverageAlpha] using hNumeric
     exact Alpha.A1A2_decomp_envelope_inconsistent ctx hA1 hLow hTail hClosed

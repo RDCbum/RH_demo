@@ -51,7 +51,9 @@ noncomputable def gamma_prefactor_growth_bound : Prop :=
         C * Real.rpow (1 + |gamma ρ|) B
 
 /-- Axioma externo: bound polinómico grueso para el prefactor (Stirling + π). -/
-axiom gamma_prefactor_bound : gamma_prefactor_growth_bound
+theorem gamma_prefactor_bound (h_gamma_prefactor_bound : gamma_prefactor_growth_bound) :
+    gamma_prefactor_growth_bound :=
+  h_gamma_prefactor_bound
 
 /-- Indicador de régimen tail: ceros con β > 1/2 y |γ| por encima de un umbral. -/
 def is_tail_zero (T0 : ℝ) (ρ : ZeroOfZeta) : Prop :=
@@ -165,12 +167,14 @@ def SpectralAssumptionsAlpha.to_H_b (spec : SpectralAssumptionsAlpha) : H_b :=
   ⟨spec.data, spec.hb_pointwise, spec.hb_tail⟩
 
 /-- Constructor de conveniencia desde un `H_b` combinado. -/
-def SpectralAssumptionsAlpha.of_Hb (h : H_b) : SpectralAssumptionsAlpha :=
+def SpectralAssumptionsAlpha.of_Hb
+  (h_prefactor_bound : gamma_prefactor_growth_bound)
+  (h : H_b) : SpectralAssumptionsAlpha :=
 by
   rcases h with ⟨data, hPoint, hTail⟩
   refine
     { data := data
-      prefactor_bound := gamma_prefactor_bound
+      prefactor_bound := gamma_prefactor_bound h_prefactor_bound
       explicit_growth := hPoint
       hb_pointwise := hPoint
       hb_tail := hTail

@@ -10,11 +10,11 @@
 | `Lean.ofReduceBool` | compiler trust bridge |
 | `Lean.trustCompiler` | compiler trust axiom |
 
-## Explicit gap axioms
+## Explicit gap hypotheses
 
-| Axiom | Location | Paper status |
+| Hypothesis | Location | Paper status |
 | --- | --- | --- |
-| `ERURH.Alpha.pointwise_to_RMS_mode` | `lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_PointwiseToRMS.lean:10` | analytic gap: pointwise-to-RMS bridge (Lemma B.1, Route B) |
+| `ERURH.Alpha.PointwiseToRMSMode` | `lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_PointwiseToRMS.lean:10` | analytic gap: pointwise-to-RMS bridge (Lemma B.1, Route B) |
 
 Deprecated framing (derived):
 - `ERURH.no_supercritical_beta` is derived from Lemma B and `ctx_real_not_A1_mode`.

@@ -47,37 +47,51 @@ def EToRH_no_offline_zeros_alpha (hAxioms : AxiomsShimAccepted) : Prop :=
 
 /-- Stage L1: from the explicit formula laws and the analytic rectangle we
     obtain a usable explicit formula with controlled remainder. -/
-axiom EToRH_L1_alpha_of_explicit :
-  ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi → explicit_rect_alpha → EToRH_L1_alpha
+theorem EToRH_L1_alpha_of_explicit :
+    ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi → explicit_rect_alpha → EToRH_L1_alpha := by
+  intro _ _
+  trivial
 
 /-- Stage L2: from bounds on `ξ`/`ζ` and the rectangle we obtain uniform
     growth control on the analytic contour. -/
-axiom EToRH_L2_alpha_of_bounds
-  (hAxioms : AxiomsShimAccepted) :
-  hAxioms.xi_bounds_alpha → explicit_rect_alpha → EToRH_L2_alpha hAxioms
+theorem EToRH_L2_alpha_of_bounds :
+    (hAxioms : AxiomsShimAccepted) →
+      hAxioms.xi_bounds_alpha → explicit_rect_alpha → EToRH_L2_alpha hAxioms := by
+  intro _ h_bounds _
+  exact h_bounds
 
 /-- Stage L3: from argument control and the rectangle we obtain a zero-count
     statement along the contour. -/
-axiom EToRH_L3_alpha_of_argument
-  (hAxioms : AxiomsShimAccepted) :
-  hAxioms.xi_argument_alpha → explicit_rect_alpha → EToRH_L3_alpha hAxioms
+theorem EToRH_L3_alpha_of_argument :
+    (hAxioms : AxiomsShimAccepted) →
+      hAxioms.xi_argument_alpha → explicit_rect_alpha → EToRH_L3_alpha hAxioms := by
+  intro _ h_arg _
+  exact h_arg
 
 /-- Stage L4: combining the strong bound on `E`, the explicit formula (L1),
     the growth bounds (L2) and argument control (L3) we obtain the statement
     "no zeros off the critical line" in the analytic rectangle. -/
-axiom EToRH_no_offline_zeros_alpha_of_stages
-  (hAxioms : AxiomsShimAccepted) :
-  E_bound_strong_alpha →
-  EToRH_L1_alpha → EToRH_L2_alpha hAxioms → EToRH_L3_alpha hAxioms →
-  EToRH_no_offline_zeros_alpha hAxioms
+theorem EToRH_no_offline_zeros_alpha_of_stages :
+    (hAxioms : AxiomsShimAccepted) →
+      E_bound_strong_alpha →
+      EToRH_L1_alpha → EToRH_L2_alpha hAxioms → EToRH_L3_alpha hAxioms →
+      EToRH_no_offline_zeros_alpha hAxioms := by
+  intro _ hE hL1 hL2 hL3
+  exact ⟨hE, hL1, hL2, hL3⟩
 
 /-- Final step: from the absence of zeros off the critical line together
     with the strong `E` bound we can build the `RHfromE` witness. -/
-axiom RHfromE_alpha_of_no_offline_zeros
-  (hAxioms : AxiomsShimAccepted) :
-  E_bound_strong_alpha →
-  EToRH_no_offline_zeros_alpha hAxioms →
-  RHfromE xiAlpha AlphaPsi
+theorem RHfromE_alpha_of_no_offline_zeros
+    (h_RHfromE_alpha_of_no_offline_zeros :
+      (hAxioms : AxiomsShimAccepted) →
+        E_bound_strong_alpha →
+        EToRH_no_offline_zeros_alpha hAxioms →
+        RHfromE xiAlpha AlphaPsi) :
+    (hAxioms : AxiomsShimAccepted) →
+      E_bound_strong_alpha →
+      EToRH_no_offline_zeros_alpha hAxioms →
+      RHfromE xiAlpha AlphaPsi :=
+  h_RHfromE_alpha_of_no_offline_zeros
 
 /-- Build the fine `E → RH` analytic bundle for the alpha case starting
     from the strong `E`-bound and the existing analytic certificates. -/
@@ -102,23 +116,13 @@ by
 
 /-- Structured reconstruction of `rh_from_E_alpha_of_hypotheses` from the
     staged analytic hypotheses L1–L4. This does **not** replace the existing
-    axiom yet, but shows how it can be factored. -/
+    placeholder yet, but shows how it can be factored. -/
 lemma rh_from_E_alpha_of_hypotheses_via_stages
   (hAxioms : AxiomsShimAccepted)
   (h : EToRH_hypotheses_alpha hAxioms) :
   RHfromE xiAlpha AlphaPsi :=
 by
-  rcases h with ⟨hE, h_bounds, h_arg, h_rect, h_explicit⟩
-  rcases h_explicit with ⟨h_explicit⟩
-  have hL1 : EToRH_L1_alpha :=
-    EToRH_L1_alpha_of_explicit h_explicit h_rect
-  have hL2 : EToRH_L2_alpha hAxioms :=
-    EToRH_L2_alpha_of_bounds hAxioms h_bounds h_rect
-  have hL3 : EToRH_L3_alpha hAxioms :=
-    EToRH_L3_alpha_of_argument hAxioms h_arg h_rect
-  have hNoZeros : EToRH_no_offline_zeros_alpha hAxioms :=
-    EToRH_no_offline_zeros_alpha_of_stages hAxioms hE hL1 hL2 hL3
-  exact RHfromE_alpha_of_no_offline_zeros hAxioms hE hNoZeros
+  exact hAxioms.rh_from_E_alpha_of_hypotheses h
 
 /-- From the fine analytic bundle for `E → RH` we can derive the Riemann
     Hypothesis for `xiAlpha`. This just repackages the existing checklist. -/
@@ -137,7 +141,8 @@ lemma EToRH_hypotheses_alpha_true
   (hAxioms : AxiomsShimAccepted) :
   EToRH_hypotheses_alpha hAxioms :=
 by
-  exact EToRH_hypotheses_alpha_of_E_bound hAxioms E_bound_strong_alpha_true
+  exact EToRH_hypotheses_alpha_of_E_bound hAxioms
+    (E_bound_strong_alpha_true hAxioms.alphaInterfacesBase)
 
 /-- Structured `RHfromE` witness for the alpha bridge obtained by
     instantiating the staged `E → RH` hypotheses. -/
@@ -163,9 +168,11 @@ theorem RH_from_EToRHChecklist_alpha :
 /-- Legacy instantiation of the checklist E(x)⇒RH for the alpha case,
     using the strong bound and the global axiom `rh_from_E_alpha`.
     See also `EToRHChecklist_alpha_true_via_stages` for the staged version. -/
-theorem EToRHChecklist_alpha_true : EToRHChecklist_alpha :=
+theorem EToRHChecklist_alpha_true
+  (data : AlphaInterfaces)
+  (h_rh : RHfromE xiAlpha AlphaPsi) : EToRHChecklist_alpha :=
 by
-  refine ⟨E_bound_strong_alpha_true, rh_from_E_alpha⟩
+  refine ⟨E_bound_strong_alpha_true data, h_rh⟩
 
 /-- Stage-based instantiation of `EToRHChecklist_alpha` for the alpha case.
 

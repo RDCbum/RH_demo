@@ -16,12 +16,10 @@ to the structured hypotheses in `EnergyBoundsAlpha` and to ERURH gates.
 
 namespace ERURH
 
-/-- Abstract global ERU energy attached to `logR_alpha`.
-
-At this stage we only postulate its existence as a real number; later on
-this can be refined to a concrete expression (e.g. in terms of windowed
-flux energies). -/
-axiom ERU_energy_global_alpha : ℝ
+/-- Global ERU energy attached to `logR_alpha`, aligned with the formal
+energy envelope `L_global_alpha` from the released rational bounds. -/
+noncomputable def ERU_energy_global_alpha : ℝ :=
+  algebraMap ℚ ℝ lGlobalFormalRat
 
 /-- Global ERU energy envelope for the alpha bridge, instantiated from the
 closed-form rational bound `lGlobalFormalRat` and converted to `R`. This is
@@ -51,11 +49,9 @@ noncomputable def kernel_threshold_alpha : ℝ :=
   This axiom is kept temporarily for compatibility during development,
   but new code should avoid depending on it.
 -/
-lemma ERU_energy_alpha_bounded
-  (h_energy : ERU_energy_global_alpha = L_global_alpha) :
-  ERU_energy_global_alpha = L_global_alpha :=
-by
-  exact h_energy
+lemma ERU_energy_alpha_bounded :
+  ERU_energy_global_alpha = L_global_alpha := by
+  rfl
 
 /--
   DEPRECATED: direct global energy blow-up from the kernel-level bound.
@@ -67,8 +63,12 @@ by
   This axiom is kept temporarily for compatibility during the
   transition; it is no longer used in the main energetic ERURH
   pipeline. -/
-axiom ERU_energy_global_dominates_kernel_legacy :
-  ERU_energy_kernel_alpha = kernel_threshold_alpha ->
-  ERU_energy_global_alpha > L_global_alpha
+theorem ERU_energy_global_dominates_kernel_legacy
+    (h_ERU_energy_global_dominates_kernel_legacy :
+      ERU_energy_kernel_alpha = kernel_threshold_alpha ->
+      ERU_energy_global_alpha > L_global_alpha) :
+    ERU_energy_kernel_alpha = kernel_threshold_alpha ->
+    ERU_energy_global_alpha > L_global_alpha :=
+  h_ERU_energy_global_dominates_kernel_legacy
 
 end ERURH

@@ -101,7 +101,7 @@ def InertiaERU_alpha_strong_of_bridge_inertia_default
   InertiaERU alphaBridge → InertiaERU_alpha_strong :=
 by
   intro _h_bridge
-  exact hAxioms.h_inertia_of_E E_bound_strong_alpha_true
+  exact hAxioms.h_inertia_of_E (E_bound_strong_alpha_true hAxioms.alphaInterfacesBase)
 
 /-- Strong inertia certificate for the alpha case. -/
 structure StrongInertiaCertificate_alpha where

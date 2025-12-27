@@ -27,24 +27,39 @@ and flux certificates in future work. -/
   pipeline.
 -/
 lemma ERU_energy_kernel_blowup_of_mode_beta_legacy
+  (h_kernel_blowup :
+    {β : ℝ} → (hβ : β > (1/2 : ℝ)) →
+      (∃ cert : KernelBlowupCertificate_alpha,
+        KernelBlowupCertificateCorrect_alpha cert) →
+      ERU_mode_beta β →
+      ERU_energy_kernel_alpha ≥ kernel_threshold_alpha)
   {β : ℝ} (hβ : β > (1/2 : ℝ)) :
   ERU_mode_beta β → ERU_energy_kernel_alpha ≥ kernel_threshold_alpha :=
 by
   intro h_mode
-  exact ERU_energy_kernel_blowup_of_mode_beta hβ h_mode
+  exact ERU_energy_kernel_blowup_of_mode_beta h_kernel_blowup hβ h_mode
 
 /-- From kernel-level energy blow-up to global energy blow-up: this combines
 `ERU_energy_kernel_blowup_of_mode_beta` with the abstract domination of the
 global ERU energy over the kernel. This lemma provides an intermediate
 structured version of the global energy blow-up for modes with `β > 1/2`. -/
 lemma ERU_energy_blowup_of_mode_beta_via_kernel
+  (h_kernel_blowup :
+    {β : ℝ} → (hβ : β > (1/2 : ℝ)) →
+      (∃ cert : KernelBlowupCertificate_alpha,
+        KernelBlowupCertificateCorrect_alpha cert) →
+      ERU_mode_beta β →
+      ERU_energy_kernel_alpha ≥ kernel_threshold_alpha)
+  (h_legacy :
+    ERU_energy_kernel_alpha = kernel_threshold_alpha →
+    ERU_energy_global_alpha > L_global_alpha)
   {β : ℝ} (hβ : β > (1/2 : ℝ)) :
   ERU_mode_beta β → ERU_energy_global_alpha > L_global_alpha :=
 by
   intro h_mode
   have h_kernel : ERU_energy_kernel_alpha ≥ kernel_threshold_alpha :=
-    ERU_energy_kernel_blowup_of_mode_beta hβ h_mode
-  exact ERU_energy_global_dominates_kernel h_kernel
+    ERU_energy_kernel_blowup_of_mode_beta h_kernel_blowup hβ h_mode
+  exact ERU_energy_global_dominates_kernel h_legacy h_kernel
 
 /-- Energy blow-up gate for exponential modes: any exponential mode
 with real part `β > 1/2` forces the global ERU energy of the alpha bridge
@@ -63,15 +78,33 @@ energy budget. -/
   but new code should avoid depending on it.
 -/
 lemma ERU_energy_blowup_of_mode_beta
+  (h_kernel_blowup :
+    {β : ℝ} → (hβ : β > (1/2 : ℝ)) →
+      (∃ cert : KernelBlowupCertificate_alpha,
+        KernelBlowupCertificateCorrect_alpha cert) →
+      ERU_mode_beta β →
+      ERU_energy_kernel_alpha ≥ kernel_threshold_alpha)
+  (h_legacy :
+    ERU_energy_kernel_alpha = kernel_threshold_alpha →
+    ERU_energy_global_alpha > L_global_alpha)
   {β : ℝ} (hβ : β > (1/2 : ℝ)) :
   ERU_mode_beta β → ERU_energy_global_alpha > L_global_alpha :=
 by
   intro h_mode
-  exact ERU_energy_blowup_of_mode_beta_via_kernel hβ h_mode
+  exact ERU_energy_blowup_of_mode_beta_via_kernel h_kernel_blowup h_legacy hβ h_mode
 
 /-- There can be no exponential ERU mode with weight `β > 1/2`:
 such a mode would violate the global energy bound. -/
 theorem no_ERU_mode_beta_of_gt_half
+  (h_kernel_blowup :
+    {β : ℝ} → (hβ : β > (1/2 : ℝ)) →
+      (∃ cert : KernelBlowupCertificate_alpha,
+        KernelBlowupCertificateCorrect_alpha cert) →
+      ERU_mode_beta β →
+      ERU_energy_kernel_alpha ≥ kernel_threshold_alpha)
+  (h_legacy :
+    ERU_energy_kernel_alpha = kernel_threshold_alpha →
+    ERU_energy_global_alpha > L_global_alpha)
   {β : ℝ} (hβ : β > (1/2 : ℝ))
   (h_energy : EnergyBoundHypotheses_alpha) :
   ¬ ERU_mode_beta β :=
@@ -79,7 +112,7 @@ by
   intro h_mode
   -- Global energy blow-up obtained via the kernel-level blow-up
   have h_explosion : ERU_energy_global_alpha > L_global_alpha :=
-    ERU_energy_blowup_of_mode_beta_via_kernel hβ h_mode
+    ERU_energy_blowup_of_mode_beta_via_kernel h_kernel_blowup h_legacy hβ h_mode
   have h_bound : ERU_energy_global_alpha ≤ L_global_alpha :=
     le_of_eq (ERU_energy_alpha_bounded_from_hypotheses h_energy)
   exact lt_irrefl _ (lt_of_le_of_lt h_bound h_explosion)
@@ -148,13 +181,22 @@ energy bound, the energy blow-up gate for exponential modes with
 Hypothesis for `xiAlpha`. -/
 theorem RH_from_ERU_energy
   (hAxioms : AxiomsShimAccepted)
+  (h_kernel_blowup :
+    {β : ℝ} → (hβ : β > (1/2 : ℝ)) →
+      (∃ cert : KernelBlowupCertificate_alpha,
+        KernelBlowupCertificateCorrect_alpha cert) →
+      ERU_mode_beta β →
+      ERU_energy_kernel_alpha ≥ kernel_threshold_alpha)
+  (h_legacy :
+    ERU_energy_kernel_alpha = kernel_threshold_alpha →
+    ERU_energy_global_alpha > L_global_alpha)
   (h_energy : EnergyBoundHypotheses_alpha) :
   RiemannHypothesis xiAlpha :=
 by
   -- Step 1: package `no_ERU_mode_beta_of_gt_half` as a uniform statement.
   have h_no_modes : ∀ β : ℝ, β > (1/2 : ℝ) → ¬ ERU_mode_beta β := by
     intro β hβ
-    exact no_ERU_mode_beta_of_gt_half hβ h_energy
+    exact no_ERU_mode_beta_of_gt_half h_kernel_blowup h_legacy hβ h_energy
   -- Step 2: obtain strong ERU inertia from the absence of modes.
   have h_inertia : InertiaERU_alpha_strong :=
     InertiaERU_alpha_strong_of_no_modes_via_certificates hAxioms h_no_modes

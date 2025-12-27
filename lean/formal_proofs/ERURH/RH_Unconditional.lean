@@ -1,16 +1,16 @@
 import ERURH.RH_Unconditional_Core
-import ERURH.AxiomsShimAccepted_Instances
 import ERURH.Alpha.GeneratedRMSContextEnvelope
 
 namespace ERURH
 
 /-- Attempt to derive RH unconditionally by exposing missing assumptions. -/
-theorem RH_unconditional_try : RiemannHypothesis xiAlpha := by
-  have hAxioms : AxiomsShimAccepted :=
-    axiomsShimAccepted_from_paper
+theorem RH_unconditional_try
+    (hAxioms : AxiomsShimAccepted)
+    (hB1 : Alpha.PointwiseToRMSMode Alpha.GeneratedRMSContext.ctx_real Alpha.ctx_real_window) :
+    RiemannHypothesis xiAlpha := by
   have hNumeric : NumericCoverageAlpha Alpha.GeneratedRMSContext.ctx_real := by
     simpa [NumericCoverageAlpha] using
       ERURH.Alpha.GeneratedRMSContext.ctx_real_RMS_envelope_closed
-  exact RH_unconditional_core hAxioms hNumeric
+  exact RH_unconditional_core hAxioms hB1 hNumeric
 
 end ERURH

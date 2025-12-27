@@ -9,10 +9,15 @@ import ERURH.RH
 namespace ERURH
 
 /-- Structured (still axiomatic) implication: from the analytic bundle to `RHfromE`. -/
-axiom rh_from_E_alpha_of_hypotheses :
-  E_bound_strong_alpha ∧ xi_bounds_alpha ∧ xi_argument_alpha ∧
-    explicit_rect_alpha ∧ Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi) →
-  RHfromE xiAlpha AlphaPsi
+theorem rh_from_E_alpha_of_hypotheses
+    (h_rh_from_E_alpha_of_hypotheses :
+      E_bound_strong_alpha ∧ xi_bounds_alpha ∧ xi_argument_alpha ∧
+        explicit_rect_alpha ∧ Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi) →
+      RHfromE xiAlpha AlphaPsi) :
+    E_bound_strong_alpha ∧ xi_bounds_alpha ∧ xi_argument_alpha ∧
+      explicit_rect_alpha ∧ Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi) →
+    RHfromE xiAlpha AlphaPsi :=
+  h_rh_from_E_alpha_of_hypotheses
 
 /-- Acceptance of the centralized alpha axioms, bundled as explicit data. -/
 structure AxiomsShimAccepted where

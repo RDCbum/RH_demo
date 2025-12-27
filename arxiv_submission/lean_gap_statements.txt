@@ -1,10 +1,7 @@
-ERURH.Alpha.pointwise_to_RMS_mode (β : ℝ) (hβ : β > 1 / 2) (hmode : ERURH.ERU_mode_beta β) :
-  ∃
-    K >
-      ERURH.Alpha.GeneratedRMSContext.ctx_real.c_low + ERURH.Alpha.GeneratedRMSContext.ctx_real.c_tail +
-        ERURH.C_envelope_formal,
-    ERURH.Alpha.GeneratedRMSContext.ctx_real.RMS_mode ERURH.Alpha.ctx_real_window ≥ K
-ERURH.Alpha.mode_to_rms_mode (β : ℝ) (hβ : β > 1 / 2) (hmode : ERURH.ERU_mode_beta β) :
+ERURH.Alpha.PointwiseToRMSMode (ctx : ERURH.RMSLocalContext) (w : ctx.Window) : Prop
+ERURH.Alpha.mode_to_rms_mode
+  (hB1 : ERURH.Alpha.PointwiseToRMSMode ERURH.Alpha.GeneratedRMSContext.ctx_real ERURH.Alpha.ctx_real_window) (β : ℝ)
+  (hβ : β > 1 / 2) (hmode : ERURH.ERU_mode_beta β) :
   ∃ w,
     ∃
       K >

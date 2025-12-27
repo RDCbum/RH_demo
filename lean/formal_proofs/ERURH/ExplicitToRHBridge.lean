@@ -25,9 +25,9 @@ by
   exact W.estimate (x := x) hx
 
 /-- Bound fuerte sobre `E(x)` para alpha, obtenido a partir del testigo explícito construido previamente. -/
-theorem E_bound_strong_alpha_true : E_bound_strong_alpha :=
+theorem E_bound_strong_alpha_true (data : AlphaInterfaces) : E_bound_strong_alpha :=
 by
-  rcases explicit_integral_representation_alpha_true with ⟨W⟩
+  rcases explicit_integral_representation_alpha_true data with ⟨W⟩
   exact explicit_witness_to_E_bound_alpha W
 
 /-- Si tenemos un bound fuerte sobre `E(x)` para `AlphaPsi`, entonces
@@ -47,13 +47,13 @@ by
   simpa [hEdef] using h
 
 /-- Classical Chebyshev `ψ` bound specialised to the alpha bridge. -/
-theorem chebyshevPsi_bound_alpha :
+theorem chebyshevPsi_bound_alpha (data : AlphaInterfaces) :
     ∃ C : ℚ, ∀ {x : ℝ}, AlphaPsi.x0 ≤ x →
       |ERURH.NT.psi x - x| ≤
         (algebraMap ℚ ℝ C) * Real.sqrt x * (Real.log x) ^ 2 :=
 by
   classical
-  obtain ⟨C, hC⟩ := psi_bound_from_E_bound_alpha E_bound_strong_alpha_true
+  obtain ⟨C, hC⟩ := psi_bound_from_E_bound_alpha (E_bound_strong_alpha_true data)
   refine ⟨C, ?_⟩
   intro x hx
   simpa [AlphaPsi.psi_eq_nt_pointwise] using hC (x := x) hx

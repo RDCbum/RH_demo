@@ -117,42 +117,61 @@ by
 
 /-- Wrapper recovering the simple global energy dominance statement
 from the certificate-based axiom and the existence of a certificate. -/
-lemma ERU_energy_global_dominates_kernel :
+lemma ERU_energy_global_dominates_kernel
+  (h_legacy :
+    ERU_energy_kernel_alpha = kernel_threshold_alpha →
+    ERU_energy_global_alpha > L_global_alpha) :
   ERU_energy_kernel_alpha ≥ kernel_threshold_alpha →
   ERU_energy_global_alpha > L_global_alpha :=
 by
   intro _h_kernel
-  -- Use the legacy axiom; the threshold is definitionally the kernel value.
-  exact ERU_energy_global_dominates_kernel_legacy rfl
+  -- Use the legacy statement; the threshold is definitionally the kernel value.
+  exact h_legacy rfl
 
 /-- Certificate-based global energy dominance: if there exists a
 correct global energy certificate and the kernel-level energy exceeds
 its threshold, then the global ERU energy of the alpha bridge must
 exceed the envelope `L_global_alpha`. -/
-lemma ERU_energy_global_dominates_kernel_of_certificate :
+lemma ERU_energy_global_dominates_kernel_of_certificate
+  (h_legacy :
+    ERU_energy_kernel_alpha = kernel_threshold_alpha →
+    ERU_energy_global_alpha > L_global_alpha) :
   (∃ cert : GlobalEnergyCertificate_alpha,
     GlobalEnergyCertificateCorrect_alpha cert) →
   ERU_energy_kernel_alpha ≥ kernel_threshold_alpha →
   ERU_energy_global_alpha > L_global_alpha :=
 by
   intro _h_cert h_kernel
-  exact ERU_energy_global_dominates_kernel h_kernel
+  exact ERU_energy_global_dominates_kernel h_legacy h_kernel
 
 /-- Certificate-based kernel energy blow-up: if there exists a correct
 kernel-level certificate and an exponential ERU mode with `β > 1/2`,
 then the ERU energy kernel for the alpha bridge must exceed its
 threshold `kernel_threshold_alpha`. -/
-axiom ERU_energy_kernel_blowup_of_mode_beta_of_certificate
-  {β : ℝ} (hβ : β > (1/2 : ℝ)) :
-  (∃ cert : KernelBlowupCertificate_alpha,
-    KernelBlowupCertificateCorrect_alpha cert) →
-  ERU_mode_beta β →
-  ERU_energy_kernel_alpha ≥ kernel_threshold_alpha
+theorem ERU_energy_kernel_blowup_of_mode_beta_of_certificate
+    (h_ERU_energy_kernel_blowup_of_mode_beta_of_certificate :
+      {β : ℝ} → (hβ : β > (1/2 : ℝ)) →
+        (∃ cert : KernelBlowupCertificate_alpha,
+          KernelBlowupCertificateCorrect_alpha cert) →
+        ERU_mode_beta β →
+        ERU_energy_kernel_alpha ≥ kernel_threshold_alpha) :
+    {β : ℝ} → (hβ : β > (1/2 : ℝ)) →
+      (∃ cert : KernelBlowupCertificate_alpha,
+        KernelBlowupCertificateCorrect_alpha cert) →
+      ERU_mode_beta β →
+      ERU_energy_kernel_alpha ≥ kernel_threshold_alpha :=
+  h_ERU_energy_kernel_blowup_of_mode_beta_of_certificate
 
 /-- Wrapper recovering the simple kernel-level energy blow-up statement
 from the certificate-based axiom and the existence of a kernel
 certificate. -/
 lemma ERU_energy_kernel_blowup_of_mode_beta
+  (h_kernel_blowup :
+    {β : ℝ} → (hβ : β > (1/2 : ℝ)) →
+      (∃ cert : KernelBlowupCertificate_alpha,
+        KernelBlowupCertificateCorrect_alpha cert) →
+      ERU_mode_beta β →
+      ERU_energy_kernel_alpha ≥ kernel_threshold_alpha)
   {β : ℝ} (hβ : β > (1/2 : ℝ)) :
   ERU_mode_beta β →
   ERU_energy_kernel_alpha ≥ kernel_threshold_alpha :=
@@ -162,6 +181,7 @@ by
       ∃ cert : KernelBlowupCertificate_alpha,
         KernelBlowupCertificateCorrect_alpha cert :=
     KernelBlowupCertificate_exists_alpha
-  exact ERU_energy_kernel_blowup_of_mode_beta_of_certificate hβ h_cert h_mode
+  exact ERU_energy_kernel_blowup_of_mode_beta_of_certificate
+    h_kernel_blowup hβ h_cert h_mode
 
 end ERURH

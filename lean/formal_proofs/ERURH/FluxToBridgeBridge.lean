@@ -38,26 +38,28 @@ theorem flux_to_bridge_bounds_alpha_of_instantiated :
   exact flux_to_bridge_alpha_of_hypotheses h'
 
 /-- Testigo concreto para la hipótesis main flux → bridge en alpha. -/
-theorem flux_log_to_bridge_main_alpha_true : flux_log_to_bridge_main_alpha :=
-  ⟨alphaInterfacesBase, trivial⟩
+theorem flux_log_to_bridge_main_alpha_true (data : AlphaInterfaces) :
+  flux_log_to_bridge_main_alpha :=
+  ⟨data, trivial⟩
 
 /-- Testigo concreto para la hipótesis tail flux → bridge en alpha. -/
-theorem flux_log_to_bridge_tail_alpha_true : flux_log_to_bridge_tail_alpha :=
-  ⟨alphaInterfacesBase, trivial⟩
+theorem flux_log_to_bridge_tail_alpha_true (data : AlphaInterfaces) :
+  flux_log_to_bridge_tail_alpha :=
+  ⟨data, trivial⟩
 
 /-- Conjunción de las hipótesis concretas flux → bridge en alpha. -/
-theorem flux_to_bridge_hypotheses_alpha_instantiated_true :
+theorem flux_to_bridge_hypotheses_alpha_instantiated_true (data : AlphaInterfaces) :
   flux_to_bridge_hypotheses_alpha_instantiated :=
 by
   refine And.intro ?hmain ?htail
-  · exact flux_log_to_bridge_main_alpha_true
-  · exact flux_log_to_bridge_tail_alpha_true
+  · exact flux_log_to_bridge_main_alpha_true data
+  · exact flux_log_to_bridge_tail_alpha_true data
 
 /-- Sub-axioma global `flux_to_bridge_bounds_alpha` derivado de las hipótesis concretas. -/
-theorem flux_to_bridge_bounds_alpha_true :
+theorem flux_to_bridge_bounds_alpha_true (data : AlphaInterfaces) :
   flux_to_bridge_bounds_alpha :=
 by
   apply flux_to_bridge_bounds_alpha_of_instantiated
-  exact flux_to_bridge_hypotheses_alpha_instantiated_true
+  exact flux_to_bridge_hypotheses_alpha_instantiated_true data
 
 end ERURH

@@ -1,0 +1,40 @@
+def ERURH.ERU_mode_beta : ℝ → Prop :=
+fun β => ∃ s0, ∀ {s : ℝ}, s ≥ s0 → |ERURH.logR_alpha s| ≥ Real.exp ((β - 1 / 2) * s)
+def ERURH.logR_alpha : ℝ → ℝ :=
+fun s =>
+  have x := Real.exp s;
+  ERURH.AlphaPsi.E x / x
+structure ERURH.RMSLocalContext : Type 1
+number of parameters: 0
+fields:
+  ERURH.RMSLocalContext.Window : Type
+  ERURH.RMSLocalContext.RMS_alpha : self.Window → ℝ
+  ERURH.RMSLocalContext.RMS_mode : self.Window → ℝ
+  ERURH.RMSLocalContext.RMS_low : self.Window → ℝ
+  ERURH.RMSLocalContext.RMS_tail : self.Window → ℝ
+  ERURH.RMSLocalContext.c_low : ℝ
+  ERURH.RMSLocalContext.c_tail : ℝ
+  ERURH.RMSLocalContext.c_low_nonneg : 0 ≤ self.c_low
+  ERURH.RMSLocalContext.c_tail_nonneg : 0 ≤ self.c_tail
+  ERURH.RMSLocalContext.RMS_tail_bound_simple : ∀ (w : self.Window), self.RMS_tail w ≤ self.c_tail
+  ERURH.RMSLocalContext.RMS_decomp : ∀ (w : self.Window),
+      self.RMS_alpha w ≥ self.RMS_mode w - (self.RMS_low w + self.RMS_tail w)
+constructor:
+  ERURH.RMSLocalContext.mk (Window : Type) (RMS_alpha RMS_mode RMS_low RMS_tail : Window → ℝ) (c_low c_tail : ℝ)
+    (c_low_nonneg : 0 ≤ c_low) (c_tail_nonneg : 0 ≤ c_tail)
+    (RMS_tail_bound_simple : ∀ (w : Window), RMS_tail w ≤ c_tail)
+    (RMS_decomp : ∀ (w : Window), RMS_alpha w ≥ RMS_mode w - (RMS_low w + RMS_tail w)) : ERURH.RMSLocalContext
+def ERURH.A1_mode : ERURH.RMSLocalContext → Prop :=
+fun ctx => ∃ w, ∃ K > ctx.c_low + ctx.c_tail + ERURH.C_envelope_formal, ctx.RMS_mode w ≥ K
+@[reducible] def ERURH.Alpha.GeneratedRMSContext.ctx_real : ERURH.RMSLocalContext :=
+ctx_real
+ERURH.Alpha.GeneratedRMSContext.ctx_real.RMS_mode : ERURH.Alpha.GeneratedRMSContext.ctx_real.Window → ℝ
+ERURH.Alpha.GeneratedRMSContext.ctx_real.RMS_alpha : ERURH.Alpha.GeneratedRMSContext.ctx_real.Window → ℝ
+ERURH.Alpha.GeneratedRMSContext.ctx_real.RMS_low : ERURH.Alpha.GeneratedRMSContext.ctx_real.Window → ℝ
+ERURH.Alpha.GeneratedRMSContext.ctx_real.RMS_tail : ERURH.Alpha.GeneratedRMSContext.ctx_real.Window → ℝ
+ERURH.Alpha.GeneratedRMSContext.ctx_real.c_low : ℝ
+ERURH.Alpha.GeneratedRMSContext.ctx_real.c_tail : ℝ
+ERURH.Alpha.ctx_real_window : ERURH.Alpha.GeneratedRMSContext.ctx_real.Window
+@[reducible] def ERURH.Alpha.PointwiseToRMSMode : (ctx : ERURH.RMSLocalContext) → ctx.Window → Prop :=
+fun ctx w =>
+  ∀ β > 1 / 2, ERURH.ERU_mode_beta β → ∃ K > ctx.c_low + ctx.c_tail + ERURH.C_envelope_formal, ctx.RMS_mode w ≥ K

@@ -35,3 +35,6 @@ rg -n "admit|sorry" lean/formal_proofs/ERURH
 ```text
 lean/formal_proofs/ERURH\EnergyCertificatesAlpha.lean:96:admits a finite certificate witnessing that off-line exponential modes
 ```
+
+**Final Statements**
+- Export: `docs/core/NOAX_FINAL_STATEMENTS.txt` (from `docs/core/PrintFinalStatement.lean`).

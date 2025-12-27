@@ -8,7 +8,10 @@ This ledger summarizes what is discharged by which external layer after beta gat
 - C: reserved (RMS window bounds now frozen in gate/data; see below).
 
 ## Analytic gap (Route B)
-- `no_supercritical_beta` (exclude supercritical ERU modes; see `docs/core/RB20_A1_EQUIVALENCE.md` for the A1 framing equivalence under `ctx_real_not_A1_mode`).
+- `ERURH.Alpha.pointwise_to_RMS_mode` (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_PointwiseToRMS.lean:10`;
+  exported in `arxiv_submission/lean_gap_statements.txt`). This is Lemma B.1 (pointwise-to-RMS bridge),
+  and it implies `ERURH.no_supercritical_beta` via Lemma B and `ctx_real_not_A1_mode`
+  (see `docs/core/RB20_A1_EQUIVALENCE.md`).
 
 ## Classical / citable
 - `ClassicalZetaAssumptions` (zeta zeros and classical explicit-formula framework).

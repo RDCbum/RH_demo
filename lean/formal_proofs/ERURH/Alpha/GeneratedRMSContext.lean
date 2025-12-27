@@ -17,6 +17,8 @@ def cTail : ℝ := (cTailRat : ℝ)
 def rmsModeList : List ℚ := [((1332805409) : ℚ) / (9024001290)]
 def rmsLowList : List ℚ := [((1) : ℚ) / (20)]
 def rmsTailList : List ℚ := [((1) : ℚ) / (20)]
+def windowMinList : List ℚ := [((6907755278982137) : ℚ) / (500000000000000)]
+def windowMaxList : List ℚ := [((2101405353939783) : ℚ) / (125000000000000)]
 
 def rmsModeRat (w : Fin n_windows) : ℚ := by
   refine rmsModeList.get ⟨w.1, ?_⟩
@@ -30,6 +32,14 @@ def rmsTailRat (w : Fin n_windows) : ℚ := by
   refine rmsTailList.get ⟨w.1, ?_⟩
   simpa [rmsTailList, n_windows] using w.isLt
 
+def windowMinRat (w : Fin n_windows) : ℚ := by
+  refine windowMinList.get ⟨w.1, ?_⟩
+  simpa [windowMinList, n_windows] using w.isLt
+
+def windowMaxRat (w : Fin n_windows) : ℚ := by
+  refine windowMaxList.get ⟨w.1, ?_⟩
+  simpa [windowMaxList, n_windows] using w.isLt
+
 
 def rmsMode (w : Fin n_windows) : ℝ := (rmsModeRat w : ℝ)
 
@@ -37,6 +47,18 @@ def rmsLow (w : Fin n_windows) : ℝ := (rmsLowRat w : ℝ)
 
 def rmsTail (w : Fin n_windows) : ℝ := (rmsTailRat w : ℝ)
 
+def windowMin (w : Fin n_windows) : ℝ := (windowMinRat w : ℝ)
+
+def windowMax (w : Fin n_windows) : ℝ := (windowMaxRat w : ℝ)
+
+def window_interval (w : Fin n_windows) : Set ℝ := Set.Icc (windowMin w) (windowMax w)
+
+theorem window_min_le_max (w : Fin n_windows) : windowMin w ≤ windowMax w := by
+  fin_cases w <;> norm_num [windowMin, windowMax, windowMinRat, windowMaxRat, windowMinList, windowMaxList, n_windows]
+
+theorem window_interval_nonempty (w : Fin n_windows) : Set.Nonempty (window_interval w) := by
+  refine ⟨windowMin w, ?_⟩
+  exact ⟨le_rfl, window_min_le_max w⟩
 
 def ctx_real : _root_.ERURH.RMSLocalContext :=
   { Window := Fin n_windows
@@ -69,3 +91,5 @@ theorem ctx_real_A2Tail : _root_.ERURH.A2Tail_RMS ctx_real := by
 abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real : _root_.ERURH.RMSLocalContext := _root_.ctx_real
 abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Low : _root_.ERURH.A2Low_RMS ERURH.Alpha.GeneratedRMSContext.ctx_real := _root_.ctx_real_A2Low
 abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Tail : _root_.ERURH.A2Tail_RMS ERURH.Alpha.GeneratedRMSContext.ctx_real := _root_.ctx_real_A2Tail
+abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real_window_interval : ERURH.Alpha.GeneratedRMSContext.ctx_real.Window -> Set ℝ := _root_.window_interval
+abbrev ERURH.Alpha.GeneratedRMSContext.ctx_real_window_interval_nonempty : ∀ w, Set.Nonempty (ERURH.Alpha.GeneratedRMSContext.ctx_real_window_interval w) := _root_.window_interval_nonempty

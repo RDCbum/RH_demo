@@ -1,4 +1,5 @@
-ERURH.Alpha.PointwiseToRMSMode (ctx : ERURH.RMSLocalContext) (w : ctx.Window) : Prop
+ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow : Prop
+ctx_real_logR_alpha_upper (w : Fin n_windows) : Prop
 ERURH.Alpha.mode_to_rms_mode
   (hB1 : ERURH.Alpha.PointwiseToRMSMode ERURH.Alpha.GeneratedRMSContext.ctx_real ERURH.Alpha.ctx_real_window) (β : ℝ)
   (hβ : β > 1 / 2) (hmode : ERURH.ERU_mode_beta β) :

@@ -6,7 +6,8 @@ Source of truth: `docs/core/NOAX_FINAL_STATEMENTS.txt` and `docs/core/ASSUMPTION
 
 | Lean type | Lean location | Discharge (paper/gate) | Status | Notes |
 | --- | --- | --- | --- | --- |
-| `ERURH.Alpha.PointwiseToRMSMode ERURH.Alpha.GeneratedRMSContext.ctx_real ERURH.Alpha.ctx_real_window` | `lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_PointwiseToRMS.lean:10` | Paper: `arxiv_submission/ERURH_Conditional_Proof.tex` (No supercritical ERU modes, Lemma B.1) | Analytic new | Definitions of `ERU_mode_beta`, `logR_alpha`, `ctx_real_window`, `RMS_mode` |
+| `ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow` | `lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_WindowBridge.lean:13` | Paper: `arxiv_submission/ERURH_Conditional_Proof.tex` (No supercritical ERU modes, window bridge) | Analytic new | Window-compatibility of `ERU_mode_beta` with `ctx_real_window_interval` |
+| `ctx_real_logR_alpha_upper ERURH.Alpha.ctx_real_window` | `lean/formal_proofs/ERURH/Alpha/GeneratedRMSModeBridge.lean:35` | Gate: `tools/check_rms_mode_bridge.py` (interval arithmetic) | Gate-certified | Evidence: `docs/core/P16_GATE_FULL.txt`, `docs/core/P17_GATE_FULL.txt`, `docs/core/P16_LOGR_ALPHA_UPPER_CERT.md` |
 | `AxiomsShimAccepted.alphaInterfacesBase` | `lean/formal_proofs/ERURH/AxiomsShimBundle.lean:24` | Paper: `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumptions classical/explicit) | Classical/citable | Explicit-formula setup and alpha interfaces |
 | `AxiomsShimAccepted.explicit_alpha_via_stages` | `lean/formal_proofs/ERURH/AxiomsShimBundle.lean:25` | Paper: `arxiv_submission/ERURH_Conditional_Proof.tex` (explicit-formula assumption) | Classical/citable | Explicit-formula laws for alpha |
 | `AxiomsShimAccepted.xi_bounds_alpha` | `lean/formal_proofs/ERURH/AxiomsShimBundle.lean:26` | Paper: `arxiv_submission/ERURH_Conditional_Proof.tex` (explicit-formula bounds section) | Classical/citable | xi bounds statements |

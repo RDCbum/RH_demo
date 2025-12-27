@@ -14,4 +14,5 @@
 - NOAX bundle rebuild (assumptions ledger + axioms export): [x] verified
 - RB32 tarball list: [x] logged (docs/core/RB32_TARBALL_LIST.txt)
 - RB45 tarball list: [x] logged (docs/core/RB45_TARBALL_LIST.txt)
+- P18 tarball list: [x] logged (docs/core/P18_TARBALL_LIST.txt)
 - Lemma B.1 proof (paper): [x] added (arxiv_submission/ERURH_Conditional_Proof.tex, Section~\ref{sec:no-supercritical})

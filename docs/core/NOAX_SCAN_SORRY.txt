@@ -1,0 +1,1 @@
+lean/formal_proofs/ERURH\EnergyCertificatesAlpha.lean:96:admits a finite certificate witnessing that off-line exponential modes

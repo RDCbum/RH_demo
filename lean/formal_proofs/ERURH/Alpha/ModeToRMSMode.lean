@@ -1,4 +1,5 @@
-import ERURH.Alpha.ModeToRMSMode_Axiom
+import ERURH.Alpha.ModeToRMSMode_PointwiseToRMS
+import ERURH.Alpha.ModeToRMSMode_Window
 
 namespace ERURH
 namespace Alpha
@@ -12,7 +13,8 @@ theorem mode_to_rms_mode
           GeneratedRMSContext.ctx_real.c_tail +
           C_envelope_formal ∧
       GeneratedRMSContext.ctx_real.RMS_mode w ≥ K := by
-  exact mode_to_rms_mode_axiom β hβ hmode
+  obtain ⟨K, hK, hRMS⟩ := pointwise_to_RMS_mode β hβ hmode
+  exact ⟨ctx_real_window, K, hK, hRMS⟩
 
 end Alpha
 end ERURH

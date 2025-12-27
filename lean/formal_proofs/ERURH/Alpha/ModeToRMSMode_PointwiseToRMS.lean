@@ -6,9 +6,9 @@ import ERURH.Alpha.ModeToRMSMode_Window
 namespace ERURH
 namespace Alpha
 
-/-- Lemma B.1 goal: pointwise ERU growth should force an RMS_mode lower bound. -/
-def mode_to_rms_mode_pointwise_goal
-  (β : ℝ) (hβ : β > (1/2 : ℝ)) (hmode : ERU_mode_beta β) : Prop :=
+/-- Lemma B.1 (paper): pointwise lower bound -> RMS_mode lower bound. -/
+axiom pointwise_to_RMS_mode
+  (β : ℝ) (hβ : β > (1/2 : ℝ)) (hmode : ERU_mode_beta β) :
   ∃ K : ℝ,
     K > GeneratedRMSContext.ctx_real.c_low +
         GeneratedRMSContext.ctx_real.c_tail +

@@ -1,6 +1,7 @@
 import ERURH.ERUModesCore
 import ERURH.ERURH_A2Hypotheses
 import ERURH.Alpha.GeneratedRMSContext
+import ERURH.Alpha.ModeToRMSMode_Window
 
 open ERURH
 
@@ -19,4 +20,6 @@ theorem mode_to_rms_mode_try
       |logR_alpha s| ≥ Real.exp ((β - (1/2 : ℝ)) * s) := by
     intro s hs
     exact hs0 hs
-  -- Missing bridge from pointwise ERU growth to an RMS_mode witness.
+  -- Reduce the window choice to the unique window in ctx_real.
+  refine ⟨Alpha.ctx_real_window, ?_⟩
+  -- Missing bridge from pointwise ERU growth to an RMS_mode lower bound.

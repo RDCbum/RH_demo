@@ -1,0 +1,16 @@
+'ERURH.RH_from_ERURH_conditional' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'ERURH.RH_unconditional_core' depends on axioms: [propext, Classical.choice, Quot.sound, ERURH.Alpha.mode_to_rms_mode]
+'ERURH.GlobalEnergyCertificateCorrect_alpha' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ERURH.globalEnergyCertificate_true_alpha' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ERURH.KernelBlowupCertificateCorrect_alpha' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ERURH.kernelBlowupCertificate_true_alpha' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ERURH.Alpha.RMS_envelope_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+ERURH.Beta.BetaInertiaBundle : Type
+ERURH.Beta.StrongInertiaCertificate_beta : Type
+ERURH.Beta.StrongInertiaComposite_beta : Type
+ERURH.Beta.StrongInertiaCertificateCorrect_beta (cert : ERURH.Beta.StrongInertiaCertificate_beta) : Prop
+ERURH.Beta.StrongInertiaCompositeCorrect_beta (comp : ERURH.Beta.StrongInertiaComposite_beta) : Prop

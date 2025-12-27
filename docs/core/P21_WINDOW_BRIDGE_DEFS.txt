@@ -1,0 +1,14 @@
+def ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow : Prop :=
+∀ β > 1 / 2,
+  ERURH.ERU_mode_beta β →
+    ∀ s ∈ ERURH.Alpha.GeneratedRMSContext.ctx_real_window_interval ERURH.Alpha.ctx_real_window,
+      |ERURH.logR_alpha s| ≥ Real.exp ((β - 1 / 2) * s)
+def ERURH.ERU_mode_beta : ℝ → Prop :=
+fun β => ∃ s0, ∀ {s : ℝ}, s ≥ s0 → |ERURH.logR_alpha s| ≥ Real.exp ((β - 1 / 2) * s)
+def ERURH.Alpha.ctx_real_window : ERURH.Alpha.GeneratedRMSContext.ctx_real.Window :=
+⟨0, ERURH.Alpha.ctx_real_window._proof_1⟩
+@[reducible] def ERURH.Alpha.GeneratedRMSContext.ctx_real_window_interval : ERURH.Alpha.GeneratedRMSContext.ctx_real.Window →
+  Set ℝ :=
+window_interval
+def window_interval : Fin n_windows → Set ℝ :=
+fun w => Set.Icc (windowMin w) (windowMax w)

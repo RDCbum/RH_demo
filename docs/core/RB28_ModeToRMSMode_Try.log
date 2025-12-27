@@ -1,0 +1,8 @@
+docs/core/RB28_ModeToRMSMode_Try.lean:16:59: error: unsolved goals
+β : ℝ
+hβ : β > 1 / 2
+s0 : ℝ
+hs0 : ∀ {s : ℝ}, s ≥ s0 → |logR_alpha s| ≥ Real.exp ((β - 1 / 2) * s)
+⊢ ∃ w,
+    ∃ K > Alpha.GeneratedRMSContext.ctx_real.c_low + Alpha.GeneratedRMSContext.ctx_real.c_tail + C_envelope_formal,
+      Alpha.GeneratedRMSContext.ctx_real.RMS_mode w ≥ K

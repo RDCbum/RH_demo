@@ -19,8 +19,6 @@ fields:
   ERURH.AxiomsShimAccepted.h_inertia_to_E : ERURH.InertiaERU_alpha_strong → ERURH.E_bound_strong_alpha
   ERURH.AxiomsShimAccepted.h_inertia_of_E : ERURH.E_bound_strong_alpha → ERURH.InertiaERU_alpha_strong
   ERURH.AxiomsShimAccepted.h_RH_to_E : ERURH.RiemannHypothesis ERURH.xiAlpha → ERURH.E_bound_strong_alpha
-  ERURH.AxiomsShimAccepted.a1_mode_of_supercritical : ∀ β > 1 / 2,
-      ERURH.ERU_mode_beta β → ERURH.A1_mode ERURH.Alpha.GeneratedRMSContext.ctx_real
 constructor:
   ERURH.AxiomsShimAccepted.mk (alphaInterfacesBase : ERURH.AlphaInterfaces)
     (explicit_alpha_via_stages : ERURH.ExplicitFormulaLaws ERURH.alphaBridge ERURH.xiAlpha ERURH.AlphaPsi)
@@ -37,7 +35,4 @@ constructor:
         ERURH.RHfromE ERURH.xiAlpha ERURH.AlphaPsi)
     (h_inertia_to_E : ERURH.InertiaERU_alpha_strong → ERURH.E_bound_strong_alpha)
     (h_inertia_of_E : ERURH.E_bound_strong_alpha → ERURH.InertiaERU_alpha_strong)
-    (h_RH_to_E : ERURH.RiemannHypothesis ERURH.xiAlpha → ERURH.E_bound_strong_alpha)
-    (a1_mode_of_supercritical :
-      ∀ β > 1 / 2, ERURH.ERU_mode_beta β → ERURH.A1_mode ERURH.Alpha.GeneratedRMSContext.ctx_real) :
-    ERURH.AxiomsShimAccepted
+    (h_RH_to_E : ERURH.RiemannHypothesis ERURH.xiAlpha → ERURH.E_bound_strong_alpha) : ERURH.AxiomsShimAccepted

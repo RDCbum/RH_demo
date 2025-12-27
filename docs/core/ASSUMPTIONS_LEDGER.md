@@ -8,7 +8,7 @@ This ledger summarizes what is discharged by which external layer after beta gat
 - C: reserved (RMS window bounds now frozen in gate/data; see below).
 
 ## Analytic gap (Route B)
-- `A1_mode_of_supercritical` (supercritical mode ⇒ A1-mode for the RMS context).
+- `no_supercritical_beta` (exclude supercritical ERU modes; see `docs/core/RB20_A1_EQUIVALENCE.md` for the A1 framing equivalence under `ctx_real_not_A1_mode`).
 
 ## Classical / citable
 - `ClassicalZetaAssumptions` (zeta zeros and classical explicit-formula framework).

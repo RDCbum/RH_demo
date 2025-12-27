@@ -1,0 +1,5 @@
+docs/core/P14_B1_BRIDGE_Try.lean:12:77: error: unsolved goals
+K : ℝ
+hpoint : ∀ s ∈ Alpha.GeneratedRMSContext.ctx_real_window_interval Alpha.ctx_real_window, |logR_alpha s| ≥ K
+h_semantic : Alpha.rms_semantic Alpha.ctx_real_window ≥ K
+⊢ Alpha.GeneratedRMSContext.ctx_real.RMS_mode Alpha.ctx_real_window ≥ K

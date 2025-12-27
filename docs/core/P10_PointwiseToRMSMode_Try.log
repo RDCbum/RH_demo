@@ -1,0 +1,6 @@
+docs/core/P10_PointwiseToRMSMode_Try.lean:12:37: error: unsolved goals
+β : ℝ
+hβ : β > 1 / 2
+hmode : ERU_mode_beta β
+⊢ ∃ K > Alpha.GeneratedRMSContext.ctx_real.c_low + Alpha.GeneratedRMSContext.ctx_real.c_tail + C_envelope_formal,
+    Alpha.GeneratedRMSContext.ctx_real.RMS_mode Alpha.ctx_real_window ≥ K

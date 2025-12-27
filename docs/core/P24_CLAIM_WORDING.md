@@ -1,0 +1,23 @@
+# P24 Claim Wording (end-to-end closure)
+
+## Suggested claim
+
+Conditional RH for the ERURH alpha layer follows from:
+1) a formally checked Lean proof of the logical chain,
+2) computational certificates verified by the gate (numeric RMS context and the
+   `ctx_real_logR_alpha_upper` interval arithmetic check), and
+3) the analytic lemmas stated in the paper (explicit formula package and the
+   window-compatibility bridge).
+
+Equivalently: if the paper-level assumptions hold and the gate checks pass, then
+the Lean development proves `ERURH.RH_from_ERURH_conditional` and the Route B
+unconditional core.
+
+## Trust boundary
+
+- Lean kernel + mathlib for proof checking.
+- Gate scripts in `tools/` and `scripts/verify_gate.py`.
+- Python numerical stack (notably `mpmath` interval arithmetic) used by
+  `tools/check_rms_mode_bridge.py`.
+- The frozen data in `data/releases/erurh-v2-core/formal/` and its regenerated
+  Lean mirrors under `lean/formal_proofs/ERURH/`.

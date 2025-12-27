@@ -14,4 +14,8 @@
 | `h_inertia_to_E` | citable | Classical implication; Lean `ERURH/ERUInertia.lean`. |
 | `h_inertia_of_E` | citable | Classical implication; Lean `ERURH/ERUInertia.lean`. |
 | `h_RH_to_E` | citable | Classical implication; Lean `ERURH/ERUInertia.lean`. |
-| `a1_mode_of_supercritical` | new proof | Route B analytic gap; see `docs/core/RB16_A1_PROOF_PLAN.md`. |
+| `ERURH.no_supercritical_beta` | new proof | Route B analytic gap; see `docs/core/RB16_A1_PROOF_PLAN.md`. |
+
+Derived (not a bundle field): `ERURH.A1_mode_of_supercritical` is now obtained from
+`ERURH.no_supercritical_beta` (vacuously) and the ctx_real impossibility lemma
+in `docs/core/RB20_A1_EQUIVALENCE.md`.

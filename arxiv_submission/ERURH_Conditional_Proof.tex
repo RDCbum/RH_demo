@@ -151,6 +151,27 @@ Field(s) & Discharge path \\
 \noindent The beta layer is now an explicit hypothesis bundle (no frozen numeric input is present
 in \texttt{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger section below.
 
+\section{No supercritical ERU modes}\label{sec:no-supercritical}
+\begin{proposition}[No supercritical ERU modes]\label{prop:no-supercritical}
+For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
+\end{proposition}
+
+\begin{proof}[Proof outline]
+We structure the argument into three lemmas, matching the Lean targets exported in
+\texttt{lean\_gap\_statements.txt}.
+\begin{enumerate}
+  \item \textbf{Lemma A (mode growth).} Unpack the definition of \texttt{ERU\_mode\_beta} to obtain
+  pointwise exponential lower bounds for $|\log R_\alpha(s)|$ for $s \ge s_0$.
+  \item \textbf{Lemma B (bridge to RMS mode).} Convert the pointwise growth into a lower bound on
+  the RMS-mode contribution for a specific window. This is the analytic bridge
+  \texttt{mode\_to\_rms\_mode}.
+  \item \textbf{Lemma C (contradiction).} Combine Lemma~B with the Lean lemma
+  \texttt{ctx\_real\_not\_A1\_mode} to reach a contradiction, hence no such mode exists.
+\end{enumerate}
+This replaces the earlier A1 framing; see \texttt{docs/core/RB20\_A1\_EQUIVALENCE.md} in the
+repository for the formal equivalence under \texttt{ctx\_real\_not\_A1\_mode}.
+\end{proof}
+
 \section{Reproducibility / Gate}
 The reproducible pipeline regenerates the numeric artifacts and rebuilds the Lean development:
 \begin{verbatim}

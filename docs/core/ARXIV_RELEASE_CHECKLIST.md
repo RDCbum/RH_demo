@@ -1,6 +1,6 @@
 # arXiv Release Checklist
 
-- Commit: f81a7831ba7906b8c959cf742f3b198a6f72aeb3
+- Commit: 3a9ef09cf0dcec77e7c4d11a0b38f349235aa566
 - Pipeline commands (README/AGENTS):
   - python tools/make_rational_bounds.py
   - python tools/make_certificate_values.py
@@ -12,3 +12,5 @@
 - Paper build (CI or local): [ ] verified (CI: build-paper workflow or local latexmk)
 - Tarball contents: [x] verified (tar -tf dist/arxiv_submission.tar.gz)
 - RB32 tarball list: [x] logged (docs/core/RB32_TARBALL_LIST.txt)
+- RB45 tarball list: [x] logged (docs/core/RB45_TARBALL_LIST.txt)
+- Lemma B.1 proof (paper): [x] added (arxiv_submission/ERURH_Conditional_Proof.tex, Section~\ref{sec:no-supercritical})

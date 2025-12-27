@@ -2,6 +2,11 @@
 
 This ledger summarizes what is discharged by which external layer after beta gate integration and inertia/E bundling.
 
+## Axiom footprint note
+- No project axioms: there are no `axiom`/`constant` declarations in `lean/formal_proofs/ERURH`.
+- Lean kernel axioms still appear in `#print axioms` (e.g., `propext`, `Classical.choice`, `Quot.sound`,
+  `Lean.ofReduceBool`, `Lean.trustCompiler`) due to classical reasoning and kernel computation reflection.
+
 ## A/B/C (analytic packages, discharged externally)
 - A: `Alpha.SpectralAssumptionsAlpha` and related spectral bounds (hb tail / pointwise data) from the paper A package.
 - B: `Alpha.LSGammaAssumptions` (LS_gamma_weak / LS_gamma_fine) from the paper B package.

@@ -143,7 +143,7 @@ Field(s) & Discharge path \\
 \texttt{xi\_bounds\_alpha}, \texttt{xi\_argument\_alpha} and their hypothesis bridges & Classical/citable implications (Assumptions Ledger). \\
 \texttt{rh\_from\_E\_alpha\_of\_hypotheses} & Classical/citable implications (Assumptions Ledger). \\
 \texttt{h\_inertia\_to\_E}, \texttt{h\_inertia\_of\_E}, \texttt{h\_RH\_to\_E} & Classical/citable implications (Assumptions Ledger). \\
-\texttt{no\_supercritical\_beta} & Route B analytic gap (Assumptions Ledger). \\
+\texttt{PointwiseToRMSMode} & Route B analytic gap (Lemma B.1, Assumptions Ledger). \\
 \hline
 \end{tabular}
 \end{center}
@@ -169,7 +169,7 @@ We structure the argument into three lemmas, matching the Lean targets exported 
   \texttt{ctx\_real\_not\_A1\_mode} to reach a contradiction, hence no such mode exists.
 \end{enumerate}
 In Lean, the only explicit gap is Lemma~B.1
-(\texttt{ERURH.Alpha.pointwise\_to\_RMS\_mode}); Lemma~B is derived from B.1 and
+(\texttt{ERURH.Alpha.PointwiseToRMSMode}); Lemma~B is derived from B.1 and
 the window extraction lemma, Lemma~C is already proved as \texttt{ctx\_real\_not\_A1\_mode},
 and the proposition is the derived theorem \texttt{ERURH.no\_supercritical\_beta}.
 This replaces the earlier A1 framing; see \texttt{docs/core/RB20\_A1\_EQUIVALENCE.md} in the
@@ -591,6 +591,15 @@ Arrows indicate implication or usage.
   \texttt{lean/formal\_proofs/ERURH/EnergyCertificatesAlpha.lean},
   \texttt{lean/formal\_proofs/ERURH/InertiaCertificatesAlpha.lean}.
 \end{itemize}
+
+\section{Proof obligations}\label{app:proof-obligations}
+This appendix records the remaining Lean-exported hypotheses required for the
+Route~B closure. The machine-generated statements are included below.
+
+{\small\VerbatimInput{lean_gap_statements.txt}}
+
+\noindent A field-by-field map from the Lean hypotheses to the paper proofs is
+maintained in the repository at \texttt{docs/core/P9\_PAPER\_PROOF\_MAP.md}.
 
 \begin{thebibliography}{9}
 \bibitem{Titchmarsh}

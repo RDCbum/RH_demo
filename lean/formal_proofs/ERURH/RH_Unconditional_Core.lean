@@ -20,7 +20,7 @@ theorem RH_unconditional_core
   have h_no_modes : ∀ β : ℝ, β > (1/2 : ℝ) → ¬ ERU_mode_beta β := by
     intro β hβ h_mode
     have hA1 : A1_mode ctx := by
-      simpa [ctx] using A1_mode_of_supercritical hAxioms β hβ h_mode
+      simpa [ctx] using A1_mode_of_supercritical β hβ h_mode
     have hClosed : Alpha.RMS_envelope_closed ctx := by
       simpa [ctx, NumericCoverageAlpha] using hNumeric
     exact Alpha.A1A2_decomp_envelope_inconsistent ctx hA1 hLow hTail hClosed

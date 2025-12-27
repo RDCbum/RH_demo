@@ -5,4 +5,4 @@
 | Quot.sound | Lean core axiom | Lean core | Lean core |
 | Lean.ofReduceBool | Lean core axiom | Lean core | Lean core |
 | Lean.trustCompiler | Lean core axiom | Lean core | Lean core |
-| AxiomsShimAccepted.a1_mode_of_supercritical | hypothesis field | lean/formal_proofs/ERURH/AxiomsShimBundle.lean:40 | paper (A1 gap) |
+| ERURH.no_supercritical_beta | axiom | lean/formal_proofs/ERURH/A1FromSupercriticalMode.lean:7 | paper (no-supercritical modes gap) |

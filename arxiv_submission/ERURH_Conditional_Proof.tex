@@ -180,6 +180,20 @@ This replaces the earlier A1 framing; see \texttt{docs/core/RB20\_A1\_EQUIVALENC
 repository for the formal equivalence under \texttt{ctx\_real\_not\_A1\_mode}.
 \end{proof}
 
+\subsubsection*{Window-compatibility bridge}
+The remaining analytic gap in Lean is the predicate
+\texttt{ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow} (first line of
+\texttt{lean\_gap\_statements.txt}). It asserts that for every $\beta>1/2$, if
+\texttt{ERU\_mode\_beta}$(\beta)$ holds, then the pointwise bound
+$|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$ holds for all
+$s \in I_{\mathrm{ctx}}$, where $I_{\mathrm{ctx}}$ is the fixed
+window interval used by \texttt{ctx\_real}. The proof idea is to unpack
+\texttt{ERU\_mode\_beta} to get a growth bound for $s \ge s_0$, and then
+show that the chosen window interval lies above this threshold. This is a
+purely analytic alignment statement; the computational input enters only
+through the gate-certified bound \texttt{ctx\_real\_logR\_alpha\_upper}
+used later in the RMS bridge.
+
 \subsubsection*{Lemma B.1 (Pointwise-to-RMS bridge)}
 The Lean statements exported for this section are in \texttt{lean\_gap\_statements.txt}.
 The first line is the window-compatibility bridge

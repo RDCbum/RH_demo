@@ -37,3 +37,22 @@ This map aligns remaining Lean hypotheses with paper statements and proof plans.
 - Definition of `ERU_mode_beta` (pointwise growth for $|\log R_\alpha|$).
 - Definition of `RMS_mode` and the window interval associated to `ctx_real_window`.
 - Any bridge fact equating the Lean `RMS_mode` to the analytical RMS or a certified lower bound.
+
+## Window-compatibility bridge (SupercriticalModeAppliesOnCtxRealWindow)
+
+**Lean statement**
+- `ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow`.
+
+**Mathematical statement (paper)**
+- For every $\beta > 1/2$ with `ERU_mode_beta`$(\beta)$, the pointwise lower bound
+  $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$ holds for all
+  $s \in I_{\mathrm{ctx}}$, where $I_{\mathrm{ctx}}$ is the fixed window interval
+  used by `ctx_real`.
+
+**Paper placement**
+- Section \ref{sec:no-supercritical}, Window-compatibility bridge subsection.
+
+**Dependencies**
+- Definition of `ERU_mode_beta`.
+- Lower bound domain for the mode (e.g., $s \ge s_0$) and proof that the
+  `ctx_real` window interval lies above that threshold.

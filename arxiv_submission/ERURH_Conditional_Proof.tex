@@ -168,12 +168,57 @@ We structure the argument into three lemmas, matching the Lean targets exported 
   \item \textbf{Lemma C (contradiction).} Combine Lemma~B with the Lean lemma
   \texttt{ctx\_real\_not\_A1\_mode} to reach a contradiction, hence no such mode exists.
 \end{enumerate}
-In Lean, the only explicit gap is Lemma~B (\texttt{ERURH.Alpha.mode\_to\_rms\_mode});
-Lemma~C is already proved as \texttt{ctx\_real\_not\_A1\_mode}, and the proposition is
-the derived theorem \texttt{ERURH.no\_supercritical\_beta}.
+In Lean, the only explicit gap is Lemma~B.1
+(\texttt{ERURH.Alpha.pointwise\_to\_RMS\_mode}); Lemma~B is derived from B.1 and
+the window extraction lemma, Lemma~C is already proved as \texttt{ctx\_real\_not\_A1\_mode},
+and the proposition is the derived theorem \texttt{ERURH.no\_supercritical\_beta}.
 This replaces the earlier A1 framing; see \texttt{docs/core/RB20\_A1\_EQUIVALENCE.md} in the
 repository for the formal equivalence under \texttt{ctx\_real\_not\_A1\_mode}.
 \end{proof}
+
+\subsubsection*{Lemma B.1 (Pointwise-to-RMS bridge)}
+The Lean statements exported for this section are in \texttt{lean\_gap\_statements.txt}.
+The first line is the B.1 gap (\texttt{ERURH.Alpha.pointwise\_to\_RMS\_mode}), and the
+second line is Lemma~B as a derived theorem.
+{\small\VerbatimInput{lean_gap_statements.txt}}
+
+\paragraph{Definitions (paper semantics).}
+Fix a window $w$ with associated interval $I_w \subset \mathbb{R}$ (the paper-level
+window; in Lean this is intended to correspond to \texttt{ctx\_real\_window\_interval}).
+Define the RMS-mode contribution by
+\[
+\mathrm{RMS\_mode}(w) :=
+\left(\frac{1}{|I_w|}\int_{I_w} |\log R_\alpha(s)|^2\, ds\right)^{1/2}.
+\]
+For Route~B we use the unique window of \texttt{ctx\_real} (since $n\_windows=1$),
+written \texttt{ctx\_real\_window} in Lean.
+
+\paragraph{Lemma B.1 (Pointwise-to-RMS bridge).}
+If $|\log R_\alpha(s)| \ge K$ for all $s \in I_w$ and $|I_w|>0$, then
+$\mathrm{RMS\_mode}(w) \ge K$. This follows by squaring the pointwise bound,
+integrating over $I_w$, and taking square roots:
+\[
+\frac{1}{|I_w|}\int_{I_w} |\log R_\alpha(s)|^2\, ds \ge \frac{1}{|I_w|}\int_{I_w} K^2\, ds = K^2.
+\]
+
+\paragraph{Lean correspondence.}
+\begin{center}
+\begin{tabular}{ll}
+Paper object & Lean name \\
+\hline
+$\log R_\alpha(s)$ & \texttt{ERURH.logR\_alpha s} \\
+$w$ (window) & \texttt{ERURH.Alpha.ctx\_real\_window} \\
+$I_w$ & \texttt{ctx\_real\_window\_interval} (intended) \\
+$\mathrm{RMS\_mode}(w)$ & \texttt{ERURH.Alpha.GeneratedRMSContext.ctx\_real.RMS\_mode w} \\
+\end{tabular}
+\end{center}
+
+\paragraph{Gate/Lean alignment.}
+In Lean, \texttt{RMS\_mode} is currently instantiated by the numeric gate data in
+\texttt{rms\_context.json}. The gate is required to certify that these numerical
+values are consistent lower bounds for the analytic RMS-mode defined above.
+This semantic bridge is the content of Lemma~B.1, and is the only remaining
+non-core gap after the Route~B refactor.
 
 \section{Reproducibility / Gate}
 The reproducible pipeline regenerates the numeric artifacts and rebuilds the Lean development:

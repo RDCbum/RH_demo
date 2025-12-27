@@ -81,10 +81,12 @@ def main() -> None:
         DATA_OUT_DIR / "rational_bounds.json",
         DATA_OUT_DIR / "certificate_values.json",
         DATA_OUT_DIR / "rms_context.json",
+        DATA_OUT_DIR / "rms_mode_bridge.json",
         DATA_OUT_DIR / "beta_certificate.json",
         LEAN_OUT_DIR / "RationalBounds.lean",
         LEAN_OUT_DIR / "CertificateValues.lean",
         LEAN_OUT_DIR / "Alpha" / "GeneratedRMSContext.lean",
+        LEAN_OUT_DIR / "Alpha" / "GeneratedRMSModeBridge.lean",
         LEAN_OUT_DIR / "Beta" / "GeneratedBetaCertificate.lean",
     ]
     original_bytes = {path: (path.read_bytes() if path.exists() else None) for path in tracked_outputs}
@@ -121,7 +123,21 @@ def main() -> None:
         run(
             [
                 sys.executable,
+                "tools/make_rms_mode_bridge.py",
+            ],
+            cwd=REPO_ROOT,
+        )
+        run(
+            [
+                sys.executable,
                 "tools/check_rms_context.py",
+            ],
+            cwd=REPO_ROOT,
+        )
+        run(
+            [
+                sys.executable,
+                "tools/check_rms_mode_bridge.py",
             ],
             cwd=REPO_ROOT,
         )

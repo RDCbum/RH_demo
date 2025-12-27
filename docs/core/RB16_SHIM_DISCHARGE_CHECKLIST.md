@@ -2,19 +2,19 @@
 
 | Field | Status | Discharge target |
 | --- | --- | --- |
-| `alphaInterfacesBase` | citable | Assumption~\ref{assm:classical} (explicit formula framework) + Lean `ERURH/AlphaInterfaces.lean`. |
-| `explicit_alpha_via_stages` | citable | Assumption~\ref{assm:explicit} (explicit formula package) + Lean `ERURH/ExplicitDecomposition.lean`. |
-| `xi_bounds_alpha` | paper proof | Section on explicit formula bounds; Lean `ERURH/ExplicitDecomposition.lean`. |
-| `h_xi_bounds_alpha` | packaging | Follows once `xi_bounds_alpha` is proved. |
-| `xi_argument_alpha` | paper proof | Section on explicit formula argument bounds; Lean `ERURH/ExplicitDecomposition.lean`. |
-| `h_xi_argument_alpha` | packaging | Follows once `xi_argument_alpha` is proved. |
-| `xi_bounds_alpha_of_hypotheses` | paper proof | Bridge from `xi_bounds_hypotheses_alpha` (Assumptions Ledger) to `xi_bounds_alpha`; Lean `ERURH/ExplicitDecomposition.lean`. |
-| `xi_argument_alpha_of_hypotheses` | paper proof | Bridge from `xi_argument_hypotheses_alpha` (Assumptions Ledger) to `xi_argument_alpha`; Lean `ERURH/ExplicitDecomposition.lean`. |
-| `rh_from_E_alpha_of_hypotheses` | paper proof | E-to-RH checklist; Lean `ERURH/EToRHChecklist.lean` (classical/citable implications). |
-| `h_inertia_to_E` | citable | Classical implication; Lean `ERURH/ERUInertia.lean`. |
-| `h_inertia_of_E` | citable | Classical implication; Lean `ERURH/ERUInertia.lean`. |
-| `h_RH_to_E` | citable | Classical implication; Lean `ERURH/ERUInertia.lean`. |
-| `ERURH.no_supercritical_beta` | new proof | Route B analytic gap; see `docs/core/RB16_A1_PROOF_PLAN.md`. |
+| `alphaInterfacesBase` | Paper proven | `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption~\ref{assm:classical}, Assumption~\ref{assm:explicit}). |
+| `explicit_alpha_via_stages` | Paper proven | `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption~\ref{assm:explicit}). |
+| `xi_bounds_alpha` | Paper proven | `arxiv_submission/ERURH_Conditional_Proof.tex` (explicit-formula bounds section). |
+| `h_xi_bounds_alpha` | Missing | Lean packaging once `xi_bounds_alpha` is formalized. |
+| `xi_argument_alpha` | Paper proven | `arxiv_submission/ERURH_Conditional_Proof.tex` (explicit-formula argument bounds section). |
+| `h_xi_argument_alpha` | Missing | Lean packaging once `xi_argument_alpha` is formalized. |
+| `xi_bounds_alpha_of_hypotheses` | Paper proven | `arxiv_submission/assumptions_ledger.tex` (classical/citable implications). |
+| `xi_argument_alpha_of_hypotheses` | Paper proven | `arxiv_submission/assumptions_ledger.tex` (classical/citable implications). |
+| `rh_from_E_alpha_of_hypotheses` | Paper proven | `arxiv_submission/assumptions_ledger.tex` (E-to-RH checklist). |
+| `h_inertia_to_E` | Paper proven | `arxiv_submission/assumptions_ledger.tex` (classical/citable implications). |
+| `h_inertia_of_E` | Paper proven | `arxiv_submission/assumptions_ledger.tex` (classical/citable implications). |
+| `h_RH_to_E` | Paper proven | `arxiv_submission/assumptions_ledger.tex` (classical/citable implications). |
+| `ERURH.no_supercritical_beta` | Missing | `arxiv_submission/ERURH_Conditional_Proof.tex` (Section~\ref{sec:no-supercritical}); blockers in `docs/core/RB28_BLOCKERS.md`. |
 
 Derived (not a bundle field): `ERURH.A1_mode_of_supercritical` is now obtained from
 `ERURH.no_supercritical_beta` (vacuously) and the ctx_real impossibility lemma

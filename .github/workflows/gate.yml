@@ -1,0 +1,58 @@
+name: gate
+
+on:
+  push:
+    branches:
+      - "release/*"
+  pull_request:
+    branches:
+      - "release/*"
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Lean toolchain
+        uses: leanprover/elan@v1
+        with:
+          toolchain: "leanprover/lean4:4.25.0-rc2"
+
+      - name: Cache Lake packages
+        uses: actions/cache@v4
+        with:
+          path: .lake/packages
+          key: ${{ runner.os }}-lake-${{ hashFiles('lake-manifest.json') }}-${{ hashFiles('lean-toolchain') }}
+          restore-keys: |
+            ${{ runner.os }}-lake-
+
+      - name: Install Python package
+        run: python -m pip install -e .
+
+      - name: Fetch Lean cache
+        run: lake exe cache get
+
+      - name: Generate artefacts
+        run: |
+          python tools/make_rational_bounds.py
+          python tools/make_certificate_values.py
+          python tools/make_rms_context.py
+          python tools/check_rms_context.py
+          python tools/make_beta_certificate.py
+
+      - name: Build ERURH
+        env:
+          LAKE_JOBS: "1"
+        run: lake build ERURH
+
+      - name: Verify gate
+        env:
+          LAKE_JOBS: "1"
+        run: python scripts/verify_gate.py --skip-pytests

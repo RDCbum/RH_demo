@@ -6,7 +6,7 @@ Source of truth: `docs/core/NOAX_FINAL_STATEMENTS.txt` and `docs/core/ASSUMPTION
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
-| `ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (No supercritical ERU modes, window-compatibility bridge) | ABIERTO |
+| `ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (No supercritical ERU modes, Lemma ``Window-compatibility bridge'') | ABIERTO |
 | `ctx_real_logR_alpha_upper ERURH.Alpha.ctx_real_window` | Gate | `tools/check_rms_mode_bridge.py`; `docs/core/P16_GATE_FULL.txt`; `docs/core/P17_GATE_FULL.txt`; `docs/core/P16_LOGR_ALPHA_UPPER_CERT.md` | CERRADO (gate) |
 | `AxiomsShimAccepted.alphaInterfacesBase` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumptions classical/explicit) | ABIERTO |
 | `AxiomsShimAccepted.explicit_alpha_via_stages` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (explicit-formula assumption) | ABIERTO |

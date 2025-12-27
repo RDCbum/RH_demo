@@ -14,8 +14,8 @@
 | `h_inertia_to_E` | Paper proven | `arxiv_submission/assumptions_ledger.tex` (classical/citable implications). |
 | `h_inertia_of_E` | Paper proven | `arxiv_submission/assumptions_ledger.tex` (classical/citable implications). |
 | `h_RH_to_E` | Paper proven | `arxiv_submission/assumptions_ledger.tex` (classical/citable implications). |
-| `ERURH.no_supercritical_beta` | Missing | `arxiv_submission/ERURH_Conditional_Proof.tex` (Section~\ref{sec:no-supercritical}); blockers in `docs/core/RB28_BLOCKERS.md`. |
+| `ERURH.Alpha.mode_to_rms_mode` | Missing | `arxiv_submission/ERURH_Conditional_Proof.tex` (Section~\ref{sec:no-supercritical}, Lemma~B); blockers in `docs/core/RB34_BLOCKERS.md`. |
 
-Derived (not a bundle field): `ERURH.A1_mode_of_supercritical` is now obtained from
-`ERURH.no_supercritical_beta` (vacuously) and the ctx_real impossibility lemma
-in `docs/core/RB20_A1_EQUIVALENCE.md`.
+Derived (not a bundle field): `ERURH.no_supercritical_beta` is obtained from
+`ERURH.Alpha.mode_to_rms_mode` and the ctx_real impossibility lemma, and
+`ERURH.A1_mode_of_supercritical` follows vacuously; see `docs/core/RB20_A1_EQUIVALENCE.md`.

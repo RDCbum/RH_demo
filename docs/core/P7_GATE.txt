@@ -1,0 +1,190 @@
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/check_no_noncore_axioms.py
+Note: found 107 noncomputable declarations under lean/formal_proofs/ERURH.
+lean\formal_proofs\ERURH\AlphaAxioms.lean:22: noncomputable def alphaDataFromAxioms
+lean\formal_proofs\ERURH\AlphaInterfaces.lean:25: noncomputable def AlphaPsi : PsiLayer :=
+lean\formal_proofs\ERURH\AlphaInterfaces.lean:131: noncomputable def alphaSystem (data : AlphaInterfaces) : ERUTheoreticSystem :=
+lean\formal_proofs\ERURH\AlphaInterfacesOn.lean:26: noncomputable def alphaXiOn
+lean\formal_proofs\ERURH\AlphaInterfacesOn.lean:40: noncomputable def alphaXiOn_concrete : XiWitnessOn alphaBridge :=
+lean\formal_proofs\ERURH\AlphaInterfacesOn.lean:45: noncomputable def alphaXiOn_staging : XiWitnessOn alphaBridge :=
+lean\formal_proofs\ERURH\AlphaInterfacesOn.lean:49: noncomputable def alphaBridgeToXiOn :
+lean\formal_proofs\ERURH\AnalyticSplits.lean:147: noncomputable def prefactor_poly (z : \u2102) : \u2102 :=
+lean\formal_proofs\ERURH\BridgeCore.lean:14: noncomputable def Window.IccR (w : Window) : Set \u211d :=
+lean\formal_proofs\ERURH\BridgeToXiOn.lean:23: noncomputable def ofWitness {B : ERUBridge}
+lean\formal_proofs\ERURH\ComplexAbsCompat.lean:6: noncomputable def abs (z : \u2102) : \u211d := \u2016z\u2016
+lean\formal_proofs\ERURH\ERUEnergyAlpha.lean:21: noncomputable def ERU_energy_global_alpha : \u211d :=
+lean\formal_proofs\ERURH\ERUEnergyAlpha.lean:27: noncomputable def L_global_alpha : \u211d :=
+lean\formal_proofs\ERURH\ERUEnergyAlpha.lean:33: noncomputable def ERU_energy_kernel_alpha : \u211d :=
+lean\formal_proofs\ERURH\ERUEnergyAlpha.lean:39: noncomputable def kernel_threshold_alpha : \u211d :=
+lean\formal_proofs\ERURH\ERUModesCore.lean:6: noncomputable def logR_alpha (s : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\ERURH_A2Hypotheses.lean:30: noncomputable def C_envelope_formal : \u211d :=
+lean\formal_proofs\ERURH\ERURH_BetaInertiaAssumptions.lean:40: noncomputable def betaInertiaAssumptions_true
+lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean:35: noncomputable def rho_complex (\u03c1 : ZeroOfZeta) : \u2102 :=
+lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean:39: noncomputable def rho_half (\u03c1 : ZeroOfZeta) : \u2102 :=
+lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean:43: noncomputable def gamma_prefactor (\u03c1 : ZeroOfZeta) : \u2102 :=
+lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean:47: noncomputable def gamma_prefactor_growth_bound : Prop :=
+lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean:66: noncomputable def explicit_b_rho_expression (\u03c1 : ZeroOfZeta) : \u2102 :=
+lean\formal_proofs\ERURH\ERURH_ExplicitFormulaAlpha.lean:91: noncomputable def gamma_prefactor_has_growth (_data : HbExplicitData) : Prop :=
+lean\formal_proofs\ERURH\ERURH_LargeSieveGammaSketch.lean:54: noncomputable def F_band (_T1 _T2 : \u211d) (_u : \u211d) : \u2102 := 0
+lean\formal_proofs\ERURH\ExplicitCoreBridge.lean:81: noncomputable def alphaExpRect : ExpRect xiAlpha :=
+lean\formal_proofs\ERURH\ExplicitCoreBridge.lean:142: noncomputable def alphaXiWitness (data : AlphaInterfaces) :
+lean\formal_proofs\ERURH\ExplicitCoreBridge.lean:158: noncomputable def alphaExplicitLaws (data : AlphaInterfaces) :
+lean\formal_proofs\ERURH\ExplicitCoreBridge.lean:163: noncomputable def alphaExplicitWitness_from_inertia
+lean\formal_proofs\ERURH\ExplicitDecomposition.lean:206: noncomputable def explicit_alpha_of_hypotheses_via_stages
+lean\formal_proofs\ERURH\Flux.lean:54: noncomputable def FluxLaws.fromNumerics
+lean\formal_proofs\ERURH\Flux.lean:88: noncomputable def FluxCertificate.ofLaws
+lean\formal_proofs\ERURH\FluxBounds.lean:20: noncomputable def alphaFluxLaws :
+lean\formal_proofs\ERURH\FluxBounds.lean:52: noncomputable def alphaFluxCertificate :
+lean\formal_proofs\ERURH\FluxWindows.lean:103: noncomputable def alphaCoverCertificate (B : ERUBridge)
+lean\formal_proofs\ERURH\FluxWindows.lean:160: noncomputable def alphaBridge : ERUBridge :=
+lean\formal_proofs\ERURH\LambdaBounds.lean:11: noncomputable section
+lean\formal_proofs\ERURH\LambdaBounds.lean:15: noncomputable def lamTcap : \u211a := BoundsConfig.boundsTcap
+lean\formal_proofs\ERURH\LambdaBounds.lean:19: noncomputable def lam_log_q (w : Window) : \u211a :=
+lean\formal_proofs\ERURH\LambdaBounds.lean:25: noncomputable def lam_j_q (w : Window) : \u211a :=
+lean\formal_proofs\ERURH\LambdaBounds.lean:31: noncomputable def lam_log_tail : \u211a := (0 : Rat)
+lean\formal_proofs\ERURH\LambdaBounds.lean:35: noncomputable def lam_j_tail : \u211a := ((77318098983 : Rat) / 40000000000)
+lean\formal_proofs\ERURH\LambdaBounds.lean:39: noncomputable def lam_log_sup : \u211a := (0 : Rat)
+lean\formal_proofs\ERURH\LambdaBounds.lean:43: noncomputable def lam_j_sup : \u211a := ((77318098983 : Rat) / 40000000000)
+lean\formal_proofs\ERURH\LambdaWitnessBuildOn.lean:15: noncomputable def lam_log_env_on (t : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\LambdaWitnessBuildOn.lean:23: noncomputable def lam_j_env_on (t : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\LambdaWitnessBuildOn.lean:126: noncomputable def alphaLambdaWitnessOn : LambdaWitnessOn alphaBridge :=
+lean\formal_proofs\ERURH\LemmaAContraction.lean:76: noncomputable def envelopeFlux (_ : Envelope) : Envelope :=
+lean\formal_proofs\ERURH\LemmaAContraction.lean:80: noncomputable def lemmaA_as_contraction :
+lean\formal_proofs\ERURH\Main.lean:32: noncomputable def AlphaBridge : ERUBridge := alphaBridge
+lean\formal_proofs\ERURH\Main.lean:35: noncomputable def alphaCertificate : FluxCertificate AlphaBridge := by
+lean\formal_proofs\ERURH\PrefactorBounds.lean:16: noncomputable section
+lean\formal_proofs\ERURH\PrefactorBounds.lean:18: noncomputable def pf_log_q_wAlpha49_shift0 : \u211a := ((974413429088416707 : \u211a) / (204800000000000000 : \u211a))
+lean\formal_proofs\ERURH\PrefactorBounds.lean:19: noncomputable def pf_log_q_wAlpha49_shift1 : \u211a := ((998120722102293697 : \u211a) / (204800000000000000 : \u211a))
+lean\formal_proofs\ERURH\PrefactorBounds.lean:20: noncomputable def pf_log_tail_q : \u211a := ((63852554371729108003367 : \u211a) / (5884235424000000000000 : \u211a))
+lean\formal_proofs\ERURH\PrefactorBounds.lean:21: noncomputable def pf_j_q_zero : \u211a := 0
+lean\formal_proofs\ERURH\PrefactorBounds.lean:22: noncomputable def pf_tail_arg_q : \u211a := 0
+lean\formal_proofs\ERURH\PrefactorBounds.lean:42: noncomputable def pf_log_q (w : Window) : \u211a :=
+lean\formal_proofs\ERURH\PrefactorBounds.lean:47: noncomputable def pf_j_q (_w : Window) : \u211a := 0
+lean\formal_proofs\ERURH\PrefactorBounds.lean:49: noncomputable def pf_tail_log (_t : \u211d) : \u211d := ((pf_log_tail_q : \u211a) : \u211d)
+lean\formal_proofs\ERURH\PrefactorBounds.lean:50: noncomputable def pf_tail_arg (_t : \u211d) : \u211d := 0
+lean\formal_proofs\ERURH\PrefactorPads.lean:8: noncomputable section
+lean\formal_proofs\ERURH\PrefactorPads.lean:10: noncomputable def pf_log_q_wAlpha49_shift0 : \u211a :=
+lean\formal_proofs\ERURH\PrefactorPads.lean:13: noncomputable def pf_log_q_wAlpha49_shift1 : \u211a :=
+lean\formal_proofs\ERURH\PrefactorPads.lean:16: noncomputable def pf_log_tail_q : \u211a :=
+lean\formal_proofs\ERURH\PrefactorPads.lean:19: noncomputable def pf_j_q_zero : \u211a := 0
+lean\formal_proofs\ERURH\PrefactorPads.lean:21: noncomputable def pf_tail_arg_q : \u211a := 0
+lean\formal_proofs\ERURH\PrefactorPads.lean:43: noncomputable def pf_log_q (w : Window) : \u211a :=
+lean\formal_proofs\ERURH\PrefactorPads.lean:48: noncomputable def pf_j_q (_w : Window) : \u211a := 0
+lean\formal_proofs\ERURH\PrefactorPads.lean:50: noncomputable def pf_tail_log (_t : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\PrefactorPads.lean:53: noncomputable def pf_tail_arg (_t : \u211d) : \u211d := 0
+lean\formal_proofs\ERURH\PsiLayerClassical.lean:6: noncomputable def chebyshevPsi (x : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\PsiLayerClassical.lean:10: noncomputable def chebyshevE (x : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\RH.lean:8: noncomputable def crit (t : \u211d) : \u2102 :=
+lean\formal_proofs\ERURH\SmokePads.lean:9: noncomputable section
+lean\formal_proofs\ERURH\SmokePads.lean:33: noncomputable def logEnvOfPads
+lean\formal_proofs\ERURH\SmokePads.lean:49: noncomputable def jEnvOfPads
+lean\formal_proofs\ERURH\SmokeTests.lean:9: noncomputable section
+lean\formal_proofs\ERURH\XiCore.lean:72: noncomputable def xiClassicalAnalytic :
+lean\formal_proofs\ERURH\XiPrefactor.lean:7: noncomputable section
+lean\formal_proofs\ERURH\XiPrefactor.lean:113: noncomputable def LambdaWitness.ofBounds
+lean\formal_proofs\ERURH\XiPrefactor.lean:240: noncomputable def PrefactorWitnessOn.ofLambda
+lean\formal_proofs\ERURH\XiWitnessAssembly.lean:9: noncomputable section
+lean\formal_proofs\ERURH\XiWitnessOn.lean:15: noncomputable def xi_log_fun (t : Real) : Real :=
+lean\formal_proofs\ERURH\XiWitnessOn.lean:19: noncomputable def xi_j_fun (t : Real) : Real :=
+lean\formal_proofs\ERURH\XiWitnessOn.lean:45: noncomputable def XiWitnessOn.ofLaws
+lean\formal_proofs\ERURH\XiZetaIface.lean:11: noncomputable def zeta_log_fun (t : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\XiZetaIface.lean:14: noncomputable def zeta_j_fun (t : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\XiZetaIface.lean:63: noncomputable def ZetaWitness.ofBounds
+lean\formal_proofs\ERURH\ZetaBounds.lean:11: noncomputable section
+lean\formal_proofs\ERURH\ZetaBounds.lean:15: noncomputable def zetaTcap : \u211a := BoundsConfig.boundsTcap
+lean\formal_proofs\ERURH\ZetaBounds.lean:19: noncomputable def zeta_log_q (w : Window) : \u211a :=
+lean\formal_proofs\ERURH\ZetaBounds.lean:25: noncomputable def zeta_j_q (w : Window) : \u211a :=
+lean\formal_proofs\ERURH\ZetaBounds.lean:31: noncomputable def zeta_log_tail : \u211a := ((426435487679 : \u211a) / 250000000000)
+lean\formal_proofs\ERURH\ZetaBounds.lean:35: noncomputable def zeta_j_tail : \u211a := ((6032211236253 : \u211a) / 50000000000)
+lean\formal_proofs\ERURH\ZetaBounds.lean:39: noncomputable def zeta_log_sup : \u211a := ((426435487679 : \u211a) / 250000000000)
+lean\formal_proofs\ERURH\ZetaBounds.lean:43: noncomputable def zeta_j_sup : \u211a := ((6032211236253 : \u211a) / 50000000000)
+lean\formal_proofs\ERURH\ZetaWitnessBuildOn.lean:17: noncomputable def zeta_log_env_on (t : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\ZetaWitnessBuildOn.lean:25: noncomputable def zeta_j_env_on (t : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\ZetaWitnessBuildOn.lean:103: noncomputable def alphaZetaWitnessOn : ZetaWitnessOn alphaBridge :=
+lean\formal_proofs\ERURH\Beta\GeneratedBetaCertificate.lean:14: noncomputable def strongInertiaCertificate_beta_numeric : StrongInertiaCertificate_beta :=
+lean\formal_proofs\ERURH\Beta\GeneratedBetaCertificate.lean:23: noncomputable def globalInertiaCertificate_beta_numeric : GlobalInertiaCertificate_beta :=
+lean\formal_proofs\ERURH\Beta\GeneratedBetaCertificate.lean:31: noncomputable def strongInertiaComposite_beta_numeric : StrongInertiaComposite_beta :=
+lean\formal_proofs\ERURH\Beta\InertiaSmooth.lean:24: noncomputable def jRel_smooth (bridge : ERUBridge) (K\u03b2 : KernelERU) : \u211d \u2192 \u211d :=
+lean\formal_proofs\ERURH\NumberTheory\Chebyshev.lean:13: noncomputable def psi (x : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\NumberTheory\Chebyshev.lean:20: noncomputable def E (x : \u211d) : \u211d :=
+lean\formal_proofs\ERURH\NumberTheory\VonMangoldt.lean:10: noncomputable def Lambda (n : \u2115) : \u211d :=
+OK: no axiom/constant/opaque/sorry/admit declarations under lean/formal_proofs/ERURH
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_rational_bounds.py
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_certificate_values.py
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_rms_context.py
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/check_rms_context.py
+OK: RMS envelope matches formal bounds
+  C_envelope_ctx    = 43040528/902400129
+  C_envelope_formal = 43040528/902400129
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_beta_certificate.py
++ lake build ERURH
+⚠ [7498/7521] Replayed ERURH.FluxWindows
+warning: lean/formal_proofs/ERURH/FluxWindows.lean:51:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7499/7521] Replayed ERURH.FluxBounds
+warning: lean/formal_proofs/ERURH/FluxBounds.lean:31:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/FluxBounds.lean:36:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7501/7521] Replayed ERURH.BoundsConfig
+warning: lean/formal_proofs/ERURH/BoundsConfig.lean:24:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7503/7521] Replayed ERURH.ComplexAbsCompat
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:11:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:14:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:17:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7505/7521] Replayed ERURH.PsiLayer
+warning: lean/formal_proofs/ERURH/PsiLayer.lean:20:34: This simp argument is unused:
+  add_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [P.E_is_error x, add_comm, a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵add_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/PsiLayer.lean:20:49: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [P.E_is_error x, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [7514/7521] Replayed ERURH.NumberTheory.Chebyshev
+warning: lean/formal_proofs/ERURH/NumberTheory/Chebyshev.lean:32:25: This simp argument is unused:
+  add_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [E_def, add_comm, a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵add_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/NumberTheory/Chebyshev.lean:32:40: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [E_def, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [7517/7521] Replayed ERURH.ERUTheory
+warning: lean/formal_proofs/ERURH/ERUTheory.lean:10:29: `structure ... :=` has been deprecated in favor of `structure ... where`.
+
+Note: This linter can be disabled with `set_option linter.deprecated false`
+⚠ [7518/7521] Replayed ERURH.AlphaInterfaces
+warning: lean/formal_proofs/ERURH/AlphaInterfaces.lean:54:8: This simp argument is unused:
+  AlphaPsi_is_classicalPsi
+
+Hint: Omit it from the simp argument list.
+  simp [AlphaPsi_̵i̵s̵_̵c̵l̵a̵s̵s̵i̵c̵a̵l̵P̵s̵i̵,̵ ̵A̵l̵p̵h̵a̵P̵s̵i̵.psi_eq_nt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/AlphaInterfaces.lean:64:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Build completed successfully (7521 jobs).

@@ -143,7 +143,8 @@ Field(s) & Discharge path \\
 \texttt{xi\_bounds\_alpha}, \texttt{xi\_argument\_alpha} and their hypothesis bridges & Classical/citable implications (Assumptions Ledger). \\
 \texttt{rh\_from\_E\_alpha\_of\_hypotheses} & Classical/citable implications (Assumptions Ledger). \\
 \texttt{h\_inertia\_to\_E}, \texttt{h\_inertia\_of\_E}, \texttt{h\_RH\_to\_E} & Classical/citable implications (Assumptions Ledger). \\
-\texttt{PointwiseToRMSMode} & Route B analytic gap (Lemma B.1, Assumptions Ledger). \\
+\texttt{SupercriticalModeAppliesOnCtxRealWindow} & Route B analytic gap (window-compatibility bridge). \\
+\texttt{ctx\_real\_logR\_alpha\_upper} & Gate-certified numeric side condition (interval arithmetic). \\
 \hline
 \end{tabular}
 \end{center}
@@ -168,18 +169,23 @@ We structure the argument into three lemmas, matching the Lean targets exported 
   \item \textbf{Lemma C (contradiction).} Combine Lemma~B with the Lean lemma
   \texttt{ctx\_real\_not\_A1\_mode} to reach a contradiction, hence no such mode exists.
 \end{enumerate}
-In Lean, the only explicit gap is Lemma~B.1
-(\texttt{ERURH.Alpha.PointwiseToRMSMode}); Lemma~B is derived from B.1 and
-the window extraction lemma, Lemma~C is already proved as \texttt{ctx\_real\_not\_A1\_mode},
-and the proposition is the derived theorem \texttt{ERURH.no\_supercritical\_beta}.
+In Lean, the remaining explicit analytic gap is the window-compatibility bridge
+\texttt{ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow}; the gate-certified
+side condition \texttt{ctx\_real\_logR\_alpha\_upper} supplies the numeric upper bound
+used in the RMS semantic bridge. Lemma~B.1 (\texttt{PointwiseToRMSMode}) is now derived
+from these two inputs and the gate certificate, Lemma~C is already proved as
+\texttt{ctx\_real\_not\_A1\_mode}, and the proposition is the derived theorem
+\texttt{ERURH.no\_supercritical\_beta}.
 This replaces the earlier A1 framing; see \texttt{docs/core/RB20\_A1\_EQUIVALENCE.md} in the
 repository for the formal equivalence under \texttt{ctx\_real\_not\_A1\_mode}.
 \end{proof}
 
 \subsubsection*{Lemma B.1 (Pointwise-to-RMS bridge)}
 The Lean statements exported for this section are in \texttt{lean\_gap\_statements.txt}.
-The first line is the B.1 gap (\texttt{ERURH.Alpha.pointwise\_to\_RMS\_mode}), and the
-second line is Lemma~B as a derived theorem.
+The first line is the window-compatibility bridge
+(\texttt{ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow}), the second line is the
+gate-certified upper bound predicate \texttt{ctx\_real\_logR\_alpha\_upper}, and the
+third line is Lemma~B as a derived theorem.
 {\small\VerbatimInput{lean_gap_statements.txt}}
 
 \paragraph{Definitions (paper semantics).}
@@ -215,10 +221,11 @@ $\mathrm{RMS\_mode}(w)$ & \texttt{ERURH.Alpha.GeneratedRMSContext.ctx\_real.RMS\
 
 \paragraph{Gate/Lean alignment.}
 In Lean, \texttt{RMS\_mode} is currently instantiated by the numeric gate data in
-\texttt{rms\_context.json}. The gate is required to certify that these numerical
-values are consistent lower bounds for the analytic RMS-mode defined above.
-This semantic bridge is the content of Lemma~B.1, and is the only remaining
-non-core gap after the Route~B refactor.
+\texttt{rms\_context.json}. The gate certifies a numerical side-condition
+\texttt{ctx\_real\_logR\_alpha\_upper} (interval arithmetic) which, together with the
+window-compatibility bridge \texttt{SupercriticalModeAppliesOnCtxRealWindow},
+derives Lemma~B.1 inside Lean. The remaining analytic gap is therefore the
+window-compatibility bridge itself.
 
 \section{Reproducibility / Gate}
 The reproducible pipeline regenerates the numeric artifacts and rebuilds the Lean development:

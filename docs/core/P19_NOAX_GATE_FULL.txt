@@ -1,0 +1,95 @@
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/check_no_noncore_axioms.py
+OK: no axiom/constant/opaque/sorry/admit declarations under lean/formal_proofs/ERURH
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_rational_bounds.py
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_certificate_values.py
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_rms_context.py
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_rms_mode_bridge.py
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/check_rms_context.py
+OK: RMS envelope matches formal bounds
+  C_envelope_ctx    = 43040528/902400129
+  C_envelope_formal = 43040528/902400129
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/check_rms_mode_bridge.py
+OK: RMS mode bridge certificate matches RMS context data.
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_beta_certificate.py
++ lake build ERURH
+⚠ [7498/7521] Replayed ERURH.FluxWindows
+warning: lean/formal_proofs/ERURH/FluxWindows.lean:51:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7499/7521] Replayed ERURH.FluxBounds
+warning: lean/formal_proofs/ERURH/FluxBounds.lean:31:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/FluxBounds.lean:36:6: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7501/7521] Replayed ERURH.BoundsConfig
+warning: lean/formal_proofs/ERURH/BoundsConfig.lean:24:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7503/7521] Replayed ERURH.ComplexAbsCompat
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:11:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:14:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:17:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [7505/7521] Replayed ERURH.PsiLayer
+warning: lean/formal_proofs/ERURH/PsiLayer.lean:20:34: This simp argument is unused:
+  add_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [P.E_is_error x, add_comm, a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵add_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/PsiLayer.lean:20:49: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [P.E_is_error x, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [7514/7521] Replayed ERURH.NumberTheory.Chebyshev
+warning: lean/formal_proofs/ERURH/NumberTheory/Chebyshev.lean:32:25: This simp argument is unused:
+  add_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [E_def, add_comm, a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵add_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/NumberTheory/Chebyshev.lean:32:40: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [E_def, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [7517/7521] Replayed ERURH.ERUTheory
+warning: lean/formal_proofs/ERURH/ERUTheory.lean:10:29: `structure ... :=` has been deprecated in favor of `structure ... where`.
+
+Note: This linter can be disabled with `set_option linter.deprecated false`
+⚠ [7518/7521] Replayed ERURH.AlphaInterfaces
+warning: lean/formal_proofs/ERURH/AlphaInterfaces.lean:54:8: This simp argument is unused:
+  AlphaPsi_is_classicalPsi
+
+Hint: Omit it from the simp argument list.
+  simp [AlphaPsi_̵i̵s̵_̵c̵l̵a̵s̵s̵i̵c̵a̵l̵P̵s̵i̵,̵ ̵A̵l̵p̵h̵a̵P̵s̵i̵.psi_eq_nt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/formal_proofs/ERURH/AlphaInterfaces.lean:64:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Build completed successfully (7521 jobs).
++ C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe -m pytest tests
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-8.3.5, pluggy-1.5.0
+rootdir: C:\dev\RH_demo_clean
+configfile: pyproject.toml
+collected 1 item
+
+tests\test_smoke.py .                                                    [100%]
+
+============================== 1 passed in 0.03s ==============================

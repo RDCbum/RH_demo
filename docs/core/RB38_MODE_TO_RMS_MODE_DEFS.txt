@@ -1,0 +1,73 @@
+def ERURH.ERU_mode_beta : ℝ → Prop :=
+fun β => ∃ s0, ∀ {s : ℝ}, s ≥ s0 → |ERURH.logR_alpha s| ≥ Real.exp ((β - 1 / 2) * s)
+structure ERURH.RMSLocalContext : Type 1
+number of parameters: 0
+fields:
+  ERURH.RMSLocalContext.Window : Type
+  ERURH.RMSLocalContext.RMS_alpha : self.Window → ℝ
+  ERURH.RMSLocalContext.RMS_mode : self.Window → ℝ
+  ERURH.RMSLocalContext.RMS_low : self.Window → ℝ
+  ERURH.RMSLocalContext.RMS_tail : self.Window → ℝ
+  ERURH.RMSLocalContext.c_low : ℝ
+  ERURH.RMSLocalContext.c_tail : ℝ
+  ERURH.RMSLocalContext.c_low_nonneg : 0 ≤ self.c_low
+  ERURH.RMSLocalContext.c_tail_nonneg : 0 ≤ self.c_tail
+  ERURH.RMSLocalContext.RMS_tail_bound_simple : ∀ (w : self.Window), self.RMS_tail w ≤ self.c_tail
+  ERURH.RMSLocalContext.RMS_decomp : ∀ (w : self.Window),
+      self.RMS_alpha w ≥ self.RMS_mode w - (self.RMS_low w + self.RMS_tail w)
+constructor:
+  ERURH.RMSLocalContext.mk (Window : Type) (RMS_alpha RMS_mode RMS_low RMS_tail : Window → ℝ) (c_low c_tail : ℝ)
+    (c_low_nonneg : 0 ≤ c_low) (c_tail_nonneg : 0 ≤ c_tail)
+    (RMS_tail_bound_simple : ∀ (w : Window), RMS_tail w ≤ c_tail)
+    (RMS_decomp : ∀ (w : Window), RMS_alpha w ≥ RMS_mode w - (RMS_low w + RMS_tail w)) : ERURH.RMSLocalContext
+def ERURH.A1_mode : ERURH.RMSLocalContext → Prop :=
+fun ctx => ∃ w, ∃ K > ctx.c_low + ctx.c_tail + ERURH.C_envelope_formal, ctx.RMS_mode w ≥ K
+ERURH.Alpha.GeneratedRMSContext.ctx_real.Window : Type
+@[reducible] def ERURH.Alpha.GeneratedRMSContext.ctx_real : ERURH.RMSLocalContext :=
+ctx_real
+def ctx_real : ERURH.RMSLocalContext :=
+{ Window := Fin n_windows, RMS_alpha := fun x => cEnvelopeCtx, RMS_mode := rmsMode, RMS_low := rmsLow,
+  RMS_tail := rmsTail, c_low := cLow, c_tail := cTail, c_low_nonneg := ctx_real._proof_1,
+  c_tail_nonneg := ctx_real._proof_1, RMS_tail_bound_simple := ctx_real._proof_2, RMS_decomp := ctx_real._proof_3 }
+def rmsModeList : List ℚ :=
+[1332805409 / 9024001290]
+def rmsModeRat : Fin n_windows → ℚ :=
+fun w => rmsModeList.get ⟨↑w, ⋯⟩
+def rmsMode : Fin n_windows → ℝ :=
+fun w => ↑(rmsModeRat w)
+def rmsLowList : List ℚ :=
+[1 / 20]
+def rmsLowRat : Fin n_windows → ℚ :=
+fun w => rmsLowList.get ⟨↑w, ⋯⟩
+def rmsLow : Fin n_windows → ℝ :=
+fun w => ↑(rmsLowRat w)
+def rmsTailList : List ℚ :=
+[1 / 20]
+def rmsTailRat : Fin n_windows → ℚ :=
+fun w => rmsTailList.get ⟨↑w, ⋯⟩
+def rmsTail : Fin n_windows → ℝ :=
+fun w => ↑(rmsTailRat w)
+def cLowRat : ℚ :=
+1 / 10
+def cLow : ℝ :=
+↑cLowRat
+def cTailRat : ℚ :=
+1 / 10
+def cTail : ℝ :=
+↑cTailRat
+def cEnvelopeCtxRat : ℚ :=
+43040528 / 902400129
+def cEnvelopeCtx : ℝ :=
+↑cEnvelopeCtxRat
+theorem ERURH.RMSLocalContext.RMS_decomp : ∀ (self : ERURH.RMSLocalContext) (w : self.Window),
+  self.RMS_alpha w ≥ self.RMS_mode w - (self.RMS_low w + self.RMS_tail w) :=
+fun self => self.11
+
+-- Source locations (file:line)
+-- ERURH.ERU_mode_beta: lean/formal_proofs/ERURH/ERUModesCore.lean:11
+-- ERURH.RMSLocalContext: lean/formal_proofs/ERURH/ERURH_A2Hypotheses.lean:14
+-- ERURH.A1_mode: lean/formal_proofs/ERURH/ERURH_A2Hypotheses.lean:42
+-- ERURH.RMSLocalContext.RMS_decomp: lean/formal_proofs/ERURH/ERURH_A2Hypotheses.lean:26
+-- ctx_real (Window/RMS_mode/RMS_alpha): lean/formal_proofs/ERURH/Alpha/GeneratedRMSContext.lean:41
+-- rmsMode/rmsModeRat/rmsModeList: lean/formal_proofs/ERURH/Alpha/GeneratedRMSContext.lean:17-35
+-- RMS_alpha (ctx_real): lean/formal_proofs/ERURH/Alpha/GeneratedRMSContext.lean:43

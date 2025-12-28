@@ -6,3 +6,73 @@
   \item \textbf{Classical / citable.} Zeta explicit-formula setup and classical implications (including the ERU inertia $\leftrightarrow$ $E$-bound links and RH $\Rightarrow$ $E$-bounds). The zero-parameterization objects $\beta,\gamma$ and coefficients $b_\rho$ remain part of this classical package.
   \item \textbf{Gate + certificates (alpha + RMS + beta).} The alpha certificates and RMS coverage are discharged by the reproducible pipeline (\texttt{verify\_gate.py}), which regenerates the rational bounds and certificate values and checks the Lean build. RMS A2-low/A2-tail are generated from frozen \texttt{rms\_context.json} via \texttt{tools/make\_rms\_context.py}. The beta inertia bundle is generated from frozen JSON via \texttt{tools/make\_beta\_certificate.py} and is discharged in the same gate.
 \end{itemize}
+
+\subsection*{AxiomsShimAccepted field map (explicit statements)}
+
+\paragraph{alphaInterfacesBase.}
+Statement: existence of the alpha interface package (`AlphaInterfaces`) providing
+the ERU observable $\log R$ and $J_{\mathrm{rel}}$ in the explicit-formula framework.
+Reference/proof: Assumption~\ref{assm:explicit}. Lean field:
+\texttt{AxiomsShimAccepted.alphaInterfacesBase}.
+
+\paragraph{explicit\_alpha\_via\_stages.}
+Statement: the explicit-formula laws used by the alpha bridge hold, i.e.
+`ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi`.
+Reference/proof: Assumption~\ref{assm:explicit}. Lean field:
+\texttt{AxiomsShimAccepted.explicit\_alpha\_via\_stages}.
+
+\paragraph{xi\_bounds\_alpha.}
+Statement: the $\xi_\alpha$ bounds required by the ERU explicit-formula package
+hold (the proposition \texttt{xi\_bounds\_alpha}).
+Reference/proof: assumed as part of the explicit-formula bounds package;
+to be cited in the explicit-formula bounds section. Lean field:
+\texttt{AxiomsShimAccepted.xi\_bounds\_alpha}.
+
+\paragraph{h\_xi\_bounds\_alpha.}
+Statement: a proof witness of \texttt{xi\_bounds\_alpha}.
+Reference/proof: immediate from the previous assumption. Lean field:
+\texttt{AxiomsShimAccepted.h\_xi\_bounds\_alpha}.
+
+\paragraph{xi\_argument\_alpha.}
+Statement: the $\xi_\alpha$ argument bounds required by ERURH hold
+(\texttt{xi\_argument\_alpha}).
+Reference/proof: assumed as part of the explicit-formula bounds package;
+to be cited in the argument bounds section. Lean field:
+\texttt{AxiomsShimAccepted.xi\_argument\_alpha}.
+
+\paragraph{h\_xi\_argument\_alpha.}
+Statement: a proof witness of \texttt{xi\_argument\_alpha}.
+Reference/proof: immediate from the previous assumption. Lean field:
+\texttt{AxiomsShimAccepted.h\_xi\_argument\_alpha}.
+
+\paragraph{xi\_bounds\_alpha\_of\_hypotheses.}
+Statement: `xi_bounds_hypotheses_alpha → xi_bounds_alpha`.
+Reference/proof: classical/citable implication (explicit-formula bounds package).
+Lean field: \texttt{AxiomsShimAccepted.xi\_bounds\_alpha\_of\_hypotheses}.
+
+\paragraph{xi\_argument\_alpha\_of\_hypotheses.}
+Statement: `xi_argument_hypotheses_alpha → xi_argument_alpha`.
+Reference/proof: classical/citable implication (argument bounds package).
+Lean field: \texttt{AxiomsShimAccepted.xi\_argument\_alpha\_of\_hypotheses}.
+
+\paragraph{rh\_from\_E\_alpha\_of\_hypotheses.}
+Statement: `(E_bound_strong_alpha ∧ xi_bounds_alpha ∧ xi_argument_alpha ∧
+explicit_rect_alpha ∧ Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi)) →
+RHfromE xiAlpha AlphaPsi`.
+Reference/proof: classical/citable implications in the ERU explicit-formula framework.
+Lean field: \texttt{AxiomsShimAccepted.rh\_from\_E\_alpha\_of\_hypotheses}.
+
+\paragraph{h\_inertia\_to\_E.}
+Statement: `InertiaERU_alpha_strong → E_bound_strong_alpha`.
+Reference/proof: classical ERU inertia $\Rightarrow$ strong $E$-bound implication.
+Lean field: \texttt{AxiomsShimAccepted.h\_inertia\_to\_E}.
+
+\paragraph{h\_inertia\_of\_E.}
+Statement: `E_bound_strong_alpha → InertiaERU_alpha_strong`.
+Reference/proof: classical strong $E$-bound $\Rightarrow$ ERU inertia implication.
+Lean field: \texttt{AxiomsShimAccepted.h\_inertia\_of\_E}.
+
+\paragraph{h\_RH\_to\_E.}
+Statement: `RiemannHypothesis xiAlpha → E_bound_strong_alpha`.
+Reference/proof: classical RH $\Rightarrow$ $E$-bound (Assumption~\ref{assm:classical}).
+Lean field: \texttt{AxiomsShimAccepted.h\_RH\_to\_E}.

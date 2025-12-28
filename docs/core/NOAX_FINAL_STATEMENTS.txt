@@ -12,10 +12,12 @@ fun G hAxioms hCerts hNumeric =>
         hNumeric)
     hNumeric
 theorem ERURH.RH_unconditional_core : ∀ (hAxioms : ERURH.AxiomsShimAccepted),
-  ERURH.Alpha.PointwiseToRMSMode ERURH.Alpha.GeneratedRMSContext.ctx_real ERURH.Alpha.ctx_real_window →
-    ERURH.NumericCoverageAlpha ERURH.Alpha.GeneratedRMSContext.ctx_real → ERURH.RiemannHypothesis ERURH.xiAlpha :=
-fun hAxioms hB1 hNumeric =>
+  ctx_real_logR_alpha_upper ERURH.Alpha.ctx_real_window →
+    ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow →
+      ERURH.NumericCoverageAlpha ERURH.Alpha.GeneratedRMSContext.ctx_real → ERURH.RiemannHypothesis ERURH.xiAlpha :=
+fun hAxioms h_upper h_bridge hNumeric =>
   let ctx := ERURH.Alpha.GeneratedRMSContext.ctx_real;
+  have hB1 := ERURH.Alpha.pointwise_to_RMS_mode_of_ctx_real_logR_alpha_upper_and_window_bridge h_upper h_bridge;
   have hLow := id ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Low;
   have hTail := id ERURH.Alpha.GeneratedRMSContext.ctx_real_A2Tail;
   have h_no_modes := fun β hβ h_mode =>
@@ -31,7 +33,7 @@ fun hAxioms hB1 hNumeric =>
   have h_inertia := ERURH.InertiaERU_alpha_strong_of_no_modes_via_certificates hAxioms h_no_modes;
   (ERURH.ERU_RH_equiv_alpha_of_axioms hAxioms).mp h_inertia
 theorem ERURH.RH_unconditional_assuming : ∀ (hAxioms : ERURH.AxiomsShimAccepted),
-  ERURH.Alpha.PointwiseToRMSMode ERURH.Alpha.GeneratedRMSContext.ctx_real ERURH.Alpha.ctx_real_window →
-    ERURH.RiemannHypothesis ERURH.xiAlpha :=
-fun hAxioms hB1 =>
-  ERURH.RH_unconditional_core hAxioms hB1 (id ERURH.Alpha.GeneratedRMSContext.ctx_real_RMS_envelope_closed)
+  ctx_real_logR_alpha_upper ERURH.Alpha.ctx_real_window →
+    ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow → ERURH.RiemannHypothesis ERURH.xiAlpha :=
+fun hAxioms h_upper h_bridge =>
+  ERURH.RH_unconditional_core hAxioms h_upper h_bridge (id ERURH.Alpha.GeneratedRMSContext.ctx_real_RMS_envelope_closed)

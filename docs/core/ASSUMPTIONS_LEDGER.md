@@ -13,16 +13,18 @@ This ledger summarizes what is discharged by which external layer after beta gat
 - C: reserved (RMS window bounds now frozen in gate/data; see below).
 
 ## Analytic gap (Route B)
-- explicit hypothesis `ERURH.Alpha.ModeThresholdControlOnCtxRealWindow`
-  (`docs/core/P30_ModeThresholdControl.lean:10-14`). This states that the
-  supercritical-mode threshold can be chosen below the fixed window; it implies
-  `SupercriticalModeAppliesOnCtxRealWindow` and closes the window-compatibility
-  step in Lemma B.1.
-- gate-certified side condition `ctx_real_logR_alpha_upper ctx_real_window`
+- explicit hypothesis `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`
+  (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_WindowBridge_Legacy.lean:34`). This states that the
+  supercritical-mode threshold can be chosen no later than `windowMinMax` for the ctx_real
+  window family; it yields the existence of a ctx_real window where the ERU-mode lower bound holds
+  and closes the window-compatibility step in Lemma B.1.
+- gate-certified side condition `∀ w, ctx_real_logR_alpha_upper w`
   (`lean/formal_proofs/ERURH/Alpha/GeneratedRMSModeBridge.lean:35`), enforced by
   `tools/check_rms_mode_bridge.py` using interval arithmetic
   (see `docs/core/P16_LOGR_ALPHA_UPPER_CERT.md`, `docs/core/P16_GATE_FULL.txt`,
   `docs/core/P17_GATE_FULL.txt`).
+- numeric threshold check `windowMinMax ≥ s0` from `formal_report_analytic.json`,
+  enforced by `tools/check_rms_context.py` (see `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`).
 
 ## Classical / citable
 - `ClassicalZetaAssumptions` (zeta zeros and classical explicit-formula framework).

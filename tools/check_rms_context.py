@@ -13,6 +13,7 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[1]
 RATIONAL_BOUNDS = REPO_ROOT / "data" / "docs" / "paper" / "rational_bounds.json"
 RMS_CONTEXT = REPO_ROOT / "data" / "releases" / "erurh-v2-core" / "formal" / "rms_context.json"
+FORMAL_REPORT = REPO_ROOT / "data" / "releases" / "erurh-v2-core" / "formal" / "formal_report_analytic.json"
 
 
 def parse_rational(value: Any, *, label: str) -> Fraction:
@@ -52,6 +53,11 @@ def main() -> None:
         raise FileNotFoundError(f"Missing rms_context JSON: {RMS_CONTEXT}") from exc
 
     try:
+        report = json.loads(FORMAL_REPORT.read_text(encoding="utf-8"), parse_float=Decimal)
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(f"Missing formal report JSON: {FORMAL_REPORT}") from exc
+
+    try:
         bounds_entry = bounds["bounds"]["C_envelope_formal"]
         formal = Fraction(bounds_entry["numerator"], bounds_entry["denominator"])
     except (KeyError, TypeError) as exc:
@@ -68,10 +74,32 @@ def main() -> None:
         )
         sys.exit(1)
 
+    windows = rms.get("windows")
+    if not isinstance(windows, list) or not windows:
+        raise ValueError("Missing windows list in rms_context JSON")
+
+    window_min_vals = [
+        parse_rational(entry.get("s_min"), label="windows.s_min") for entry in windows
+    ]
+    window_min_max = max(window_min_vals)
+
+    s0 = parse_rational(report.get("s0"), label="formal_report.s0")
+    if window_min_max < s0:
+        print(
+            "Window-min threshold mismatch: windowMinMax < s0\n"
+            f"  windowMinMax = {frac_to_str(window_min_max)}\n"
+            f"  s0           = {frac_to_str(s0)}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     print(
         "OK: RMS envelope matches formal bounds\n"
         f"  C_envelope_ctx    = {frac_to_str(ctx)}\n"
-        f"  C_envelope_formal = {frac_to_str(formal)}"
+        f"  C_envelope_formal = {frac_to_str(formal)}\n"
+        "OK: windowMinMax >= s0 (formal report)\n"
+        f"  windowMinMax      = {frac_to_str(window_min_max)}\n"
+        f"  s0                = {frac_to_str(s0)}"
     )
 
 

@@ -197,10 +197,18 @@ s_0 \le \mathrm{windowMin}(\mathrm{ctx\_real\_window})
 \end{lemma}
 \begin{proof}[Proof outline]
 \begin{enumerate}
-  \item (Unpack the mode.) From \texttt{ERU\_mode\_beta}$(\beta)$, obtain a threshold
-  $s_0$ such that the bound holds for all $s \ge s_0$.
-  \item (Threshold control.) Show that this threshold can be chosen with
-  $s_0 \le \mathrm{windowMin}(\mathrm{ctx\_real\_window})$.
+  \item Assume $\beta > 1/2$ and \texttt{ERU\_mode\_beta}$(\beta)$.
+  \item Unpack the definition to obtain a threshold $s_0$ such that
+  $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$ for all $s \ge s_0$.
+  \item Prove a sharpened bound from the analytic mode construction (explicit formula
+  + spectral/large-sieve controls): the same inequality already holds for all
+  $s \ge S(\beta)$ with $S(\beta) \le \mathrm{windowMin}(\mathrm{ctx\_real\_window})$.
+  This is the only external analytic input.
+  \item Set $s_0' := S(\beta)$ (or $\mathrm{windowMin}$ if the bound is valid from there).
+  \item Then $s_0' \le \mathrm{windowMin}(\mathrm{ctx\_real\_window})$ by construction.
+  \item For any $s \ge s_0'$, apply the bound from step (3) to obtain
+  $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
+  \item Conclude the lemma with the witness $s_0'$.
 \end{enumerate}
 \end{proof}
 

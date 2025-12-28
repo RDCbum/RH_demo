@@ -28,7 +28,7 @@ See:
 
 - Classical/citable assumptions bundled as `AxiomsShimAccepted`
   (see `arxiv_submission/assumptions_ledger.tex`).
-- Mode threshold control (analytic gap):
+- Mode threshold control (analytic gap, only open analytic item):
   - Lemma "Mode threshold control" in
     `arxiv_submission/ERURH_Conditional_Proof.tex` (Section No supercritical ERU modes).
   - This lemma implies the window-compatibility bridge

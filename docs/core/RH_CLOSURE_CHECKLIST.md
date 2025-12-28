@@ -4,6 +4,8 @@ Source of truth: `docs/core/NOAX_FINAL_STATEMENTS.txt` and `docs/core/ASSUMPTION
 
 ## Remaining requirements
 
+Only open analytic item: `ERURH.Alpha.ModeThresholdControlOnCtxRealWindow`.
+
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
 | `ERURH.Alpha.ModeThresholdControlOnCtxRealWindow` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (No supercritical ERU modes, Lemma ``Mode threshold control'') | ABIERTO |

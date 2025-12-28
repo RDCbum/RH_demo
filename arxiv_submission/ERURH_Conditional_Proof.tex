@@ -285,6 +285,10 @@ lake build ERURH
 python scripts/verify_gate.py --skip-pytests
 \end{verbatim}
 
+The analytic report \texttt{formal\_report\_analytic.json} (containing the
+constant $S_0$ used in Assumption~\ref{assm:threshold-control}) is part of the
+reproducibility data release; it is not bundled in the arXiv TeX archive.
+
 \input{assumptions_ledger.tex}
 
 \\subsection*{Classical/citable lemmas used as assumptions}
@@ -467,7 +471,8 @@ with local zero counting.
 
 \begin{assumption}[Mode-threshold control]\label{assm:threshold-control}
 There exists a constant $S_0$ (recorded in the analytic report
-\texttt{formal\_report\_analytic.json}) such that, for every $\beta>1/2$,
+\texttt{formal\_report\_analytic.json} in the reproducibility data release) such that,
+for every $\beta>1/2$,
 if \texttt{ERU\_mode\_beta}$(\beta)$ holds then
 \[
 \forall s \ge S_0,\;

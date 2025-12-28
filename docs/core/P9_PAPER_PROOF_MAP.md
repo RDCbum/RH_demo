@@ -38,21 +38,20 @@ This map aligns remaining Lean hypotheses with paper statements and proof plans.
 - Definition of `RMS_mode` and the window interval associated to `ctx_real_window`.
 - Any bridge fact equating the Lean `RMS_mode` to the analytical RMS or a certified lower bound.
 
-## Window-compatibility bridge (SupercriticalModeAppliesOnCtxRealWindow)
+## Mode-threshold control (ModeThresholdControlOnCtxRealWindowFamily)
 
 **Lean statement**
-- `ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow`.
+- `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`.
 
 **Mathematical statement (paper)**
-- For every $\beta > 1/2$ with `ERU_mode_beta`$(\beta)$, the pointwise lower bound
-  $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$ holds for all
-  $s \in I_{\mathrm{ctx}}$, where $I_{\mathrm{ctx}}$ is the fixed window interval
-  used by `ctx_real`.
+- For every $\beta > 1/2$ with `ERU_mode_beta`$(\beta)$, there exists
+  $s_0 \le \mathrm{windowMinMax}$ such that
+  $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$ for all $s \ge s_0$.
 
 **Paper placement**
-- Section \ref{sec:no-supercritical}, Window-compatibility bridge subsection.
+- Section \ref{sec:no-supercritical}, Assumption `assm:threshold-control`.
 
 **Dependencies**
 - Definition of `ERU_mode_beta`.
-- Lower bound domain for the mode (e.g., $s \ge s_0$) and proof that the
-  `ctx_real` window interval lies above that threshold.
+- Analytic control of the threshold (external input) plus the gate-verified
+  numeric inequality $\mathrm{windowMinMax} \ge S_0$ from the analytic report.

@@ -29,10 +29,12 @@ See:
 - Classical/citable assumptions bundled as `AxiomsShimAccepted`
   (see `arxiv_submission/assumptions_ledger.tex`).
 - Mode threshold control (analytic gap, only open analytic item):
-  - Lemma "Mode threshold control" in
-    `arxiv_submission/ERURH_Conditional_Proof.tex` (Section No supercritical ERU modes).
-  - This lemma implies the window-compatibility bridge
-    (`SupercriticalModeAppliesOnCtxRealWindow`) used in Lean.
+  - Assumption `assm:threshold-control` in
+    `arxiv_submission/ERURH_Conditional_Proof.tex` (No supercritical ERU modes).
+  - This assumption implies `ModeThresholdControlOnCtxRealWindowFamily` and yields
+    the window-compatibility bridge used in Lean.
+  - The gate certifies the numeric inequality `windowMinMax ≥ s0` from
+    `formal_report_analytic.json` (see `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`).
 
 ## Reproduction commands (single block)
 

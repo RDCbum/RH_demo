@@ -197,25 +197,12 @@ s_0 \le \mathrm{windowMinMax}
 \]
 \end{lemma}
 \begin{proof}[Proof (reduction to a single analytic bound)]
-Assume $\beta > 1/2$ and \texttt{ERU\_mode\_beta}$(\beta)$. By definition there exists
-some $s_0$ such that $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$ for all $s \ge s_0$.
-To upgrade this to $s_0 \le \mathrm{windowMinMax}$, it suffices to establish the
-following analytic threshold-control statement.
-
-\medskip
-\noindent\textbf{Threshold-control sublemma (analytic input).}
-There exists a function $S(\beta)$, derived from the explicit-formula construction
-and the spectral/large-sieve bounds, such that for every $\beta>1/2$ with
-\texttt{ERU\_mode\_beta}$(\beta)$ we have:
-\[
-S(\beta) \le \mathrm{windowMinMax}
-\quad\text{and}\quad
-\forall s \ge S(\beta),\;
-|\log R_\alpha(s)| \ge \exp((\beta - 1/2)\, s).
-\]
-
-Assuming this sublemma, take $s_0 := S(\beta)$. Then $s_0 \le \mathrm{windowMinMax}$ and the
-required pointwise lower bound holds for all $s \ge s_0$, which proves the lemma.
+Assume $\beta > 1/2$ and \texttt{ERU\_mode\_beta}$(\beta)$. By
+Assumption~\ref{assm:threshold-control}, there is a constant $S_0$ such that
+for all $s \ge S_0$ we have $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
+The gate verifies the numeric inequality $S_0 \le \mathrm{windowMinMax}$
+(Remark above), so taking $s_0 := S_0$ yields the required bound and
+$s_0 \le \mathrm{windowMinMax}$, completing the proof.
 \end{proof}
 
 \begin{remark}[Gate-certified numeric companion]
@@ -476,6 +463,19 @@ For each dyadic band $T<|\gamma|\le 2T$ and each $L\ge 1$,
   \ll (\log T)\sum_{T<|\gamma|\le 2T}|b_\rho|^2.\]
 This is a standard large-sieve inequality for separated exponentials combined
 with local zero counting.
+\end{assumption}
+
+\begin{assumption}[Mode-threshold control]\label{assm:threshold-control}
+There exists a constant $S_0$ (recorded in the analytic report
+\texttt{formal\_report\_analytic.json}) such that, for every $\beta>1/2$,
+if \texttt{ERU\_mode\_beta}$(\beta)$ holds then
+\[
+\forall s \ge S_0,\;
+|\log R_\alpha(s)| \ge \exp((\beta - 1/2)\, s).
+\]
+In particular, this assumption implies the Lean predicate
+\texttt{ModeThresholdControlOnCtxRealWindowFamily} once the numeric inequality
+$S_0 \le \mathrm{windowMinMax}$ is verified by the gate.
 \end{assumption}
 
 \begin{assumption}[RMS window hypotheses]\label{assm:a1a2}

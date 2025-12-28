@@ -14,7 +14,8 @@ This ledger summarizes what is discharged by which external layer after beta gat
 
 ## Analytic gap (Route B)
 - explicit hypothesis `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`
-  (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_WindowBridge_Legacy.lean:34`). This states that the
+  (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_WindowBridge_Legacy.lean:34`; paper Assumption
+  `assm:threshold-control` in `arxiv_submission/ERURH_Conditional_Proof.tex`). This states that the
   supercritical-mode threshold can be chosen no later than `windowMinMax` for the ctx_real
   window family; it yields the existence of a ctx_real window where the ERU-mode lower bound holds
   and closes the window-compatibility step in Lemma B.1.

@@ -28,9 +28,11 @@ See:
 
 - Classical/citable assumptions bundled as `AxiomsShimAccepted`
   (see `arxiv_submission/assumptions_ledger.tex`).
-- Window-compatibility bridge:
-  - Lemma "Window-compatibility bridge" in
+- Mode threshold control (analytic gap):
+  - Lemma "Mode threshold control" in
     `arxiv_submission/ERURH_Conditional_Proof.tex` (Section No supercritical ERU modes).
+  - This lemma implies the window-compatibility bridge
+    (`SupercriticalModeAppliesOnCtxRealWindow`) used in Lean.
 
 ## Reproduction commands (single block)
 

@@ -185,10 +185,13 @@ The remaining analytic gap in Lean is the predicate
 \texttt{ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow} (first line of
 \texttt{lean\_gap\_statements.txt}). We state it here with the exact Lean
 quantifiers (renaming \texttt{ctx\_real\_window\_interval} to $I_{\mathrm{ctx}}$):
-\begin{lemma}[Window-compatibility bridge]\label{lem:window-bridge}
+\begin{lemma}[Mode threshold control]\label{lem:mode-threshold-control}
 For every $\beta \in \mathbb{R}$ with $\beta > 1/2$, if \texttt{ERU\_mode\_beta}$(\beta)$
-holds, then for all $s \in I_{\mathrm{ctx}}$ we have
+holds, then there exists $s_0 \in \mathbb{R}$ such that
 \[
+s_0 \le \mathrm{windowMin}(\mathrm{ctx\_real\_window})
+\quad\text{and}\quad
+\forall s \ge s_0,\;
 |\log R_\alpha(s)| \ge \exp((\beta - 1/2)\, s).
 \]
 \end{lemma}
@@ -196,19 +199,21 @@ holds, then for all $s \in I_{\mathrm{ctx}}$ we have
 \begin{enumerate}
   \item (Unpack the mode.) From \texttt{ERU\_mode\_beta}$(\beta)$, obtain a threshold
   $s_0$ such that the bound holds for all $s \ge s_0$.
-  \item (Window above threshold.) Show that the fixed interval
-  $I_{\mathrm{ctx}} = [\mathrm{windowMin}, \mathrm{windowMax}]$ satisfies
-  $I_{\mathrm{ctx}} \subseteq [s_0,\infty)$, i.e. $\mathrm{windowMin} \ge s_0$.
-  If this is not immediate from the definition of \texttt{ERU\_mode\_beta},
-  we isolate it as a sublemma:
-  \begin{lemma}[Window above threshold]\label{lem:window-above-threshold}
-  With $s_0$ as in (i), the fixed window interval satisfies
-  $s \in I_{\mathrm{ctx}} \Rightarrow s \ge s_0$.
-  \end{lemma}
-  \item (Conclude.) Apply the bound from (i) to every $s \in I_{\mathrm{ctx}}$
-  using (ii).
+  \item (Threshold control.) Show that this threshold can be chosen with
+  $s_0 \le \mathrm{windowMin}(\mathrm{ctx\_real\_window})$.
 \end{enumerate}
 \end{proof}
+
+\begin{lemma}[Window-compatibility bridge]\label{lem:window-bridge}
+For every $\beta \in \mathbb{R}$ with $\beta > 1/2$, if \texttt{ERU\_mode\_beta}$(\beta)$
+holds, then for all $s \in I_{\mathrm{ctx}}$ we have
+\[
+|\log R_\alpha(s)| \ge \exp((\beta - 1/2)\, s).
+\]
+\end{lemma}
+The lemma follows immediately from Lemma~\ref{lem:mode-threshold-control}:
+for any $s \in I_{\mathrm{ctx}}$, we have $s \ge \mathrm{windowMin} \ge s_0$,
+so the lower bound applies on the entire window.
 This is a purely analytic alignment statement; the computational input enters only
 through the gate-certified bound \texttt{ctx\_real\_logR\_alpha\_upper}
 used later in the RMS bridge.

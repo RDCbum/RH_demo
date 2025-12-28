@@ -13,11 +13,11 @@ This ledger summarizes what is discharged by which external layer after beta gat
 - C: reserved (RMS window bounds now frozen in gate/data; see below).
 
 ## Analytic gap (Route B)
-- explicit hypothesis `ERURH.Alpha.SupercriticalModeAppliesOnCtxRealWindow`
-  (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_WindowBridge.lean:13`;
-  exported in `arxiv_submission/lean_gap_statements.txt`). This is the window-compatibility
-  bridge from `ERU_mode_beta` to pointwise bounds on the fixed RMS window; it is the
-  sole remaining analytic gap in Lemma B.1.
+- explicit hypothesis `ERURH.Alpha.ModeThresholdControlOnCtxRealWindow`
+  (`docs/core/P30_ModeThresholdControl.lean:10-14`). This states that the
+  supercritical-mode threshold can be chosen below the fixed window; it implies
+  `SupercriticalModeAppliesOnCtxRealWindow` and closes the window-compatibility
+  step in Lemma B.1.
 - gate-certified side condition `ctx_real_logR_alpha_upper ctx_real_window`
   (`lean/formal_proofs/ERURH/Alpha/GeneratedRMSModeBridge.lean:35`), enforced by
   `tools/check_rms_mode_bridge.py` using interval arithmetic

@@ -8,11 +8,11 @@ theorem RH_unconditional_try
     (hAxioms : AxiomsShimAccepted)
     (h_upper : ∀ w : Alpha.GeneratedRMSContext.ctx_real.Window,
       _root_.ctx_real_logR_alpha_upper w)
-    (h_compat : Alpha.WindowBridgeCompat) :
+    (h_ctrl : Alpha.ModeThresholdControlOnCtxRealWindowFamily) :
     RiemannHypothesis xiAlpha := by
   have hNumeric : NumericCoverageAlpha Alpha.GeneratedRMSContext.ctx_real := by
     simpa [NumericCoverageAlpha] using
       ERURH.Alpha.GeneratedRMSContext.ctx_real_RMS_envelope_closed
-  exact RH_unconditional_core hAxioms h_upper h_compat hNumeric
+  exact RH_unconditional_core hAxioms h_upper h_ctrl hNumeric
 
 end ERURH

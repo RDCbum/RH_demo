@@ -1,4 +1,4 @@
-ERURH.Alpha.WindowBridgeCompat : Prop
+ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily : Prop
 ctx_real_logR_alpha_upper (w : Fin n_windows) : Prop
 ERURH.Alpha.pointwise_to_RMS_mode_some_window_of_logR_alpha_upper_and_window_bridge
   (h_upper : ∀ (w : ERURH.Alpha.GeneratedRMSContext.ctx_real.Window), ctx_real_logR_alpha_upper w)

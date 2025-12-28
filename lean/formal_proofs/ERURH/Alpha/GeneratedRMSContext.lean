@@ -9,10 +9,15 @@ def n_windows : Nat := 1
 @[simp] def cEnvelopeCtxRat : ℚ := ((43040528) : ℚ) / (902400129)
 @[simp] def cLowRat : ℚ := ((1) : ℚ) / (10)
 @[simp] def cTailRat : ℚ := ((1) : ℚ) / (10)
+@[simp] def windowLenMaxRat : ℚ := ((299573227355399) : ℚ) / (100000000000000)
+@[simp] def windowMinMaxRat : ℚ := ((6907755278982137) : ℚ) / (500000000000000)
 
 def cEnvelopeCtx : ℝ := (cEnvelopeCtxRat : ℝ)
 def cLow : ℝ := (cLowRat : ℝ)
 def cTail : ℝ := (cTailRat : ℝ)
+def windowLenMax : ℝ := (windowLenMaxRat : ℝ)
+def windowMinMax : ℝ := (windowMinMaxRat : ℝ)
+def windowMinMaxIndex : Fin n_windows := ⟨0, by decide⟩
 
 def rmsModeList : List ℚ := [((1332805409) : ℚ) / (9024001290)]
 def rmsLowList : List ℚ := [((1) : ℚ) / (20)]
@@ -59,6 +64,9 @@ theorem window_min_le_max (w : Fin n_windows) : windowMin w ≤ windowMax w := b
 theorem window_interval_nonempty (w : Fin n_windows) : Set.Nonempty (window_interval w) := by
   refine ⟨windowMin w, ?_⟩
   exact ⟨le_rfl, window_min_le_max w⟩
+
+theorem windowMinMax_eq : windowMinMax = windowMin windowMinMaxIndex := by
+  simp [windowMinMax, windowMinMaxRat, windowMin, windowMinRat, windowMinList, windowMinMaxIndex, n_windows]
 
 def ctx_real : _root_.ERURH.RMSLocalContext :=
   { Window := Fin n_windows

@@ -13,14 +13,12 @@ theorem RH_unconditional_core
   (hAxioms : AxiomsShimAccepted)
   (h_upper : ∀ w : Alpha.GeneratedRMSContext.ctx_real.Window,
       _root_.ctx_real_logR_alpha_upper w)
-  (h_compat : Alpha.WindowBridgeCompat)
+  (h_ctrl : Alpha.ModeThresholdControlOnCtxRealWindowFamily)
   (hNumeric : NumericCoverageAlpha Alpha.GeneratedRMSContext.ctx_real) :
   RiemannHypothesis xiAlpha := by
   let ctx := Alpha.GeneratedRMSContext.ctx_real
   have h_bridge : Alpha.SupercriticalModeAppliesOnSomeCtxRealWindow :=
-    Alpha.supercritical_mode_applies_on_some_ctx_real_window
-      Alpha.ERU_mode_beta_implies_SupercriticalModeAppliesOnSomeWindow
-      h_compat
+    Alpha.supercritical_mode_applies_on_some_ctx_real_window_of_threshold_control h_ctrl
   have hB1 : Alpha.PointwiseToRMSModeSomeWindow Alpha.GeneratedRMSContext.ctx_real :=
     Alpha.pointwise_to_RMS_mode_some_window_of_logR_alpha_upper_and_window_bridge
       h_upper h_bridge

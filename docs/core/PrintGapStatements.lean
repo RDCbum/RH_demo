@@ -2,6 +2,6 @@ import ERURH.Alpha.ModeToRMSMode_WindowBridge_Legacy
 import ERURH.Alpha.GeneratedRMSModeBridge
 import ERURH.Alpha.ModeToRMSMode
 
-#check ERURH.Alpha.WindowBridgeCompat
+#check ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily
 #check _root_.ctx_real_logR_alpha_upper
 #check ERURH.Alpha.pointwise_to_RMS_mode_some_window_of_logR_alpha_upper_and_window_bridge

@@ -8,6 +8,9 @@ OK: no axiom/constant/opaque/sorry/admit declarations under lean/formal_proofs/E
 OK: RMS envelope matches formal bounds
   C_envelope_ctx    = 43040528/902400129
   C_envelope_formal = 43040528/902400129
+OK: windowMinMax >= s0 (formal report)
+  windowMinMax      = 6907755278982137/500000000000000
+  s0                = 6907755278982137/500000000000000
 + C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/check_rms_mode_bridge.py
 OK: RMS mode bridge certificate matches RMS context data.
 + C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_beta_certificate.py

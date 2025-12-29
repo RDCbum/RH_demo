@@ -188,7 +188,7 @@ $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
 
 \textbf{Step 2 (choose a window above $s_0$).} Choose a window
 $w=[S,S+L]$ with $S \ge s_0$ and $1 \le L \le S^\alpha$. Such a window exists
-by the definition of the admissible window family in Assumption~\ref{assm:a1a2}.
+by the cofinality clause of Assumption~\ref{assm:a1a2}.
 Then $s \ge s_0$ for all $s \in I_w$.
 
 \textbf{Step 3 (pointwise to RMS\_mode).} Let $K := \exp((\beta-1/2)\min I_w)$.
@@ -197,7 +197,8 @@ $s \in I_w$. By the definition of $\mathrm{RMS\_mode}$,
 $\mathrm{RMS\_mode}(w) \ge K$.
 
 \textbf{Step 4 (exceed the envelope).} Since $\beta>1/2$, the exponential term
-can be made arbitrarily large by taking $w$ with sufficiently large minimum;
+can be made arbitrarily large by taking $w$ with sufficiently large minimum
+(again by the cofinality clause of Assumption~\ref{assm:a1a2});
 hence we may ensure $K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}$.
 This establishes \texttt{A1\_mode}.
 \end{proof}
@@ -417,21 +418,27 @@ hold for the chosen RMS context.
 
 \begin{proof}[Proof (sketch)]
 \textbf{A2-low.} The low part $\mathrm{RMS}_{\mathrm{low}}$ is supported on a
-finite set of spectral terms and smooth explicit-formula components. Under
-Assumption~\ref{assm:explicit}, each contribution is uniformly bounded on
-admissible windows, and the finite sum yields a uniform constant
-$c_{\mathrm{low}}$.
+finite set of spectral terms (e.g., $|\gamma|\le T_0$), together with the
+trivial-zero and smooth explicit-formula components. Under
+Assumption~\ref{assm:explicit}, each term is uniformly bounded on admissible
+windows $[S,S+L]$ with $1\ll L\ll S^\alpha$, and the finite sum yields a
+uniform constant $c_{\mathrm{low}}$.
 
-\textbf{A2-tail.} Theorem~\ref{thm:C} gives a uniform bound
-$K_{\mathrm{tail}}(S,L)^2 \le M_{\mathrm{tail}}^2$ for all admissible windows.
-Taking $c_{\mathrm{tail}} := M_{\mathrm{tail}}$ yields the A2-tail bound.
+\textbf{A2-tail.} By definition, $\mathrm{RMS}_{\mathrm{tail}}(w)$ is the
+normalized RMS of the tail contribution on $w=[S,S+L]$, which matches
+$K_{\mathrm{tail}}(S,L)$ in Theorem~\ref{thm:C} (including the $s^{-2}$
+normalization). Hence Theorem~\ref{thm:C} gives a uniform bound
+$\mathrm{RMS}_{\mathrm{tail}}(w)^2 \le M_{\mathrm{tail}}^2$ on admissible
+windows. Taking $c_{\mathrm{tail}} := M_{\mathrm{tail}}$ yields the A2-tail
+bound.
 \end{proof}
 
 These theorems provide the analytic content behind the spectral decay
 Assumption~\ref{assm:hb} and the large-sieve estimate
 Assumption~\ref{assm:ls}. Proofs are given in the companion preprint
-\texttt{Theorem\_ABC\_preprint.tex} in the same submission folder; we record
-only the statements here and treat them as classical inputs.
+\texttt{Theorem\_ABC\_preprint.tex} in the same submission folder, with
+references to standard sources (e.g. Titchmarsh, Montgomery--Vaughan, Ivic);
+we record only the statements here and treat them as classical inputs.
 
 \section{External analytic assumptions}
 The conditional theorem uses the following external packages. We list the
@@ -473,6 +480,8 @@ There exist RMS quantities $\mathrm{RMS}_{\alpha},\mathrm{RMS}_{\mathrm{mode}},
 \mathrm{RMS}_{\mathrm{low}},\mathrm{RMS}_{\mathrm{tail}}$ and constants
 $c_{\mathrm{low}},c_{\mathrm{tail}},C_{\mathrm{env}}$ such that:
 \begin{itemize}
+  \item \textbf{Cofinality:} for every $S_0$ there exists an admissible window
+  $w=[S,S+L]$ with $S\ge S_0$ and $1\le L\le S^\alpha$.
   \item \textbf{A1 (mode growth):} there exists a window $w$ and a constant $K$
   with $K>c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$ such that
   $\mathrm{RMS}_{\mathrm{mode}}(w)=K$.

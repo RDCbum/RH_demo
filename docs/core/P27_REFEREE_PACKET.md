@@ -26,11 +26,12 @@ See:
   - `data/docs/paper/beta_certificate.json`
 - Gate-certified side condition:
   - `ctx_real_logR_alpha_upper` via `tools/check_rms_mode_bridge.py`
-  - Evidence: `docs/core/P16_GATE_FULL.txt`, `docs/core/P17_GATE_FULL.txt`, `docs/core/P24_GATE_FULL.txt`
+  - Evidence: `docs/core/P16_GATE_FULL.txt`, `docs/core/P17_GATE_FULL.txt`,
+    `docs/core/P24_GATE_FULL.txt`, `docs/core/P35_GATE_FULL.txt`
 
 ## What is proved in the paper
 
--- Classical/citable assumptions bundled as `AxiomsShimAccepted`
+- Classical/citable assumptions bundled as `AxiomsShimAccepted`
   (see `arxiv_submission/assumptions_ledger.tex`).
 - Legacy window-free analytic lemmas:
   - `A1_from_supercritical` (Lemma `a1-from-supercritical` in

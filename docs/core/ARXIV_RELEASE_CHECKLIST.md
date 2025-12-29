@@ -1,6 +1,6 @@
 # arXiv Release Checklist
 
-- Commit: 5bc4e757b6b5d750f361519dddb346ad163f1784
+- Commit: 9fedd308779f483f03f387ec6a87c8ba0e80ce3c
 - Pipeline commands (README/AGENTS):
   - python tools/make_rational_bounds.py
   - python tools/make_certificate_values.py
@@ -17,3 +17,4 @@
 - P18 tarball list: [x] logged (docs/core/P18_TARBALL_LIST.txt)
 - P19 tarball list: [x] logged (docs/core/P19_TARBALL_LIST.txt)
 - Lemma B.1 proof (paper): [x] added (arxiv_submission/ERURH_Conditional_Proof.tex, Section~\ref{sec:no-supercritical})
+- Legacy A1 cofinality note + bundle rebuild: [x] verified (commit 9fedd308)

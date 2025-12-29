@@ -34,6 +34,13 @@ This ledger summarizes what is discharged by which external layer after beta gat
   This removes the fixed-window threshold-control requirement but leaves the
   analytic A1 implication as a paper-level obligation.
 
+## Legacy window-free route (abstract ctx)
+- `ERURH.A1_from_supercritical ctx` (paper) and A2-low/tail for the chosen
+  abstract RMS context `ctx`.
+- `RMS_envelope_closed ctx` remains as the numeric/gate side condition if
+  a concrete context is instantiated.
+- No window-cofinality or threshold-control lemma is needed in this route.
+
 ## Classical / citable
 - `ClassicalZetaAssumptions` (zeta zeros and classical explicit-formula framework).
 - Explicit-formula objects and bounds used by the alpha interface:

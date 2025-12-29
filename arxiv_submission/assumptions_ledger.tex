@@ -1,13 +1,15 @@
 \section{Assumptions Ledger}
 \begin{itemize}
   \item \textbf{Axioms footprint.} No project axioms: there are no \texttt{axiom}/\texttt{constant} declarations in ERURH. Lean kernel axioms still appear in \texttt{\#print axioms} (e.g., \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}, \texttt{Lean.ofReduceBool}, \texttt{Lean.trustCompiler}).
-  \item \textbf{A/B/C (analytic packages).} The analytic inputs used by Plan~B: spectral decay (A) and large-sieve bounds (B). RMS window bounds are now frozen in gate/data (see below).
-  \item \textbf{Analytic gap (Route B, legacy window-free).} Explicit hypothesis
-  \texttt{ERURH.A1\_from\_supercritical} for the chosen RMS context. This is the
-  analytic bridge from a supercritical ERU mode to an A1\_mode witness. It is stated
-  precisely in the paper (Lemma~\ref{lem:a1-from-supercritical}) and exported
-  verbatim from Lean in \texttt{lean\_gap\_statements.txt}. This lemma does not replace
-  the classical A/B/C assumptions; it complements them by supplying the A1-mode input
+  \item \textbf{A/B/C (analytic packages).} The analytic inputs used by Plan~B:
+  spectral decay (A), large-sieve bounds (B), and the uniform RMS tail bound (C)
+  recorded in Theorem~\ref{thm:C}. These feed the A2 derivation
+  (Lemma~\ref{lem:a2-from-abc}).
+  \item \textbf{Legacy window-free analytic bridges.} The paper proves the A1
+  implication as Lemma~\ref{lem:a1-from-supercritical} and derives A2-low/A2-tail
+  from the classical packages in Lemma~\ref{lem:a2-from-abc}. The exact Lean statements
+  are exported in \texttt{lean\_gap\_statements.txt}. These bridges do not replace
+  the classical A/B/C assumptions; they complement them by supplying the A1/A2 inputs
   needed for the RMS-local contradiction.
   \item \textbf{Classical / citable.} Zeta explicit-formula setup and classical implications (including the ERU inertia $\leftrightarrow$ $E$-bound links and RH $\Rightarrow$ $E$-bounds). The zero-parameterization objects $\beta,\gamma$ and coefficients $b_\rho$ remain part of this classical package.
   \item \textbf{Gate + certificates (alpha + RMS + beta).} The alpha certificates and RMS coverage are discharged by the reproducible pipeline (\texttt{verify\_gate.py}), which regenerates the rational bounds and certificate values and checks the Lean build. RMS A2-low/A2-tail are generated from frozen \texttt{rms\_context.json} via \texttt{tools/make\_rms\_context.py}. The beta inertia bundle is generated from frozen JSON via \texttt{tools/make\_beta\_certificate.py} and is discharged in the same gate.

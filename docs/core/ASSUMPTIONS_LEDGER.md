@@ -10,7 +10,7 @@ This ledger summarizes what is discharged by which external layer after beta gat
 ## A/B/C (analytic packages, discharged externally)
 - A: `Alpha.SpectralAssumptionsAlpha` and related spectral bounds (hb tail / pointwise data) from the paper A package.
 - B: `Alpha.LSGammaAssumptions` (LS_gamma_weak / LS_gamma_fine) from the paper B package.
-- C: reserved (RMS window bounds now frozen in gate/data; see below).
+- C: uniform RMS tail control (Theorem C in `arxiv_submission/ERURH_Conditional_Proof.tex`), used to discharge A2-tail for the legacy window-free route.
 
 ## Analytic gap (Route B)
 - explicit hypothesis `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`
@@ -35,8 +35,10 @@ This ledger summarizes what is discharged by which external layer after beta gat
   analytic A1 implication as a paper-level obligation.
 
 ## Legacy window-free route (abstract ctx)
-- `ERURH.A1_from_supercritical ctx` (paper) and A2-low/tail for the chosen
-  abstract RMS context `ctx`.
+- `ERURH.A1_from_supercritical ctx` is proved in the paper
+  (Lemma `a1-from-supercritical` in `arxiv_submission/ERURH_Conditional_Proof.tex`).
+- A2-low and A2-tail are derived from the classical packages via
+  Lemma `a2-from-abc` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
 - `RMS_envelope_closed ctx` remains as the numeric/gate side condition if
   a concrete context is instantiated.
 - No window-cofinality or threshold-control lemma is needed in this route.

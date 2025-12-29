@@ -189,19 +189,29 @@ $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
 \textbf{Step 2 (choose a window above $s_0$).} Choose a window
 $w=[S,S+L]$ with $S \ge s_0$ and $1 \le L \le S^\alpha$. Such a window exists
 by the cofinality clause of Assumption~\ref{assm:a1a2}.
-Then $s \ge s_0$ for all $s \in I_w$.
+Then $I_w=[S,S+L]$ satisfies $s \ge S \ge s_0$ for all $s \in I_w$.
 
-\textbf{Step 3 (pointwise to RMS\_mode).} Let $K := \exp((\beta-1/2)\min I_w)$.
-Monotonicity of $\exp$ on $I_w$ implies $|\log R_\alpha(s)| \ge K$ for all
-$s \in I_w$. By the definition of $\mathrm{RMS\_mode}$,
+\textbf{Step 3 (pointwise to RMS\_mode).} Let $K := \exp((\beta-1/2)S)$.
+Because $\beta>1/2$, the map $s \mapsto \exp((\beta-1/2)s)$ is increasing, and
+Step~1 implies $|\log R_\alpha(s)| \ge K$ for all $s \in I_w$.
+By the pointwise-to-RMS lemma (Lemma B.1 in the definitions below),
 $\mathrm{RMS\_mode}(w) \ge K$.
 
 \textbf{Step 4 (exceed the envelope).} Since $\beta>1/2$, the exponential term
 can be made arbitrarily large by taking $w$ with sufficiently large minimum
-(again by the cofinality clause of Assumption~\ref{assm:a1a2});
+again by the cofinality clause of Assumption~\ref{assm:a1a2};
 hence we may ensure $K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}$.
 This establishes \texttt{A1\_mode}.
 \end{proof}
+
+\paragraph{Window semantics and cofinality.}
+The Lean predicate \texttt{A1\_mode} is defined over an abstract
+\texttt{RMSLocalContext} with a type of windows and an associated
+\texttt{RMS\_mode}. In the paper we model a window as an interval
+$w=[S,S+L]$ with $1\ll L\ll S^\alpha$ and $I_w=[S,S+L]$. The only analytic
+input used in Steps~2 and~4 is \emph{cofinality}: the ability to choose a
+window with arbitrarily large $S$. This is recorded explicitly in
+Assumption~\ref{assm:a1a2}.
 
 \begin{remark}[Does not replace A/B/C]
 Lemma~\ref{lem:a1-from-supercritical} is an internal ERURH analytic bridge. It does
@@ -432,6 +442,19 @@ $\mathrm{RMS}_{\mathrm{tail}}(w)^2 \le M_{\mathrm{tail}}^2$ on admissible
 windows. Taking $c_{\mathrm{tail}} := M_{\mathrm{tail}}$ yields the A2-tail
 bound.
 \end{proof}
+
+\paragraph{Lean correspondence for A2.}
+The paper inequalities
+$\mathrm{RMS}_{\mathrm{low}}(w)\le c_{\mathrm{low}}$ and
+$\mathrm{RMS}_{\mathrm{tail}}(w)\le c_{\mathrm{tail}}$ are encoded in Lean as
+\texttt{ERURH.A2Low\_RMS ctx} and \texttt{ERURH.A2Tail\_RMS ctx}, where
+\texttt{ctx.RMS\_low}, \texttt{ctx.RMS\_tail}, \texttt{ctx.c\_low},
+\texttt{ctx.c\_tail} live in \texttt{ERURH.RMSLocalContext}. The decomposition
+$\mathrm{RMS}_\alpha \ge \mathrm{RMS}_{\mathrm{mode}}-(\mathrm{RMS}_{\mathrm{low}}+
+\mathrm{RMS}_{\mathrm{tail}})$ matches \texttt{ctx.RMS\_decomp}. For the
+generated context \texttt{ctx\_real}, the hypotheses are discharged by the
+generated lemmas \texttt{Alpha.GeneratedRMSContext.ctx\_real\_A2Low} and
+\texttt{Alpha.GeneratedRMSContext.ctx\_real\_A2Tail}.
 
 These theorems provide the analytic content behind the spectral decay
 Assumption~\ref{assm:hb} and the large-sieve estimate

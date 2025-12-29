@@ -9,6 +9,7 @@ This repository includes no staging or experimental files; only the validated an
 - Lean formalization: encodes the ERURH framework and the conditional implication `ERURH_GlobalAssumptions -> RiemannHypothesis`.
 - Python tooling: regenerates rational bounds and certificate values from the published numeric artefacts.
 - Documentation: explains the analytic assumptions, the certificate pipeline, and how to reproduce the build.
+- Step-by-step proof walkthrough (legacy window-free route): `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`.
 
 ## Repository Structure
 - `lean/formal_proofs/ERURH/` — main Lean sources (Alpha/Beta certificates, gates, master theorem).

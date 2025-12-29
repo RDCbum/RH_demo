@@ -6,6 +6,9 @@
 - Route B core theorems, with explicit hypotheses:
   - `ERURH.RH_unconditional_core`
   - `ERURH.RH_unconditional_assuming` (if present)
+  - `ERURH.RH_unconditional_core_window_free` (legacy window-free core)
+
+Step-by-step walkthrough: `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`.
 
 See:
 - `docs/core/P20_FINAL_STATEMENT.txt`

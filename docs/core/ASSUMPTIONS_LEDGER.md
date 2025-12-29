@@ -23,9 +23,10 @@ This ledger summarizes what is discharged by which external layer after beta gat
   (`lean/formal_proofs/ERURH/Alpha/GeneratedRMSModeBridge.lean:35`), enforced by
   `tools/check_rms_mode_bridge.py` using interval arithmetic
   (see `docs/core/P16_LOGR_ALPHA_UPPER_CERT.md`, `docs/core/P16_GATE_FULL.txt`,
-  `docs/core/P17_GATE_FULL.txt`).
+  `docs/core/P17_GATE_FULL.txt`, `docs/core/P35_GATE_FULL.txt`).
 - numeric threshold check `windowMinMax ≥ s0` from `formal_report_analytic.json`,
-  enforced by `tools/check_rms_context.py` (see `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`).
+  enforced by `tools/check_rms_context.py` (see `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`,
+  `docs/core/P35_GATE_FULL.txt`).
 
 ## Legacy experimental gap (Route B, existential window)
 - explicit hypothesis `ERURH.A1_from_supercritical ctx_real`

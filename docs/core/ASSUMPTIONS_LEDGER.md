@@ -37,6 +37,9 @@ This ledger summarizes what is discharged by which external layer after beta gat
 ## Legacy window-free route (abstract ctx)
 - `ERURH.A1_from_supercritical ctx` is proved in the paper
   (Lemma `a1-from-supercritical` in `arxiv_submission/ERURH_Conditional_Proof.tex`).
+- The A1 proof uses the cofinality clause of Assumption `assm:a1a2` to choose
+  windows with arbitrarily large `S` (and hence with `S ≥ s0` from
+  `ERU_mode_beta`), so that the mode lower bound applies on the entire window.
 - A2-low and A2-tail are derived from the classical packages via
   Lemma `a2-from-abc` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
 - `RMS_envelope_closed ctx` remains as the numeric/gate side condition if

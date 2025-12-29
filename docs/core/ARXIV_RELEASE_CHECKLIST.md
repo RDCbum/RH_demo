@@ -11,6 +11,7 @@
 - RB22 no_supercritical_beta attempt: [x] logged (docs/core/RB22_NoSupercritical_Try.log)
 - Paper build (CI or local): [ ] verified (CI: build-paper workflow or local latexmk)
 - Tarball contents: [x] verified (tar -tf dist/arxiv_submission.tar.gz)
+- ARXIV_TARBALL_LIST.txt: [x] logged (docs/core/ARXIV_TARBALL_LIST.txt)
 - NOAX bundle rebuild (assumptions ledger + axioms export): [x] verified
 - RB32 tarball list: [x] logged (docs/core/RB32_TARBALL_LIST.txt)
 - RB45 tarball list: [x] logged (docs/core/RB45_TARBALL_LIST.txt)

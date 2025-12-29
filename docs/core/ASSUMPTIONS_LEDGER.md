@@ -40,6 +40,8 @@ This ledger summarizes what is discharged by which external layer after beta gat
 - `RMS_envelope_closed ctx` remains as the numeric/gate side condition if
   a concrete context is instantiated.
 - No window-cofinality or threshold-control lemma is needed in this route.
+  The A1 lemma is stated in `arxiv_submission/ERURH_Conditional_Proof.tex`
+  (Lemma `a1-from-supercritical`).
 
 ## Classical / citable
 - `ClassicalZetaAssumptions` (zeta zeros and classical explicit-formula framework).

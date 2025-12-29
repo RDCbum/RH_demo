@@ -40,7 +40,7 @@ abstract. It requires the following analytic inputs for a chosen context `ctx`.
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
-| `ERURH.A1_from_supercritical ctx` | Paper | `lean/formal_proofs/ERURH/RH_Unconditional_Core_WindowFree.lean` | ABIERTO |
+| `ERURH.A1_from_supercritical ctx` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a1-from-supercritical`) | ABIERTO |
 | `ERURH.A2Low_RMS ctx` | Paper (A/B/C) | `docs/ERURH_PlanB_Assumptions.md` | ABIERTO |
 | `ERURH.A2Tail_RMS ctx` | Paper (A/B/C) | `docs/ERURH_PlanB_Assumptions.md` | ABIERTO |
 | `ERURH.Alpha.RMS_envelope_closed ctx` | Gate/Certs (if ctx instantiated) | `lean/formal_proofs/ERURH/ERURH_GatesAlpha.lean` | ABIERTO |

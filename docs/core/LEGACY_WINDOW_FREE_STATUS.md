@@ -17,8 +17,9 @@ is required.
 
 ## Gap status
 The only analytic gap unique to this route is the proof of
-`A1_from_supercritical` for the chosen context. There is no fixed-window
-cofinality gap.
+`A1_from_supercritical` for the chosen context (paper Lemma
+`a1-from-supercritical` in `arxiv_submission/ERURH_Conditional_Proof.tex`).
+There is no fixed-window cofinality gap.
 
 ## Notes
 This route decouples the contradiction from the concrete ctx_real window family.

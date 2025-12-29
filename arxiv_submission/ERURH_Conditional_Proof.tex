@@ -143,7 +143,7 @@ Field(s) & Discharge path \\
 \texttt{xi\_bounds\_alpha}, \texttt{xi\_argument\_alpha} and their hypothesis bridges & Classical/citable implications (Assumptions Ledger). \\
 \texttt{rh\_from\_E\_alpha\_of\_hypotheses} & Classical/citable implications (Assumptions Ledger). \\
 \texttt{h\_inertia\_to\_E}, \texttt{h\_inertia\_of\_E}, \texttt{h\_RH\_to\_E} & Classical/citable implications (Assumptions Ledger). \\
-\texttt{A1\_from\_supercritical} & Legacy Route B analytic gap (supercritical mode $\Rightarrow$ A1\_mode for ctx\_real). \\
+\texttt{A1\_from\_supercritical} & Legacy window-free analytic gap (supercritical mode $\Rightarrow$ A1\_mode for an abstract RMS context). \\
 \hline
 \end{tabular}
 \end{center}
@@ -157,24 +157,24 @@ For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
 \end{proposition}
 
 \begin{proof}[Proof outline]
-In the legacy route we isolate a single analytic lemma: a supercritical ERU mode
-forces an A1\_mode witness for the ctx\_real RMS context. Once A1\_mode is available,
-the A2-low/tail bounds, the RMS decomposition, and the closed envelope give a
-contradiction, so no supercritical modes exist. This is packaged in Lean as the
-implication \texttt{ERURH.A1\_from\_supercritical} (see \texttt{lean\_gap\_statements.txt}).
+In the legacy window-free route we isolate a single analytic lemma: a supercritical
+ERU mode forces an A1\_mode witness for an abstract RMS context. Once A1\_mode is
+available, the A2-low/tail bounds, the RMS decomposition, and the closed envelope
+give a contradiction, so no supercritical modes exist. This is packaged in Lean
+as \texttt{ERURH.A1\_from\_supercritical} (see \texttt{lean\_gap\_statements.txt}).
 \end{proof}
 
-\subsubsection*{Legacy A1 implication (existential window)}
-The remaining analytic gap in the legacy route is the lemma
-\texttt{ERURH.A1\_from\_supercritical} specialized to the ctx\_real context. The exact
+\subsubsection*{Legacy A1 implication (window-free)}
+The remaining analytic gap in the legacy window-free route is the lemma
+\texttt{ERURH.A1\_from\_supercritical} for a chosen RMS context. The exact
 Lean statement is machine-exported below.
 
 {\small\VerbatimInput{lean_gap_statements.txt}}
 
 \begin{lemma}[A1 from supercritical mode]\label{lem:a1-from-supercritical}
 Let $\beta \in \mathbb{R}$ with $\beta > 1/2$. If \texttt{ERU\_mode\_beta}$(\beta)$ holds,
-then \texttt{A1\_mode} holds for the ctx\_real RMS context, i.e., there exists a ctx\_real
-window $w$ and a constant $K$ such that
+then \texttt{A1\_mode} holds for the chosen RMS context, i.e., there exists a window
+$w$ and a constant $K$ such that
 \[
 K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}
 \quad\text{and}\quad
@@ -186,39 +186,17 @@ K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}
 $s_0$ such that for all $s \ge s_0$,
 $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
 
-\begin{lemma}[Window cofinality for ctx\_real (conditional)]\label{lem:ctxreal-window-cofinal}
-Let $s_0 \in \R$ and assume $s_0 \le \mathrm{windowMinMax}$, where
-$\mathrm{windowMinMax}$ is the maximum of the minima of the ctx\_real window family.
-Then there exists a ctx\_real window $w$ such that
-$s \in I_w$ implies $s \ge s_0$.
-\end{lemma}
-\begin{proof}
-Let $w$ be a ctx\_real window whose minimum equals $\mathrm{windowMinMax}$ (this
-is the index \texttt{windowMinMaxIndex} in Lean). For any $s \in I_w$ we have
-$s \ge \min I_w = \mathrm{windowMinMax} \ge s_0$, as required.
-\end{proof}
-\begin{remark}[Why this is the remaining analytic gap]
-The definition \texttt{ERU\_mode\_beta} supplies an existential threshold $s_0$
-but does not bound it. Therefore the inequality $s_0 \le \mathrm{windowMinMax}$
-cannot be derived from \texttt{ERU\_mode\_beta} alone. Closing
-Lemma~\ref{lem:ctxreal-window-cofinal} is exactly the missing analytic step in
-the legacy route.
-\end{remark}
+\textbf{Step 2 (choose a window above $s_0$).} Choose a window
+$w=[S,S+L]$ with $S \ge s_0$ and $1 \le L \le S^\alpha$. Such a window exists
+by the definition of the admissible window family in Assumption~\ref{assm:a1a2}.
+Then $s \ge s_0$ for all $s \in I_w$.
 
-\textbf{Step 2 (choose a window above $s_0$).} Assuming
-$s_0 \le \mathrm{windowMinMax}$, Lemma~\ref{lem:ctxreal-window-cofinal} yields a
-ctx\_real window $w$ whose interval $I_w$ lies above $s_0$.
+\textbf{Step 3 (pointwise to RMS\_mode).} Let $K := \exp((\beta-1/2)\min I_w)$.
+Monotonicity of $\exp$ on $I_w$ implies $|\log R_\alpha(s)| \ge K$ for all
+$s \in I_w$. By the definition of $\mathrm{RMS\_mode}$,
+$\mathrm{RMS\_mode}(w) \ge K$.
 
-\textbf{Step 3 (pointwise to RMS semantic).} Let $K := \exp((\beta-1/2)\min I_w)$.
-Monotonicity of $\exp$ on $I_w$ implies $|\log R_\alpha(s)| \ge K$ for all $s \in I_w$.
-By the definition of the semantic RMS functional, this yields
-$\mathrm{rms\_semantic}(w) \ge K$.
-
-\textbf{Step 4 (semantic to RMS\_mode).} The gate-certified bridge
-(\texttt{ctx\_real\_rms\_mode\_ge\_semantic}) implies
-$\mathrm{RMS\_mode}(w) \ge \mathrm{rms\_semantic}(w) \ge K$.
-
-\textbf{Step 5 (exceed the envelope).} Since $\beta>1/2$, the exponential term
+\textbf{Step 4 (exceed the envelope).} Since $\beta>1/2$, the exponential term
 can be made arbitrarily large by taking $w$ with sufficiently large minimum;
 hence we may ensure $K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}$.
 This establishes \texttt{A1\_mode}.
@@ -232,8 +210,8 @@ bound and to connect the explicit formula to the ERU framework.
 \end{remark}
 
 \paragraph{Definitions (paper semantics).}
-Fix a window $w$ with associated interval $I_w \subset \mathbb{R}$ (the paper-level
-window; in Lean this is intended to correspond to \texttt{ctx\_real\_window\_interval}).
+Fix a window $w$ with associated interval $I_w \subset \mathbb{R}$ (paper-level
+window; in Lean this is represented abstractly by a `Window` in `RMSLocalContext`).
 Define the RMS-mode contribution by
 \[
 \mathrm{RMS\_mode}(w) :=
@@ -256,19 +234,18 @@ integrating over $I_w$, and taking square roots:
 Paper object & Lean name \\
 \hline
 $\log R_\alpha(s)$ & \texttt{ERURH.logR\_alpha s} \\
-$w$ (window) & \texttt{w : ERURH.Alpha.GeneratedRMSContext.ctx\_real.Window} \\
-$I_w$ & \texttt{ctx\_real\_window\_interval} (intended) \\
-$\mathrm{RMS\_mode}(w)$ & \texttt{ERURH.Alpha.GeneratedRMSContext.ctx\_real.RMS\_mode w} \\
+$w$ (window) & \texttt{w : ctx.Window} for an abstract \texttt{RMSLocalContext} \\
+$I_w$ & window interval associated to \texttt{w} (paper-level) \\
+$\mathrm{RMS\_mode}(w)$ & \texttt{ctx.RMS\_mode w} \\
 \end{tabular}
 \end{center}
 
 \paragraph{Gate/Lean alignment.}
-In Lean, \texttt{RMS\_mode} is currently instantiated by the numeric gate data in
-\texttt{rms\_context.json}. The legacy route isolates the analytic bridge in the
-lemma \texttt{A1\_from\_supercritical}; this statement absorbs the pointwise-to-RMS
-step and the alignment with the ctx\_real window family. The gate still certifies
-the RMS context data and envelope closure, but there is no fixed-window
-threshold-control gap in this route.
+In the window-free legacy route, \texttt{A1\_from\_supercritical} is treated as an
+analytic lemma for an abstract RMS context. If one later instantiates this context
+with gate data (e.g., \texttt{ctx\_real}), then \texttt{RMS\_mode} and the envelope
+closure are discharged by the numeric certificates; the window-free core itself
+does not depend on any fixed window family.
 
 \section{Reproducibility / Gate}
 The reproducible pipeline regenerates the numeric artifacts and rebuilds the Lean development:

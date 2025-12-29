@@ -1,5 +1,4 @@
 # ERURH - Conditional RH Proof (Lean/Python)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18010407.svg)](https://doi.org/10.5281/zenodo.18010407)
 
 This repository is a minimal, self-contained project. It provides the Lean proof modules and the Python tooling needed to regenerate the rational certificates used in the conditional proof of the Riemann Hypothesis (RH).
 It also presents three analytic theorems (A, B, C) that underpin the Lean result and should be independently reviewed and verified.
@@ -90,13 +89,7 @@ In addition, this repository includes a **proposed analytic proof** of three key
 
 ## How to cite
 
-This repository is archived and citable via Zenodo.
-
-- **Concept DOI (recommended for general citation, always resolves to the latest version):**  
-  https://doi.org/10.5281/zenodo.18010407
-
-- **Version DOI (this specific release `v1.0-preprint`):**  
-  https://doi.org/10.5281/zenodo.18010408
+Use the repository URL and release tag for citations.
 
 ### BibTeX
 
@@ -107,7 +100,6 @@ This repository is archived and citable via Zenodo.
   year         = {2025},
   version      = {v1.0-preprint},
   url          = {https://github.com/RDCbum/RH_demo},
-  doi          = {10.5281/zenodo.18010407}
 }
 ```
 Note. The Lean formalization proves a conditional implication

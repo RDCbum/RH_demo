@@ -9,6 +9,7 @@
   - `ERURH.RH_unconditional_core_window_free` (legacy window-free core)
 
 Step-by-step walkthrough: `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`.
+Referee FAQ: `docs/core/REFEREE_FAQ.md`.
 
 See:
 - `docs/core/P20_FINAL_STATEMENT.txt`

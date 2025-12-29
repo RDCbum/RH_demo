@@ -9,6 +9,7 @@ This repository includes no staging or experimental files; only the validated an
 - Python tooling: regenerates rational bounds and certificate values from the published numeric artefacts.
 - Documentation: explains the analytic assumptions, the certificate pipeline, and how to reproduce the build.
 - Step-by-step proof walkthrough (legacy window-free route): `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`.
+- Referee FAQ (anticipated objections): `docs/core/REFEREE_FAQ.md`.
 
 ## Repository Structure
 - `lean/formal_proofs/ERURH/` — main Lean sources (Alpha/Beta certificates, gates, master theorem).

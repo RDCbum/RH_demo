@@ -186,19 +186,28 @@ K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}
 $s_0$ such that for all $s \ge s_0$,
 $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
 
-\begin{lemma}[Window cofinality for ctx\_real]\label{lem:ctxreal-window-cofinal}
-For every $s_0 \in \R$, there exists a ctx\_real window $w$ such that
+\begin{lemma}[Window cofinality for ctx\_real (conditional)]\label{lem:ctxreal-window-cofinal}
+Let $s_0 \in \R$ and assume $s_0 \le \mathrm{windowMinMax}$, where
+$\mathrm{windowMinMax}$ is the maximum of the minima of the ctx\_real window family.
+Then there exists a ctx\_real window $w$ such that
 $s \in I_w$ implies $s \ge s_0$.
 \end{lemma}
-\begin{remark}
-Lemma~\ref{lem:ctxreal-window-cofinal} is the only window-selection step in the
-legacy route. It is implied by an explicit bound $s_0 \le \min I_w$ for some
-ctx\_real window; if such a bound is available (analytically or numerically),
-the rest of the proof is formal.
+\begin{proof}
+Let $w$ be a ctx\_real window whose minimum equals $\mathrm{windowMinMax}$ (this
+is the index \texttt{windowMinMaxIndex} in Lean). For any $s \in I_w$ we have
+$s \ge \min I_w = \mathrm{windowMinMax} \ge s_0$, as required.
+\end{proof}
+\begin{remark}[Why this is the remaining analytic gap]
+The definition \texttt{ERU\_mode\_beta} supplies an existential threshold $s_0$
+but does not bound it. Therefore the inequality $s_0 \le \mathrm{windowMinMax}$
+cannot be derived from \texttt{ERU\_mode\_beta} alone. Closing
+Lemma~\ref{lem:ctxreal-window-cofinal} is exactly the missing analytic step in
+the legacy route.
 \end{remark}
 
-\textbf{Step 2 (choose a window above $s_0$).} By Lemma~\ref{lem:ctxreal-window-cofinal},
-choose a ctx\_real window $w$ whose interval $I_w$ lies above $s_0$.
+\textbf{Step 2 (choose a window above $s_0$).} Assuming
+$s_0 \le \mathrm{windowMinMax}$, Lemma~\ref{lem:ctxreal-window-cofinal} yields a
+ctx\_real window $w$ whose interval $I_w$ lies above $s_0$.
 
 \textbf{Step 3 (pointwise to RMS semantic).} Let $K := \exp((\beta-1/2)\min I_w)$.
 Monotonicity of $\exp$ on $I_w$ implies $|\log R_\alpha(s)| \ge K$ for all $s \in I_w$.

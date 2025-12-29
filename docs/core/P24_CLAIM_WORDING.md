@@ -6,8 +6,8 @@ Conditional RH for the ERURH alpha layer follows from:
 1) a formally checked Lean proof of the logical chain,
 2) computational certificates verified by the gate (numeric RMS context and the
    `ctx_real_logR_alpha_upper` interval arithmetic check), and
-3) the analytic lemmas stated in the paper (explicit formula package and the
-   window-compatibility bridge).
+3) the analytic lemmas stated in the paper (A1-from-supercritical and A2-from-ABC,
+   together with the classical A/B/C packages).
 
 Equivalently: if the paper-level assumptions hold and the gate checks pass, then
 the Lean development proves `ERURH.RH_from_ERURH_conditional` and the Route B

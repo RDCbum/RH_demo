@@ -26,15 +26,16 @@ See:
 
 ## What is proved in the paper
 
-- Classical/citable assumptions bundled as `AxiomsShimAccepted`
+-- Classical/citable assumptions bundled as `AxiomsShimAccepted`
   (see `arxiv_submission/assumptions_ledger.tex`).
-- Mode threshold control (analytic gap, only open analytic item):
-  - Assumption `assm:threshold-control` in
-    `arxiv_submission/ERURH_Conditional_Proof.tex` (No supercritical ERU modes).
-  - This assumption implies `ModeThresholdControlOnCtxRealWindowFamily` and yields
-    the window-compatibility bridge used in Lean.
-  - The gate certifies the numeric inequality `windowMinMax ≥ s0` from
-    `formal_report_analytic.json` (see `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`).
+- Legacy window-free analytic lemmas:
+  - `A1_from_supercritical` (Lemma `a1-from-supercritical` in
+    `arxiv_submission/ERURH_Conditional_Proof.tex`).
+  - `A2-low`/`A2-tail` derivation from Theorems A/B/C (Lemma `a2-from-abc`).
+- Classical analytic packages:
+  - Theorems A, B, C (spectral decay + large-sieve bounds) as stated in the paper.
+  - Explicit formula package and zeta-theory assumptions (Assumption~`assm:classical`,
+    `assm:explicit`).
 
 ## Reproduction commands (single block)
 

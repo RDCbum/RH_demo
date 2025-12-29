@@ -4,7 +4,8 @@ Source of truth: `docs/core/NOAX_FINAL_STATEMENTS.txt` and `docs/core/ASSUMPTION
 
 ## Remaining requirements
 
-Only open analytic item: `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`.
+Primary route (legacy window-free) is listed below. The fixed-window route
+still has one open analytic item: `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`.
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |

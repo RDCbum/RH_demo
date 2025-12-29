@@ -8,6 +8,7 @@
   - python scripts/verify_gate.py --skip-pytests
 - lake build ERURH: [x] verified in this release run
 - verify_gate.py --skip-pytests: [x] verified in this release run
+- verify_gate.py (full): [x] verified (clean run, docs/core/P35_GATE_FULL.txt)
 - RB22 no_supercritical_beta attempt: [x] logged (docs/core/RB22_NoSupercritical_Try.log)
 - Paper build (CI or local): [ ] verified (CI: build-paper workflow or local latexmk)
 - Tarball contents: [x] verified (tar -tf dist/arxiv_submission.tar.gz)

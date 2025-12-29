@@ -186,10 +186,19 @@ K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}
 $s_0$ such that for all $s \ge s_0$,
 $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
 
-\textbf{Step 2 (choose a window above $s_0$).} Choose a ctx\_real window $w$ whose
-interval $I_w$ lies above $s_0$ (this is the only place where the window family
-enters; it asserts that the ctx\_real windows are large enough to capture the
-threshold $s_0$).
+\begin{lemma}[Window cofinality for ctx\_real]\label{lem:ctxreal-window-cofinal}
+For every $s_0 \in \R$, there exists a ctx\_real window $w$ such that
+$s \in I_w$ implies $s \ge s_0$.
+\end{lemma}
+\begin{remark}
+Lemma~\ref{lem:ctxreal-window-cofinal} is the only window-selection step in the
+legacy route. It is implied by an explicit bound $s_0 \le \min I_w$ for some
+ctx\_real window; if such a bound is available (analytically or numerically),
+the rest of the proof is formal.
+\end{remark}
+
+\textbf{Step 2 (choose a window above $s_0$).} By Lemma~\ref{lem:ctxreal-window-cofinal},
+choose a ctx\_real window $w$ whose interval $I_w$ lies above $s_0$.
 
 \textbf{Step 3 (pointwise to RMS semantic).} Let $K := \exp((\beta-1/2)\min I_w)$.
 Monotonicity of $\exp$ on $I_w$ implies $|\log R_\alpha(s)| \ge K$ for all $s \in I_w$.

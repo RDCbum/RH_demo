@@ -12,6 +12,7 @@
 ## Evidence
 - Legacy core: `lean/formal_proofs/ERURH/RH_Unconditional_Core_Legacy.lean`
 - Assuming wrapper: `lean/formal_proofs/ERURH/RH_Unconditional_Assuming_Legacy.lean`
+- Window helper (conditional): `lean/formal_proofs/ERURH/Alpha/CtxRealWindowCofinality.lean`
 
 ## Notes
 This route removes the fixed-window gap by placing the analytic A1 implication

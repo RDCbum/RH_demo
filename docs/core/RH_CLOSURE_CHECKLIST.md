@@ -23,3 +23,12 @@ Only open analytic item: `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`
 | `AxiomsShimAccepted.h_inertia_to_E` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |
 | `AxiomsShimAccepted.h_inertia_of_E` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |
 | `AxiomsShimAccepted.h_RH_to_E` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |
+
+## Legacy route (experimental)
+
+Legacy core (`RH_unconditional_core_legacy`) removes the fixed-window bridge and
+instead assumes the analytic A1 implication directly.
+
+| Hypothesis (Lean) | How discharged | Evidence | Status |
+| --- | --- | --- | --- |
+| `ERURH.A1_from_supercritical ERURH.Alpha.GeneratedRMSContext.ctx_real` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a1-from-supercritical`) | ABIERTO |

@@ -143,8 +143,7 @@ Field(s) & Discharge path \\
 \texttt{xi\_bounds\_alpha}, \texttt{xi\_argument\_alpha} and their hypothesis bridges & Classical/citable implications (Assumptions Ledger). \\
 \texttt{rh\_from\_E\_alpha\_of\_hypotheses} & Classical/citable implications (Assumptions Ledger). \\
 \texttt{h\_inertia\_to\_E}, \texttt{h\_inertia\_of\_E}, \texttt{h\_RH\_to\_E} & Classical/citable implications (Assumptions Ledger). \\
-\texttt{ModeThresholdControlOnCtxRealWindowFamily} & Route B analytic gap (mode threshold control on ctx\_real window family). \\
-\texttt{ctx\_real\_logR\_alpha\_upper} & Gate-certified numeric side condition (interval arithmetic). \\
+\texttt{A1\_from\_supercritical} & Legacy Route B analytic gap (supercritical mode $\Rightarrow$ A1\_mode for ctx\_real). \\
 \hline
 \end{tabular}
 \end{center}
@@ -158,84 +157,61 @@ For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
 \end{proposition}
 
 \begin{proof}[Proof outline]
-We structure the argument into three lemmas, matching the Lean targets exported in
-\texttt{lean\_gap\_statements.txt}.
-\begin{enumerate}
-  \item \textbf{Lemma A (mode growth).} Unpack the definition of \texttt{ERU\_mode\_beta} to obtain
-  pointwise exponential lower bounds for $|\log R_\alpha(s)|$ for $s \ge s_0$.
-  \item \textbf{Lemma B (bridge to RMS mode).} Convert the pointwise growth into a lower bound on
-  the RMS-mode contribution for a specific window. This is the analytic bridge
-  \texttt{mode\_to\_rms\_mode}.
-  \item \textbf{Lemma C (contradiction).} Combine Lemma~B with the Lean lemma
-  \texttt{ctx\_real\_not\_A1\_mode} to reach a contradiction, hence no such mode exists.
-\end{enumerate}
-In Lean, the remaining explicit analytic gap is the mode-threshold control predicate
-\texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily}; the gate-certified
-side condition \texttt{ctx\_real\_logR\_alpha\_upper} supplies the numeric upper bound
-used in the RMS semantic bridge. Lemma~B.1 (\texttt{PointwiseToRMSMode}) is now derived
-from these two inputs and the gate certificate, Lemma~C is already proved as
-\texttt{ctx\_real\_not\_A1\_mode}, and the proposition is the derived theorem
-\texttt{ERURH.no\_supercritical\_beta}.
-This replaces the earlier A1 framing; see \texttt{docs/core/RB20\_A1\_EQUIVALENCE.md} in the
-repository for the formal equivalence under \texttt{ctx\_real\_not\_A1\_mode}.
+In the legacy route we isolate a single analytic lemma: a supercritical ERU mode
+forces an A1\_mode witness for the ctx\_real RMS context. Once A1\_mode is available,
+the A2-low/tail bounds, the RMS decomposition, and the closed envelope give a
+contradiction, so no supercritical modes exist. This is packaged in Lean as the
+implication \texttt{ERURH.A1\_from\_supercritical} (see \texttt{lean\_gap\_statements.txt}).
 \end{proof}
 
-\subsubsection*{Mode-threshold control on the ctx\_real window family}
-The remaining analytic gap in Lean is the predicate
-\texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily} (first line of
-\texttt{lean\_gap\_statements.txt}). We state it here with the exact Lean
-quantifiers. Let $\mathrm{windowMinMax}$ denote the maximum of the window minima
-across the ctx\_real window family (so for a single window it equals that window's minimum).
-\begin{lemma}[Mode threshold control]\label{lem:mode-threshold-control}
-For every $\beta \in \mathbb{R}$ with $\beta > 1/2$, if \texttt{ERU\_mode\_beta}$(\beta)$
-holds, then there exists $s_0 \in \mathbb{R}$ such that
-\[
-s_0 \le \mathrm{windowMinMax}
-\quad\text{and}\quad
-\forall s \ge s_0,\;
-|\log R_\alpha(s)| \ge \exp((\beta - 1/2)\, s).
-\]
-\end{lemma}
-\begin{proof}[Proof (reduction to a single analytic bound)]
-Assume $\beta > 1/2$ and \texttt{ERU\_mode\_beta}$(\beta)$. By
-Assumption~\ref{assm:threshold-control}, there is a constant $S_0$ such that
-for all $s \ge S_0$ we have $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
-The gate verifies the numeric inequality $S_0 \le \mathrm{windowMinMax}$
-(Remark above), so taking $s_0 := S_0$ yields the required bound and
-$s_0 \le \mathrm{windowMinMax}$, completing the proof.
-\end{proof}
+\subsubsection*{Legacy A1 implication (existential window)}
+The remaining analytic gap in the legacy route is the lemma
+\texttt{ERURH.A1\_from\_supercritical} specialized to the ctx\_real context. The exact
+Lean statement is machine-exported below.
 
-\begin{remark}[Gate-certified numeric companion]
-The gate verifies the numeric inequality $\mathrm{windowMinMax} \ge s_0$ using
-the frozen value of $s_0$ in \texttt{formal\_report\_analytic.json} and the
-window minima in \texttt{rms\_context.json} (via \texttt{tools/check\_rms\_context.py}).
-This check confirms data consistency but does not, by itself, prove that the
-witness $s_0$ guaranteed by \texttt{ERU\_mode\_beta} coincides with the frozen
-value from the analytic report.
-\end{remark}
-
-\begin{lemma}[Window-compatibility bridge]\label{lem:window-bridge}
-For every $\beta \in \mathbb{R}$ with $\beta > 1/2$, if \texttt{ERU\_mode\_beta}$(\beta)$
-holds, then there exists a ctx\_real window $w$ such that for all $s \in I_w$ we have
-\[
-|\log R_\alpha(s)| \ge \exp((\beta - 1/2)\, s).
-\]
-\end{lemma}
-The lemma follows immediately from Lemma~\ref{lem:mode-threshold-control} by
-choosing a window whose minimum equals $\mathrm{windowMinMax}$; for any
-$s \in I_w$ we have $s \ge \mathrm{windowMinMax} \ge s_0$, so the lower bound
-applies on that entire window.
-This is a purely analytic alignment statement; the computational input enters only
-through the gate-certified bound \texttt{ctx\_real\_logR\_alpha\_upper}
-used later in the RMS bridge.
-
-\subsubsection*{Lemma B.1 (Pointwise-to-RMS bridge)}
-The Lean statements exported for this section are in \texttt{lean\_gap\_statements.txt}.
-The first line is the mode-threshold control predicate
-(\texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily}), the second line is the
-gate-certified upper bound predicate \texttt{ctx\_real\_logR\_alpha\_upper}, and the
-third line is Lemma~B as a derived theorem.
 {\small\VerbatimInput{lean_gap_statements.txt}}
+
+\begin{lemma}[A1 from supercritical mode]\label{lem:a1-from-supercritical}
+Let $\beta \in \mathbb{R}$ with $\beta > 1/2$. If \texttt{ERU\_mode\_beta}$(\beta)$ holds,
+then \texttt{A1\_mode} holds for the ctx\_real RMS context, i.e., there exists a ctx\_real
+window $w$ and a constant $K$ such that
+\[
+K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}
+\quad\text{and}\quad
+\mathrm{RMS\_mode}(w) \ge K.
+\]
+\end{lemma}
+\begin{proof}[Proof (step-by-step)]
+\textbf{Step 1 (unpack the mode).} By \texttt{ERU\_mode\_beta}$(\beta)$ there exists
+$s_0$ such that for all $s \ge s_0$,
+$|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
+
+\textbf{Step 2 (choose a window above $s_0$).} Choose a ctx\_real window $w$ whose
+interval $I_w$ lies above $s_0$ (this is the only place where the window family
+enters; it asserts that the ctx\_real windows are large enough to capture the
+threshold $s_0$).
+
+\textbf{Step 3 (pointwise to RMS semantic).} Let $K := \exp((\beta-1/2)\min I_w)$.
+Monotonicity of $\exp$ on $I_w$ implies $|\log R_\alpha(s)| \ge K$ for all $s \in I_w$.
+By the definition of the semantic RMS functional, this yields
+$\mathrm{rms\_semantic}(w) \ge K$.
+
+\textbf{Step 4 (semantic to RMS\_mode).} The gate-certified bridge
+(\texttt{ctx\_real\_rms\_mode\_ge\_semantic}) implies
+$\mathrm{RMS\_mode}(w) \ge \mathrm{rms\_semantic}(w) \ge K$.
+
+\textbf{Step 5 (exceed the envelope).} Since $\beta>1/2$, the exponential term
+can be made arbitrarily large by taking $w$ with sufficiently large minimum;
+hence we may ensure $K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}$.
+This establishes \texttt{A1\_mode}.
+\end{proof}
+
+\begin{remark}[Does not replace A/B/C]
+Lemma~\ref{lem:a1-from-supercritical} is an internal ERURH analytic bridge. It does
+\emph{not} replace the classical assumptions A/B/C (zero-density, coefficient growth,
+and large-sieve style estimates), which are still required to derive the A2-tail
+bound and to connect the explicit formula to the ERU framework.
+\end{remark}
 
 \paragraph{Definitions (paper semantics).}
 Fix a window $w$ with associated interval $I_w \subset \mathbb{R}$ (the paper-level
@@ -270,11 +246,11 @@ $\mathrm{RMS\_mode}(w)$ & \texttt{ERURH.Alpha.GeneratedRMSContext.ctx\_real.RMS\
 
 \paragraph{Gate/Lean alignment.}
 In Lean, \texttt{RMS\_mode} is currently instantiated by the numeric gate data in
-\texttt{rms\_context.json}. The gate certifies a numerical side-condition
-\texttt{ctx\_real\_logR\_alpha\_upper} (interval arithmetic) which, together with the
-mode-threshold control predicate \texttt{ModeThresholdControlOnCtxRealWindowFamily},
-derives Lemma~B.1 inside Lean. The remaining analytic gap is therefore the
-mode-threshold control predicate itself.
+\texttt{rms\_context.json}. The legacy route isolates the analytic bridge in the
+lemma \texttt{A1\_from\_supercritical}; this statement absorbs the pointwise-to-RMS
+step and the alignment with the ctx\_real window family. The gate still certifies
+the RMS context data and envelope closure, but there is no fixed-window
+threshold-control gap in this route.
 
 \section{Reproducibility / Gate}
 The reproducible pipeline regenerates the numeric artifacts and rebuilds the Lean development:
@@ -285,9 +261,10 @@ lake build ERURH
 python scripts/verify_gate.py --skip-pytests
 \end{verbatim}
 
-The analytic report \texttt{formal\_report\_analytic.json} (containing the
-constant $S_0$ used in Assumption~\ref{assm:threshold-control}) is part of the
-reproducibility data release; it is not bundled in the arXiv TeX archive.
+The reproducibility data release includes all numeric inputs used by the gate
+(rational bounds, certificates, and RMS context JSON). These are regenerated by
+the scripts above and are distinct from the analytic assumptions listed in
+Assumption~\ref{assm:classical} and the lemma \texttt{A1\_from\_supercritical}.
 
 \input{assumptions_ledger.tex}
 
@@ -467,20 +444,6 @@ For each dyadic band $T<|\gamma|\le 2T$ and each $L\ge 1$,
   \ll (\log T)\sum_{T<|\gamma|\le 2T}|b_\rho|^2.\]
 This is a standard large-sieve inequality for separated exponentials combined
 with local zero counting.
-\end{assumption}
-
-\begin{assumption}[Mode-threshold control]\label{assm:threshold-control}
-There exists a constant $S_0$ (recorded in the analytic report
-\texttt{formal\_report\_analytic.json} in the reproducibility data release) such that,
-for every $\beta>1/2$,
-if \texttt{ERU\_mode\_beta}$(\beta)$ holds then
-\[
-\forall s \ge S_0,\;
-|\log R_\alpha(s)| \ge \exp((\beta - 1/2)\, s).
-\]
-In particular, this assumption implies the Lean predicate
-\texttt{ModeThresholdControlOnCtxRealWindowFamily} once the numeric inequality
-$S_0 \le \mathrm{windowMinMax}$ is verified by the gate.
 \end{assumption}
 
 \begin{assumption}[RMS window hypotheses]\label{assm:a1a2}

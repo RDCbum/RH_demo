@@ -1,22 +1,18 @@
-# Legacy route status (exp/legacy_window_route)
+# Legacy route status (exp/legacy_rebuild)
 
 ## What changed
-- The legacy bridge now uses a threshold-control gap tied to the ctx_real window family.
-- The fixed-window hypothesis is replaced by `Alpha.ModeThresholdControlOnCtxRealWindowFamily`,
-  which requires the ERU-mode lower bound to start no later than the smallest ctx_real window min.
-- The gate side condition `∀ w, ctx_real_logR_alpha_upper w` remains unchanged.
+- Added a legacy core that assumes the analytic A1 implication directly:
+  `A1_from_supercritical ctx_real`.
+- The legacy core no longer depends on a fixed-window threshold-control gap.
 
 ## Current remaining gaps
-- `Alpha.ModeThresholdControlOnCtxRealWindowFamily` (analytic threshold-control bridge; not discharged).
-- `ctx_real_logR_alpha_upper` remains gate-certified (same as before).
+- `A1_from_supercritical ctx_real` (analytic A1 lemma: supercritical mode ⇒ A1_mode).
+- Axioms shim remains as in the main route (paper/citable items).
 
 ## Evidence
-- Statements: `docs/core/LEGACY_ROUTE_FINAL_STATEMENTS.txt`
-- Gap export: `docs/core/LEGACY_ROUTE_GAP_STATEMENTS.txt`
-- Build log: `docs/core/LEGACY_WINDOW_REPLAN_BUILD.txt`
-- Gate log: `docs/core/LEGACY_WINDOW_REPLAN_GATE_FULL.txt`
+- Legacy core: `lean/formal_proofs/ERURH/RH_Unconditional_Core_Legacy.lean`
+- Assuming wrapper: `lean/formal_proofs/ERURH/RH_Unconditional_Assuming_Legacy.lean`
 
 ## Notes
-This route avoids the fixed-window threshold step `s0 ≤ windowMin` by requiring a
-uniform threshold control over the ctx_real window family. That new condition is
-the legacy gap to analyze next.
+This route removes the fixed-window gap by placing the analytic A1 implication
+(`ERU_mode_beta β → A1_mode ctx_real`) as an explicit hypothesis.

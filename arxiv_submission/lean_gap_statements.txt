@@ -1,6 +1,3 @@
-ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily : Prop
-ctx_real_logR_alpha_upper (w : Fin n_windows) : Prop
-ERURH.Alpha.pointwise_to_RMS_mode_some_window_of_logR_alpha_upper_and_window_bridge
-  (h_upper : ∀ (w : ERURH.Alpha.GeneratedRMSContext.ctx_real.Window), ctx_real_logR_alpha_upper w)
-  (h_bridge : ERURH.Alpha.SupercriticalModeAppliesOnSomeCtxRealWindow) :
-  ERURH.Alpha.PointwiseToRMSModeSomeWindow ERURH.Alpha.GeneratedRMSContext.ctx_real
+def ERURH.A1_from_supercritical : ERURH.RMSLocalContext → Prop :=
+fun ctx => ∀ β > 1 / 2, ERURH.ERU_mode_beta β → ERURH.A1_mode ctx
+ERURH.A1_from_supercritical ERURH.Alpha.GeneratedRMSContext.ctx_real : Prop

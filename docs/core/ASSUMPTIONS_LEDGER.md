@@ -27,6 +27,13 @@ This ledger summarizes what is discharged by which external layer after beta gat
 - numeric threshold check `windowMinMax ≥ s0` from `formal_report_analytic.json`,
   enforced by `tools/check_rms_context.py` (see `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`).
 
+## Legacy experimental gap (Route B, existential window)
+- explicit hypothesis `ERURH.A1_from_supercritical ctx_real`
+  (`lean/formal_proofs/ERURH/A1FromSupercriticalMode_Legacy.lean:7`; used by
+  `lean/formal_proofs/ERURH/RH_Unconditional_Core_Legacy.lean`).
+  This removes the fixed-window threshold-control requirement but leaves the
+  analytic A1 implication as a paper-level obligation.
+
 ## Classical / citable
 - `ClassicalZetaAssumptions` (zeta zeros and classical explicit-formula framework).
 - Explicit-formula objects and bounds used by the alpha interface:

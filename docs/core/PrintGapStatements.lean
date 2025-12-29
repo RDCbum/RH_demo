@@ -1,7 +1,5 @@
-import ERURH.Alpha.ModeToRMSMode_WindowBridge_Legacy
-import ERURH.Alpha.GeneratedRMSModeBridge
-import ERURH.Alpha.ModeToRMSMode
+import ERURH.A1FromSupercriticalMode_Legacy
+import ERURH.Alpha.GeneratedRMSContext
 
-#check ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily
-#check _root_.ctx_real_logR_alpha_upper
-#check ERURH.Alpha.pointwise_to_RMS_mode_some_window_of_logR_alpha_upper_and_window_bridge
+#print ERURH.A1_from_supercritical
+#check ERURH.A1_from_supercritical ERURH.Alpha.GeneratedRMSContext.ctx_real

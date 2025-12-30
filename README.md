@@ -9,8 +9,9 @@ It documents two alternative Route B bridges (fixed-window and Buchstab) to make
 - Python tooling: regenerates rational bounds and certificate values from the published numeric artefacts.
 - Documentation: explains the analytic assumptions, the certificate pipeline, and how to reproduce the build.
 - Step-by-step proof walkthrough (legacy window-free route): `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`.
-- Referee FAQ (anticipated objections): `docs/core/REFEREE_FAQ.md`.
-- Route B bridges (fixed-window and Buchstab): `docs/core/ROUTES_COMPARISON.md`.
+- Referee summary (central): `docs/core/P27_REFEREE_PACKET.md`.
+- Repro guide: `docs/core/ERURH_HOWTO_Reproduce.md`.
+- Referee FAQ (index): `docs/core/REFEREE_FAQ.md`.
 
 ## Repository Structure
 - `lean/formal_proofs/ERURH/` — main Lean sources (Alpha/Beta certificates, gates, master theorem).

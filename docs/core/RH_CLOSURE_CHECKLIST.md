@@ -17,12 +17,16 @@ paper-driven path; the fixed-window route is the alternative computational path.
 | `ERURH.Alpha.RMS_envelope_closed ctx` | Gate/Certs (if ctx instantiated) | `lean/formal_proofs/ERURH/ERURH_GatesAlpha.lean` | ABIERTO |
 | `AxiomsShimAccepted.*` | Paper | `arxiv_submission/assumptions_ledger.tex` (field map) | CERRADO (paper) |
 
+Note: the window family used in the paper is defined to be admissible (cofinal),
+so cofinality is part of the window model rather than an extra hypothesis.
+
 ## Alternative route (fixed-window computational)
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
 | `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption `assm:threshold-control`, proof outline) | ABIERTO (paper; proof sketch) |
 | `∀ w, ctx_real_logR_alpha_upper w` | Gate | `tools/check_rms_mode_bridge.py`; `docs/core/P16_GATE_FULL.txt`; `docs/core/P17_GATE_FULL.txt`; `docs/core/P35_GATE_FULL.txt`; `docs/core/P16_LOGR_ALPHA_UPPER_CERT.md` | CERRADO (gate) |
+| `ctx_real_rms_mode_ge_semantic` | Gate | `docs/core/P15_NOTES.md` (bridge cert), `docs/core/P15_GATE_FULL.txt` | CERRADO (gate) |
 | `windowMinMax ≥ s0` (formal report) | Gate | `tools/check_rms_context.py`; `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`; `docs/core/P35_GATE_FULL.txt` | CERRADO (gate) |
 | `AxiomsShimAccepted.alphaInterfacesBase` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |
 | `AxiomsShimAccepted.explicit_alpha_via_stages` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |

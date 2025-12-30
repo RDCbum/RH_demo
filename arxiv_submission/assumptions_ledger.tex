@@ -4,7 +4,8 @@
   \item \textbf{A/B/C (analytic packages).} The analytic inputs used by Plan~B:
   spectral decay (A), large-sieve bounds (B), and the uniform RMS tail bound (C)
   recorded in Theorem~\ref{thm:C}. These feed the A2 derivation
-  (Lemma~\ref{lem:a2-from-abc}).
+  (Lemma~\ref{lem:a2-from-abc}). Full proofs are included in
+  \texttt{Theorem\_ABC\_preprint.tex}.
   \item \textbf{Route B bridges (primary + alternative).} We maintain a primary
   legacy window-free bridge and an alternative fixed-window computational bridge
   for Route~B (exported in \texttt{lean\_gap\_statements.txt} via the Buchstab
@@ -12,7 +13,9 @@
   \begin{itemize}
     \item \textbf{Legacy window-free bridge (primary route).} The lemma
     \texttt{a1-from-supercritical} supplies A1 in an abstract RMS context, while
-    A2 is discharged by Lemma~\ref{lem:a2-from-abc}.
+    A2 is discharged by Lemma~\ref{lem:a2-from-abc}. Admissibility (cofinality)
+    of the window family is built into the paper definition of windows, not
+    stated as a separate assumption.
     \item \textbf{Fixed-window bridge (alternative route).} The hypothesis
     \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily} (Assumption
     \ref{assm:threshold-control}) pairs with gate-verified constraints on

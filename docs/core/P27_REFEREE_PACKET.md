@@ -29,6 +29,8 @@ See:
   - `ctx_real_logR_alpha_upper` via `tools/check_rms_mode_bridge.py`
   - Evidence: `docs/core/P16_GATE_FULL.txt`, `docs/core/P17_GATE_FULL.txt`,
     `docs/core/P24_GATE_FULL.txt`, `docs/core/P35_GATE_FULL.txt`
+  - `ctx_real_rms_mode_ge_semantic` (numeric RMS lower-bounds semantic infimum),
+    see `docs/core/P15_NOTES.md` and `docs/core/P15_GATE_FULL.txt`
 
 ## What is proved in the paper
 
@@ -47,6 +49,7 @@ See:
   - `A2-low`/`A2-tail` derivation from Theorems A/B/C (Lemma `a2-from-abc`).
 - Classical analytic packages:
   - Theorems A, B, C (spectral decay + large-sieve bounds) as stated in the paper.
+  - Full proofs are included in `arxiv_submission/Theorem_ABC_preprint.tex`.
   - Explicit formula package and zeta-theory assumptions (Assumption~`assm:classical`,
     `assm:explicit`).
 

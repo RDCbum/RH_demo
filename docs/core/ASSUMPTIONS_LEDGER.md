@@ -20,6 +20,8 @@ required for a complete Route B chain.
 - primary route: the paper lemma `ERURH.A1_from_supercritical` (Lemma
   `a1-from-supercritical`, full proof in the paper) together with
   `A2Low_RMS` and `A2Tail_RMS` from Lemma `a2-from-abc`.
+  The window family used in the paper is defined to be admissible (cofinal),
+  so cofinality is part of the window model rather than a separate assumption.
 - alternative computational route: explicit hypothesis
   `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`
   (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_WindowBridge_Legacy.lean:34`; paper Assumption
@@ -33,6 +35,10 @@ required for a complete Route B chain.
   `tools/check_rms_mode_bridge.py` using interval arithmetic
   (see `docs/core/P16_LOGR_ALPHA_UPPER_CERT.md`, `docs/core/P16_GATE_FULL.txt`,
   `docs/core/P17_GATE_FULL.txt`, `docs/core/P35_GATE_FULL.txt`).
+- semantic compatibility certificate `ctx_real_rms_mode_ge_semantic`
+  (`lean/formal_proofs/ERURH/Alpha/GeneratedRMSModeBridge.lean`, see
+  `docs/core/P15_NOTES.md`), ensuring the numeric `ctx_real.RMS_mode` lower-bounds
+  the semantic infimum `rms_semantic` on each window in the fixed-window route.
 - numeric threshold check `windowMinMax ≥ s0` from `formal_report_analytic.json`,
   enforced by `tools/check_rms_context.py` (see `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`,
   `docs/core/P35_GATE_FULL.txt`).
@@ -53,23 +59,23 @@ required for a complete Route B chain.
   `buchstab_coefficient_nonzero_of_explicit_b_rho_expr`.
 
 ## Legacy window-free route (abstract ctx)
-- The analytic gap is `ERURH.A1_from_supercritical_buchstab ctx`
-  (machine-exported in `arxiv_submission/lean_gap_statements.txt`; Lemma
-  `a1-from-supercritical-buchstab` and
-  `buchstab-coefficient` in `arxiv_submission/ERURH_Conditional_Proof.tex`).
-  Lean derives `ERURH.A1_from_supercritical ctx` from this via
-  `A1_from_supercritical_of_buchstab`.
-- The paper proof isolates the Buchstab multiplier non-vanishing and the
-  structural coefficient lower bound as the only external inputs. The
-  coefficient non-vanishing is reduced to the explicit-formula identification
-  `ERURH.ExplicitBRhoExpression`.
+- The primary paper lemma is `a1-from-supercritical` (full proof in
+  `arxiv_submission/ERURH_Conditional_Proof.tex`), which supplies
+  `ERURH.A1_from_supercritical ctx` for an abstract RMS context.
+- The Lean gap export still records the Buchstab package
+  `ERURH.A1_from_supercritical_buchstab ctx` (see
+  `arxiv_submission/lean_gap_statements.txt`); Lean derives
+  `ERURH.A1_from_supercritical ctx` from this via
+  `A1_from_supercritical_of_buchstab`. The Buchstab lemmas
+  `a1-from-supercritical-buchstab` and `buchstab-coefficient` remain an
+  optional analytic derivation of A1.
 - A2-low and A2-tail are derived from the classical packages via
   Lemma `a2-from-abc` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
 - `RMS_envelope_closed ctx` remains as the numeric/gate side condition if
   a concrete context is instantiated.
 - No window-cofinality or threshold-control lemma is needed in this route.
   The A1 lemma is stated in `arxiv_submission/ERURH_Conditional_Proof.tex`
-  (Lemma `a1-from-supercritical-buchstab`).
+  (Lemma `a1-from-supercritical`).
 
 ## Classical / citable
 - `ClassicalZetaAssumptions` (zeta zeros and classical explicit-formula framework).

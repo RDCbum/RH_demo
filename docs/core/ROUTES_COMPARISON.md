@@ -3,14 +3,15 @@
 This note compares the two Route B bridges currently maintained in the repo.
 Both routes share the same Lean core (Plan B, gates, certificates) and differ
 only in the analytic bridge used to turn a supercritical mode into an A1-style
-RMS lower bound. The paper narrative treats fixed-window as primary and
-Buchstab as an alternative.
+RMS lower bound. The paper narrative treats the legacy window-free route as
+primary; the fixed-window route is an alternative, and the Buchstab bridge is
+optional.
 
 ## Summary table
 
 | Route | Lean gap (primary) | Paper anchor | Gate anchor | Notes |
 | --- | --- | --- | --- | --- |
-| Primary (legacy window-free) | `ERURH.A1_from_supercritical ctx` + A2 | Lemmas `a1-from-supercritical`, `a2-from-abc` | None (analytic) | Avoids fixed-window cofinality by using an abstract RMS context. |
+| Primary (legacy window-free) | `ERURH.A1_from_supercritical ctx` + A2 | Lemmas `a1-from-supercritical`, `a2-from-abc` | None (analytic) | Uses an abstract RMS context with admissible windows. |
 | Alternative (fixed-window) | `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily` | Assumption `assm:threshold-control` (No supercritical ERU modes) | `tools/check_rms_context.py` + `tools/check_rms_mode_bridge.py` | Ties the bridge to the concrete ctx_real window family. |
 
 ## Primary route (legacy window-free)

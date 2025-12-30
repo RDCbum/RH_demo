@@ -212,8 +212,9 @@ then \texttt{A1\_mode} holds for the chosen RMS context. Equivalently, this is t
 statement \texttt{ERURH.A1\_from\_supercritical}.
 \end{lemma}
 \begin{proof}
-We use the cofinality clause of Assumption~\ref{assm:a1a2} and the elementary
-fact that $\exp(aS)/S^2 \to \infty$ for any $a>0$.
+We use the admissibility (cofinality) of the window family
+(Definition~\ref{def:admissible-window}) and the elementary fact that
+$\exp(aS)/S^2 \to \infty$ for any $a>0$.
 
 \textbf{Step 1 (mode threshold).} By \texttt{ERU\_mode\_beta}$(\beta)$ there exists
 $s_0$ such that for all $s\ge s_0$,
@@ -226,8 +227,9 @@ $\exp((\beta-1/2)S)/S^2 > C_\ast$. (For instance, consider
 $f(S)=\exp((\beta-1/2)S)/S^2$, observe that $f'(S)>0$ for $S$ large, and
 $f(S)\to\infty$.)
 
-\textbf{Step 3 (choose a large window).} By cofinality, there exists an
-admissible window $w=[S,S+L]$ with $S\ge \max\{s_0,S_1,1\}$.
+\textbf{Step 3 (choose a large window).} By admissibility
+(Definition~\ref{def:admissible-window}), there exists a window
+$w=[S,S+L]$ with $S\ge \max\{s_0,S_1,1\}$.
 For any $s\in I_w=[S,S+L]$ we have $s\ge S\ge s_0$, hence
 $|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)\ge \exp((\beta-1/2)S)$.
 
@@ -287,10 +289,10 @@ This is the central paper-level input in the Buchstab bridge.
 \textbf{Step 3 (non-vanishing of the multiplier).} Lemma~\ref{lem:buchstab-m-nonzero}
 gives $m(\beta+i\gamma)\neq 0$ for $\beta>0$, hence the mode coefficient is nonzero.
 
-\textbf{Step 4 (RMS lower bound; uses cofinality).} By the definition of
-\texttt{RMS\_mode} for the mode contribution and the cofinality clause of
-Assumption~\ref{assm:a1a2}, one can choose windows with arbitrarily large base
-$S$ and obtain the stated lower bound with coefficient
+\textbf{Step 4 (RMS lower bound).} By the definition of \texttt{RMS\_mode} for
+the mode contribution and the admissibility of the window family
+(Definition~\ref{def:admissible-window}), one can choose windows with
+arbitrarily large base $S$ and obtain the stated lower bound with coefficient
 $|c_{\mathrm{struct}}\,m(\beta+i\gamma)|$.
 This is precisely the predicate
 \texttt{ModeRMSLowerBound\_from\_buchstab}$(\mathrm{ctx},\beta,\gamma)$.
@@ -368,14 +370,15 @@ the Buchstab lower-bound bridge; the exponential growth itself is already
 captured by the multiplier and the elementary $\exp$-dominates-polynomial lemma
 used in the Lean core.
 
-\paragraph{Window semantics and cofinality.}
+\paragraph{Window semantics and admissibility.}
 The Lean predicate \texttt{A1\_mode} is defined over an abstract
 \texttt{RMSLocalContext} with a type of windows and an associated
 \texttt{RMS\_mode}. In the paper we model a window as an interval
 $w=[S,S+L]$ with $1\ll L\ll S^\alpha$ and $I_w=[S,S+L]$. The only analytic
-input used in Steps~2 and~4 is \emph{cofinality}: the ability to choose a
-window with arbitrarily large $S$. This is recorded explicitly in
-Assumption~\ref{assm:a1a2}.
+input used in Steps~3 and~4 is \emph{admissibility}, i.e., the ability to
+choose a window with arbitrarily large $S$. We build this cofinality into the
+definition of an admissible window family (Definition~\ref{def:admissible-window}),
+so it is part of the window model rather than an extra analytic assumption.
 
 \begin{remark}[Does not replace A/B/C]
 Lemma~\ref{lem:a1-from-supercritical-buchstab} is an internal ERURH analytic bridge.
@@ -423,6 +426,19 @@ analytic lemma for an abstract RMS context. If one later instantiates this conte
 with gate data (e.g., \texttt{ctx\_real}), then \texttt{RMS\_mode} and the envelope
 closure are discharged by the numeric certificates; the window-free core itself
 does not depend on any fixed window family.
+
+\paragraph{Semantic compatibility of \texttt{RMS\_mode}.}
+For the fixed-window route, we also track a semantic lower bound
+\[
+\mathrm{rms\_semantic}(w) := \inf_{s\in I_w} |\log R_\alpha(s)|.
+\]
+In Lean this is the definition \texttt{Alpha.rms\_semantic w}. The gate provides
+a certificate (Lean: \texttt{GeneratedRMSModeBridge.ctx\_real\_rms\_mode\_ge\_semantic})
+that for each \texttt{ctx\_real} window,
+\texttt{ctx\_real.RMS\_mode w} $\ge$ \texttt{rms\_semantic w}. Together with
+Lemma~\ref{lem:pointwise-to-rms}, this ensures the numeric \texttt{RMS\_mode}
+used by the gate is a valid lower bound for the analytic RMS in the
+fixed-window chain. The legacy window-free route does not use this certificate.
 
 \section{Reproducibility / Gate}
 The reproducible pipeline regenerates the numeric artifacts and rebuilds the Lean development:
@@ -674,14 +690,19 @@ This is a standard large-sieve inequality for separated exponentials combined
 with local zero counting.
 \end{assumption}
 
+\begin{definition}[Admissible window family]\label{def:admissible-window}
+A family of windows $w=[S,S+L]$ with $1\ll L\ll S^\alpha$ is called
+\emph{admissible} if it is cofinal: for every $S_0$ there exists a window
+with $S\ge S_0$ and $1\ll L\ll S^\alpha$.
+\end{definition}
+
 \begin{assumption}[RMS window hypotheses]\label{assm:a1a2}
-Fix a family of windows $w=[S,S+L]$ with $1\ll L\ll S^\alpha$.
+Fix an admissible window family (Definition~\ref{def:admissible-window}) of
+windows $w=[S,S+L]$ with $1\ll L\ll S^\alpha$.
 There exist RMS quantities $\mathrm{RMS}_{\alpha},\mathrm{RMS}_{\mathrm{mode}},
 \mathrm{RMS}_{\mathrm{low}},\mathrm{RMS}_{\mathrm{tail}}$ and constants
 $c_{\mathrm{low}},c_{\mathrm{tail}},C_{\mathrm{env}}$ such that:
 \begin{itemize}
-  \item \textbf{Cofinality:} for every $S_0$ there exists an admissible window
-  $w=[S,S+L]$ with $S\ge S_0$ and $1\le L\le S^\alpha$.
   \item \textbf{A1 (mode growth):} there exists a window $w$ and a constant $K$
   with $K>c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$ such that
   $\mathrm{RMS}_{\mathrm{mode}}(w)=K$.
@@ -693,7 +714,9 @@ $c_{\mathrm{low}},c_{\mathrm{tail}},C_{\mathrm{env}}$ such that:
   $\mathrm{RMS}_{\alpha}(w)=\mathrm{RMS}_{\mathrm{mode}}(w)-
   (\mathrm{RMS}_{\mathrm{low}}(w)+\mathrm{RMS}_{\mathrm{tail}}(w))$.
 \end{itemize}
-These abstract hypotheses are the analytic inputs of the Plan~B route.
+These abstract hypotheses are the analytic inputs of the Plan~B route. The
+admissibility (cofinality) of the window family is part of the window model,
+not an extra analytic assumption.
 \end{assumption}
 
 \begin{assumption}[Fixed-window threshold control]\label{assm:threshold-control}
@@ -821,7 +844,8 @@ inputs. The current status can be summarized as follows.
   decay and large-sieve bounds) together with the analytic bridges
   Lemma~\ref{lem:a1-from-supercritical-buchstab} (A1) and Lemma~\ref{lem:a2-from-abc}
   (A2). The remaining gap is the classical derivation of Theorems~\ref{thm:A}--\ref{thm:C}
-  from standard zeta estimates.
+  from standard zeta estimates. Full proofs of Theorems~\ref{thm:A}--\ref{thm:C}
+  are included in the bundled preprint \texttt{Theorem\_ABC\_preprint.tex}.
   \item \textbf{Numeric inputs:} correctness of the finite certificates and
   numeric coverage assumptions (Assumption~\ref{assm:certs}), which are
   generated by the ERURH pipeline as exact rational data.

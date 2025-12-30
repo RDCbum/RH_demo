@@ -16,9 +16,10 @@ Scope: the abstract-context theorem
   - `lean/formal_proofs/ERURH/Alpha/RMS_Incompatibility.lean`
   - `lean/formal_proofs/ERURH/RH_Unconditional_Core_WindowFree.lean`
 - Paper (analytic lemmas):
-  - A1: Lemmas `a1-from-supercritical-buchstab` and `buchstab-coefficient` in
-    `arxiv_submission/ERURH_Conditional_Proof.tex`
-  - A2: Lemma `a2-from-abc` in `arxiv_submission/ERURH_Conditional_Proof.tex`
+  - A1: Lemma `a1-from-supercritical` (full proof) in
+    `arxiv_submission/ERURH_Conditional_Proof.tex`. Optional derivation via
+    Lemmas `a1-from-supercritical-buchstab` and `buchstab-coefficient`.
+  - A2: Lemma `a2-from-abc` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
   - Classical A/B/C packages: same paper (Theorems A, B, C).
 - Gate (certificates and numeric coverage):
   - `scripts/verify_gate.py`, `tools/make_*`
@@ -41,14 +42,16 @@ Scope: the abstract-context theorem
 - Evidence:
   - Lean: `lean/formal_proofs/ERURH/ERURH_A2Hypotheses.lean`.
 
-### Step 3: A1-from-supercritical (Buchstab bridge)
+### Step 3: A1-from-supercritical (legacy window-free)
 - Statement: a supercritical mode implies `A1_mode` for the chosen context:
   `A1_from_supercritical ctx`.
 - Why needed: this is the analytic bridge from `ERU_mode_beta` to the RMS local
   contradiction.
 - Evidence:
-  - Paper: Lemmas `a1-from-supercritical-buchstab` and `buchstab-coefficient` in
+  - Paper: Lemma `a1-from-supercritical` (full proof) in
     `arxiv_submission/ERURH_Conditional_Proof.tex`.
+  - Optional derivation: Lemmas `a1-from-supercritical-buchstab` and
+    `buchstab-coefficient`.
   - Lean (statement only): `lean/formal_proofs/ERURH/A1FromSupercriticalMode_Legacy.lean`.
 
 ### Step 4: A2-low/A2-tail from A/B/C (analytic lemma)
@@ -109,6 +112,6 @@ Scope: the abstract-context theorem
 ## Current status (legacy window-free route)
 
 - Lean: fully checks the logical chain.
-- Paper: must supply A1 (Lemmas `a1-from-supercritical-buchstab` and
-  `buchstab-coefficient`) and A2 (Lemma `a2-from-abc`), and the classical A/B/C theorems.
+- Paper: must supply A1 (Lemma `a1-from-supercritical`, with optional Buchstab
+  derivation) and A2 (Lemma `a2-from-abc`), and the classical A/B/C theorems.
 - Gate: supplies numeric certificates if a concrete context is instantiated.

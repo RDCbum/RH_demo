@@ -10,9 +10,9 @@ is required.
   (`RH_unconditional_core_window_free`).
 
 ## Inputs (explicit hypotheses)
-- `A1_from_supercritical ctx`: analytic A1 implication (derived in Lean from
-  `A1_from_supercritical_buchstab`; paper Lemmas `a1-from-supercritical-buchstab`
-  and `buchstab-coefficient`).
+- `A1_from_supercritical ctx`: analytic A1 implication (paper Lemma
+  `a1-from-supercritical`, full proof; optional Buchstab derivation via
+  `a1-from-supercritical-buchstab` and `buchstab-coefficient`).
 - `A2Low_RMS ctx`, `A2Tail_RMS ctx`: analytic RMS controls derived from A/B/C
   (paper Lemma `a2-from-abc`).
 - `RMS_envelope_closed ctx`: numeric envelope closure (gate/certificates if available).
@@ -21,11 +21,11 @@ is required.
 ## Gap status
 The only remaining requirement is instantiating the abstract context with
 gate/certified data if desired; the A1 and A2 analytic steps are covered in the
-paper (Lemmas `a1-from-supercritical-buchstab` and `a2-from-abc`). There is no
-fixed-window cofinality gap.
+paper (Lemmas `a1-from-supercritical` and `a2-from-abc`). There is no fixed-window
+cofinality gap.
 
 ## Notes
 This route decouples the contradiction from the concrete ctx_real window family.
 If one wants to instantiate with ctx_real, additional data is needed to show that
-`A1_from_supercritical` holds for ctx_real (via the Buchstab bridge and explicit
-formula identification).
+`A1_from_supercritical` holds for ctx_real (via the paper lemma or the Buchstab
+bridge and explicit-formula identification).

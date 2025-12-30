@@ -1,5 +1,11 @@
 # Window Cofinality Proof Attempt (Legacy Route)
 
+Status note (legacy): This attempt targets the fixed-window `ctx_real` bridge.
+The primary route now uses an abstract admissible window family, so cofinality
+is definitional rather than an extra analytic assumption. The fixed-window route
+keeps the explicit hypothesis `ModeThresholdControlOnCtxRealWindowFamily`; see
+`docs/core/ROUTES_COMPARISON.md`.
+
 ## Goal
 Justify the step: for the existential threshold `s0` from `ERU_mode_beta`, there exists a
 ctx_real window `w` such that `s in I_w` implies `s >= s0`.

@@ -21,8 +21,8 @@ optional analytic derivation of A1. The gate only checks numeric side conditions
 for the fixed-window route; it does not prove the analytic implication from
 `ERU_mode_beta` to the threshold. The fixed-window step remains a proof outline.
 **Evidence.**
-- `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption `assm:threshold-control`,
-  Lemma `a1-from-supercritical-buchstab`).  
+- `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a1-from-supercritical`,
+  Assumption `assm:threshold-control`, optional Lemma `a1-from-supercritical-buchstab`).  
 - `lean/formal_proofs/ERURH/A1FromSupercriticalMode_Legacy.lean` (legacy statement).  
 - `arxiv_submission/lean_gap_statements.txt` (machine export).
 
@@ -43,13 +43,16 @@ the only non-ERURH analytic inputs.
 
 ## 5) "RMS_mode in Lean is not the analytic RMS"
 **Objection.** The paper uses RMS integrals but Lean uses an abstract context.  
-**Response.** The fixed-window route uses a concrete gate context; the Buchstab
-route uses an abstract RMS context. In both cases, the analytic semantics are
-spelled out in the paper while Lean uses the abstract interface.  
+**Response.** The fixed-window route uses a concrete gate context and includes
+a certificate that the numeric `ctx_real.RMS_mode` lower-bounds the semantic
+infimum `rms_semantic` on each window (see the gate bridge notes). The legacy
+window-free route uses an abstract RMS context and does not depend on any fixed
+window semantics.  
 **Evidence.**
 - `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md` (Step 2–6).  
 - `docs/core/ROUTES_COMPARISON.md` (procedure and route separation).
 - `lean/formal_proofs/ERURH/ERURH_A2Hypotheses.lean` (abstract `RMSLocalContext`).
+ - `docs/core/P15_NOTES.md` (semantic bridge certificate).
 
 ## 6) "Gate certificates are opaque"
 **Objection.** Numerical certificates might hide errors.  
@@ -70,15 +73,17 @@ from frozen inputs; logs are kept in `docs/core/`.
 ## 8) "Is the legacy window-free route consistent?"
 **Objection.** It may rely on a hidden window cofinality assumption.  
 **Response.** The legacy route is explicitly window-free and uses an abstract
-RMS context; there is no fixed-window cofinality hypothesis.  
+RMS context. In the paper, cofinality is part of the definition of an
+admissible window family, not an extra analytic assumption.  
 **Evidence.**
 - `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`.  
 - `lean/formal_proofs/ERURH/RH_Unconditional_Core_WindowFree.lean`.
 
 ## 9) "Are you mixing routes?"
 **Objection.** The paper might mix the fixed-window route with the legacy one.  
-**Response.** The checklist separates the fixed-window route (primary) from the
-Buchstab route (alternative) and marks their gaps explicitly.  
+**Response.** The checklist separates the legacy window-free route (primary)
+from the fixed-window computational route (alternative) and marks their gaps
+explicitly; the Buchstab bridge is an optional derivation of A1.  
 **Evidence.**
 - `docs/core/RH_CLOSURE_CHECKLIST.md`.
 - `docs/core/ROUTES_COMPARISON.md`.

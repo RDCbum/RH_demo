@@ -1,5 +1,12 @@
 # Legacy window-cofinality: gate assessment
 
+Status note (legacy): These notes document the fixed-window cofinality gap for
+`ctx_real`. The current primary route uses an abstract admissible window family
+whose cofinality is definitional (see `arxiv_submission/ERURH_Conditional_Proof.tex`,
+Definition `def:admissible-window`). The fixed-window route now uses the explicit
+hypothesis `ModeThresholdControlOnCtxRealWindowFamily`; see
+`docs/core/ROUTES_COMPARISON.md`.
+
 ## Question
 Can the gate certify Lemma `ctxreal-window-cofinal` (existence of a ctx_real window above the
 threshold `s0` coming from `ERU_mode_beta`)?

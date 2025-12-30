@@ -33,6 +33,6 @@ equivalent to RH and is not available without circularity. Therefore it cannot
 be used to bound `s0` in the legacy route.
 
 ## References
-- Paper lemma: `Lemma 6.?? (Window cofinality for ctx_real)` in
-  `arxiv_submission/ERURH_Conditional_Proof.tex`.
+- Historical note: a fixed-window cofinality lemma was considered but is not
+  part of the current paper (cofinality is definitional for the legacy route).
 - Lean helper: `lean/formal_proofs/ERURH/Alpha/CtxRealWindowCofinality.lean`.

@@ -2,7 +2,7 @@
 
 This repository is a minimal, self-contained project. It provides the Lean proof modules and the Python tooling needed to regenerate the rational certificates used in the conditional proof of the Riemann Hypothesis (RH).
 It also presents three analytic theorems (A, B, C) that underpin the Lean result and should be independently reviewed and verified.
-It documents two alternative Route B bridges (fixed-window and Buchstab) to make the analytic gaps explicit; see `docs/core/ROUTES_COMPARISON.md`.
+Route B is presented with a primary legacy window-free bridge and an alternative fixed-window computational bridge; the Buchstab bridge is an optional derivation. See `docs/core/ROUTES_COMPARISON.md`.
 
 ## Overview
 - Lean formalization: encodes the ERURH framework and the conditional implication `ERURH_GlobalAssumptions -> RiemannHypothesis`.

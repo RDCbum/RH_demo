@@ -28,5 +28,5 @@ One of the following would be sufficient:
 - We cannot certify `s0` itself, because it is produced existentially by `ERU_mode_beta`.
 
 ## Consequence
-The window-cofinality step remains a paper-level lemma in the legacy route until an explicit
+The window-cofinality step remains a paper-level lemma in the fixed-window route until an explicit
 threshold bound is proved (analytically) or redefined into the hypothesis.

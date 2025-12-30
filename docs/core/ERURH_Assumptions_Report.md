@@ -47,20 +47,20 @@ Window / RMS assumptions (A1/A2) — WindowScalingAssumptions
 | Field (Lean) | Informal description | Type | Status |
 | --- | --- | --- | --- |
 | `ctx : RMSLocalContext` | RMS decomposition context (mode/low/tail, envelope) | structural context | proved in Lean (structure) |
-| `hA1 : A1_mode ctx` | A1-mode growth hypothesis (β>1/2 mode forces RMS growth) | window hypothesis | assumed external (analytic gap) |
-| `hLow : A2Low_RMS ctx` | RMS bound for low part | window hypothesis | assumed external |
-| `hTail : A2Tail_RMS ctx` | RMS bound for tail part | window hypothesis | assumed external; current lemma uses placeholder tail bound |
+| `hA1 : A1_mode ctx` | A1-mode growth hypothesis (β>1/2 mode forces RMS growth) | window hypothesis | paper-level lemma for the legacy window-free route |
+| `hLow : A2Low_RMS ctx` | RMS bound for low part | window hypothesis | discharged by gate data for `ctx_real` via `Alpha.GeneratedRMSContext.ctx_real_A2Low` |
+| `hTail : A2Tail_RMS ctx` | RMS bound for tail part | window hypothesis | discharged by gate data for `ctx_real` via `Alpha.GeneratedRMSContext.ctx_real_A2Tail` |
 
 Numeric coverage / certificate correctness
 ------------------------------------------
 | Field (Lean) | Informal description | Type | Status |
 | --- | --- | --- | --- |
 | `CertificatesCorrectAlpha` | Bundle of alpha certificates (global energy, kernel blow-up) with correctness proofs | numeric input / certificate | proved in Lean using published data (`*_true_correct_alpha`) |
-| `NumericCoverageAlpha ctx` | Coverage assumption over windows/tail for RMS normalization | placeholder coverage | placeholder / to be refined (currently `Alpha.RMS_envelope_closed`) |
+| `NumericCoverageAlpha ctx` | Coverage assumption over windows/tail for RMS normalization | numeric input / certificate | discharged for `ctx_real` by `Alpha.GeneratedRMSContext.ctx_real_RMS_envelope_closed` |
 
 Summary and alignment
 ---------------------
 - The conditional theorem `RH_from_ERURH_conditional` in `ERURH_MasterTheoremSummary.lean` consumes `ERURH_GlobalAssumptions = { eru : ERURH_Assumptions; window : WindowScalingAssumptions }` plus `CertificatesCorrectAlpha` and `NumericCoverageAlpha`.
 - All classical analytic inputs (explicit formula, ζ-growth, zero counting, HbWeak_L2_tail, LSγ^weak) are assumed external; none are formalized in Lean.
 - Numeric certificate data for alpha are instantiated and proved correct in Lean; beta certificate correctness remains assumed.
-- Window/RMS hypotheses A1/A2 are assumed; the A2-tail helper `A2Tail_RMS_from_Hb_LS_simple` currently uses a placeholder tail bound rather than deriving it from `H_b` + LSγ.
+- Window/RMS hypotheses A1/A2 are assumed in the abstract window bundle. For the concrete gate context `ctx_real`, A2-low/tail and RMS envelope closure are discharged by generated Lean lemmas from the published data.

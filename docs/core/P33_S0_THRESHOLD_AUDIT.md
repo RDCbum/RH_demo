@@ -10,9 +10,9 @@
   - Notes there is no constraint on `s0` in the definition.
 - `docs/core/P30_MODE_THRESHOLD_CONTROL.md`
   - Proposed lemma that chooses `s0 ≤ windowMin`.
-- `docs/ERURH_Formalisms.md:15,20`
+- `docs/archive/es/ERURH_Formalisms.md:15,20`
   - Mentions an `s0` value in archived/formal pipeline notes (not part of Lean or paper).
-- `docs/ERURH_IndustrialPipeline_Alpha.md:29-30`
+- `docs/archive/es/ERURH_IndustrialPipeline_Alpha.md:29-30`
   - Mentions `s0_unified.json` in the historical pipeline (not used in current Lean).
 - `docs/notes/ERURH_InertiaCertificates_Spec.md:21`
   - Mentions coverage of `[s0, +∞)` in notes (not a Lean lemma).

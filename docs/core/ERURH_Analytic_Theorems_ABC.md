@@ -4,7 +4,7 @@ These three classical analytic theorems supply the external inputs for the Plan 
 
 ## Theorem A (HbWeak\_L2\_tail — dyadic L² bound for \(b_\rho\))
 
-Let \( \rho = \beta + i\gamma \) run over the non-trivial zeros of ζ, paired as usual under RH. Define the ERU explicit-formula coefficients \(b_\rho\) as in the ERURH explicit-formula plan:
+Let \( \rho = \beta + i\gamma \) run over the non-trivial zeros of ζ, paired under the functional equation. Define the ERU explicit-formula coefficients \(b_\rho\) as in the ERURH explicit-formula plan:
 \[
   \log R(s) = \sum_\rho a_\rho\, e^{(\rho-1)s} + \cdots, \qquad
   j_{\mathrm{rel}}(s) = \sum_\rho \frac{\rho-1}{\rho}\, a_\rho\, e^{(\rho-1)s} + \cdots,

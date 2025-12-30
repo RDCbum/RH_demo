@@ -71,6 +71,9 @@ Let $N(T)$ denote the number of non-trivial zeros $\rho=\beta+i\gamma$ with $0<\
   \#\{\rho:\ y<\Im(\rho)\le y+1\}\ \ll\ \log(|y|+2),
 \]
 with an absolute implied constant.
+Equivalently, we use the standard asymptotic
+$N(T)=\frac{T}{2\pi}\log\frac{T}{2\pi}-\frac{T}{2\pi}+O(\log T)$ and the
+consequence $N(T+1)-N(T)\ll\log T$; see \cite[Ch.\ 9]{Titchmarsh}.
 
 \begin{remark}[Verifying the hypotheses in explicit-formula settings]\label{rem:verify-hyp}
 Hypothesis \textbf{(H1)} is automatic once one works with the completed zeta function
@@ -261,6 +264,8 @@ Proceeding inductively assigns all elements to $\Lambda_1,\dots,\Lambda_M$, as r
 \begin{proof}
 Let $\Gamma(T)$ denote the multiset of ordinates $\gamma\in\mathbb{R}$ (counted with multiplicity) of zeros
 $\rho=\beta+i\gamma$ with $T<|\gamma|\le 2T$.
+All arguments below treat $\Gamma(T)$ as a multiset; multiplicities are handled
+by repeated entries in $\Gamma(T)$ and in the partition Lemma~\ref{lem:partition}.
 By Lemma~\ref{lem:localcount}, every interval of length $1$ in the ranges $[T,2T]$ and $[-2T,-T]$
 contains $\ll \log T$ ordinates. Thus there exists an absolute constant $C_0>0$ such that
 \[

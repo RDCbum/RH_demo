@@ -14,10 +14,14 @@ This ledger summarizes what is discharged by which external layer after beta gat
   Detailed proofs live in `arxiv_submission/Theorem_ABC_preprint.tex`.
 
 ## Analytic gap (Route B)
-Two bridges are maintained: the fixed-window bridge (primary route)
-and the Buchstab bridge (alternative route). Only one is required for a
-complete Route B chain.
-- explicit hypothesis `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`
+Two routes are maintained: the legacy window-free bridge (primary route)
+and the fixed-window computational bridge (alternative route). Only one is
+required for a complete Route B chain.
+- primary route: the paper lemma `ERURH.A1_from_supercritical` (Lemma
+  `a1-from-supercritical`) together with `A2Low_RMS` and `A2Tail_RMS` from
+  Lemma `a2-from-abc`.
+- alternative computational route: explicit hypothesis
+  `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`
   (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_WindowBridge_Legacy.lean:34`; paper Assumption
   `assm:threshold-control` in `arxiv_submission/ERURH_Conditional_Proof.tex`). This states that the
   supercritical-mode threshold can be chosen no later than `windowMinMax` for the ctx_real
@@ -33,10 +37,10 @@ complete Route B chain.
   enforced by `tools/check_rms_context.py` (see `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`,
   `docs/core/P35_GATE_FULL.txt`).
 
-## Alternative Buchstab gap (Route B, existential window)
+## Buchstab derivation of A1 (optional analytic route)
 - explicit hypothesis `ERURH.A1_from_supercritical_buchstab ctx_real`
   (`lean/formal_proofs/ERURH/ERURH_A1_BuchstabBridge.lean`; exported in
-  `arxiv_submission/lean_gap_statements.txt`; Lemma
+  `arxiv_submission/lean_gap_statements.txt`; Lemmas
   `a1-from-supercritical-buchstab` and
   `buchstab-coefficient` in `arxiv_submission/ERURH_Conditional_Proof.tex`).
   This packages the Buchstab

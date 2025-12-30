@@ -1,4 +1,4 @@
-# Route Comparison: Fixed-Window (Primary) vs Buchstab (Alternative)
+# Route Comparison: Legacy Window-Free (Primary) vs Fixed-Window (Alternative)
 
 This note compares the two Route B bridges currently maintained in the repo.
 Both routes share the same Lean core (Plan B, gates, certificates) and differ
@@ -10,10 +10,18 @@ Buchstab as an alternative.
 
 | Route | Lean gap (primary) | Paper anchor | Gate anchor | Notes |
 | --- | --- | --- | --- | --- |
-| Main (fixed-window) | `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily` | Assumption `assm:threshold-control` (No supercritical ERU modes) | `tools/check_rms_context.py` + `tools/check_rms_mode_bridge.py` | Requires window compatibility with a fixed ctx_real window family. |
-| Alternative (Buchstab) | `ERURH.A1_from_supercritical_buchstab ctx_real` + `ERURH.ExplicitBRhoExpression` | Lemmas `a1-from-supercritical-buchstab` and `buchstab-coefficient` | None (analytic) | Avoids fixed-window cofinality by using an explicit-formula factorization. |
+| Primary (legacy window-free) | `ERURH.A1_from_supercritical ctx` + A2 | Lemmas `a1-from-supercritical`, `a2-from-abc` | None (analytic) | Avoids fixed-window cofinality by using an abstract RMS context. |
+| Alternative (fixed-window) | `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily` | Assumption `assm:threshold-control` (No supercritical ERU modes) | `tools/check_rms_context.py` + `tools/check_rms_mode_bridge.py` | Ties the bridge to the concrete ctx_real window family. |
 
-## Main route (fixed-window)
+## Primary route (legacy window-free)
+
+- Lean bridge: `ERURH.A1_from_supercritical` in
+  `lean/formal_proofs/ERURH/A1FromSupercriticalMode_Legacy.lean`.
+- Paper reference: Lemma `a1-from-supercritical` in
+  `arxiv_submission/ERURH_Conditional_Proof.tex`, with A2 from Lemma `a2-from-abc`.
+- Gate: only needed if instantiating a concrete context with certificates.
+
+## Alternative route (fixed-window)
 
 - Lean bridge: `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`
   (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_WindowBridge_Legacy.lean:34`).
@@ -23,12 +31,12 @@ Buchstab as an alternative.
   `arxiv_submission/ERURH_Conditional_Proof.tex`.
   The paper includes a proof outline; a full proof is deferred.
 
-Procedure (main route):
+Procedure (alternative route):
 1) Run `python scripts/verify_gate.py` to regenerate and check all gate artifacts.
 2) Ensure the fixed-window hypothesis appears in `arxiv_submission/lean_gap_statements.txt`.
 3) Cite Assumption `assm:threshold-control` for the analytic bridge in the paper.
 
-## Alternative route (Buchstab)
+## Optional analytic derivation (Buchstab bridge)
 
 - Lean bridge: `ERURH.A1_from_supercritical_buchstab ctx_real` and
   `ERURH.ExplicitBRhoExpression` from
@@ -39,7 +47,7 @@ Procedure (main route):
   `ERURH.ExplicitBRhoExpression` via
   `buchstab_coefficient_nonzero_of_explicit_b_rho_expr`.
 
-Procedure (Buchstab route):
+Procedure (Buchstab derivation):
 1) Export gaps with `docs/core/PrintGapStatements.lean` and confirm
    `ERURH.A1_from_supercritical_buchstab` and `ERURH.ExplicitBRhoExpression`.
 2) Provide the paper lemmas `a1-from-supercritical-buchstab` and

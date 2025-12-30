@@ -5,18 +5,24 @@
   spectral decay (A), large-sieve bounds (B), and the uniform RMS tail bound (C)
   recorded in Theorem~\ref{thm:C}. These feed the A2 derivation
   (Lemma~\ref{lem:a2-from-abc}).
-  \item \textbf{Route B bridges (primary + alternative).} We maintain two analytic
-  bridges for Route~B, both exported in \texttt{lean\_gap\_statements.txt}:
+  \item \textbf{Route B bridges (primary + alternative).} We maintain a primary
+  legacy window-free bridge and an alternative fixed-window computational bridge
+  for Route~B (exported in \texttt{lean\_gap\_statements.txt} via the Buchstab
+  packaging):
   \begin{itemize}
-    \item \textbf{Fixed-window bridge (primary route).} The hypothesis
+    \item \textbf{Legacy window-free bridge (primary route).} The lemma
+    \texttt{a1-from-supercritical} supplies A1 in an abstract RMS context, while
+    A2 is discharged by Lemma~\ref{lem:a2-from-abc}.
+    \item \textbf{Fixed-window bridge (alternative route).} The hypothesis
     \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily} (Assumption
     \ref{assm:threshold-control}) pairs with gate-verified constraints on
     \texttt{ctx\_real}. The paper provides a proof outline; a full proof is
     deferred to a supplement.
-    \item \textbf{Buchstab bridge (alternative).} The hypotheses
+    \item \textbf{Buchstab derivation (optional).} The hypotheses
     \texttt{ERURH.A1\_from\_supercritical\_buchstab} and
     \texttt{ERURH.ExplicitBRhoExpression} are discharged by Lemmas
-    \ref{lem:a1-from-supercritical-buchstab} and \ref{lem:buchstab-coefficient}.
+    \ref{lem:a1-from-supercritical-buchstab} and \ref{lem:buchstab-coefficient},
+    yielding \texttt{A1\_from\_supercritical}.
   \end{itemize}
   These bridges do not replace the classical A/B/C assumptions; they supply the
   A1/A2 inputs needed for the RMS-local contradiction.

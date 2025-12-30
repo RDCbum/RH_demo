@@ -57,7 +57,24 @@ This map aligns remaining Lean hypotheses with paper statements and proof plans.
   plus the gate-verified numeric inequality $\mathrm{windowMinMax} \ge S_0$
   from the analytic report.
 
-## Buchstab bridge (alternative)
+## A1 from supercritical mode (legacy window-free)
+
+**Lean statement**
+- `ERURH.A1_from_supercritical ctx`.
+
+**Mathematical statement (paper)**
+- Lemma `a1-from-supercritical`: if `ERU_mode_beta(β)` holds for some
+  $\beta>1/2$, then `A1_mode` holds for the chosen RMS context (existential window).
+
+**Paper placement**
+- Section \ref{sec:no-supercritical}, Lemma `a1-from-supercritical`.
+
+**Dependencies**
+- Definition of `ERU_mode_beta`.
+- Mode-to-RMS lower bound for the supercritical contribution (analytic input).
+  One concrete derivation uses the Buchstab bridge.
+
+## Buchstab bridge (optional derivation of A1)
 
 **Lean statements**
 - `ERURH.A1_from_supercritical_buchstab ctx`.

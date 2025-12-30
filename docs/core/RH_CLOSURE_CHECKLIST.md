@@ -4,10 +4,20 @@ Source of truth: `docs/core/NOAX_FINAL_STATEMENTS.txt` and `docs/core/ASSUMPTION
 
 ## Remaining requirements
 
-Two bridges are maintained. The fixed-window route is the primary
-gate-driven path; the Buchstab route is an alternative and paper-driven.
+Two routes are maintained. The legacy window-free route is the primary
+paper-driven path; the fixed-window route is the alternative computational path.
 
-## Main route (fixed-window)
+## Primary route (legacy window-free)
+
+| Hypothesis (Lean) | How discharged | Evidence | Status |
+| --- | --- | --- | --- |
+| `ERURH.A1_from_supercritical ctx` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a1-from-supercritical`) | ABIERTO (paper) |
+| `ERURH.A2Low_RMS ctx` | Paper (A/B/C) | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a2-from-abc`) | CERRADO (paper) |
+| `ERURH.A2Tail_RMS ctx` | Paper (A/B/C) | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a2-from-abc`) | CERRADO (paper) |
+| `ERURH.Alpha.RMS_envelope_closed ctx` | Gate/Certs (if ctx instantiated) | `lean/formal_proofs/ERURH/ERURH_GatesAlpha.lean` | ABIERTO |
+| `AxiomsShimAccepted.*` | Paper | `arxiv_submission/assumptions_ledger.tex` (field map) | CERRADO (paper) |
+
+## Alternative route (fixed-window computational)
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
@@ -27,25 +37,13 @@ gate-driven path; the Buchstab route is an alternative and paper-driven.
 | `AxiomsShimAccepted.h_inertia_of_E` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |
 | `AxiomsShimAccepted.h_RH_to_E` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |
 
-## Alternative route (Buchstab)
+## Optional derivation of A1 (Buchstab bridge)
 
-The Buchstab core (`RH_unconditional_core_legacy`) removes the fixed-window bridge and
-instead assumes the analytic A1 implication directly via the Buchstab bridge.
-
-| Hypothesis (Lean) | How discharged | Evidence | Status |
-| --- | --- | --- | --- |
-| `ERURH.A1_from_supercritical_buchstab ERURH.Alpha.GeneratedRMSContext.ctx_real` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemmas `a1-from-supercritical-buchstab`, `buchstab-coefficient`) | ABIERTO (paper) |
-| `ERURH.ExplicitBRhoExpression` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `buchstab-coefficient`, explicit-formula identification) | ABIERTO (paper) |
-
-## Alternative route (Buchstab, abstract ctx)
-
-This route removes the fixed-window cofinality step by keeping the RMS context
-abstract. It requires the following analytic inputs for a chosen context `ctx`.
+The Buchstab bridge provides one analytic derivation of
+`ERURH.A1_from_supercritical`. The Lean gap statements export the Buchstab
+package explicitly.
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
 | `ERURH.A1_from_supercritical_buchstab ctx` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemmas `a1-from-supercritical-buchstab`, `buchstab-coefficient`) | ABIERTO (paper) |
 | `ERURH.ExplicitBRhoExpression` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `buchstab-coefficient`, explicit-formula identification) | ABIERTO (paper) |
-| `ERURH.A2Low_RMS ctx` | Paper (A/B/C) | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a2-from-abc`) | CERRADO (paper) |
-| `ERURH.A2Tail_RMS ctx` | Paper (A/B/C) | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a2-from-abc`) | CERRADO (paper) |
-| `ERURH.Alpha.RMS_envelope_closed ctx` | Gate/Certs (if ctx instantiated) | `lean/formal_proofs/ERURH/ERURH_GatesAlpha.lean` | ABIERTO |

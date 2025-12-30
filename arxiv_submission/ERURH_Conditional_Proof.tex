@@ -153,9 +153,9 @@ Field(s) & Discharge path \\
 \end{tabular}
 \end{center}
 
-\noindent Route B bridge assumptions (primary fixed-window or alternative Buchstab)
-are listed in Section~\ref{sec:no-supercritical} and are not part of
-\texttt{AxiomsShimAccepted}.
+\noindent Route B bridge assumptions (primary legacy window-free or alternative
+fixed-window computational) are listed in Section~\ref{sec:no-supercritical} and
+are not part of \texttt{AxiomsShimAccepted}.
 
 \noindent The beta layer is now an explicit hypothesis bundle (no frozen numeric input is present
 in \texttt{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger section below.
@@ -166,26 +166,28 @@ For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
 \end{proposition}
 
 \begin{proof}[Proof outline]
-  We maintain two bridges for Route~B:
-  (i) a fixed-window bridge anchored to the concrete gate context \texttt{ctx\_real}
-  (primary route), and (ii) a Buchstab bridge in an abstract RMS context
-  (alternative route). In both cases, once
-  \texttt{A1\_mode} is available, the A2-low/tail bounds, the RMS decomposition,
-  and the closed envelope give a contradiction, so no supercritical modes exist.
+  We maintain two routes for Route~B:
+  (i) a legacy window-free bridge (primary route), which assumes the analytic
+  implication \texttt{A1\_from\_supercritical} in an abstract RMS context, and
+  (ii) a fixed-window computational bridge (alternative route), which ties the
+  supercritical threshold to the concrete gate context \texttt{ctx\_real}. In
+  both cases, once \texttt{A1\_mode} and A2-low/tail are available, the RMS
+  decomposition and closed envelope yield a contradiction, so no supercritical
+  modes exist.
 \end{proof}
 
-\subsubsection*{Two Route B bridges (primary fixed-window vs alternative Buchstab).}
+\subsubsection*{Two Route B bridges (primary legacy window-free vs alternative fixed-window).}
 \begin{itemize}
-  \item \textbf{Fixed-window bridge (primary route).} The Lean hypothesis
-  \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily} asserts that the
-  supercritical-mode threshold can be chosen within the \texttt{ctx\_real} window
-  family. This is a paper-level analytic assumption; the gate checks only the
-  numeric side conditions (see Assumption~\ref{assm:threshold-control}).
-  \item \textbf{Buchstab bridge (alternative route).} The Lean hypothesis
-  \texttt{ERURH.A1\_from\_supercritical\_buchstab} asserts the A1 mode lower bound
-  in an abstract RMS context, based on the Buchstab multiplier and a structural
-  coefficient. The explicit-formula identification is captured by the Lean
-  predicate \texttt{ERURH.ExplicitBRhoExpression}.
+  \item \textbf{Legacy window-free bridge (primary route).} The paper-level lemma
+  \texttt{A1\_from\_supercritical} (Lemma~\ref{lem:a1-from-supercritical}) supplies
+  the A1 mode lower bound in an abstract RMS context. A2-low/tail are supplied by
+  Lemma~\ref{lem:a2-from-abc}.
+  \item \textbf{Fixed-window bridge (alternative computational route).} The Lean
+  hypothesis \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily}
+  asserts that the supercritical-mode threshold can be chosen within the
+  \texttt{ctx\_real} window family. This is a paper-level analytic assumption;
+  the gate checks only the numeric side conditions (see
+  Assumption~\ref{assm:threshold-control}).
 \end{itemize}
 
 \begin{center}
@@ -193,17 +195,35 @@ For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
 \hline
 Route & Lean gap & Discharge & Reference \\
 \hline
-Primary (fixed-window) & \texttt{ModeThresholdControlOnCtxRealWindowFamily} & Paper + gate & Assm.~\ref{assm:threshold-control} \\
-Alternative (Buchstab) & \texttt{A1\_from\_supercritical\_buchstab}, \texttt{ExplicitBRhoExpression} & Paper & Lemmas~\ref{lem:a1-from-supercritical-buchstab},~\ref{lem:buchstab-coefficient} \\
+Primary (legacy window-free) & \texttt{A1\_from\_supercritical} and A2 & Paper & Lemmas~\ref{lem:a1-from-supercritical},~\ref{lem:a2-from-abc} \\
+Alternative (fixed-window) & \texttt{ModeThresholdControlOnCtxRealWindowFamily} & Paper + gate & Assm.~\ref{assm:threshold-control} \\
 \hline
 \end{tabular}
 \end{center}
 
-\noindent The main narrative below follows the primary fixed-window bridge; the
-Buchstab bridge is included as a documented alternative.
+\noindent The main narrative below follows the primary legacy window-free route;
+the fixed-window computational bridge is included as a documented alternative.
 
-\subsubsection*{Buchstab bridge (window-free, alternative route)}
-The remaining analytic gap in the Buchstab route is the bridge
+\subsubsection*{Legacy window-free A1 lemma (primary route).}
+\begin{lemma}[A1 from supercritical mode (legacy window-free)]
+\label{lem:a1-from-supercritical}
+Let $\beta\in\mathbb{R}$ with $\beta>1/2$. If \texttt{ERU\_mode\_beta}$(\beta)$ holds,
+then \texttt{A1\_mode} holds for the chosen RMS context. Equivalently, this is the
+statement \texttt{ERURH.A1\_from\_supercritical}.
+\end{lemma}
+\begin{proof}[Proof sketch]
+This is the primary analytic bridge in the legacy route. One concrete derivation
+is provided by the Buchstab bridge below: Lemma~\ref{lem:a1-from-supercritical-buchstab}
+implies Lemma~\ref{lem:a1-from-supercritical} via the Lean lemma
+\texttt{A1\_from\_supercritical\_of\_buchstab}.
+\end{proof}
+
+\noindent The machine-exported gap statements list the Buchstab packaging
+explicitly; \texttt{A1\_from\_supercritical} is derived from it inside Lean.
+
+\subsubsection*{Buchstab bridge (analytic derivation of A1)}
+The Buchstab bridge supplies one analytic route to
+Lemma~\ref{lem:a1-from-supercritical}. The remaining analytic gap is the bridge
 \texttt{ERURH.A1\_from\_supercritical\_buchstab} for a chosen RMS context, together
 with the explicit-formula identification \texttt{ERURH.ExplicitBRhoExpression}.
 The exact Lean statements are machine-exported below.

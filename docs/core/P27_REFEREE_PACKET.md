@@ -35,8 +35,8 @@ See:
 - Classical/citable assumptions bundled as `AxiomsShimAccepted`
   (see `arxiv_submission/assumptions_ledger.tex`).
 - Route B bridges (primary + alternative):
-  - Legacy window-free A1 (primary): Lemma `a1-from-supercritical` and A2 via
-    Lemma `a2-from-abc` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
+  - Legacy window-free A1 (primary): Lemma `a1-from-supercritical` (full proof)
+    and A2 via Lemma `a2-from-abc` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
   - Fixed-window bridge (alternative): Assumption `assm:threshold-control` in
     `arxiv_submission/ERURH_Conditional_Proof.tex` (proof outline; full proof deferred).
   - Optional Buchstab derivation: Lemmas `a1-from-supercritical-buchstab` and

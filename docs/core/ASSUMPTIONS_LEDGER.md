@@ -18,8 +18,8 @@ Two routes are maintained: the legacy window-free bridge (primary route)
 and the fixed-window computational bridge (alternative route). Only one is
 required for a complete Route B chain.
 - primary route: the paper lemma `ERURH.A1_from_supercritical` (Lemma
-  `a1-from-supercritical`) together with `A2Low_RMS` and `A2Tail_RMS` from
-  Lemma `a2-from-abc`.
+  `a1-from-supercritical`, full proof in the paper) together with
+  `A2Low_RMS` and `A2Tail_RMS` from Lemma `a2-from-abc`.
 - alternative computational route: explicit hypothesis
   `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`
   (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_WindowBridge_Legacy.lean:34`; paper Assumption

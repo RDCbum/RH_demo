@@ -71,8 +71,9 @@ This map aligns remaining Lean hypotheses with paper statements and proof plans.
 
 **Dependencies**
 - Definition of `ERU_mode_beta`.
-- Mode-to-RMS lower bound for the supercritical contribution (analytic input).
-  One concrete derivation uses the Buchstab bridge.
+- Mode-to-RMS lower bound for the supercritical contribution (proved in the
+  paper using cofinality and Lemma \ref{lem:pointwise-to-rms}). One concrete
+  derivation uses the Buchstab bridge.
 
 ## Buchstab bridge (optional derivation of A1)
 

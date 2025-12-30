@@ -15,12 +15,11 @@ and the gate validates finite certificates.
 ## 2) "Where is A1 proved?"
 **Objection.** The supercritical mode ⇒ A1\_mode step is not formalized in Lean.  
 **Response.** A1 is supplied by paper lemmas. The primary route is the legacy
-window-free lemma `a1-from-supercritical`; the fixed-window route is an
-alternative computational bridge, and the Buchstab bridge is an optional
-analytic derivation of A1. The gate only checks numeric side conditions for the
-fixed-window route; it does not prove the analytic implication from
-`ERU_mode_beta` to the threshold. The paper includes only a proof outline for
-this step; a full proof is deferred to a supplement.
+window-free lemma `a1-from-supercritical` (proved in the paper); the fixed-window
+route is an alternative computational bridge, and the Buchstab bridge is an
+optional analytic derivation of A1. The gate only checks numeric side conditions
+for the fixed-window route; it does not prove the analytic implication from
+`ERU_mode_beta` to the threshold. The fixed-window step remains a proof outline.
 **Evidence.**
 - `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption `assm:threshold-control`,
   Lemma `a1-from-supercritical-buchstab`).  

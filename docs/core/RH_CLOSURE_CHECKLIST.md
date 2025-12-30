@@ -11,7 +11,7 @@ paper-driven path; the fixed-window route is the alternative computational path.
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
-| `ERURH.A1_from_supercritical ctx` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a1-from-supercritical`) | ABIERTO (paper) |
+| `ERURH.A1_from_supercritical ctx` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a1-from-supercritical`, full proof) | ABIERTO (paper) |
 | `ERURH.A2Low_RMS ctx` | Paper (A/B/C) | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a2-from-abc`) | CERRADO (paper) |
 | `ERURH.A2Tail_RMS ctx` | Paper (A/B/C) | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a2-from-abc`) | CERRADO (paper) |
 | `ERURH.Alpha.RMS_envelope_closed ctx` | Gate/Certs (if ctx instantiated) | `lean/formal_proofs/ERURH/ERURH_GatesAlpha.lean` | ABIERTO |

@@ -211,15 +211,37 @@ Let $\beta\in\mathbb{R}$ with $\beta>1/2$. If \texttt{ERU\_mode\_beta}$(\beta)$ 
 then \texttt{A1\_mode} holds for the chosen RMS context. Equivalently, this is the
 statement \texttt{ERURH.A1\_from\_supercritical}.
 \end{lemma}
-\begin{proof}[Proof sketch]
-This is the primary analytic bridge in the legacy route. One concrete derivation
-is provided by the Buchstab bridge below: Lemma~\ref{lem:a1-from-supercritical-buchstab}
-implies Lemma~\ref{lem:a1-from-supercritical} via the Lean lemma
-\texttt{A1\_from\_supercritical\_of\_buchstab}.
+\begin{proof}
+We use the cofinality clause of Assumption~\ref{assm:a1a2} and the elementary
+fact that $\exp(aS)/S^2 \to \infty$ for any $a>0$.
+
+\textbf{Step 1 (mode threshold).} By \texttt{ERU\_mode\_beta}$(\beta)$ there exists
+$s_0$ such that for all $s\ge s_0$,
+$|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
+
+\textbf{Step 2 (exp dominates the envelope).} Let
+$C_\ast := c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$. Since
+$\beta>1/2$, there exists $S_1$ such that for all $S\ge S_1$,
+$\exp((\beta-1/2)S)/S^2 > C_\ast$. (For instance, consider
+$f(S)=\exp((\beta-1/2)S)/S^2$, observe that $f'(S)>0$ for $S$ large, and
+$f(S)\to\infty$.)
+
+\textbf{Step 3 (choose a large window).} By cofinality, there exists an
+admissible window $w=[S,S+L]$ with $S\ge \max\{s_0,S_1,1\}$.
+For any $s\in I_w=[S,S+L]$ we have $s\ge S\ge s_0$, hence
+$|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)\ge \exp((\beta-1/2)S)$.
+
+\textbf{Step 4 (pointwise to RMS).} By Lemma~\ref{lem:pointwise-to-rms},
+$\mathrm{RMS}_{\mathrm{mode}}(w)\ge \exp((\beta-1/2)S)\ge
+\exp((\beta-1/2)S)/S^2$. Set $K:=\exp((\beta-1/2)S)/S^2$; then
+$K>C_\ast$ by Step 2 and $\mathrm{RMS}_{\mathrm{mode}}(w)\ge K$.
+This is exactly \texttt{A1\_mode}.
 \end{proof}
 
-\noindent The machine-exported gap statements list the Buchstab packaging
-explicitly; \texttt{A1\_from\_supercritical} is derived from it inside Lean.
+\noindent The Buchstab bridge below provides one concrete derivation of
+\texttt{ERU\_mode\_beta} and the mode coefficient lower bound; in Lean,
+\texttt{A1\_from\_supercritical} is derived from that packaging via
+\texttt{A1\_from\_supercritical\_of\_buchstab}.
 
 \subsubsection*{Buchstab bridge (analytic derivation of A1)}
 The Buchstab bridge supplies one analytic route to
@@ -374,13 +396,14 @@ Define the RMS-mode contribution by
 For Route~B we use the unique window of \texttt{ctx\_real} (since $n\_windows=1$),
 written \texttt{ctx\_real\_window} in Lean.
 
-\paragraph{Lemma B.1 (Pointwise-to-RMS bridge).}
+\begin{lemma}[Pointwise-to-RMS bridge]\label{lem:pointwise-to-rms}
 If $|\log R_\alpha(s)| \ge K$ for all $s \in I_w$ and $|I_w|>0$, then
 $\mathrm{RMS\_mode}(w) \ge K$. This follows by squaring the pointwise bound,
 integrating over $I_w$, and taking square roots:
 \[
 \frac{1}{|I_w|}\int_{I_w} |\log R_\alpha(s)|^2\, ds \ge \frac{1}{|I_w|}\int_{I_w} K^2\, ds = K^2.
 \]
+\end{lemma}
 
 \paragraph{Lean correspondence.}
 \begin{center}

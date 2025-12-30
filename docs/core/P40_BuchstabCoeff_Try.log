@@ -1,0 +1,4 @@
+docs/core/P40_BuchstabCoeff_Try.lean:12:33: error: unsolved goals
+ρ : ERURH.Alpha.ZeroOfZeta
+hβ : ERURH.Alpha.beta ρ > 1 / 2
+⊢ ERURH.SupercriticalModeCoefficient (ERURH.Alpha.beta ρ) (ERURH.Alpha.gamma ρ) (ERURH.Alpha.b_rho ρ)

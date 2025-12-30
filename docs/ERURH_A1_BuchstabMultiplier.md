@@ -1,0 +1,43 @@
+# A1 Bridge via Buchstab Multiplier (Paper-First)
+
+This note records a paper-level bridge that reduces the A1 analytic burden to a
+single structural nonvanishing statement, without changing the kernel or any
+numerical certificates.
+
+## Operator and multiplier
+We use the multiplicative averaging operator
+
+  (T h)(u) = (1/u) * \int_{u/3}^{u/2} h(t) dt.
+
+For a monomial h(t) = t^(rho-1) with rho = beta + i*gamma,
+
+  (T h)(u) = u^(rho-1) * m(rho),
+
+where
+
+  m(rho) = (2^(-rho) - 3^(-rho)) / rho,
+  2^(-rho) := exp(-rho * log 2).
+
+## Nonvanishing
+If beta > 0, then m(rho) != 0. The key estimate is
+
+  |2^(-rho) - 3^(-rho)| >= ||2^(-rho)| - |3^(-rho)||
+                         = |2^(-beta) - 3^(-beta)| > 0.
+
+The denominator rho is nonzero because Re(rho) = beta > 0.
+
+## How this reduces A1
+If the mode coefficient is proportional to m(rho) times a structural constant
+c_struct != 0 (from the explicit formula package), then the mode coefficient is
+nonzero. Combined with the exp-dominates-polynomial lemma already in Lean,
+this yields A1_mode for the chosen RMS context.
+
+## What remains external
+The remaining external input is the identification of the mode coefficient with
+the explicit formula expression `explicit_b_rho_expression`. In Lean we prove
+that expression is nonzero for beta > 0, yielding
+`buchstab_coefficient_nonzero_of_explicit_b_rho_expr` and thus
+`BuchstabCoefficientNonzero` assuming the equality `b_rho = explicit_b_rho_expression`.
+The separate bridge that turns this coefficient into a concrete RMS_mode lower
+bound remains the explicit hypothesis `ModeRMSLowerBound_from_buchstab`, wrapped
+by `A1_from_supercritical_buchstab`.

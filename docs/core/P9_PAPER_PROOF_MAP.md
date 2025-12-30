@@ -55,3 +55,23 @@ This map aligns remaining Lean hypotheses with paper statements and proof plans.
 - Definition of `ERU_mode_beta`.
 - Analytic control of the threshold (external input) plus the gate-verified
   numeric inequality $\mathrm{windowMinMax} \ge S_0$ from the analytic report.
+
+## Buchstab bridge (experimental)
+
+**Lean statements**
+- `ERURH.A1_from_supercritical_buchstab ctx`.
+- `ERURH.ExplicitBRhoExpression`.
+
+**Mathematical statement (paper)**
+- Lemma `a1-from-supercritical-buchstab`: supercritical mode implies
+  `ModeRMSLowerBound_from_buchstab` (and hence A1).
+- Lemma `buchstab-coefficient`: explicit-formula identification
+  $b_\rho=\pi^{-\rho/2}\Gamma(\rho/2)$ and factorization with $m(\rho)$.
+
+**Paper placement**
+- Section \ref{sec:no-supercritical}, Lemmas `a1-from-supercritical-buchstab`,
+  `buchstab-coefficient`.
+
+**Dependencies**
+- Explicit formula package (Assumption~\ref{assm:explicit}).
+- Non-vanishing of $\Gamma$ and $\pi^{-\rho/2}$ for $\Re(\rho)>0$.

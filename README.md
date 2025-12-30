@@ -2,7 +2,7 @@
 
 This repository is a minimal, self-contained project. It provides the Lean proof modules and the Python tooling needed to regenerate the rational certificates used in the conditional proof of the Riemann Hypothesis (RH).
 It also presents three analytic theorems (A, B, C) that underpin the Lean result and should be independently reviewed and verified.
-This repository includes no staging or experimental files; only the validated and review-ready components of the ERURH RH demo are included.
+It documents two alternative Route B bridges (fixed-window and Buchstab) to make the analytic gaps explicit; see `docs/core/ROUTES_COMPARISON.md`.
 
 ## Overview
 - Lean formalization: encodes the ERURH framework and the conditional implication `ERURH_GlobalAssumptions -> RiemannHypothesis`.
@@ -10,6 +10,7 @@ This repository includes no staging or experimental files; only the validated an
 - Documentation: explains the analytic assumptions, the certificate pipeline, and how to reproduce the build.
 - Step-by-step proof walkthrough (legacy window-free route): `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`.
 - Referee FAQ (anticipated objections): `docs/core/REFEREE_FAQ.md`.
+- Route B bridges (fixed-window and Buchstab): `docs/core/ROUTES_COMPARISON.md`.
 
 ## Repository Structure
 - `lean/formal_proofs/ERURH/` — main Lean sources (Alpha/Beta certificates, gates, master theorem).

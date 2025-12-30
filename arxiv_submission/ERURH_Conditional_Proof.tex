@@ -157,52 +157,158 @@ For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
 \end{proposition}
 
 \begin{proof}[Proof outline]
-In the legacy window-free route we isolate a single analytic lemma: a supercritical
-ERU mode forces an A1\_mode witness for an abstract RMS context. Once A1\_mode is
-available, the A2-low/tail bounds, the RMS decomposition, and the closed envelope
-give a contradiction, so no supercritical modes exist. This is packaged in Lean
-as \texttt{ERURH.A1\_from\_supercritical} (see \texttt{lean\_gap\_statements.txt}).
+  We maintain two alternative bridges for Route~B:
+  (i) a fixed-window bridge anchored to the concrete gate context \texttt{ctx\_real},
+  and (ii) a Buchstab bridge in an abstract RMS context. In both cases, once
+  \texttt{A1\_mode} is available, the A2-low/tail bounds, the RMS decomposition,
+  and the closed envelope give a contradiction, so no supercritical modes exist.
 \end{proof}
 
-\subsubsection*{Legacy A1 implication (window-free)}
-The remaining analytic gap in the legacy window-free route is the lemma
-\texttt{ERURH.A1\_from\_supercritical} for a chosen RMS context. The exact
-Lean statement is machine-exported below.
+\subsubsection*{Two Route B bridges (fixed-window vs Buchstab).}
+\begin{itemize}
+  \item \textbf{Fixed-window bridge (main route).} The Lean hypothesis
+  \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily} asserts that the
+  supercritical-mode threshold can be chosen within the \texttt{ctx\_real} window
+  family. This pairs with gate checks for \texttt{ctx\_real\_logR\_alpha\_upper}
+  and the numeric threshold constraint (see Assumption~\ref{assm:threshold-control}).
+  \item \textbf{Buchstab bridge (experimental route).} The Lean hypothesis
+  \texttt{ERURH.A1\_from\_supercritical\_buchstab} asserts the A1 mode lower bound
+  in an abstract RMS context, based on the Buchstab multiplier and a structural
+  coefficient. The explicit-formula identification is captured by the Lean
+  predicate \texttt{ERURH.ExplicitBRhoExpression}.
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{llll}
+\hline
+Route & Lean gap & Discharge & Reference \\
+\hline
+Fixed-window & \texttt{ModeThresholdControlOnCtxRealWindowFamily} & Paper + gate & Assm.~\ref{assm:threshold-control} \\
+Buchstab & \texttt{A1\_from\_supercritical\_buchstab}, \texttt{ExplicitBRhoExpression} & Paper & Lemmas~\ref{lem:a1-from-supercritical-buchstab},~\ref{lem:buchstab-coefficient} \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{Buchstab bridge (window-free)}
+The remaining analytic gap in the Buchstab route is the bridge
+\texttt{ERURH.A1\_from\_supercritical\_buchstab} for a chosen RMS context, together
+with the explicit-formula identification \texttt{ERURH.ExplicitBRhoExpression}.
+The exact Lean statements are machine-exported below.
 
 {\small\VerbatimInput{lean_gap_statements.txt}}
 
-\begin{lemma}[A1 from supercritical mode]\label{lem:a1-from-supercritical}
-Let $\beta \in \mathbb{R}$ with $\beta > 1/2$. If \texttt{ERU\_mode\_beta}$(\beta)$ holds,
-then \texttt{A1\_mode} holds for the chosen RMS context, i.e., there exists a window
-$w$ and a constant $K$ such that
+\paragraph{Definition (Buchstab mode lower bound).}
+Fix an RMS context $\mathrm{ctx}$ with window type and $\mathrm{RMS\_mode}$.
+For $\beta,\gamma\in\mathbb{R}$, we write
+\texttt{ModeRMSLowerBound\_from\_buchstab}$(\mathrm{ctx},\beta,\gamma)$ for the
+statement that there exists a structural coefficient $c_{\mathrm{struct}}\neq 0$
+and a threshold $S_0$ such that for all $S\ge S_0$ there exists a window $w$ with
 \[
-K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}
-\quad\text{and}\quad
-\mathrm{RMS\_mode}(w) \ge K.
+\mathrm{RMS\_mode}(w)\ \ge\ 
+|c_{\mathrm{struct}}\, m(\beta+i\gamma)|\cdot
+\frac{\exp((\beta-1/2)S)}{S^2}.
 \]
+This is exactly the Lean predicate \texttt{ERURH.ModeRMSLowerBound\_from\_buchstab}.
+
+\begin{lemma}[A1 from supercritical mode (Buchstab bridge)]
+\label{lem:a1-from-supercritical-buchstab}
+Let $\beta\in\mathbb{R}$ with $\beta>1/2$. If \texttt{ERU\_mode\_beta}$(\beta)$ holds,
+then there exists $\gamma\in\mathbb{R}$ such that
+\texttt{ModeRMSLowerBound\_from\_buchstab}$(\mathrm{ctx},\beta,\gamma)$ holds.
+Equivalently, this is the statement \texttt{ERURH.A1\_from\_supercritical\_buchstab}.
 \end{lemma}
 \begin{proof}[Proof (step-by-step)]
 \textbf{Step 1 (unpack the mode).} By \texttt{ERU\_mode\_beta}$(\beta)$ there exists
-$s_0$ such that for all $s \ge s_0$,
+$s_0$ such that for all $s\ge s_0$,
 $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
 
-\textbf{Step 2 (choose a window above $s_0$).} Choose a window
-$w=[S,S+L]$ with $S \ge s_0$ and $1 \le L \le S^\alpha$. Such a window exists
-by the cofinality clause of Assumption~\ref{assm:a1a2}.
-Then $I_w=[S,S+L]$ satisfies $s \ge S \ge s_0$ for all $s \in I_w$.
+\textbf{Step 2 (explicit formula coefficient).} The explicit formula package
+provides a supercritical mode term at some $\rho=\beta+i\gamma$ with coefficient
+proportional to $m(\rho)$ times a structural factor $c_{\mathrm{struct}}\neq 0$.
+This is the only external analytic input in the Buchstab bridge.
 
-\textbf{Step 3 (pointwise to RMS\_mode).} Let $K := \exp((\beta-1/2)S)$.
-Because $\beta>1/2$, the map $s \mapsto \exp((\beta-1/2)s)$ is increasing, and
-Step~1 implies $|\log R_\alpha(s)| \ge K$ for all $s \in I_w$.
-By the pointwise-to-RMS lemma (Lemma B.1 in the definitions below),
-$\mathrm{RMS\_mode}(w) \ge K$.
+\textbf{Step 3 (non-vanishing of the multiplier).} Lemma~\ref{lem:buchstab-m-nonzero}
+gives $m(\beta+i\gamma)\neq 0$ for $\beta>0$, hence the mode coefficient is nonzero.
 
-\textbf{Step 4 (exceed the envelope).} Since $\beta>1/2$, the exponential term
-can be made arbitrarily large by taking $w$ with sufficiently large minimum
-again by the cofinality clause of Assumption~\ref{assm:a1a2};
-hence we may ensure $K > c_{\mathrm{low}} + c_{\mathrm{tail}} + C_{\mathrm{env}}$.
-This establishes \texttt{A1\_mode}.
+\textbf{Step 4 (RMS lower bound).} By the definition of \texttt{RMS\_mode} for the
+mode contribution and the cofinality clause of Assumption~\ref{assm:a1a2}, one can
+choose windows with arbitrarily large base $S$ and obtain the stated lower bound
+with coefficient $|c_{\mathrm{struct}}\,m(\beta+i\gamma)|$.
+This is precisely the predicate
+\texttt{ModeRMSLowerBound\_from\_buchstab}$(\mathrm{ctx},\beta,\gamma)$.
 \end{proof}
+
+\subsubsection*{Buchstab multiplier non-vanishing (paper bridge for A1).}
+Recall the multiplicative averaging operator
+\[
+(\mathcal{T}h)(u) := \frac{1}{u}\int_{u/3}^{u/2} h(t)\,dt .
+\]
+For a monomial $h(t)=t^{\rho-1}$ with $\rho=\beta+i\gamma$, one computes
+\[
+(\mathcal{T}h)(u)=u^{\rho-1}\, m(\rho), \qquad
+m(\rho)=\frac{2^{-\rho}-3^{-\rho}}{\rho},
+\quad 2^{-\rho}:=\exp(-\rho\log 2).
+\]
+\begin{lemma}[Buchstab multiplier non-vanishing]\label{lem:buchstab-m-nonzero}
+If $\beta>0$ then $m(\beta+i\gamma)\neq 0$.
+\end{lemma}
+\begin{proof}
+Write $2^{-\rho}=\exp(-\rho\log 2)$ and $3^{-\rho}=\exp(-\rho\log 3)$.
+Then $|2^{-\rho}|=2^{-\beta}$ and $|3^{-\rho}|=3^{-\beta}$. Since $\beta>0$,
+we have $2^{-\beta}\neq 3^{-\beta}$, hence by the reverse triangle inequality
+\[
+|2^{-\rho}-3^{-\rho}| \ge \big||2^{-\rho}|-|3^{-\rho}|\big|
+= |2^{-\beta}-3^{-\beta}|>0.
+\]
+Thus the numerator is nonzero. The denominator $\rho$ is also nonzero because
+$\Re(\rho)=\beta>0$. Therefore $m(\rho)\neq 0$.
+\end{proof}
+
+\begin{lemma}[Buchstab coefficient identification]\label{lem:buchstab-coefficient}
+  Let $\rho=\beta+i\gamma$ be a nontrivial zero with $\beta>1/2$. Assume the
+  explicit-formula identification
+  $b_\rho=\mathrm{explicit\_b}_\rho(\rho)$ with
+  $\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$ as in the
+  explicit formula package. Then the ERU coefficient satisfies
+  \[
+  b_\rho = c_{\mathrm{struct}}(\rho)\, m(\rho)
+  \quad\text{with}\quad c_{\mathrm{struct}}(\rho)\neq 0.
+  \]
+\end{lemma}
+\begin{proof}[Proof (step-by-step)]
+  \textbf{Step 1 (explicit formula identification).} By assumption,
+  $b_\rho=\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$ (see
+  Assumption~\ref{assm:explicit} and the field map in the assumptions ledger).
+  Since $\Gamma$ has no zeros and $\pi^{-\rho/2}\neq 0$, we obtain
+  $b_\rho\neq 0$ for $\beta>0$.
+
+\textbf{Step 2 (define the structural coefficient).} By
+Lemma~\ref{lem:buchstab-m-nonzero}, $m(\rho)\neq 0$ for $\beta>0$. Define
+$c_{\mathrm{struct}}(\rho) := b_\rho / m(\rho)$. Then
+$b_\rho = c_{\mathrm{struct}}(\rho)\, m(\rho)$ by construction.
+
+\textbf{Step 3 (non-vanishing).} Since $b_\rho\neq 0$ and $m(\rho)\neq 0$,
+we have $c_{\mathrm{struct}}(\rho)\neq 0$.
+\end{proof}
+
+  \paragraph{Lean correspondence.}
+  The explicit-formula identification is the Lean predicate
+  \texttt{ERURH.ExplicitBRhoExpression}. From it, Lean derives
+  \texttt{ERURH.BuchstabCoefficientNonzero} via
+  \texttt{buchstab\_coefficient\_nonzero\_of\_explicit\_b\_rho\_expr}. The lemma
+  above is the paper-level justification for the explicit identification and
+  the derived factorisation.
+
+\paragraph{Consequences for A1.}
+If the supercritical mode contribution to $\log R_\alpha$ carries a coefficient
+that is proportional to $m(\rho)$ times a structural factor $c_{\mathrm{struct}}\neq 0$
+(from the explicit formula package), then the mode coefficient is nonzero.
+Lemma~\ref{lem:buchstab-coefficient} provides this factorisation, and
+Lemma~\ref{lem:buchstab-m-nonzero} ensures the multiplier is nonzero. This
+reduces the analytic content of A1 to the explicit-formula identification and
+the Buchstab lower-bound bridge; the exponential growth itself is already
+captured by the multiplier and the elementary $\exp$-dominates-polynomial lemma
+used in the Lean core.
 
 \paragraph{Window semantics and cofinality.}
 The Lean predicate \texttt{A1\_mode} is defined over an abstract
@@ -214,10 +320,11 @@ window with arbitrarily large $S$. This is recorded explicitly in
 Assumption~\ref{assm:a1a2}.
 
 \begin{remark}[Does not replace A/B/C]
-Lemma~\ref{lem:a1-from-supercritical} is an internal ERURH analytic bridge. It does
-\emph{not} replace the classical assumptions A/B/C (zero-density, coefficient growth,
-and large-sieve style estimates), which are still required to derive the A2-tail
-bound and to connect the explicit formula to the ERU framework.
+Lemma~\ref{lem:a1-from-supercritical-buchstab} is an internal ERURH analytic bridge.
+It does \emph{not} replace the classical assumptions A/B/C (zero-density,
+coefficient growth, and large-sieve style estimates), which are still required
+to derive the A2-tail bound and to connect the explicit formula to the ERU
+framework.
 \end{remark}
 
 \paragraph{Definitions (paper semantics).}

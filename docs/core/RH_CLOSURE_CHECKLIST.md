@@ -4,8 +4,10 @@ Source of truth: `docs/core/NOAX_FINAL_STATEMENTS.txt` and `docs/core/ASSUMPTION
 
 ## Remaining requirements
 
-Primary route (legacy window-free) is listed below. The fixed-window route
-still has one open analytic item: `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`.
+Two alternative bridges are maintained. The fixed-window route is the main
+gate-driven path; the Buchstab route is experimental and paper-driven.
+
+## Main route (fixed-window)
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
@@ -25,23 +27,25 @@ still has one open analytic item: `ERURH.Alpha.ModeThresholdControlOnCtxRealWind
 | `AxiomsShimAccepted.h_inertia_of_E` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |
 | `AxiomsShimAccepted.h_RH_to_E` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |
 
-## Legacy route (experimental)
+## Experimental route (Buchstab)
 
-Legacy core (`RH_unconditional_core_legacy`) removes the fixed-window bridge and
-instead assumes the analytic A1 implication directly.
+The Buchstab core (`RH_unconditional_core_legacy`) removes the fixed-window bridge and
+instead assumes the analytic A1 implication directly via the Buchstab bridge.
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
-| `ERURH.A1_from_supercritical ERURH.Alpha.GeneratedRMSContext.ctx_real` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a1-from-supercritical`) | CERRADO (paper) |
+| `ERURH.A1_from_supercritical_buchstab ERURH.Alpha.GeneratedRMSContext.ctx_real` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemmas `a1-from-supercritical-buchstab`, `buchstab-coefficient`) | ABIERTO (paper) |
+| `ERURH.ExplicitBRhoExpression` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `buchstab-coefficient`, explicit-formula identification) | ABIERTO (paper) |
 
-## Legacy window-free route (abstract ctx)
+## Experimental route (Buchstab, abstract ctx)
 
 This route removes the fixed-window cofinality step by keeping the RMS context
 abstract. It requires the following analytic inputs for a chosen context `ctx`.
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
-| `ERURH.A1_from_supercritical ctx` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a1-from-supercritical`) | CERRADO (paper) |
+| `ERURH.A1_from_supercritical_buchstab ctx` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemmas `a1-from-supercritical-buchstab`, `buchstab-coefficient`) | ABIERTO (paper) |
+| `ERURH.ExplicitBRhoExpression` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `buchstab-coefficient`, explicit-formula identification) | ABIERTO (paper) |
 | `ERURH.A2Low_RMS ctx` | Paper (A/B/C) | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a2-from-abc`) | CERRADO (paper) |
 | `ERURH.A2Tail_RMS ctx` | Paper (A/B/C) | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a2-from-abc`) | CERRADO (paper) |
 | `ERURH.Alpha.RMS_envelope_closed ctx` | Gate/Certs (if ctx instantiated) | `lean/formal_proofs/ERURH/ERURH_GatesAlpha.lean` | ABIERTO |

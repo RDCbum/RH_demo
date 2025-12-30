@@ -5,12 +5,20 @@
   spectral decay (A), large-sieve bounds (B), and the uniform RMS tail bound (C)
   recorded in Theorem~\ref{thm:C}. These feed the A2 derivation
   (Lemma~\ref{lem:a2-from-abc}).
-  \item \textbf{Legacy window-free analytic bridges.} The paper proves the A1
-  implication as Lemma~\ref{lem:a1-from-supercritical} and derives A2-low/A2-tail
-  from the classical packages in Lemma~\ref{lem:a2-from-abc}. The exact Lean statements
-  are exported in \texttt{lean\_gap\_statements.txt}. These bridges do not replace
-  the classical A/B/C assumptions; they complement them by supplying the A1/A2 inputs
-  needed for the RMS-local contradiction.
+  \item \textbf{Route B bridges (two options).} We maintain two alternative analytic
+  bridges for Route~B, both exported in \texttt{lean\_gap\_statements.txt}:
+  \begin{itemize}
+    \item \textbf{Fixed-window bridge (main route).} The hypothesis
+    \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily} (Assumption
+    \ref{assm:threshold-control}) pairs with gate-verified constraints on
+    \texttt{ctx\_real}.
+    \item \textbf{Buchstab bridge (experimental).} The hypotheses
+    \texttt{ERURH.A1\_from\_supercritical\_buchstab} and
+    \texttt{ERURH.ExplicitBRhoExpression} are discharged by Lemmas
+    \ref{lem:a1-from-supercritical-buchstab} and \ref{lem:buchstab-coefficient}.
+  \end{itemize}
+  These bridges do not replace the classical A/B/C assumptions; they supply the
+  A1/A2 inputs needed for the RMS-local contradiction.
   \item \textbf{Classical / citable.} Zeta explicit-formula setup and classical implications (including the ERU inertia $\leftrightarrow$ $E$-bound links and RH $\Rightarrow$ $E$-bounds). The zero-parameterization objects $\beta,\gamma$ and coefficients $b_\rho$ remain part of this classical package.
   \item \textbf{Gate + certificates (alpha + RMS + beta).} The alpha certificates and RMS coverage are discharged by the reproducible pipeline (\texttt{verify\_gate.py}), which regenerates the rational bounds and certificate values and checks the Lean build. RMS A2-low/A2-tail are generated from frozen \texttt{rms\_context.json} via \texttt{tools/make\_rms\_context.py}. The beta inertia bundle is generated from frozen JSON via \texttt{tools/make\_beta\_certificate.py} and is discharged in the same gate.
 \end{itemize}

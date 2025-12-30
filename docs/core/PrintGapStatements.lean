@@ -1,5 +1,8 @@
-import ERURH.A1FromSupercriticalMode_Legacy
+import ERURH.ERURH_A1_BuchstabBridge
 import ERURH.Alpha.GeneratedRMSContext
+import ERURH.Alpha.ModeToRMSMode_WindowBridge_Legacy
 
-#print ERURH.A1_from_supercritical
-#check ERURH.A1_from_supercritical ERURH.Alpha.GeneratedRMSContext.ctx_real
+#check ERURH.A1_from_supercritical_buchstab ERURH.Alpha.GeneratedRMSContext.ctx_real
+#check ERURH.ModeRMSLowerBound_from_buchstab ERURH.Alpha.GeneratedRMSContext.ctx_real
+#check ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily
+#check ERURH.ExplicitBRhoExpression

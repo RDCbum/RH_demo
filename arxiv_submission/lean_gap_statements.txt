@@ -1,3 +1,4 @@
-def ERURH.A1_from_supercritical : ERURH.RMSLocalContext → Prop :=
-fun ctx => ∀ β > 1 / 2, ERURH.ERU_mode_beta β → ERURH.A1_mode ctx
-ERURH.A1_from_supercritical ERURH.Alpha.GeneratedRMSContext.ctx_real : Prop
+ERURH.A1_from_supercritical_buchstab ERURH.Alpha.GeneratedRMSContext.ctx_real : Prop
+ERURH.ModeRMSLowerBound_from_buchstab ERURH.Alpha.GeneratedRMSContext.ctx_real : ℝ → ℝ → Prop
+ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily : Prop
+ERURH.ExplicitBRhoExpression : Prop

@@ -10,6 +10,7 @@
 
 Step-by-step walkthrough: `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`.
 Referee FAQ: `docs/core/REFEREE_FAQ.md`.
+Route comparison: `docs/core/ROUTES_COMPARISON.md`.
 
 See:
 - `docs/core/P20_FINAL_STATEMENT.txt`
@@ -33,9 +34,13 @@ See:
 
 - Classical/citable assumptions bundled as `AxiomsShimAccepted`
   (see `arxiv_submission/assumptions_ledger.tex`).
+- Route B bridges (two alternatives):
+  - Fixed-window bridge: Assumption `assm:threshold-control` in
+    `arxiv_submission/ERURH_Conditional_Proof.tex`.
+  - Buchstab bridge: Lemmas `a1-from-supercritical-buchstab` and
+    `buchstab-coefficient` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
 - Legacy window-free analytic lemmas:
-  - `A1_from_supercritical` (Lemma `a1-from-supercritical` in
-    `arxiv_submission/ERURH_Conditional_Proof.tex`).
+  - `A1_from_supercritical` (Lemma `a1-from-supercritical`).
   - `A2-low`/`A2-tail` derivation from Theorems A/B/C (Lemma `a2-from-abc`).
 - Classical analytic packages:
   - Theorems A, B, C (spectral decay + large-sieve bounds) as stated in the paper.

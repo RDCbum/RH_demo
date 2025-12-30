@@ -43,7 +43,15 @@ theorem A1_mode_of_ModeRMSLowerBound
     simpa [mul_div_assoc] using this
   have hCM : c0 * M = thresh + c0 := by
     have hc0ne : (c0 : ℝ) ≠ 0 := ne_of_gt hc0
-    field_simp [M, thresh, hc0ne]
+    calc
+      c0 * M = c0 * (thresh / c0 + 1) := rfl
+      _ = c0 * (thresh / c0) + c0 := by ring
+      _ = thresh + c0 := by
+        have hmul : c0 * (thresh / c0) = thresh := by
+          calc
+            c0 * (thresh / c0) = (c0 * thresh) / c0 := by ring
+            _ = thresh := by simpa [hc0ne] using (mul_div_cancel_left₀ thresh hc0ne)
+        simpa [hmul]
   have hK : thresh < c0 * Real.exp ((β - (1/2 : ℝ)) * S) / (S ^ (2 : ℕ)) := by
     have h1 : thresh + c0 ≤ c0 * Real.exp ((β - (1/2 : ℝ)) * S) / (S ^ (2 : ℕ)) := by
       simpa [hCM] using hMul

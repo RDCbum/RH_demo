@@ -1,5 +1,7 @@
 import Mathlib
 
+open Filter
+
 /-!
 # Exponential dominates polynomial (ERURH helper)
 
@@ -14,7 +16,9 @@ lemma eventually_exp_div_pow_ge (a : ℝ) (ha : 0 < a) (k : ℕ) (M : ℝ) :
     ∃ S0 : ℝ, ∀ S ≥ S0, M ≤ Real.exp (a * S) / (S ^ k) := by
   have h :=
     (tendsto_exp_mul_div_rpow_atTop (k : ℝ) a ha)
-  rcases (tendsto_atTop.1 h) M with ⟨S0, hS0⟩
+  have h' : ∀ᶠ S in atTop, M ≤ Real.exp (a * S) / (S ^ (k : ℝ)) :=
+    (tendsto_atTop.1 h) M
+  rcases (eventually_atTop.1 h') with ⟨S0, hS0⟩
   refine ⟨S0, ?_⟩
   intro S hS
   have hS' : M ≤ Real.exp (a * S) / (S ^ (k : ℝ)) := hS0 S hS

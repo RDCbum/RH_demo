@@ -57,6 +57,9 @@ required for a complete Route B chain.
   non-vanishing is derived in Lean from the explicit-formula identification
   `ERURH.ExplicitBRhoExpression` using
   `buchstab_coefficient_nonzero_of_explicit_b_rho_expr`.
+  The paper-level explicit-formula assumption includes the nonvanishing of
+  the holomorphic factor $H(\rho)$ on nontrivial zeros, so $b_\rho \neq 0$ is
+  justified under Assumption `assm:explicit`.
 
 ## Legacy window-free route (abstract ctx)
 - The primary paper lemma is `a1-from-supercritical` (full proof in
@@ -88,3 +91,5 @@ required for a complete Route B chain.
 - `NumericCoverageAlpha` (RMS envelope closed), `A2Low_RMS`, and `A2Tail_RMS` are discharged from frozen
   `rms_context.json` via `tools/make_rms_context.py`.
 - `BetaInertiaAssumptions` is discharged from frozen beta JSON via `tools/make_beta_certificate.py` in `verify_gate.py`.
+  The arXiv bundle includes the frozen RMS context and RMS bridge JSON under
+  `arxiv_submission/data/releases/erurh-v2-core/formal/` for reproducibility.

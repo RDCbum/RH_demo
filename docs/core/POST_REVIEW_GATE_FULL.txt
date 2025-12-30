@@ -55,7 +55,7 @@ Hint: Omit it from the simp argument list.
   simp [P.E_is_error x, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [7514/7521] Replayed ERURH.NumberTheory.Chebyshev
+⚠ [7511/7521] Replayed ERURH.NumberTheory.Chebyshev
 warning: lean/formal_proofs/ERURH/NumberTheory/Chebyshev.lean:32:25: This simp argument is unused:
   add_left_comm
 
@@ -96,4 +96,4 @@ collected 1 item
 
 tests\test_smoke.py .                                                    [100%]
 
-============================== 1 passed in 0.02s ==============================
+============================== 1 passed in 0.03s ==============================

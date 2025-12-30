@@ -11,6 +11,7 @@ This ledger summarizes what is discharged by which external layer after beta gat
 - A: `Alpha.SpectralAssumptionsAlpha` and related spectral bounds (hb tail / pointwise data) from the paper A package.
 - B: `Alpha.LSGammaAssumptions` (LS_gamma_weak / LS_gamma_fine) from the paper B package.
 - C: uniform RMS tail control (Theorem C in `arxiv_submission/ERURH_Conditional_Proof.tex`), used to discharge A2-tail for the legacy window-free route.
+  Detailed proofs live in `arxiv_submission/Theorem_ABC_preprint.tex`.
 
 ## Analytic gap (Route B)
 Two bridges are maintained: the fixed-window bridge (primary route)

@@ -18,6 +18,12 @@ where
   m(rho) = (2^(-rho) - 3^(-rho)) / rho,
   2^(-rho) := exp(-rho * log 2).
 
+Normalization note: in the Lean formalization the explicit-formula
+identification uses `explicit_b_rho_expression = pi^{-rho/2} * Gamma(rho/2)`.
+Any additional holomorphic factors (e.g., `(rho-1)/rho` or a smooth `H(s)`) are
+absorbed into the abstract coefficient `b_rho` in the explicit-formula
+assumption.
+
 ## Nonvanishing
 If beta > 0, then m(rho) != 0. The key estimate is
 

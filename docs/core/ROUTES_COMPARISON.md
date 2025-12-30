@@ -3,7 +3,8 @@
 This note compares the two Route B bridges currently maintained in the repo.
 Both routes share the same Lean core (Plan B, gates, certificates) and differ
 only in the analytic bridge used to turn a supercritical mode into an A1-style
-RMS lower bound.
+RMS lower bound. The paper narrative treats fixed-window as primary and
+Buchstab as an alternative.
 
 ## Summary table
 

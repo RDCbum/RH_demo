@@ -16,6 +16,8 @@ and the gate validates finite certificates.
 **Objection.** The supercritical mode ⇒ A1\_mode step is not formalized in Lean.  
 **Response.** A1 is supplied by paper lemmas, with two explicit alternatives:
 fixed-window (primary route) and Buchstab (alternative route).  
+The gate only checks numeric side conditions for the fixed-window route; it
+does not prove the analytic implication from `ERU_mode_beta` to the threshold.
 **Evidence.**
 - `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption `assm:threshold-control`,
   Lemma `a1-from-supercritical-buchstab`).  

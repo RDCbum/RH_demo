@@ -72,14 +72,16 @@ The explicit formula for $\psi(x)$ can be written on the $s$-scale in the form
 \end{equation}
 where $\rho = \beta + i\gamma$ ranges over non-trivial zeros of $\zeta(s)$ and
 $\cdots$ denotes terms from trivial zeros and smooth test factors. We introduce
-coefficients
-\begin{equation}
-  b_\rho := \frac{\rho-1}{\rho}\,G(\rho), \qquad
-  G(s) := \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)H(s),
-\end{equation}
-with $H$ a holomorphic factor of at most polynomial growth in vertical strips.
-In the ERURH formalization, the existence of such an explicit formula is
-recorded as an external assumption (Assumption~\ref{assm:explicit}).
+abstract coefficients $b_\rho$ from the explicit formula. For the Lean
+formalization we fix a normalization in which the explicit-formula package
+identifies these coefficients with the prefactor
+\[
+  \mathrm{explicit\_b}_\rho(\rho) := \pi^{-\rho/2}\Gamma\!\left(\frac{\rho}{2}\right).
+\]
+Any additional holomorphic factor (e.g., a factor $H(s)$ of moderate growth or
+the prefactor $(\rho-1)/\rho$) is absorbed into the abstract coefficient
+$b_\rho$ and the explicit-formula assumption. This normalization matches the
+Lean definition \texttt{explicit\_b\_rho\_expression}.
 
 \subsection*{Notation summary}
 \begin{itemize}
@@ -177,8 +179,8 @@ For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
   \item \textbf{Fixed-window bridge (primary route).} The Lean hypothesis
   \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily} asserts that the
   supercritical-mode threshold can be chosen within the \texttt{ctx\_real} window
-  family. This pairs with gate checks for \texttt{ctx\_real\_logR\_alpha\_upper}
-  and the numeric threshold constraint (see Assumption~\ref{assm:threshold-control}).
+  family. This is a paper-level analytic assumption; the gate checks only the
+  numeric side conditions (see Assumption~\ref{assm:threshold-control}).
   \item \textbf{Buchstab bridge (alternative route).} The Lean hypothesis
   \texttt{ERURH.A1\_from\_supercritical\_buchstab} asserts the A1 mode lower bound
   in an abstract RMS context, based on the Buchstab multiplier and a structural
@@ -228,23 +230,26 @@ then there exists $\gamma\in\mathbb{R}$ such that
 \texttt{ModeRMSLowerBound\_from\_buchstab}$(\mathrm{ctx},\beta,\gamma)$ holds.
 Equivalently, this is the statement \texttt{ERURH.A1\_from\_supercritical\_buchstab}.
 \end{lemma}
-\begin{proof}[Proof (step-by-step)]
+\begin{proof}[Proof sketch (step-by-step outline)]
 \textbf{Step 1 (unpack the mode).} By \texttt{ERU\_mode\_beta}$(\beta)$ there exists
 $s_0$ such that for all $s\ge s_0$,
 $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
 
-\textbf{Step 2 (explicit formula coefficient).} The explicit formula package
-provides a supercritical mode term at some $\rho=\beta+i\gamma$ with coefficient
-proportional to $m(\rho)$ times a structural factor $c_{\mathrm{struct}}\neq 0$.
-This is the only external analytic input in the Buchstab bridge.
+\textbf{Step 2 (explicit formula coefficient; paper assumption).} The explicit
+formula package identifies the supercritical mode coefficient with
+the explicit prefactor (Assumption~\ref{assm:explicit}); combined with
+Lemma~\ref{lem:buchstab-coefficient}, this yields a factorization
+$b_\rho=c_{\mathrm{struct}}(\rho)\,m(\rho)$ with $c_{\mathrm{struct}}(\rho)\neq 0$.
+This is the central paper-level input in the Buchstab bridge.
 
 \textbf{Step 3 (non-vanishing of the multiplier).} Lemma~\ref{lem:buchstab-m-nonzero}
 gives $m(\beta+i\gamma)\neq 0$ for $\beta>0$, hence the mode coefficient is nonzero.
 
-\textbf{Step 4 (RMS lower bound).} By the definition of \texttt{RMS\_mode} for the
-mode contribution and the cofinality clause of Assumption~\ref{assm:a1a2}, one can
-choose windows with arbitrarily large base $S$ and obtain the stated lower bound
-with coefficient $|c_{\mathrm{struct}}\,m(\beta+i\gamma)|$.
+\textbf{Step 4 (RMS lower bound; uses cofinality).} By the definition of
+\texttt{RMS\_mode} for the mode contribution and the cofinality clause of
+Assumption~\ref{assm:a1a2}, one can choose windows with arbitrarily large base
+$S$ and obtain the stated lower bound with coefficient
+$|c_{\mathrm{struct}}\,m(\beta+i\gamma)|$.
 This is precisely the predicate
 \texttt{ModeRMSLowerBound\_from\_buchstab}$(\mathrm{ctx},\beta,\gamma)$.
 \end{proof}
@@ -544,7 +549,7 @@ Equivalently, the A2-low and A2-tail clauses of Assumption~\ref{assm:a1a2}
 hold for the chosen RMS context.
 \end{lemma}
 
-\begin{proof}[Proof (sketch)]
+\begin{proof}[Proof sketch (details in \texttt{Theorem\_ABC\_preprint.tex})]
 \textbf{A2-low.} The low part $\mathrm{RMS}_{\mathrm{low}}$ is supported on a
 finite set of spectral terms (e.g., $|\gamma|\le T_0$), together with the
 trivial-zero and smooth explicit-formula components. Under
@@ -560,6 +565,10 @@ $\mathrm{RMS}_{\mathrm{tail}}(w)^2 \le M_{\mathrm{tail}}^2$ on admissible
 windows. Taking $c_{\mathrm{tail}} := M_{\mathrm{tail}}$ yields the A2-tail
 bound.
 \end{proof}
+
+\noindent Full derivations (including constants and admissible ranges) are
+provided in \texttt{Theorem\_ABC\_preprint.tex}, which is included in the arXiv
+bundle for this submission.
 
 \paragraph{Lean correspondence for A2.}
 The paper inequalities
@@ -596,7 +605,9 @@ classical equivalence between RH and bounds on $E(x)$.
 \begin{assumption}[Explicit formula for the ERU observable]\label{assm:explicit}
 The ERU observable $\log R(s)$ and its derivative $J_{\mathrm{rel}}(s)$ admit an
 explicit formula of the form~\eqref{eq:explicit-form} in which the coefficients
-$b_\rho$ are expressed via $G(\rho)$ as above.
+$b_\rho$ are identified with the explicit prefactor
+$\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$ under the chosen
+normalization (any additional holomorphic factors are absorbed into $b_\rho$).
 \end{assumption}
 
 \begin{assumption}[Spectral decay: $H_b$]\label{assm:hb}
@@ -636,6 +647,21 @@ $c_{\mathrm{low}},c_{\mathrm{tail}},C_{\mathrm{env}}$ such that:
 \end{itemize}
 These abstract hypotheses are the analytic inputs of the Plan~B route.
 \end{assumption}
+
+\begin{assumption}[Fixed-window threshold control]\label{assm:threshold-control}
+Let $S_{\max}$ denote the maximal lower endpoint among the fixed
+\texttt{ctx\_real} windows (Lean: \texttt{windowMinMax}). For every
+$\beta>1/2$, if \texttt{ERU\_mode\_beta}$(\beta)$ holds then there exists
+$s_0\le S_{\max}$ such that for all $s\ge s_0$,
+$|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)$. This is precisely the Lean
+predicate \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily}.
+\end{assumption}
+
+\begin{remark}
+The gate certifies the numeric inequality $S_{\max}\ge s_0$ once the analytic
+threshold control assumption is supplied, but it does not prove the analytic
+implication from \texttt{ERU\_mode\_beta} to that bound.
+\end{remark}
 
 \begin{remark}
 In the legacy window-free route, A1 is supplied by

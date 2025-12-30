@@ -91,6 +91,7 @@ Build completed successfully (7521 jobs).
 platform win32 -- Python 3.11.9, pytest-8.3.5, pluggy-1.5.0
 rootdir: C:\dev\RH_demo_clean
 configfile: pyproject.toml
+plugins: anyio-4.12.0
 collected 1 item
 
 tests\test_smoke.py .                                                    [100%]

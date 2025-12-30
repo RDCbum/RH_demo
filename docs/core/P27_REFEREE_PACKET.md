@@ -36,8 +36,8 @@ See:
   (see `arxiv_submission/assumptions_ledger.tex`).
 - Route B bridges (primary + alternative):
   - Fixed-window bridge (primary): Assumption `assm:threshold-control` in
-    `arxiv_submission/ERURH_Conditional_Proof.tex`.
-  - Buchstab bridge (alternative): Lemmas `a1-from-supercritical-buchstab` and
+    `arxiv_submission/ERURH_Conditional_Proof.tex` (proof outline; full proof deferred).
+- Buchstab bridge (alternative): Lemmas `a1-from-supercritical-buchstab` and
     `buchstab-coefficient` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
 - Legacy window-free analytic lemmas:
   - `A1_from_supercritical_buchstab` plus `ExplicitBRhoExpression`

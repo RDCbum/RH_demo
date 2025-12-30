@@ -18,6 +18,8 @@ and the gate validates finite certificates.
 fixed-window (primary route) and Buchstab (alternative route).  
 The gate only checks numeric side conditions for the fixed-window route; it
 does not prove the analytic implication from `ERU_mode_beta` to the threshold.
+The paper includes only a proof outline for this step; a full proof is deferred
+to a supplement.
 **Evidence.**
 - `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption `assm:threshold-control`,
   Lemma `a1-from-supercritical-buchstab`).  

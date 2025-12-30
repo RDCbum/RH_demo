@@ -53,8 +53,9 @@ This map aligns remaining Lean hypotheses with paper statements and proof plans.
 
 **Dependencies**
 - Definition of `ERU_mode_beta`.
-- Analytic control of the threshold (external input) plus the gate-verified
-  numeric inequality $\mathrm{windowMinMax} \ge S_0$ from the analytic report.
+- Analytic control of the threshold (external input; proof sketch in paper)
+  plus the gate-verified numeric inequality $\mathrm{windowMinMax} \ge S_0$
+  from the analytic report.
 
 ## Buchstab bridge (alternative)
 

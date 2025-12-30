@@ -21,6 +21,7 @@ Buchstab as an alternative.
   (see `tools/check_rms_mode_bridge.py`, `tools/check_rms_context.py`).
 - Paper reference: Assumption `assm:threshold-control` in
   `arxiv_submission/ERURH_Conditional_Proof.tex`.
+  The paper includes a proof outline; a full proof is deferred.
 
 Procedure (main route):
 1) Run `python scripts/verify_gate.py` to regenerate and check all gate artifacts.

@@ -670,6 +670,19 @@ Only a proof sketch is provided in the text; a full proof is deferred to a
 supplement.
 \end{remark}
 
+\paragraph{Proof outline for Assumption~\ref{assm:threshold-control}.}
+\textbf{Step 1.} Unpack \texttt{ERU\_mode\_beta}$(\beta)$ to obtain a threshold
+$s_0$ such that $|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)$ for all $s\ge s_0$.
+
+\textbf{Step 2.} Establish an analytic upper bound on $s_0$ in terms of
+explicit-formula data (e.g., via a lower bound on the relevant mode coefficient
+and its contribution to $\log R_\alpha$). This is the only genuinely analytic
+input in the fixed-window bridge.
+
+\textbf{Step 3.} Use the gate-certified numerical inequality
+$S_{\max}\ge s_0$ (from \texttt{formal\_report\_analytic.json}) to conclude
+$s_0\le S_{\max}$, which is exactly Assumption~\ref{assm:threshold-control}.
+
 \begin{remark}
 In the legacy window-free route, A1 is supplied by
 Lemma~\ref{lem:a1-from-supercritical-buchstab}, while A2-low and A2-tail are discharged

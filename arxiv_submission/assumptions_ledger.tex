@@ -5,14 +5,14 @@
   spectral decay (A), large-sieve bounds (B), and the uniform RMS tail bound (C)
   recorded in Theorem~\ref{thm:C}. These feed the A2 derivation
   (Lemma~\ref{lem:a2-from-abc}).
-  \item \textbf{Route B bridges (two options).} We maintain two alternative analytic
+  \item \textbf{Route B bridges (primary + alternative).} We maintain two analytic
   bridges for Route~B, both exported in \texttt{lean\_gap\_statements.txt}:
   \begin{itemize}
-    \item \textbf{Fixed-window bridge (main route).} The hypothesis
+    \item \textbf{Fixed-window bridge (primary route).} The hypothesis
     \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily} (Assumption
     \ref{assm:threshold-control}) pairs with gate-verified constraints on
     \texttt{ctx\_real}.
-    \item \textbf{Buchstab bridge (experimental).} The hypotheses
+    \item \textbf{Buchstab bridge (alternative).} The hypotheses
     \texttt{ERURH.A1\_from\_supercritical\_buchstab} and
     \texttt{ERURH.ExplicitBRhoExpression} are discharged by Lemmas
     \ref{lem:a1-from-supercritical-buchstab} and \ref{lem:buchstab-coefficient}.

@@ -1,4 +1,4 @@
-# Route Comparison: Fixed-Window vs Buchstab (Experimental)
+# Route Comparison: Fixed-Window (Primary) vs Buchstab (Alternative)
 
 This note compares the two Route B bridges currently maintained in the repo.
 Both routes share the same Lean core (Plan B, gates, certificates) and differ
@@ -10,7 +10,7 @@ RMS lower bound.
 | Route | Lean gap (primary) | Paper anchor | Gate anchor | Notes |
 | --- | --- | --- | --- | --- |
 | Main (fixed-window) | `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily` | Assumption `assm:threshold-control` (No supercritical ERU modes) | `tools/check_rms_context.py` + `tools/check_rms_mode_bridge.py` | Requires window compatibility with a fixed ctx_real window family. |
-| Experimental (Buchstab) | `ERURH.A1_from_supercritical_buchstab ctx_real` + `ERURH.ExplicitBRhoExpression` | Lemmas `a1-from-supercritical-buchstab` and `buchstab-coefficient` | None (analytic) | Avoids fixed-window cofinality by using an explicit-formula factorization. |
+| Alternative (Buchstab) | `ERURH.A1_from_supercritical_buchstab ctx_real` + `ERURH.ExplicitBRhoExpression` | Lemmas `a1-from-supercritical-buchstab` and `buchstab-coefficient` | None (analytic) | Avoids fixed-window cofinality by using an explicit-formula factorization. |
 
 ## Main route (fixed-window)
 
@@ -26,15 +26,15 @@ Procedure (main route):
 2) Ensure the fixed-window hypothesis appears in `arxiv_submission/lean_gap_statements.txt`.
 3) Cite Assumption `assm:threshold-control` for the analytic bridge in the paper.
 
-## Experimental route (Buchstab)
+## Alternative route (Buchstab)
 
 - Lean bridge: `ERURH.A1_from_supercritical_buchstab ctx_real` and
   `ERURH.ExplicitBRhoExpression` from
   `lean/formal_proofs/ERURH/ERURH_A1_BuchstabBridge.lean`.
 - Paper references: Lemmas `a1-from-supercritical-buchstab` and
   `buchstab-coefficient` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
-- The coefficient non-vanishing (`ERURH.BuchstabCoefficientNonzero`) is derived
-  in Lean from `ERURH.ExplicitBRhoExpression` via
+- The coefficient non-vanishing is derived in Lean from
+  `ERURH.ExplicitBRhoExpression` via
   `buchstab_coefficient_nonzero_of_explicit_b_rho_expr`.
 
 Procedure (Buchstab route):

@@ -13,8 +13,8 @@ This ledger summarizes what is discharged by which external layer after beta gat
 - C: uniform RMS tail control (Theorem C in `arxiv_submission/ERURH_Conditional_Proof.tex`), used to discharge A2-tail for the legacy window-free route.
 
 ## Analytic gap (Route B)
-Two alternative bridges are maintained: the fixed-window bridge (main route)
-and the Buchstab bridge (experimental route). Only one is required for a
+Two bridges are maintained: the fixed-window bridge (primary route)
+and the Buchstab bridge (alternative route). Only one is required for a
 complete Route B chain.
 - explicit hypothesis `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily`
   (`lean/formal_proofs/ERURH/Alpha/ModeToRMSMode_WindowBridge_Legacy.lean:34`; paper Assumption
@@ -31,7 +31,7 @@ complete Route B chain.
   enforced by `tools/check_rms_context.py` (see `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`,
   `docs/core/P35_GATE_FULL.txt`).
 
-## Legacy experimental gap (Route B, existential window)
+## Alternative Buchstab gap (Route B, existential window)
 - explicit hypothesis `ERURH.A1_from_supercritical_buchstab ctx_real`
   (`lean/formal_proofs/ERURH/ERURH_A1_BuchstabBridge.lean`; exported in
   `arxiv_submission/lean_gap_statements.txt`; Lemma

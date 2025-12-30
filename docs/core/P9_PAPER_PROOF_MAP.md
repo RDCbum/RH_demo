@@ -56,7 +56,7 @@ This map aligns remaining Lean hypotheses with paper statements and proof plans.
 - Analytic control of the threshold (external input) plus the gate-verified
   numeric inequality $\mathrm{windowMinMax} \ge S_0$ from the analytic report.
 
-## Buchstab bridge (experimental)
+## Buchstab bridge (alternative)
 
 **Lean statements**
 - `ERURH.A1_from_supercritical_buchstab ctx`.

@@ -132,6 +132,10 @@ These files are produced by running \texttt{lake env lean docs/core/PrintMasterS
 
 {\small\VerbatimInput{lean_gap_statements.txt}}
 
+\noindent These gap statements are paper-level analytic obligations. They are
+proved in this manuscript (not in Lean) and must be verified by the usual
+referee process.
+
 \noindent Discharge map for \texttt{AxiomsShimAccepted}:
 
 \begin{center}
@@ -147,8 +151,9 @@ Field(s) & Discharge path \\
 \end{tabular}
 \end{center}
 
-\noindent Route B bridge assumptions (fixed-window or Buchstab) are listed in
-Section~\ref{sec:no-supercritical} and are not part of \texttt{AxiomsShimAccepted}.
+\noindent Route B bridge assumptions (primary fixed-window or alternative Buchstab)
+are listed in Section~\ref{sec:no-supercritical} and are not part of
+\texttt{AxiomsShimAccepted}.
 
 \noindent The beta layer is now an explicit hypothesis bundle (no frozen numeric input is present
 in \texttt{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger section below.
@@ -159,21 +164,22 @@ For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
 \end{proposition}
 
 \begin{proof}[Proof outline]
-  We maintain two alternative bridges for Route~B:
-  (i) a fixed-window bridge anchored to the concrete gate context \texttt{ctx\_real},
-  and (ii) a Buchstab bridge in an abstract RMS context. In both cases, once
+  We maintain two bridges for Route~B:
+  (i) a fixed-window bridge anchored to the concrete gate context \texttt{ctx\_real}
+  (primary route), and (ii) a Buchstab bridge in an abstract RMS context
+  (alternative route). In both cases, once
   \texttt{A1\_mode} is available, the A2-low/tail bounds, the RMS decomposition,
   and the closed envelope give a contradiction, so no supercritical modes exist.
 \end{proof}
 
-\subsubsection*{Two Route B bridges (fixed-window vs Buchstab).}
+\subsubsection*{Two Route B bridges (primary fixed-window vs alternative Buchstab).}
 \begin{itemize}
-  \item \textbf{Fixed-window bridge (main route).} The Lean hypothesis
+  \item \textbf{Fixed-window bridge (primary route).} The Lean hypothesis
   \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily} asserts that the
   supercritical-mode threshold can be chosen within the \texttt{ctx\_real} window
   family. This pairs with gate checks for \texttt{ctx\_real\_logR\_alpha\_upper}
   and the numeric threshold constraint (see Assumption~\ref{assm:threshold-control}).
-  \item \textbf{Buchstab bridge (experimental route).} The Lean hypothesis
+  \item \textbf{Buchstab bridge (alternative route).} The Lean hypothesis
   \texttt{ERURH.A1\_from\_supercritical\_buchstab} asserts the A1 mode lower bound
   in an abstract RMS context, based on the Buchstab multiplier and a structural
   coefficient. The explicit-formula identification is captured by the Lean
@@ -185,13 +191,16 @@ For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
 \hline
 Route & Lean gap & Discharge & Reference \\
 \hline
-Fixed-window & \texttt{ModeThresholdControlOnCtxRealWindowFamily} & Paper + gate & Assm.~\ref{assm:threshold-control} \\
-Buchstab & \texttt{A1\_from\_supercritical\_buchstab}, \texttt{ExplicitBRhoExpression} & Paper & Lemmas~\ref{lem:a1-from-supercritical-buchstab},~\ref{lem:buchstab-coefficient} \\
+Primary (fixed-window) & \texttt{ModeThresholdControlOnCtxRealWindowFamily} & Paper + gate & Assm.~\ref{assm:threshold-control} \\
+Alternative (Buchstab) & \texttt{A1\_from\_supercritical\_buchstab}, \texttt{ExplicitBRhoExpression} & Paper & Lemmas~\ref{lem:a1-from-supercritical-buchstab},~\ref{lem:buchstab-coefficient} \\
 \hline
 \end{tabular}
 \end{center}
 
-\subsubsection*{Buchstab bridge (window-free)}
+\noindent The main narrative below follows the primary fixed-window bridge; the
+Buchstab bridge is included as a documented alternative.
+
+\subsubsection*{Buchstab bridge (window-free, alternative route)}
 The remaining analytic gap in the Buchstab route is the bridge
 \texttt{ERURH.A1\_from\_supercritical\_buchstab} for a chosen RMS context, together
 with the explicit-formula identification \texttt{ERURH.ExplicitBRhoExpression}.

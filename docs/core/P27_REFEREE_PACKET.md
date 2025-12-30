@@ -34,10 +34,10 @@ See:
 
 - Classical/citable assumptions bundled as `AxiomsShimAccepted`
   (see `arxiv_submission/assumptions_ledger.tex`).
-- Route B bridges (two alternatives):
-  - Fixed-window bridge: Assumption `assm:threshold-control` in
+- Route B bridges (primary + alternative):
+  - Fixed-window bridge (primary): Assumption `assm:threshold-control` in
     `arxiv_submission/ERURH_Conditional_Proof.tex`.
-  - Buchstab bridge: Lemmas `a1-from-supercritical-buchstab` and
+  - Buchstab bridge (alternative): Lemmas `a1-from-supercritical-buchstab` and
     `buchstab-coefficient` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
 - Legacy window-free analytic lemmas:
   - `A1_from_supercritical_buchstab` plus `ExplicitBRhoExpression`

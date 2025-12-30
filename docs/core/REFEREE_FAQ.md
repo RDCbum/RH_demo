@@ -15,7 +15,7 @@ and the gate validates finite certificates.
 ## 2) "Where is A1 proved?"
 **Objection.** The supercritical mode ⇒ A1\_mode step is not formalized in Lean.  
 **Response.** A1 is supplied by paper lemmas, with two explicit alternatives:
-fixed-window (main route) and Buchstab (experimental route).  
+fixed-window (primary route) and Buchstab (alternative route).  
 **Evidence.**
 - `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption `assm:threshold-control`,
   Lemma `a1-from-supercritical-buchstab`).  
@@ -73,8 +73,8 @@ RMS context; there is no fixed-window cofinality hypothesis.
 
 ## 9) "Are you mixing routes?"
 **Objection.** The paper might mix the fixed-window route with the legacy one.  
-**Response.** The checklist separates the fixed-window route (main) from the
-Buchstab route (experimental) and marks their gaps explicitly.  
+**Response.** The checklist separates the fixed-window route (primary) from the
+Buchstab route (alternative) and marks their gaps explicitly.  
 **Evidence.**
 - `docs/core/RH_CLOSURE_CHECKLIST.md`.
 - `docs/core/ROUTES_COMPARISON.md`.

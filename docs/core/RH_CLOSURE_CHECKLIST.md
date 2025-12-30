@@ -4,8 +4,8 @@ Source of truth: `docs/core/NOAX_FINAL_STATEMENTS.txt` and `docs/core/ASSUMPTION
 
 ## Remaining requirements
 
-Two alternative bridges are maintained. The fixed-window route is the main
-gate-driven path; the Buchstab route is experimental and paper-driven.
+Two bridges are maintained. The fixed-window route is the primary
+gate-driven path; the Buchstab route is an alternative and paper-driven.
 
 ## Main route (fixed-window)
 
@@ -27,7 +27,7 @@ gate-driven path; the Buchstab route is experimental and paper-driven.
 | `AxiomsShimAccepted.h_inertia_of_E` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |
 | `AxiomsShimAccepted.h_RH_to_E` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CERRADO (paper) |
 
-## Experimental route (Buchstab)
+## Alternative route (Buchstab)
 
 The Buchstab core (`RH_unconditional_core_legacy`) removes the fixed-window bridge and
 instead assumes the analytic A1 implication directly via the Buchstab bridge.
@@ -37,7 +37,7 @@ instead assumes the analytic A1 implication directly via the Buchstab bridge.
 | `ERURH.A1_from_supercritical_buchstab ERURH.Alpha.GeneratedRMSContext.ctx_real` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemmas `a1-from-supercritical-buchstab`, `buchstab-coefficient`) | ABIERTO (paper) |
 | `ERURH.ExplicitBRhoExpression` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `buchstab-coefficient`, explicit-formula identification) | ABIERTO (paper) |
 
-## Experimental route (Buchstab, abstract ctx)
+## Alternative route (Buchstab, abstract ctx)
 
 This route removes the fixed-window cofinality step by keeping the RMS context
 abstract. It requires the following analytic inputs for a chosen context `ctx`.

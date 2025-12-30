@@ -37,6 +37,8 @@ through the repo. The central summary is `docs/core/P27_REFEREE_PACKET.md`.
   `docs/core/P16_LOGR_ALPHA_UPPER_CERT.md`.
 - [ ] `ctx_real_rms_mode_ge_semantic` certificate present.  
   Evidence: `docs/core/P15_NOTES.md`, `docs/core/P15_GATE_FULL.txt`.
+- [ ] Version/hash manifest present in bundle.  
+  Evidence: `arxiv_submission/reproducibility_manifest.txt`.
 
 ## 4) Editorial consistency
 

@@ -454,6 +454,11 @@ The reproducibility data release includes all numeric inputs used by the gate
 the scripts above and are distinct from the analytic assumptions listed in
 Assumption~\ref{assm:classical} and the lemma \texttt{A1\_from\_supercritical}.
 
+\paragraph{Reproducibility manifest.}
+The bundle includes \texttt{reproducibility\_manifest.txt} with tool versions
+and SHA256 hashes of the frozen numeric inputs used by the gate.
+{\small\VerbatimInput{reproducibility_manifest.txt}}
+
 \input{assumptions_ledger.tex}
 
 \\subsection*{Classical/citable lemmas used as assumptions}
@@ -673,6 +678,19 @@ $b_\rho$ are identified with the explicit prefactor
 $\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$ under the chosen
 normalization (any additional holomorphic factors are absorbed into $b_\rho$).
 \end{assumption}
+
+\begin{remark}[Mapping to the $H(s)$ factor]\label{rem:Hs-mapping}
+In the A/B/C preprint we write
+\[
+  b_\rho := \frac{\rho-1}{\rho}\,G(\rho),
+  \qquad
+  G(s) := \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)H(s).
+\]
+For ERURH, the factor $H(s)$ is the Mellin transform of the ERU kernel and
+auxiliary weights from the explicit formula. Under the normalization above,
+any additional holomorphic factors are absorbed into $b_\rho$, so the analytic
+assumptions on $H(s)$ in the preprint (H1–H3) apply verbatim.
+\end{remark}
 
 \begin{assumption}[Spectral decay: $H_b$]\label{assm:hb}
 The coefficient family $\{b_\rho\}$ satisfies:
@@ -928,6 +946,30 @@ Route~B closure. The machine-generated statements are included below.
 
 \noindent A field-by-field map from the Lean hypotheses to the paper proofs is
 maintained in the repository at \texttt{docs/core/P9\_PAPER\_PROOF\_MAP.md}.
+
+\section{Verification of H1--H3 for the ERU kernel}\label{app:h1h3}
+This short appendix explains why the hypotheses (H1)–(H3) used in
+\texttt{Theorem\_ABC\_preprint.tex} are reasonable for the ERU kernel in the
+ERURH setting.
+
+\paragraph{H1 (holomorphic model with gamma factor).}
+The explicit-formula package (Assumption~\ref{assm:explicit}) identifies the
+coefficients with the completed zeta prefactor
+$\pi^{-\rho/2}\Gamma(\rho/2)$ under the chosen normalization. The remaining
+kernel-dependent factor is absorbed into $H(s)$ in the preprint, matching the
+model $G(s)=\pi^{-s/2}\Gamma(s/2)H(s)$.
+
+\paragraph{H2 (polynomial growth of $H$).}
+For the ERU kernel, $H(s)$ is a Mellin transform of a smooth compactly
+supported test function and auxiliary weights. Such Mellin transforms are
+holomorphic in vertical strips and grow at most polynomially in $|\Im s|$.
+This is the standard setting of explicit-formula derivations (see
+\cite{Titchmarsh} and the remark on hypothesis verification in the preprint).
+
+\paragraph{H3 (Riemann--von Mangoldt and local zero counts).}
+The unit-interval zero count bound is a direct consequence of the classical
+Riemann--von Mangoldt formula and is standard; see \cite{Titchmarsh} and
+\cite{MontgomeryVaughan}. This is the only zero-distribution input in Theorem B.
 
 \begin{thebibliography}{9}
 \bibitem{Titchmarsh}

@@ -34,6 +34,8 @@ To make the run fully reproducible for a referee, capture:
   - `Get-FileHash data/docs/paper/rms_context.json`
   - `Get-FileHash data/docs/paper/rms_mode_bridge.json`
   - `Get-FileHash data/docs/paper/beta_certificate.json`
+The arXiv bundle also includes `arxiv_submission/reproducibility_manifest.txt`
+with these versions and hashes for convenience.
 
 What this verifies
 ------------------

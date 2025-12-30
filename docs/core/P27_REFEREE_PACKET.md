@@ -33,6 +33,7 @@ back here (see `docs/core/REFEREE_FAQ.md`).
 - `docs/core/P16_GATE_FULL.txt` (rms_mode bridge)
 - `docs/core/P35_GATE_FULL.txt` (full pipeline)
  - Repro instructions: `docs/core/ERURH_HOWTO_Reproduce.md`
+ - Bundle manifest (versions + hashes): `arxiv_submission/reproducibility_manifest.txt`
 
 **Route documentation**
 - `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`

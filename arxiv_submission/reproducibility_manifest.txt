@@ -1,0 +1,14 @@
+Reproducibility manifest
+Generated: 2025-12-30T18:48:20
+git_head: b716809c90d14cc7439ad9158219af56a0849e5a
+python: Python 3.11.9
+lake: Lake version 5.0.0-src+744f980 (Lean version 4.25.0-rc2)
+lean_toolchain: leanprover/lean4:v4.25.0-rc2
+os: Microsoft Windows 11 Home 10.0.26100
+
+SHA256 hashes:
+DB061BE2D5633EDFEE627500A70F100BBB9744A10C62A8D43336E174C6562EF6  data/docs/paper/rational_bounds.json
+D422545FCEC4AC951384491E6ACBDE6726E6CAB67E9E36E8BD05CEB090F4CB58  data/docs/paper/certificate_values.json
+A4440A79FA5F187BB838F9A746115787C1629A60E3D9D3BA14F0E5E2C80A2C8E  data/docs/paper/rms_context.json
+C0C8734119A250BA68A794991835123AA7C9030DB592AF212C90E4AC56284009  data/docs/paper/rms_mode_bridge.json
+79937ED5901C033B6179A5A70C2B8F1C2939F03B92D5D16116090F9FB5749D7C  data/docs/paper/beta_certificate.json

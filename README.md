@@ -74,6 +74,22 @@ python scripts/verify_gate.py --skip-pytests
 ```
 If tests are added later, omit `--skip-pytests` to run them.
 
+### Quick Verify (one-liner)
+Windows PowerShell:
+```powershell
+# build + gate (full)
+powershell -NoProfile -Command "$env:LAKE_JOBS=1; python scripts/verify_gate.py"
+
+# build + gate + arXiv bundle
+powershell -NoProfile -Command "$env:LAKE_JOBS=1; python scripts/verify_gate.py; .\\scripts\\make_arxiv_bundle.ps1"
+```
+
+### How to verify (step-by-step)
+1) Activate the venv and ensure the Lean toolchain is installed (see Installation above).
+2) Run the full gate: `python scripts/verify_gate.py`.
+3) Optional: rebuild the arXiv bundle with `scripts/make_arxiv_bundle.ps1`.
+4) Check `docs/core/ARXIV_RELEASE_CHECKLIST.md` for the latest verification capsule references.
+
 ## External Assumptions (high level)
 The Lean theorem formalizes a conditional implication of the form:
 

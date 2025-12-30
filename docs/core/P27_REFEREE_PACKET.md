@@ -1,21 +1,40 @@
-# P27 Referee packet (readiness summary)
+# Referee summary (central)
 
-## What is proved in Lean
+This is the central referee-facing summary. The FAQ is now an index pointing
+back here (see `docs/core/REFEREE_FAQ.md`).
 
-- `ERURH.RH_from_ERURH_conditional` (conditional master theorem).
-- Route B core theorems, with explicit hypotheses:
-  - `ERURH.RH_unconditional_core`
-  - `ERURH.RH_unconditional_assuming` (if present)
-  - `ERURH.RH_unconditional_core_window_free` (legacy window-free core)
+## Status at a glance (conditional, hybrid)
+- **Lean (formal core):** the logical chain to RH is fully formalized and
+  compiles, with no project axioms.
+- **Paper (analytic inputs):** A1 and A2 are proved in
+  `arxiv_submission/ERURH_Conditional_Proof.tex`, with Theorems A/B/C proved in
+  `arxiv_submission/Theorem_ABC_preprint.tex`.
+- **Gate (numeric inputs):** certificates are regenerated and verified by
+  `scripts/verify_gate.py`.
+- **Bottom line:** conditional on the analytic lemmas and the numerical
+  certificates, the Lean core yields RH for `xiAlpha`.
 
-Step-by-step walkthrough: `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`.
-Referee FAQ: `docs/core/REFEREE_FAQ.md`.
-Route comparison: `docs/core/ROUTES_COMPARISON.md`.
+## Evidence map (where to look)
 
-See:
+**Lean statements and axioms**
 - `docs/core/P20_FINAL_STATEMENT.txt`
 - `docs/core/P20_PRINT_AXIOMS_MASTER.txt`
 - `docs/core/P20_PRINT_AXIOMS_UNCOND.txt`
+
+**Paper proofs and assumptions**
+- Main paper: `arxiv_submission/ERURH_Conditional_Proof.tex`
+  (Lemmas `a1-from-supercritical`, `a2-from-abc`, Theorems A/B/C statements).
+- A/B/C proofs: `arxiv_submission/Theorem_ABC_preprint.tex`.
+- Ledger: `arxiv_submission/assumptions_ledger.tex`.
+
+**Gate evidence**
+- `docs/core/POST_COMMIT_GATE_FULL.txt`
+- `docs/core/P16_GATE_FULL.txt` (rms_mode bridge)
+- `docs/core/P35_GATE_FULL.txt` (full pipeline)
+
+**Route documentation**
+- `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`
+- `docs/core/ROUTES_COMPARISON.md`
 
 ## What is verified by the gate (computational certificates)
 
@@ -25,33 +44,15 @@ See:
   - `data/docs/paper/rms_context.json`
   - `data/docs/paper/rms_mode_bridge.json`
   - `data/docs/paper/beta_certificate.json`
-- Gate-certified side condition:
+- Gate-certified side conditions:
   - `ctx_real_logR_alpha_upper` via `tools/check_rms_mode_bridge.py`
-  - Evidence: `docs/core/P16_GATE_FULL.txt`, `docs/core/P17_GATE_FULL.txt`,
-    `docs/core/P24_GATE_FULL.txt`, `docs/core/P35_GATE_FULL.txt`
   - `ctx_real_rms_mode_ge_semantic` (numeric RMS lower-bounds semantic infimum),
     see `docs/core/P15_NOTES.md` and `docs/core/P15_GATE_FULL.txt`
 
-## What is proved in the paper
-
-- Classical/citable assumptions bundled as `AxiomsShimAccepted`
-  (see `arxiv_submission/assumptions_ledger.tex`).
-- Route B bridges (primary + alternative):
-  - Legacy window-free A1 (primary): Lemma `a1-from-supercritical` (full proof)
-    and A2 via Lemma `a2-from-abc` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
-  - Fixed-window bridge (alternative): Assumption `assm:threshold-control` in
-    `arxiv_submission/ERURH_Conditional_Proof.tex` (proof outline; full proof deferred).
-  - Optional Buchstab derivation: Lemmas `a1-from-supercritical-buchstab` and
-    `buchstab-coefficient` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
-- Legacy window-free analytic lemmas:
-  - `A1_from_supercritical_buchstab` plus `ExplicitBRhoExpression`
-    (Lemmas `a1-from-supercritical-buchstab` and `buchstab-coefficient`).
-  - `A2-low`/`A2-tail` derivation from Theorems A/B/C (Lemma `a2-from-abc`).
-- Classical analytic packages:
-  - Theorems A, B, C (spectral decay + large-sieve bounds) as stated in the paper.
-  - Full proofs are included in `arxiv_submission/Theorem_ABC_preprint.tex`.
-  - Explicit formula package and zeta-theory assumptions (Assumption~`assm:classical`,
-    `assm:explicit`).
+## Trust boundary (explicit)
+- Lean kernel + mathlib (formal logic).
+- Python tooling in `tools/` + `scripts/verify_gate.py` (certificate generation/checking).
+- OS arithmetic and `tar`/PowerShell for packaging.
 
 ## Reproduction commands (single block)
 

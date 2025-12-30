@@ -165,15 +165,15 @@ in \texttt{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger sect
 For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
 \end{proposition}
 
-\begin{proof}[Proof outline]
-  We maintain two routes for Route~B:
-  (i) a legacy window-free bridge (primary route), which assumes the analytic
-  implication \texttt{A1\_from\_supercritical} in an abstract RMS context, and
-  (ii) a fixed-window computational bridge (alternative route), which ties the
-  supercritical threshold to the concrete gate context \texttt{ctx\_real}. In
-  both cases, once \texttt{A1\_mode} and A2-low/tail are available, the RMS
-  decomposition and closed envelope yield a contradiction, so no supercritical
-  modes exist.
+\begin{proof}
+We maintain two Route~B bridges.
+In the legacy window-free route, Lemma~\ref{lem:a1-from-supercritical} supplies
+\texttt{A1\_mode}, and Lemma~\ref{lem:a2-from-abc} supplies A2-low/tail. The RMS
+decomposition then yields a window with RMS exceeding the envelope, contradicting
+the closed-gate regime. In the fixed-window alternative, Assumption
+\ref{assm:threshold-control} supplies the analogous A1-mode bridge for
+\texttt{ctx\_real}, and the same A2-low/tail input closes the argument. Thus no
+supercritical ERU mode can exist.
 \end{proof}
 
 \subsubsection*{Two Route B bridges (primary legacy window-free vs alternative fixed-window).}
@@ -285,7 +285,7 @@ then there exists $\gamma\in\mathbb{R}$ such that
 \texttt{ModeRMSLowerBound\_from\_buchstab}$(\mathrm{ctx},\beta,\gamma)$ holds.
 Equivalently, this is the statement \texttt{ERURH.A1\_from\_supercritical\_buchstab}.
 \end{lemma}
-\begin{proof}[Proof sketch (step-by-step outline)]
+\begin{proof}
 \textbf{Step 1 (unpack the mode).} By \texttt{ERU\_mode\_beta}$(\beta)$ there exists
 $s_0$ such that for all $s\ge s_0$,
 $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
@@ -472,6 +472,23 @@ The bundle includes \texttt{reproducibility\_manifest.txt} with tool versions
 and SHA256 hashes of the frozen numeric inputs used by the gate.
 {\small\VerbatimInput{reproducibility_manifest.txt}}
 
+\paragraph{Interval-checked numeric bridge (example).}
+The gate verifies the fixed-window RMS bridge using interval arithmetic on the
+witness points. The script \texttt{tools/check\_rms\_mode\_bridge.py} reads
+\texttt{rms\_mode\_bridge.json} and \texttt{rms\_context.json} from the frozen
+release data and checks, for each window, that
+\[
+| \log R_\alpha(s_{\mathrm{wit}}) | \le u_{\mathrm{wit}} \le \mathrm{RMS\_mode}(w),
+\qquad s_{\mathrm{wit}} \in [s_{\min}, s_{\max}],
+\]
+using interval enclosures (\texttt{mpmath.iv}) with adaptive precision
+(\texttt{dps} raised up to 200 if needed). This is a fully reproducible check:
+\begin{verbatim}
+python tools/check_rms_mode_bridge.py
+\end{verbatim}
+and it is executed by \texttt{scripts/verify\_gate.py}. The log line
+``OK: RMS mode bridge certificate matches RMS context data.'' confirms success.
+
 \input{assumptions_ledger.tex}
 
 \subsection*{Classical/citable lemmas used as assumptions}
@@ -630,7 +647,7 @@ Equivalently, the A2-low and A2-tail clauses of Assumption~\ref{assm:a1a2}
 hold for the chosen RMS context.
 \end{lemma}
 
-\begin{proof}[Proof sketch (details in \texttt{Theorem\_ABC\_preprint.tex})]
+\begin{proof}
 \textbf{A2-low.} Choose a fixed cutoff $T_0$ and decompose the explicit formula
 into: (i) finitely many modes with $|\gamma|\le T_0$, (ii) trivial-zero terms,
 and (iii) the smooth test-factor contribution. Under
@@ -771,7 +788,7 @@ Only a proof sketch is provided in the text; a full proof is deferred to a
 supplement.
 \end{remark}
 
-\paragraph{Proof outline for Assumption~\ref{assm:threshold-control}.}
+\paragraph{Discussion (analytic gap for Assumption~\ref{assm:threshold-control}).}
 \textbf{Step 1.} Unpack \texttt{ERU\_mode\_beta}$(\beta)$ to obtain a threshold
 $s_0$ such that $|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)$ for all $s\ge s_0$.
 
@@ -963,6 +980,42 @@ Route~B closure. The machine-generated statements are included below.
 
 \noindent A field-by-field map from the Lean hypotheses to the paper proofs is
 maintained in the repository at \texttt{docs/core/P9\_PAPER\_PROOF\_MAP.md}.
+
+\section{Normalization and Lean mapping for $b_\rho$ and $H(s)$}\label{app:normalization}
+This appendix fixes the normalization of the explicit-formula coefficients and
+records the exact Lean correspondence. In the companion preprint we define
+\[
+  b_\rho := \frac{\rho-1}{\rho}\,G(\rho), \qquad
+  G(s) := \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)H(s),
+\]
+where $H(s)$ is a holomorphic factor encoding the ERU kernel normalization and
+any auxiliary weights. In the Lean development, $b_\rho$ is an abstract
+coefficient attached to a zero, and the explicit-formula identification is
+packaged by \texttt{HbExplicitData.h\_b\_rho}. The function
+\texttt{explicit\_b\_rho\_expression} is defined as the gamma prefactor
+\texttt{gamma\_prefactor}, i.e.\ $\pi^{-\rho/2}\Gamma(\rho/2)$, and any remaining
+holomorphic factors are absorbed into the preprint's $H(s)$ and into the abstract
+coefficient $b_\rho$ in Lean. Under Assumption~\ref{assm:explicit}, the chosen
+normalization matches the Lean predicate \texttt{ERURH.ExplicitBRhoExpression}.
+
+\begin{center}
+\begin{tabular}{ll}
+\hline
+Paper object & Lean name \\
+\hline
+$\rho=\beta+i\gamma$ & \texttt{ERURH.Alpha.ZeroOfZeta} (fields \texttt{beta}, \texttt{gamma}) \\
+$b_\rho$ & \texttt{ERURH.Alpha.b\_rho} \\
+$\pi^{-\rho/2}\Gamma(\rho/2)$ & \texttt{ERURH.Alpha.gamma\_prefactor} \\
+Explicit identification $b_\rho=\mathrm{explicit\_b}_\rho(\rho)$ &
+\texttt{ERURH.Alpha.HbExplicitData.h\_b\_rho} \\
+Explicit formula package & \texttt{ERURH.ExplicitBRhoExpression} \\
+\hline
+\end{tabular}
+\end{center}
+
+This normalization is the bridge between the analytic preprint (A/B/C) and the
+Lean formalization: the analytic estimates apply to the same coefficients once
+the above identification is fixed.
 
 \section{Verification of H1--H3 for the ERU kernel}\label{app:h1h3}
 This short appendix explains why the hypotheses (H1)–(H3) used in

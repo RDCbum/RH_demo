@@ -25,12 +25,14 @@ back here (see `docs/core/REFEREE_FAQ.md`).
 - Main paper: `arxiv_submission/ERURH_Conditional_Proof.tex`
   (Lemmas `a1-from-supercritical`, `a2-from-abc`, Theorems A/B/C statements).
 - A/B/C proofs: `arxiv_submission/Theorem_ABC_preprint.tex`.
+- A/B/C proof audit: `docs/core/ABC_PROOF_AUDIT.md`.
 - Ledger: `arxiv_submission/assumptions_ledger.tex`.
 
 **Gate evidence**
 - `docs/core/POST_COMMIT_GATE_FULL.txt`
 - `docs/core/P16_GATE_FULL.txt` (rms_mode bridge)
 - `docs/core/P35_GATE_FULL.txt` (full pipeline)
+ - Repro instructions: `docs/core/ERURH_HOWTO_Reproduce.md`
 
 **Route documentation**
 - `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`

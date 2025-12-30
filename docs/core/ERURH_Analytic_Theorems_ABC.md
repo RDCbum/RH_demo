@@ -1,6 +1,6 @@
 # ERURH Analytic Theorems A–B–C (Plan B inputs)
 
-These three classical analytic theorems supply the external inputs for the Plan B route in the ERURH → RH conditional implication. They are stated here without proof. Each theorem makes explicit its dependence on standard analytic number theory: the classical explicit formula, Stirling bounds for Γ, bounds on ζ′/ζ in the critical strip, Riemann–von Mangoldt zero counting, and large-sieve–type decorrelation. Together, they deliver the RMS tail control needed for `RMSLocalHypothesis`.
+These three classical analytic theorems supply the external inputs for the Plan B route in the ERURH → RH conditional implication. They are stated here without proof. Full proofs are provided in `arxiv_submission/Theorem_ABC_preprint.tex` and audited in `docs/core/ABC_PROOF_AUDIT.md`. Each theorem makes explicit its dependence on standard analytic number theory: the classical explicit formula, Stirling bounds for Γ, bounds on ζ′/ζ in the critical strip, Riemann–von Mangoldt zero counting, and large-sieve–type decorrelation. Together, they deliver the RMS tail control needed for `RMSLocalHypothesis`.
 
 ## Theorem A (HbWeak\_L2\_tail — dyadic L² bound for \(b_\rho\))
 

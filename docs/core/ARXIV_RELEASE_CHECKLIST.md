@@ -1,6 +1,6 @@
 # arXiv Release Checklist
 
-- Commit: bd17698978a7187c855fdb1c1c77f76654196359
+- Commit: 50bdf283c0979a0d2b778e9e189acb8146649da5
 - Pipeline commands (README/AGENTS):
   - python tools/make_rational_bounds.py
   - python tools/make_certificate_values.py

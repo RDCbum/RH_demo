@@ -1,6 +1,6 @@
 # arXiv Release Checklist
 
-- Commit: 9fedd308779f483f03f387ec6a87c8ba0e80ce3c
+- Commit: 6fd3127b9c39c2ab91cb3e9b0f7d8d799b8e54d2
 - Pipeline commands (README/AGENTS):
   - python tools/make_rational_bounds.py
   - python tools/make_certificate_values.py
@@ -8,11 +8,11 @@
   - python scripts/verify_gate.py --skip-pytests
 - lake build ERURH: [x] verified in this release run
 - verify_gate.py --skip-pytests: [x] verified in this release run
-- verify_gate.py (full): [x] verified (clean run, docs/core/P35_GATE_FULL.txt)
+- verify_gate.py (full): [x] verified (clean run, docs/core/POST_MERGE_GATE_FULL.txt)
 - RB22 no_supercritical_beta attempt: [x] logged (docs/core/RB22_NoSupercritical_Try.log)
 - Paper build (CI or local): [ ] verified (CI: build-paper workflow or local latexmk)
 - Tarball contents: [x] verified (tar -tf dist/arxiv_submission.tar.gz)
-- ARXIV_TARBALL_LIST.txt: [x] logged (docs/core/ARXIV_TARBALL_LIST.txt)
+- ARXIV_TARBALL_LIST.txt: [x] logged (docs/core/POST_MERGE_TARBALL_LIST.txt)
 - NOAX bundle rebuild (assumptions ledger + axioms export): [x] verified
 - RB32 tarball list: [x] logged (docs/core/RB32_TARBALL_LIST.txt)
 - RB45 tarball list: [x] logged (docs/core/RB45_TARBALL_LIST.txt)

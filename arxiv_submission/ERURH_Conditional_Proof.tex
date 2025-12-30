@@ -143,10 +143,12 @@ Field(s) & Discharge path \\
 \texttt{xi\_bounds\_alpha}, \texttt{xi\_argument\_alpha} and their hypothesis bridges & Classical/citable implications (Assumptions Ledger). \\
 \texttt{rh\_from\_E\_alpha\_of\_hypotheses} & Classical/citable implications (Assumptions Ledger). \\
 \texttt{h\_inertia\_to\_E}, \texttt{h\_inertia\_of\_E}, \texttt{h\_RH\_to\_E} & Classical/citable implications (Assumptions Ledger). \\
-\texttt{A1\_from\_supercritical} & Legacy window-free analytic gap (supercritical mode $\Rightarrow$ A1\_mode for an abstract RMS context). \\
 \hline
 \end{tabular}
 \end{center}
+
+\noindent Route B bridge assumptions (fixed-window or Buchstab) are listed in
+Section~\ref{sec:no-supercritical} and are not part of \texttt{AxiomsShimAccepted}.
 
 \noindent The beta layer is now an explicit hypothesis bundle (no frozen numeric input is present
 in \texttt{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger section below.
@@ -628,7 +630,7 @@ These abstract hypotheses are the analytic inputs of the Plan~B route.
 
 \begin{remark}
 In the legacy window-free route, A1 is supplied by
-Lemma~\ref{lem:a1-from-supercritical}, while A2-low and A2-tail are discharged
+Lemma~\ref{lem:a1-from-supercritical-buchstab}, while A2-low and A2-tail are discharged
 by Lemma~\ref{lem:a2-from-abc} from the classical inputs.
 \end{remark}
 
@@ -719,7 +721,7 @@ inputs. The current status can be summarized as follows.
   framework for $b_\rho$ (Assumption~\ref{assm:explicit}).
   \item \textbf{Analytic inputs:} Theorems~\ref{thm:A}--\ref{thm:C} (spectral
   decay and large-sieve bounds) together with the analytic bridges
-  Lemma~\ref{lem:a1-from-supercritical} (A1) and Lemma~\ref{lem:a2-from-abc}
+  Lemma~\ref{lem:a1-from-supercritical-buchstab} (A1) and Lemma~\ref{lem:a2-from-abc}
   (A2). The remaining gap is the classical derivation of Theorems~\ref{thm:A}--\ref{thm:C}
   from standard zeta estimates.
   \item \textbf{Numeric inputs:} correctness of the finite certificates and

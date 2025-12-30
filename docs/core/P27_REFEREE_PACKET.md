@@ -40,7 +40,8 @@ See:
   - Buchstab bridge: Lemmas `a1-from-supercritical-buchstab` and
     `buchstab-coefficient` in `arxiv_submission/ERURH_Conditional_Proof.tex`.
 - Legacy window-free analytic lemmas:
-  - `A1_from_supercritical` (Lemma `a1-from-supercritical`).
+  - `A1_from_supercritical_buchstab` plus `ExplicitBRhoExpression`
+    (Lemmas `a1-from-supercritical-buchstab` and `buchstab-coefficient`).
   - `A2-low`/`A2-tail` derivation from Theorems A/B/C (Lemma `a2-from-abc`).
 - Classical analytic packages:
   - Theorems A, B, C (spectral decay + large-sieve bounds) as stated in the paper.

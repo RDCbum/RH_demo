@@ -33,11 +33,10 @@ nonzero. Combined with the exp-dominates-polynomial lemma already in Lean,
 this yields A1_mode for the chosen RMS context.
 
 ## What remains external
-The remaining external input is the identification of the mode coefficient with
-the explicit formula expression `explicit_b_rho_expression`. In Lean we prove
-that expression is nonzero for beta > 0, yielding
-`buchstab_coefficient_nonzero_of_explicit_b_rho_expr` and thus
-`BuchstabCoefficientNonzero` assuming the equality `b_rho = explicit_b_rho_expression`.
-The separate bridge that turns this coefficient into a concrete RMS_mode lower
-bound remains the explicit hypothesis `ModeRMSLowerBound_from_buchstab`, wrapped
-by `A1_from_supercritical_buchstab`.
+The remaining external input is the explicit formula identification of the
+mode coefficient, captured as the Prop `ExplicitBRhoExpression`. In Lean we
+prove the multiplier nonvanishing for beta > 0, so under this identification
+the Buchstab coefficient is nonzero. The separate bridge that turns this
+coefficient into a concrete RMS_mode lower bound remains the explicit
+hypothesis `ModeRMSLowerBound_from_buchstab`, wrapped by
+`A1_from_supercritical_buchstab`.

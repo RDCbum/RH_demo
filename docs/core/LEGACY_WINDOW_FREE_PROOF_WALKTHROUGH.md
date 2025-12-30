@@ -16,7 +16,8 @@ Scope: the abstract-context theorem
   - `lean/formal_proofs/ERURH/Alpha/RMS_Incompatibility.lean`
   - `lean/formal_proofs/ERURH/RH_Unconditional_Core_WindowFree.lean`
 - Paper (analytic lemmas):
-  - A1: Lemma `a1-from-supercritical` in `arxiv_submission/ERURH_Conditional_Proof.tex`
+  - A1: Lemmas `a1-from-supercritical-buchstab` and `buchstab-coefficient` in
+    `arxiv_submission/ERURH_Conditional_Proof.tex`
   - A2: Lemma `a2-from-abc` in `arxiv_submission/ERURH_Conditional_Proof.tex`
   - Classical A/B/C packages: same paper (Theorems A, B, C).
 - Gate (certificates and numeric coverage):
@@ -40,13 +41,13 @@ Scope: the abstract-context theorem
 - Evidence:
   - Lean: `lean/formal_proofs/ERURH/ERURH_A2Hypotheses.lean`.
 
-### Step 3: A1-from-supercritical (analytic lemma)
+### Step 3: A1-from-supercritical (Buchstab bridge)
 - Statement: a supercritical mode implies `A1_mode` for the chosen context:
   `A1_from_supercritical ctx`.
 - Why needed: this is the analytic bridge from `ERU_mode_beta` to the RMS local
   contradiction.
 - Evidence:
-  - Paper: Lemma `a1-from-supercritical` in
+  - Paper: Lemmas `a1-from-supercritical-buchstab` and `buchstab-coefficient` in
     `arxiv_submission/ERURH_Conditional_Proof.tex`.
   - Lean (statement only): `lean/formal_proofs/ERURH/A1FromSupercriticalMode_Legacy.lean`.
 
@@ -108,6 +109,6 @@ Scope: the abstract-context theorem
 ## Current status (legacy window-free route)
 
 - Lean: fully checks the logical chain.
-- Paper: must supply A1 (Lemma `a1-from-supercritical`) and A2 (Lemma `a2-from-abc`),
-  and the classical A/B/C theorems.
+- Paper: must supply A1 (Lemmas `a1-from-supercritical-buchstab` and
+  `buchstab-coefficient`) and A2 (Lemma `a2-from-abc`), and the classical A/B/C theorems.
 - Gate: supplies numeric certificates if a concrete context is instantiated.

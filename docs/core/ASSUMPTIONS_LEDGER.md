@@ -63,7 +63,7 @@ complete Route B chain.
   a concrete context is instantiated.
 - No window-cofinality or threshold-control lemma is needed in this route.
   The A1 lemma is stated in `arxiv_submission/ERURH_Conditional_Proof.tex`
-  (Lemma `a1-from-supercritical`).
+  (Lemma `a1-from-supercritical-buchstab`).
 
 ## Classical / citable
 - `ClassicalZetaAssumptions` (zeta zeros and classical explicit-formula framework).

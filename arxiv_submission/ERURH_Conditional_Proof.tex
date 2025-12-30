@@ -134,9 +134,9 @@ These files are produced by running \texttt{lake env lean docs/core/PrintMasterS
 
 {\small\VerbatimInput{lean_gap_statements.txt}}
 
-\noindent These gap statements are paper-level analytic obligations. They are
-proved in this manuscript (not in Lean) and must be verified by the usual
-referee process.
+\noindent These gap statements are paper-level analytic obligations. We provide
+proof sketches in this manuscript, with full proofs delegated to the companion
+preprint(s); they are subject to referee verification.
 
 \noindent Discharge map for \texttt{AxiomsShimAccepted}:
 
@@ -535,6 +535,10 @@ In particular, $K_{\mathrm{tail}}(S,L)^2\le M_{\mathrm{tail}}^2$ uniformly in
 $S$ and $L$, for a suitable constant $M_{\mathrm{tail}}>0$.
 \end{theorem}
 
+\noindent Proofs of Theorems~\ref{thm:A}--\ref{thm:C} are not reproduced here;
+see the companion preprint \texttt{Theorem\_ABC\_preprint.tex}. We record only
+the statements and use them as analytic inputs.
+
 \begin{lemma}[A2-low and A2-tail from classical inputs]\label{lem:a2-from-abc}
 Assume the explicit-formula package (Assumption~\ref{assm:explicit}) together
 with Theorems~\ref{thm:A}--\ref{thm:C}. Then there exist constants
@@ -550,20 +554,21 @@ hold for the chosen RMS context.
 \end{lemma}
 
 \begin{proof}[Proof sketch (details in \texttt{Theorem\_ABC\_preprint.tex})]
-\textbf{A2-low.} The low part $\mathrm{RMS}_{\mathrm{low}}$ is supported on a
-finite set of spectral terms (e.g., $|\gamma|\le T_0$), together with the
-trivial-zero and smooth explicit-formula components. Under
-Assumption~\ref{assm:explicit}, each term is uniformly bounded on admissible
-windows $[S,S+L]$ with $1\ll L\ll S^\alpha$, and the finite sum yields a
-uniform constant $c_{\mathrm{low}}$.
+\textbf{A2-low.} Choose a fixed cutoff $T_0$ and decompose the explicit formula
+into: (i) finitely many modes with $|\gamma|\le T_0$, (ii) trivial-zero terms,
+and (iii) the smooth test-factor contribution. Under
+Assumption~\ref{assm:explicit} and the explicit-formula normalization, each of
+these pieces is uniformly bounded on admissible windows $[S,S+L]$ with
+$1\ll L\ll S^\alpha$. The finite sum therefore yields a uniform constant
+$c_{\mathrm{low}}$ for $\mathrm{RMS}_{\mathrm{low}}(w)$.
 
-\textbf{A2-tail.} By definition, $\mathrm{RMS}_{\mathrm{tail}}(w)$ is the
-normalized RMS of the tail contribution on $w=[S,S+L]$, which matches
-$K_{\mathrm{tail}}(S,L)$ in Theorem~\ref{thm:C} (including the $s^{-2}$
-normalization). Hence Theorem~\ref{thm:C} gives a uniform bound
-$\mathrm{RMS}_{\mathrm{tail}}(w)^2 \le M_{\mathrm{tail}}^2$ on admissible
-windows. Taking $c_{\mathrm{tail}} := M_{\mathrm{tail}}$ yields the A2-tail
-bound.
+\textbf{A2-tail.} The tail RMS on $w=[S,S+L]$ is, by definition, the normalized
+mean square of the tail contribution with the $s^{-2}$ weight. This is exactly
+the quantity $K_{\mathrm{tail}}(S,L)$ in Theorem~\ref{thm:C}. Theorem~\ref{thm:C}
+is derived from Theorems~\ref{thm:A} and~\ref{thm:B} in the preprint, using the
+dyadic $L^2$ tail bound and the large-sieve inequality for separated exponentials.
+Thus $K_{\mathrm{tail}}(S,L)^2 \le M_{\mathrm{tail}}^2$ uniformly on admissible
+windows, and we take $c_{\mathrm{tail}} := M_{\mathrm{tail}}$.
 \end{proof}
 
 \noindent Full derivations (including constants and admissible ranges) are
@@ -658,9 +663,11 @@ predicate \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily}.
 \end{assumption}
 
 \begin{remark}
-The gate certifies the numeric inequality $S_{\max}\ge s_0$ once the analytic
-threshold control assumption is supplied, but it does not prove the analytic
-implication from \texttt{ERU\_mode\_beta} to that bound.
+This is a paper-level analytic assumption. The gate certifies the numeric
+inequality $S_{\max}\ge s_0$ once the threshold control is supplied, but it does
+not prove the analytic implication from \texttt{ERU\_mode\_beta} to that bound.
+Only a proof sketch is provided in the text; a full proof is deferred to a
+supplement.
 \end{remark}
 
 \begin{remark}

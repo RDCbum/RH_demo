@@ -37,6 +37,7 @@ back here (see `docs/core/REFEREE_FAQ.md`).
 **Route documentation**
 - `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`
 - `docs/core/ROUTES_COMPARISON.md`
+- Audit checklist: `docs/core/REFEREE_AUDIT_CHECKLIST.md`
 
 ## What is verified by the gate (computational certificates)
 

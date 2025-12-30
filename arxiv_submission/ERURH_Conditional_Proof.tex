@@ -349,9 +349,10 @@ $\Re(\rho)=\beta>0$. Therefore $m(\rho)\neq 0$.
   \]
 \end{lemma}
 \begin{proof}[Proof (step-by-step)]
-  \textbf{Step 1 (explicit formula identification).} By assumption,
-  $b_\rho=\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$ (see
-  Assumption~\ref{assm:explicit} and the field map in the assumptions ledger).
+  \textbf{Step 1 (explicit formula identification).} By
+  Assumption~\ref{assm:explicit},
+  $b_\rho=\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)H(\rho)$
+  with $H(\rho)\neq 0$ (see the field map in the assumptions ledger).
   Since $\Gamma$ has no zeros and $\pi^{-\rho/2}\neq 0$, we obtain
   $b_\rho\neq 0$ for $\beta>0$.
 
@@ -407,8 +408,11 @@ window; in Lean this is represented abstractly by a `Window` in `RMSLocalContext
 Define the RMS-mode contribution by
 \[
 \mathrm{RMS\_mode}(w) :=
-\left(\frac{1}{|I_w|}\int_{I_w} |\log R_\alpha(s)|^2\, ds\right)^{1/2}.
+\left(\frac{1}{|I_w|}\int_{I_w} |\log R_\alpha^{\mathrm{mode}}(s)|^2\, ds\right)^{1/2},
 \]
+where $\log R_\alpha^{\mathrm{mode}}$ denotes the supercritical mode component of
+$\log R_\alpha$. The total RMS of $\log R_\alpha$ is denoted
+$\mathrm{RMS}_\alpha(w)$ and is decomposed in Assumption~\ref{assm:a1a2}.
 For Route~B we use the unique window of \texttt{ctx\_real} (since $n\_windows=1$),
 written \texttt{ctx\_real\_window} in Lean.
 
@@ -476,7 +480,8 @@ and SHA256 hashes of the frozen numeric inputs used by the gate.
 The gate verifies the fixed-window RMS bridge using interval arithmetic on the
 witness points. The script \texttt{tools/check\_rms\_mode\_bridge.py} reads
 \texttt{rms\_mode\_bridge.json} and \texttt{rms\_context.json} from the frozen
-release data and checks, for each window, that
+release data (bundled under \texttt{data/releases/erurh-v2-core/formal/}) and
+checks, for each window, that
 \[
 | \log R_\alpha(s_{\mathrm{wit}}) | \le u_{\mathrm{wit}} \le \mathrm{RMS\_mode}(w),
 \qquad s_{\mathrm{wit}} \in [s_{\min}, s_{\max}],
@@ -709,8 +714,9 @@ classical equivalence between RH and bounds on $E(x)$.
 The ERU observable $\log R(s)$ and its derivative $J_{\mathrm{rel}}(s)$ admit an
 explicit formula of the form~\eqref{eq:explicit-form} in which the coefficients
 $b_\rho$ are identified with the explicit prefactor
-$\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$ under the chosen
-normalization (any additional holomorphic factors are absorbed into $b_\rho$).
+$\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)H(\rho)$ under the
+chosen normalization, where $H$ is holomorphic and nonvanishing on nontrivial
+zeros; any additional holomorphic factors are absorbed into $H$.
 \end{assumption}
 
 \begin{remark}[Mapping to the $H(s)$ factor]\label{rem:Hs-mapping}
@@ -722,8 +728,9 @@ In the A/B/C preprint we write
 \]
 For ERURH, the factor $H(s)$ is the Mellin transform of the ERU kernel and
 auxiliary weights from the explicit formula. Under the normalization above,
-any additional holomorphic factors are absorbed into $b_\rho$, so the analytic
-assumptions on $H(s)$ in the preprint (H1–H3) apply verbatim.
+any additional holomorphic factors are absorbed into $H$, and we assume $H(\rho)\neq 0$
+for nontrivial zeros, so the analytic assumptions on $H(s)$ in the preprint
+(H1–H3) apply verbatim.
 \end{remark}
 
 \begin{assumption}[Spectral decay: $H_b$]\label{assm:hb}

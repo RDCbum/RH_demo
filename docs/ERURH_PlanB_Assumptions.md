@@ -11,13 +11,14 @@ ERURH Plan B Assumptions (Conditional Route)
 -------------------------------------------------------
 - ExplicitFormulaERU: ψ/E/logR/jRel decomposition compatible with the ERU observable.
 - H_b: decay of the coefficients b_ρ associated to zeros in the ERU explicit formula.
-- A1-mode: growth lemma for modes with β > 1/2 (mode_RMS_lower_bound).
+- A1-mode: growth lemma for modes with β > 1/2 (paper Lemma `a1-from-supercritical`).
 
 3. Large-sieve and RMS tail (H_LS + H_A2)
 -----------------------------------------
 - LS_gamma_simple_RMS: L-average bound for Σ b_j e^{iγ_j u} on [0, L].
 - A2Low_RMS: RMS control for the low part of jRel.
-- A2Tail_RMS: RMS control for the tail part (β > 1/2, |γ| > T) via H_b + LS_γ + normalisation.
+- A2Tail_RMS: RMS control for the tail part (β > 1/2, |γ| > T) via A/B/C
+  (see Lemma `a2-from-abc` in `arxiv_submission/ERURH_Conditional_Proof.tex`).
 
 4. Certificates and numeric coverage (H_certs + num)
 ----------------------------------------------------
@@ -26,7 +27,8 @@ ERURH Plan B Assumptions (Conditional Route)
 
 5. Summary: PlanB_Cond assumptions ⇒ RH
 ---------------------------------------
-- Assume H_ζ,standard + H_ERU,explicit + H_LS + H_A2 + H_certs+num. Then, via the Lean master theorem and the RMS/gates bridge, we obtain RiemannHypothesis xiAlpha.
+- Assume H_ζ,standard + H_ERU,explicit + H_LS + H_A2 + H_certs+num. Then, via the
+  Lean master theorem and the RMS/gates bridge, we obtain RiemannHypothesis xiAlpha.
 
 6. External analytic assumptions (classical ζ-theory)
 -----------------------------------------------------

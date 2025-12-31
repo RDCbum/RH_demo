@@ -19,10 +19,10 @@ where
   2^(-rho) := exp(-rho * log 2).
 
 Normalization note: in the Lean formalization the explicit-formula
-identification uses `explicit_b_rho_expression = pi^{-rho/2} * Gamma(rho/2)`.
-Any additional holomorphic factors (e.g., `(rho-1)/rho` or a smooth `H(s)`) are
-absorbed into the abstract coefficient `b_rho` in the explicit-formula
-assumption.
+identification uses `explicit_b_rho_expression = pi^{-rho/2} * Gamma(rho/2) * H(rho)`,
+where `H` is a holomorphic factor that is assumed nonvanishing on nontrivial
+zeros (paper Assumption `assm:explicit`). Any additional holomorphic factors
+(e.g., `(rho-1)/rho`) are absorbed into `H`.
 
 ## Nonvanishing
 If beta > 0, then m(rho) != 0. The key estimate is

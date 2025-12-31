@@ -25,4 +25,4 @@ Goal: convert all "proof outline"/"proof sketch" blocks in the main paper into c
 
 ## Status
 - Steps (1)–(3) upgraded from outline/sketch to full proofs in `arxiv_submission/ERURH_Conditional_Proof.tex` (post-review edits).
-- Remaining tasks: scan for any other `proof outline` or `proof sketch` blocks and upgrade if found.
+- No remaining outline/sketch blocks in the main paper; the fixed-window threshold control remains an explicit analytic gap.

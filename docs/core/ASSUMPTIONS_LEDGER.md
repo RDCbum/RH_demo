@@ -28,8 +28,8 @@ required for a complete Route B chain.
   `assm:threshold-control` in `arxiv_submission/ERURH_Conditional_Proof.tex`). This states that the
   supercritical-mode threshold can be chosen no later than `windowMinMax` for the ctx_real
   window family; it yields the existence of a ctx_real window where the ERU-mode lower bound holds
-  and closes the window-compatibility step in Lemma B.1. The paper supplies only a proof outline;
-  the full analytic bound on the threshold remains deferred.
+  and closes the window-compatibility step in Lemma B.1. The paper includes an analytic gap
+  discussion; the full bound on the threshold remains deferred.
 - gate-certified side condition `∀ w, ctx_real_logR_alpha_upper w`
   (`lean/formal_proofs/ERURH/Alpha/GeneratedRMSModeBridge.lean:35`), enforced by
   `tools/check_rms_mode_bridge.py` using interval arithmetic

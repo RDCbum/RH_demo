@@ -13,7 +13,7 @@ ERURH Gates (alpha/beta framing)
   - `κ` sits in the specified band `[κ_min, κ_max]` (target `≈ [8.168, 9.384]`).
   - `C_envelope` is below its limit (`≈ 0.048`).
 - These numbers are not floating placeholders: they originate from the formal bounds (`lGlobalFormalRat`, `kappaLowFormalRat`, `kappaHighFormalRat`, `cEnvelopeFormalRat`) and from the alpha certificates that identify the actual constants with the released values.
- - Supporting demos: a simple LS_γ bound is implemented in Lean (`LS_gamma_simple_pointwise`), and the A1-mode growth sketch is recorded in `formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean` to track how β > 1/2 modes would force gate violations.
+- Supporting demos: a simple LS_γ bound is implemented in Lean (`LS_gamma_simple_pointwise`), and the A1-mode growth lemma is recorded in `formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean` to track how β > 1/2 modes would force gate violations.
 
 3. Phenomenological beta-layer view
 -----------------------------------

@@ -24,10 +24,10 @@ so cofinality is part of the window model rather than an extra hypothesis.
 
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
-| `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption `assm:threshold-control`, proof outline) | OPEN (paper; proof sketch) |
-| `∀ w, ctx_real_logR_alpha_upper w` | Gate | `tools/check_rms_mode_bridge.py`; `docs/core/P16_GATE_FULL.txt`; `docs/core/P17_GATE_FULL.txt`; `docs/core/P35_GATE_FULL.txt`; `docs/core/P16_LOGR_ALPHA_UPPER_CERT.md` | CLOSED (gate) |
-| `ctx_real_rms_mode_ge_semantic` | Gate | `docs/core/P15_NOTES.md` (bridge cert), `docs/core/P15_GATE_FULL.txt` | CLOSED (gate) |
-| `windowMinMax ≥ s0` (formal report) | Gate | `tools/check_rms_context.py`; `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`; `docs/core/P35_GATE_FULL.txt` | CLOSED (gate) |
+| `ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption `assm:threshold-control`, analytic gap discussion) | OPEN (paper; full proof deferred) |
+| `∀ w, ctx_real_logR_alpha_upper w` | Gate | `tools/check_rms_mode_bridge.py`; `docs/core/P16_LOGR_ALPHA_UPPER_CERT.md`; `docs/core/POST_MERGE_GATE_FULL.txt` | CLOSED (gate) |
+| `ctx_real_rms_mode_ge_semantic` | Gate | `docs/core/P15_NOTES.md` (bridge cert), `docs/core/P15_GATE_FULL.txt`; `docs/core/POST_MERGE_GATE_FULL.txt` | CLOSED (gate) |
+| `windowMinMax ≥ s0` (formal report) | Gate | `tools/check_rms_context.py`; `docs/core/P26_WINDOWMIN_THRESHOLD_CERT.md`; `docs/core/POST_MERGE_GATE_FULL.txt` | CLOSED (gate) |
 | `AxiomsShimAccepted.alphaInterfacesBase` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CLOSED (paper) |
 | `AxiomsShimAccepted.explicit_alpha_via_stages` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CLOSED (paper) |
 | `AxiomsShimAccepted.xi_bounds_alpha` | Paper | `arxiv_submission/assumptions_ledger.tex` (AxiomsShimAccepted field map) | CLOSED (paper) |

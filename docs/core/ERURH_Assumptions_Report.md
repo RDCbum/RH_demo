@@ -1,6 +1,9 @@
 ERURH Assumptions Report (Conditional RH)
 =========================================
 
+Status: historical snapshot. For the current assumption mapping and gap framing,
+see `docs/core/ASSUMPTIONS_LEDGER.md` and `arxiv_submission/assumptions_ledger.tex`.
+
 This report lists the external assumption bundles used by the conditional ERURH→RH theorem, their Lean names, roles, and status. All bundles are assumed classical or numeric inputs; the Lean development does not yet formalize the full analytic theory that would discharge them.
 
 ClassicalZetaAssumptions

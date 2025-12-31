@@ -1,6 +1,10 @@
 ERURH Axioms Map (Alpha Layer)
 ==============================
 
+Status: historical map of external assumptions. For the current NOAX framing and
+route gaps, see `docs/core/ASSUMPTIONS_LEDGER.md` and
+`docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 This note lists the external assumptions and key lemmas used by the ERURH alpha development, together with their Lean locations and roles in the chain “certificates → inertia → RH”.
 
 Main axioms and predicates

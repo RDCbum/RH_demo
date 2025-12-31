@@ -1,6 +1,9 @@
 ERURH Axioms and Analytic Gaps
 ==============================
 
+Status: historical snapshot. For the current NOAX state and gap framing, see
+`docs/core/ASSUMPTIONS_LEDGER.md` and `docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 This note lists the axioms (Lean `axiom` exports) and remaining `sorry` gaps that affect the ERURH → RH implication. Paths are workspace-relative.
 
 External assumption packages (inputs, not proved internally)

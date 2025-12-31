@@ -6,9 +6,9 @@ through the repo. The central summary is `docs/core/P27_REFEREE_PACKET.md`.
 ## 1) Formal core (Lean)
 
 - [ ] Build succeeds: `LAKE_JOBS=1 lake build ERURH`  
-  Evidence: `docs/core/POST_COMMIT_BUILD.txt`.
+  Evidence: `docs/core/POST_MERGE_BUILD.txt`.
 - [ ] No project axioms: NOAX guard passes.  
-  Evidence: `docs/core/POST_COMMIT_GATE_FULL.txt`.
+  Evidence: `docs/core/POST_MERGE_GATE_FULL.txt`.
 - [ ] Master theorem axioms are Lean-core only.  
   Evidence: `arxiv_submission/lean_master_axioms.txt`.
 - [ ] Gap statements are exported (no hidden hypotheses).  
@@ -29,11 +29,11 @@ through the repo. The central summary is `docs/core/P27_REFEREE_PACKET.md`.
 ## 3) Gate reproducibility (numeric certificates)
 
 - [ ] Gate pipeline runs cleanly (no skips).  
-  Evidence: `docs/core/POST_COMMIT_GATE_FULL.txt`.
+  Evidence: `docs/core/POST_MERGE_GATE_FULL.txt`.
 - [ ] RMS envelope bound matches formal constant.  
-  Evidence: `docs/core/POST_COMMIT_GATE_FULL.txt`.
+  Evidence: `docs/core/POST_MERGE_GATE_FULL.txt`.
 - [ ] `ctx_real_logR_alpha_upper` verified by interval arithmetic.  
-  Evidence: `docs/core/POST_COMMIT_GATE_FULL.txt`,
+  Evidence: `docs/core/POST_MERGE_GATE_FULL.txt`,
   `docs/core/P16_LOGR_ALPHA_UPPER_CERT.md`.
 - [ ] `ctx_real_rms_mode_ge_semantic` certificate present.  
   Evidence: `docs/core/P15_NOTES.md`, `docs/core/P15_GATE_FULL.txt`.
@@ -64,7 +64,7 @@ python tools/make_beta_certificate.py
 LAKE_JOBS=1 lake build ERURH
 python scripts/verify_gate.py
 
-lake env lean docs/core/PrintFinalStatement.lean > docs/core/NOAX_FINAL_STATEMENTS.txt
+lake env lean docs/core/PrintFinalStatement.lean > docs/core/POST_MERGE_FINAL_STATEMENTS.txt
 lake env lean docs/core/PrintGapStatements.lean > arxiv_submission/lean_gap_statements.txt
 lake env lean docs/core/PrintMasterAxioms.lean > arxiv_submission/lean_master_axioms.txt
 ```

@@ -1,6 +1,10 @@
 ERURH Plan B Gaps Map (Lean status)
 ===================================
 
+Status: historical snapshot of earlier Plan B gap tracking. See
+`docs/core/ASSUMPTIONS_LEDGER.md` and `docs/core/RH_CLOSURE_CHECKLIST.md` for the
+current gap list and route framing.
+
 Explicit formula layer (ERURH_ExplicitFormulaAlpha.lean)
 -------------------------------------------------------
 - Proven/defined: abstract types and constants: `ZeroOfZeta`, `beta`, `gamma`, `is_tail_zero`, `b_rho`; Prop `H_b`; package `SpectralAssumptionsAlpha` carrying `H_b`.

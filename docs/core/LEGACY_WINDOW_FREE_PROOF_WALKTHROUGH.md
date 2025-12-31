@@ -61,7 +61,8 @@ Scope: the abstract-context theorem
 - Evidence:
   - Paper: Lemma `a2-from-abc` in
     `arxiv_submission/ERURH_Conditional_Proof.tex`.
-  - Background: Theorems A/B/C (same paper).
+  - Background: Theorems A/B/C in the companion preprint
+    `arxiv_submission/Theorem_ABC_preprint.tex`.
 
 ### Step 5: A1 + A2 imply RMS violation
 - Statement: `RMSLocalHypothesis_of_A2` shows that A1/A2 imply an RMS window

@@ -1,6 +1,9 @@
 ERURH Plan B Conditional Theorem (Mini-Paper)
 =============================================
 
+Status: historical mini-paper. For the current status and gaps, see
+`docs/core/ASSUMPTIONS_LEDGER.md` and `docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 1. Introduction and context
 ---------------------------
 - Plan B gives an RMS/gates route to RH in the ERURH-alpha layer: combine growth of modes with β > 1/2, A2 low/tail bounds, and closed gates to exclude supercritical modes.
@@ -14,7 +17,7 @@ ERURH Plan B Conditional Theorem (Mini-Paper)
 3. Gates and certificates
 -------------------------
 - `RenormGateClosed` and `EnergyGateClosed` capture the regime where envelope/κ/global energy meet their caps (see `docs/notes/ERURH_Gates_Conceptual.md`).
-- Correct alpha certificates + the assumed numeric coverage (`NumericCoverageAlpha` placeholder) ⇒ gates closed (formalised in `ERURH_GatesAlpha.lean`).
+- Correct alpha certificates + numeric coverage (`NumericCoverageAlpha`, discharged by gate data for `ctx_real`) ⇒ gates closed (formalised in `ERURH_GatesAlpha.lean`).
 
 4. Plan B analytic package
 --------------------------

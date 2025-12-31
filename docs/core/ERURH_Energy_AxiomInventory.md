@@ -1,5 +1,8 @@
 # ERURH Energy/Inertia Axiom Inventory (Alpha)
 
+Status: historical inventory. For the current certificate state and assumptions,
+see `docs/core/ASSUMPTIONS_LEDGER.md` and `arxiv_submission/assumptions_ledger.tex`.
+
 This note summarizes the energy- and inertia-related axioms used in the alpha layer, their locations, the current certificate interfaces, and the plan to eliminate legacy assumptions.
 
 ## 1. Axiom map by file

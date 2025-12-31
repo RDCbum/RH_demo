@@ -1,6 +1,10 @@
 ERURH Proof Status (Alpha Route to RH)
 =====================================
 
+Status: historical snapshot. For the current NOAX framing and Route B gap
+status, see `docs/core/ASSUMPTIONS_LEDGER.md` and
+`docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 ## 1. Overview: the ERURH-alpha route to RH
 
 ERURH-alpha packages four finite certificates—GlobalEnergy, KernelBlowup, BridgeInertia, StrongInertia. In Lean there is a master implication: if these four alpha certificates are correct, then `RiemannHypothesis xiAlpha` holds. The ERU layer restates classical ψ/logR/jRel conditions in an energy/inertia language, but the equivalence to RH depends on classical spectral analysis (explicit formula, etc.). The goal is to instantiate the certificates with exact data (rational constants, windows, tails) and analytic proofs so that RH is obtained in Lean without extra axioms.

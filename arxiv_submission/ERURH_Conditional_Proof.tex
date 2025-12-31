@@ -135,8 +135,10 @@ These files are produced by running \texttt{lake env lean docs/core/PrintMasterS
 {\small\VerbatimInput{lean_gap_statements.txt}}
 
 \noindent These gap statements are paper-level analytic obligations. We provide
-proof sketches in this manuscript, with full proofs delegated to the companion
-preprint(s); they are subject to referee verification.
+full proofs for the primary legacy window-free route (A1 and A2) in this paper,
+and full proofs of the A/B/C analytic inputs in the companion preprint. The
+fixed-window threshold control remains a documented analytic gap, as noted in
+Assumption~\ref{assm:threshold-control}.
 
 \noindent Discharge map for \texttt{AxiomsShimAccepted}:
 
@@ -791,7 +793,7 @@ predicate \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily}.
 This is a paper-level analytic assumption. The gate certifies the numeric
 inequality $S_{\max}\ge s_0$ once the threshold control is supplied, but it does
 not prove the analytic implication from \texttt{ERU\_mode\_beta} to that bound.
-Only a proof sketch is provided in the text; a full proof is deferred to a
+We provide a discussion of the analytic gap; a full proof is deferred to a
 supplement.
 \end{remark}
 

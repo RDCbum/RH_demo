@@ -8,7 +8,8 @@ back here (see `docs/core/REFEREE_FAQ.md`).
   compiles, with no project axioms.
 - **Paper (analytic inputs):** A1 and A2 are proved in
   `arxiv_submission/ERURH_Conditional_Proof.tex`, with Theorems A/B/C proved in
-  `arxiv_submission/Theorem_ABC_preprint.tex`.
+  `arxiv_submission/Theorem_ABC_preprint.tex`. These are paper-level proofs and
+  are subject to standard referee verification.
 - **Gate (numeric inputs):** certificates are regenerated and verified by
   `scripts/verify_gate.py`.
 - **Bottom line:** conditional on the analytic lemmas and the numerical

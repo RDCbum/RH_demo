@@ -8,11 +8,15 @@ Conditional RH for the ERURH alpha layer follows from:
    `ctx_real_logR_alpha_upper` interval arithmetic check), and
 3) the analytic lemmas stated in the paper (A1-from-supercritical and
    A2-from-ABC, together with the classical A/B/C packages). The Buchstab
-   bridge provides an optional derivation of A1.
+   bridge provides an optional derivation of A1, and the fixed-window route
+   is an alternative paper-level bridge if the threshold-control lemma is
+   established.
 
 Equivalently: if the paper-level assumptions hold and the gate checks pass, then
 the Lean development proves `ERURH.RH_from_ERURH_conditional` and the Route B
 unconditional core.
+
+For the canonical referee-facing summary, see `docs/core/P27_REFEREE_PACKET.md`.
 
 ## Trust boundary
 

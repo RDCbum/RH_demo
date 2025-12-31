@@ -10,6 +10,7 @@ Route B is presented with a primary legacy window-free bridge and an alternative
 - Documentation: explains the analytic assumptions, the certificate pipeline, and how to reproduce the build.
 - Step-by-step proof walkthrough (legacy window-free route): `docs/core/LEGACY_WINDOW_FREE_PROOF_WALKTHROUGH.md`.
 - Referee summary (central): `docs/core/P27_REFEREE_PACKET.md`.
+- Final status capsule (single page): `docs/core/FINAL_STATUS.md`.
 - Repro guide: `docs/core/ERURH_HOWTO_Reproduce.md`.
 - Referee FAQ (index): `docs/core/REFEREE_FAQ.md`.
 

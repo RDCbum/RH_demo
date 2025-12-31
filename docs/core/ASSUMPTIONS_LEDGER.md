@@ -59,7 +59,10 @@ required for a complete Route B chain.
   `buchstab_coefficient_nonzero_of_explicit_b_rho_expr`.
   The paper-level explicit-formula assumption includes the nonvanishing of
   the holomorphic factor $H(\rho)$ on nontrivial zeros, so $b_\rho \neq 0$ is
-  justified under Assumption `assm:explicit`.
+  justified under Assumption `assm:explicit`. For the Buchstab kernel used in
+  the alpha bridge data, the Mellin multiplier $m(s)=(2^{-s}-3^{-s})/s$ is
+  nonzero on $\Re(s)>0$ (Lemma `buchstab-m-nonzero` in the paper), so the kernel
+  contribution to $H(s)$ cannot vanish on nontrivial zeros.
 
 ## Legacy window-free route (abstract ctx)
 - The primary paper lemma is `a1-from-supercritical` (full proof in

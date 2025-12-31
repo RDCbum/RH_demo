@@ -29,7 +29,7 @@
   \end{itemize}
   These bridges do not replace the classical A/B/C assumptions; they supply the
   A1/A2 inputs needed for the RMS-local contradiction.
-  \item \textbf{Classical / citable.} Zeta explicit-formula setup and classical implications (including the ERU inertia $\leftrightarrow$ $E$-bound links and RH $\Rightarrow$ $E$-bounds). The zero-parameterization objects $\beta,\gamma$ and coefficients $b_\rho$ remain part of this classical package; the explicit-formula normalization assumes $H(\rho)\neq 0$ on nontrivial zeros (Assumption~\ref{assm:explicit}).
+  \item \textbf{Classical / citable.} Zeta explicit-formula setup and classical implications (including the ERU inertia $\leftrightarrow$ $E$-bound links and RH $\Rightarrow$ $E$-bounds). The zero-parameterization objects $\beta,\gamma$ and coefficients $b_\rho$ remain part of this classical package; the explicit-formula normalization assumes $H(\rho)\neq 0$ on nontrivial zeros (Assumption~\ref{assm:explicit}). For the Buchstab kernel used in the alpha bridge, the Mellin multiplier $m(s)$ is nonzero on $\Re(s)>0$ (Remark~\ref{rem:buchstab-H-nonzero}), so only the auxiliary holomorphic weights need to be nonvanishing.
   \item \textbf{Gate + certificates (alpha + RMS + beta).} The alpha certificates and RMS coverage are discharged by the reproducible pipeline (\texttt{verify\_gate.py}), which regenerates the rational bounds and certificate values and checks the Lean build. RMS A2-low/A2-tail are generated from frozen \texttt{rms\_context.json} via \texttt{tools/make\_rms\_context.py}. The beta inertia bundle is generated from frozen JSON via \texttt{tools/make\_beta\_certificate.py} and is discharged in the same gate.
 \end{itemize}
 

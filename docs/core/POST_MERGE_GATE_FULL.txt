@@ -76,6 +76,7 @@ lean\formal_proofs\ERURH\PsiLayerClassical.lean:6: noncomputable def chebyshevPs
 lean\formal_proofs\ERURH\PsiLayerClassical.lean:10: noncomputable def chebyshevE (x : \u211d) : \u211d :=
 lean\formal_proofs\ERURH\RH.lean:8: noncomputable def crit (t : \u211d) : \u2102 :=
 lean\formal_proofs\ERURH\SmokePads.lean:9: noncomputable section
+OK: no axiom/constant/opaque/sorry/admit declarations under lean/formal_proofs/ERURH
 lean\formal_proofs\ERURH\SmokePads.lean:33: noncomputable def logEnvOfPads
 lean\formal_proofs\ERURH\SmokePads.lean:49: noncomputable def jEnvOfPads
 lean\formal_proofs\ERURH\SmokeTests.lean:9: noncomputable section
@@ -109,7 +110,6 @@ lean\formal_proofs\ERURH\Beta\InertiaSmooth.lean:24: noncomputable def jRel_smoo
 lean\formal_proofs\ERURH\NumberTheory\Chebyshev.lean:13: noncomputable def psi (x : \u211d) : \u211d :=
 lean\formal_proofs\ERURH\NumberTheory\Chebyshev.lean:20: noncomputable def E (x : \u211d) : \u211d :=
 lean\formal_proofs\ERURH\NumberTheory\VonMangoldt.lean:10: noncomputable def Lambda (n : \u2115) : \u211d :=
-OK: no axiom/constant/opaque/sorry/admit declarations under lean/formal_proofs/ERURH
 + C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_rational_bounds.py
 + C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_certificate_values.py
 + C:\Users\duran\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe tools/make_rms_context.py
@@ -206,4 +206,4 @@ collected 1 item
 
 tests\test_smoke.py .                                                    [100%]
 
-============================== 1 passed in 0.02s ==============================
+============================== 1 passed in 0.03s ==============================

@@ -1,5 +1,8 @@
 # ERURH A1/A2 status (Lean vs paper)
 
+Status: background note. For the current authoritative gap list, see
+`docs/core/ASSUMPTIONS_LEDGER.md` and `docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 This note summarizes what is now discharged in Lean for the current demo and
 what remains external.
 

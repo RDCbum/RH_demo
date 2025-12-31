@@ -1,6 +1,9 @@
 ERURH Plan B Assumptions (Conditional Route)
 ============================================
 
+Status: background note. For the current authoritative gap list, see
+`docs/core/ASSUMPTIONS_LEDGER.md` and `docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 1. Analytic assumptions on ζ (H_ζ,standard)
 -------------------------------------------
 - Explicit formula for ψ(x) / E(x).

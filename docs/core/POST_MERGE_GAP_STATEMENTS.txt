@@ -1,0 +1,4 @@
+ERURH.A1_from_supercritical_buchstab ERURH.Alpha.GeneratedRMSContext.ctx_real : Prop
+ERURH.ModeRMSLowerBound_from_buchstab ERURH.Alpha.GeneratedRMSContext.ctx_real : ℝ → ℝ → Prop
+ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily : Prop
+ERURH.ExplicitBRhoExpression : Prop

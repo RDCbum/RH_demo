@@ -28,6 +28,7 @@ back here (see `docs/core/REFEREE_FAQ.md`).
 - A/B/C proofs: `arxiv_submission/Theorem_ABC_preprint.tex`.
 - A/B/C proof audit: `docs/core/ABC_PROOF_AUDIT.md`.
 - A1 proof audit: `docs/core/A1_PROOF_AUDIT.md`.
+- Risk assessment (qualitative): `docs/core/REFEREE_RISK_ASSESSMENT.md`.
 - Ledger: `arxiv_submission/assumptions_ledger.tex`.
 
 **Gate evidence**

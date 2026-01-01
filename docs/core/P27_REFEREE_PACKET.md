@@ -27,6 +27,7 @@ back here (see `docs/core/REFEREE_FAQ.md`).
   (Lemmas `a1-from-supercritical`, `a2-from-abc`, Theorems A/B/C statements).
 - A/B/C proofs: `arxiv_submission/Theorem_ABC_preprint.tex`.
 - A/B/C proof audit: `docs/core/ABC_PROOF_AUDIT.md`.
+- A1 proof audit: `docs/core/A1_PROOF_AUDIT.md`.
 - Ledger: `arxiv_submission/assumptions_ledger.tex`.
 
 **Gate evidence**

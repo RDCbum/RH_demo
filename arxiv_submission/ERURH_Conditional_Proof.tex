@@ -478,6 +478,13 @@ The bundle includes \texttt{reproducibility\_manifest.txt} with tool versions
 and SHA256 hashes of the frozen numeric inputs used by the gate.
 {\small\VerbatimInput{reproducibility_manifest.txt}}
 
+\paragraph{Trust boundary.}
+The formal logic is checked by the Lean kernel and mathlib. The numeric gate
+depends on the Python toolchain in \texttt{tools/} (including interval
+arithmetic via \texttt{mpmath.iv}) and OS-level arithmetic used for packaging
+(\texttt{tar}, PowerShell). These are the only computational dependencies
+outside Lean.
+
 \paragraph{Interval-checked numeric bridge (example).}
 The gate verifies the fixed-window RMS bridge using interval arithmetic on the
 witness points. The script \texttt{tools/check\_rms\_mode\_bridge.py} reads
@@ -1035,6 +1042,18 @@ Explicit formula package & \texttt{ERURH.ExplicitBRhoExpression} \\
 This normalization is the bridge between the analytic preprint (A/B/C) and the
 Lean formalization: the analytic estimates apply to the same coefficients once
 the above identification is fixed.
+
+\subsection*{Buchstab kernel factor for the alpha bridge}\label{app:buchstab-kernel}
+The alpha bridge data use the multiplicative averaging kernel
+$(\mathcal{T}h)(u)=\frac{1}{u}\int_{u/3}^{u/2} h(t)\,dt$. For $h(t)=t^{s-1}$,
+the Mellin multiplier is
+\[
+  m(s)=\frac{2^{-s}-3^{-s}}{s}, \qquad 2^{-s}:=\exp(-s\log 2),
+\]
+so the kernel contribution to $H(s)$ is $m(s)$. For $\Rea(s)>0$,
+Lemma~\ref{lem:buchstab-m-nonzero} gives $m(s)\neq 0$. Thus the only remaining
+nonvanishing requirement in Assumption~\ref{assm:explicit} concerns auxiliary
+holomorphic weights absorbed into $H(s)$.
 
 \section{Verification of H1--H3 for the ERU kernel}\label{app:h1h3}
 This short appendix explains why the hypotheses (H1)–(H3) used in

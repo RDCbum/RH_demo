@@ -16,8 +16,8 @@ artifacts.
   - A2: Lemma `a2-from-abc` (full proof), using Theorems A/B/C.
   - Fixed-window threshold control: Assumption `assm:threshold-control`
     (analytic gap discussion).
-  - Explicit-formula normalization includes H(rho) != 0 (Assumption
-    `assm:explicit`).
+  - Explicit-formula normalization uses the gamma prefactor; auxiliary
+    holomorphic factors (H(s)) are absorbed into $b_\rho$ in the preprint.
 - A/B/C proofs: `arxiv_submission/Theorem_ABC_preprint.tex`.
 - A1 audit: `docs/core/A1_PROOF_AUDIT.md`.
 

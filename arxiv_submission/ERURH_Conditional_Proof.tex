@@ -233,7 +233,9 @@ $\exp(aS)/S^2 \to \infty$ for any $a>0$.
 
 \textbf{Step 1 (mode threshold).} By \texttt{ERU\_mode\_beta}$(\beta)$ there exists
 $s_0$ such that for all $s\ge s_0$,
-$|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
+$|\log R_\alpha^{\mathrm{mode}}(s)| \ge \exp((\beta-1/2)s)$.
+Here \texttt{ERU\_mode\_beta} is interpreted on the supercritical mode component
+$\log R_\alpha^{\mathrm{mode}}$; this is the analytic content of the A1 bridge.
 
 \textbf{Step 2 (exp dominates the envelope).} Let
 $C_\ast := c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$. Since
@@ -244,7 +246,7 @@ an $S_1$ such that for all $S\ge S_1$, $\exp((\beta-1/2)S)/S^2 > C_\ast$.
 (Definition~\ref{def:admissible-window}), there exists a window
 $w=[S,S+L]$ with $S\ge \max\{s_0,S_1,1\}$.
 For any $s\in I_w=[S,S+L]$ we have $s\ge S\ge s_0$, hence
-$|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)\ge \exp((\beta-1/2)S)$.
+$|\log R_\alpha^{\mathrm{mode}}(s)|\ge \exp((\beta-1/2)s)\ge \exp((\beta-1/2)S)$.
 
 \textbf{Step 4 (pointwise to RMS).} By Lemma~\ref{lem:pointwise-to-rms},
 $\mathrm{RMS}_{\mathrm{mode}}(w)\ge \exp((\beta-1/2)S)\ge
@@ -353,8 +355,7 @@ $\Re(\rho)=\beta>0$. Therefore $m(\rho)\neq 0$.
 \begin{proof}[Proof (step-by-step)]
   \textbf{Step 1 (explicit formula identification).} By
   Assumption~\ref{assm:explicit},
-  $b_\rho=\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)H(\rho)$
-  with $H(\rho)\neq 0$ (see the field map in the assumptions ledger).
+  $b_\rho=\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$.
   Since $\Gamma$ has no zeros and $\pi^{-\rho/2}\neq 0$, we obtain
   $b_\rho\neq 0$ for $\beta>0$.
 
@@ -419,11 +420,11 @@ For Route~B we use the unique window of \texttt{ctx\_real} (since $n\_windows=1$
 written \texttt{ctx\_real\_window} in Lean.
 
 \begin{lemma}[Pointwise-to-RMS bridge]\label{lem:pointwise-to-rms}
-If $|\log R_\alpha(s)| \ge K$ for all $s \in I_w$ and $|I_w|>0$, then
+If $|\log R_\alpha^{\mathrm{mode}}(s)| \ge K$ for all $s \in I_w$ and $|I_w|>0$, then
 $\mathrm{RMS\_mode}(w) \ge K$. This follows by squaring the pointwise bound,
 integrating over $I_w$, and taking square roots:
 \[
-\frac{1}{|I_w|}\int_{I_w} |\log R_\alpha(s)|^2\, ds \ge \frac{1}{|I_w|}\int_{I_w} K^2\, ds = K^2.
+\frac{1}{|I_w|}\int_{I_w} |\log R_\alpha^{\mathrm{mode}}(s)|^2\, ds \ge \frac{1}{|I_w|}\int_{I_w} K^2\, ds = K^2.
 \]
 \end{lemma}
 
@@ -432,12 +433,15 @@ integrating over $I_w$, and taking square roots:
 \begin{tabular}{ll}
 Paper object & Lean name \\
 \hline
-$\log R_\alpha(s)$ & \texttt{ERURH.logR\_alpha s} \\
+$\log R_\alpha^{\mathrm{mode}}(s)$ & paper-only mode component of \texttt{ERURH.logR\_alpha} \\
 $w$ (window) & \texttt{w : ctx.Window} for an abstract \texttt{RMSLocalContext} \\
 $I_w$ & window interval associated to \texttt{w} (paper-level) \\
 $\mathrm{RMS\_mode}(w)$ & \texttt{ctx.RMS\_mode w} \\
 \end{tabular}
 \end{center}
+The Lean development does not define $\log R_\alpha^{\mathrm{mode}}$ explicitly;
+instead, its effect is summarized by the hypothesis \texttt{A1\_mode}. The A1
+lemma above interprets \texttt{ERU\_mode\_beta} as a bound on the mode component.
 
 \paragraph{Gate/Lean alignment.}
 In the window-free legacy route, \texttt{A1\_from\_supercritical} is treated as an
@@ -670,7 +674,9 @@ these pieces is uniformly bounded on admissible windows $[S,S+L]$ with
 $1\ll L\ll S^\alpha$. The finite sum therefore yields a uniform constant
 $c_{\mathrm{low}}$ for $\mathrm{RMS}_{\mathrm{low}}(w)$. The constant depends
 only on the fixed cutoff $T_0$ and the explicit-formula normalization, not on
-$S$ or $L$.
+$S$ or $L$. The cutoff $T_0$ is fixed once in the analytic package (see the
+preprint), so $c_{\mathrm{low}}$ is frozen with the choice of kernel and
+normalization.
 
 \textbf{A2-tail.} The tail RMS on $w=[S,S+L]$ is, by definition, the normalized
 mean square of the tail contribution with the $s^{-2}$ weight. This is exactly
@@ -679,6 +685,9 @@ is derived from Theorems~\ref{thm:A} and~\ref{thm:B} in the preprint, using the
 dyadic $L^2$ tail bound and the large-sieve inequality for separated exponentials.
 Thus $K_{\mathrm{tail}}(S,L)^2 \le M_{\mathrm{tail}}^2$ uniformly on admissible
 windows, and we take $c_{\mathrm{tail}} := M_{\mathrm{tail}}$.
+Theorem~\ref{thm:C} is stated uniformly in $S$ and $L$, so no extra hypotheses
+are required beyond Theorems~\ref{thm:A}--\ref{thm:C} and the explicit-formula
+package.
 No additional hypotheses are used beyond Theorems~\ref{thm:A}--\ref{thm:C} and
 the explicit-formula package.
 \end{proof}
@@ -723,9 +732,9 @@ classical equivalence between RH and bounds on $E(x)$.
 The ERU observable $\log R(s)$ and its derivative $J_{\mathrm{rel}}(s)$ admit an
 explicit formula of the form~\eqref{eq:explicit-form} in which the coefficients
 $b_\rho$ are identified with the explicit prefactor
-$\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)H(\rho)$ under the
-chosen normalization, where $H$ is holomorphic and nonvanishing on nontrivial
-zeros; any additional holomorphic factors are absorbed into $H$.
+$\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$ under the chosen
+normalization. Any additional holomorphic factors (e.g., $H(s)$ or
+$(\rho-1)/\rho$) are absorbed into $b_\rho$ and the explicit-formula package.
 \end{assumption}
 
 \begin{remark}[Mapping to the $H(s)$ factor]\label{rem:Hs-mapping}
@@ -737,9 +746,10 @@ In the A/B/C preprint we write
 \]
 For ERURH, the factor $H(s)$ is the Mellin transform of the ERU kernel and
 auxiliary weights from the explicit formula. Under the normalization above,
-any additional holomorphic factors are absorbed into $H$, and we assume $H(\rho)\neq 0$
-for nontrivial zeros, so the analytic assumptions on $H(s)$ in the preprint
-(H1–H3) apply verbatim.
+any additional holomorphic factors are absorbed into $b_\rho$ (so the Lean
+predicate \texttt{ExplicitBRhoExpression} uses only the gamma prefactor). We
+assume $H(\rho)\neq 0$ in the analytic preprint to avoid trivial coefficients,
+so the analytic assumptions on $H(s)$ in the preprint (H1–H3) apply verbatim.
 \end{remark}
 
 \begin{remark}[Nonvanishing for the Buchstab kernel]\label{rem:buchstab-H-nonzero}
@@ -749,7 +759,7 @@ $m(s)=(2^{-s}-3^{-s})/s$ (Lemma~\ref{lem:buchstab-m-nonzero}). For $\Re(s)>0$,
 Lemma~\ref{lem:buchstab-m-nonzero} gives $m(s)\neq 0$, so the kernel contribution
 to $H(s)$ does not vanish on nontrivial zeros. The remaining nonvanishing
 requirement in Assumption~\ref{assm:explicit} concerns only auxiliary holomorphic
-weights, which are absorbed into $H(s)$.
+weights from the analytic preprint; in Lean they are absorbed into $b_\rho$.
 \end{remark}
 
 \begin{assumption}[Spectral decay: $H_b$]\label{assm:hb}

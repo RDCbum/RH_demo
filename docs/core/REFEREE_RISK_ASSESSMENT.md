@@ -40,10 +40,11 @@ Legend:
 - Evidence: `arxiv_submission/ERURH_Conditional_Proof.tex`
   (Lemma `a1-from-supercritical`) and `docs/core/A1_PROOF_AUDIT.md`.
 
-## 6) Explicit-formula mapping and H(rho) nonvanishing
+## 6) Explicit-formula mapping and auxiliary holomorphic factors
 - Risk: Medium
-- Why: relies on the explicit-formula normalization and a nonvanishing
-  assumption for auxiliary holomorphic factors.
+- Why: relies on the explicit-formula normalization (gamma prefactor) and the
+  preprint-level nonvanishing of auxiliary holomorphic factors absorbed into
+  $b_\rho$.
 - Evidence: `arxiv_submission/ERURH_Conditional_Proof.tex`
   (Assumption `assm:explicit`, Appendix "Buchstab kernel factor for the alpha bridge").
 

@@ -57,13 +57,14 @@ required for a complete Route B chain.
   non-vanishing is derived in Lean from the explicit-formula identification
   `ERURH.ExplicitBRhoExpression` using
   `buchstab_coefficient_nonzero_of_explicit_b_rho_expr`.
-  The paper-level explicit-formula assumption includes the nonvanishing of
-  the holomorphic factor $H(\rho)$ on nontrivial zeros, so $b_\rho \neq 0$ is
-  justified under Assumption `assm:explicit`. For the Buchstab kernel used in
-  the alpha bridge data, the Mellin multiplier $m(s)=(2^{-s}-3^{-s})/s$ is
-  nonzero on $\Re(s)>0$ (Lemma `buchstab-m-nonzero` in the paper and Appendix
-  "Buchstab kernel factor for the alpha bridge"), so the kernel contribution
-  to $H(s)$ cannot vanish on nontrivial zeros.
+  Under the paper normalization, `explicit_b_rho` is the gamma prefactor, and
+  any auxiliary holomorphic factors (e.g. $H(\rho)$) are absorbed into $b_\rho$
+  in the analytic preprint. Nonvanishing of those auxiliary factors is an
+  analytic input (preprint H1--H3) rather than a Lean axiom. For the Buchstab
+  kernel used in the alpha bridge data, the Mellin multiplier
+  $m(s)=(2^{-s}-3^{-s})/s$ is nonzero on $\Re(s)>0$ (Lemma `buchstab-m-nonzero`
+  in the paper and Appendix "Buchstab kernel factor for the alpha bridge"), so
+  the kernel contribution to $H(s)$ cannot vanish on nontrivial zeros.
 
 ## Legacy window-free route (abstract ctx)
 - The primary paper lemma is `a1-from-supercritical` (full proof in

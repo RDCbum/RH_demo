@@ -19,6 +19,7 @@ artifacts.
   - Explicit-formula normalization includes H(rho) != 0 (Assumption
     `assm:explicit`).
 - A/B/C proofs: `arxiv_submission/Theorem_ABC_preprint.tex`.
+- A1 audit: `docs/core/A1_PROOF_AUDIT.md`.
 
 ## Lean status and axiom footprints
 - Final statements: `docs/core/POST_MERGE_FINAL_STATEMENTS.txt`.

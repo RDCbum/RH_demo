@@ -17,14 +17,16 @@ through the repo. The central summary is `docs/core/P27_REFEREE_PACKET.md`.
 ## 2) Paper analytic inputs
 
 - [ ] A1 (legacy window-free) proof is complete and matches Lean statement.  
-  Evidence: `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a1-from-supercritical`).
+  Evidence: `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a1-from-supercritical`),
+  `docs/core/A1_PROOF_AUDIT.md` (audit map).
 - [ ] A2 derivation from A/B/C is explicit.  
   Evidence: `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `a2-from-abc`).
 - [ ] Theorems A/B/C have full proofs.  
   Evidence: `arxiv_submission/Theorem_ABC_preprint.tex` and
   `docs/core/ABC_PROOF_AUDIT.md`.
 - [ ] Explicit-formula normalization is stated and consistent.  
-  Evidence: `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption `assm:explicit`).
+  Evidence: `arxiv_submission/ERURH_Conditional_Proof.tex` (Assumption `assm:explicit`,
+  Appendix "Buchstab kernel factor for the alpha bridge").
 
 ## 3) Gate reproducibility (numeric certificates)
 
@@ -39,6 +41,8 @@ through the repo. The central summary is `docs/core/P27_REFEREE_PACKET.md`.
   Evidence: `docs/core/P15_NOTES.md`, `docs/core/P15_GATE_FULL.txt`.
 - [ ] Version/hash manifest present in bundle.  
   Evidence: `arxiv_submission/reproducibility_manifest.txt`.
+- [ ] Trust boundary is explicit in the paper.  
+  Evidence: `arxiv_submission/ERURH_Conditional_Proof.tex` (Reproducibility / Gate).
 
 ## 4) Editorial consistency
 

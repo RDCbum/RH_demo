@@ -76,7 +76,6 @@ lean\formal_proofs\ERURH\PsiLayerClassical.lean:6: noncomputable def chebyshevPs
 lean\formal_proofs\ERURH\PsiLayerClassical.lean:10: noncomputable def chebyshevE (x : \u211d) : \u211d :=
 lean\formal_proofs\ERURH\RH.lean:8: noncomputable def crit (t : \u211d) : \u2102 :=
 lean\formal_proofs\ERURH\SmokePads.lean:9: noncomputable section
-OK: no axiom/constant/opaque/sorry/admit declarations under lean/formal_proofs/ERURH
 lean\formal_proofs\ERURH\SmokePads.lean:33: noncomputable def logEnvOfPads
 lean\formal_proofs\ERURH\SmokePads.lean:49: noncomputable def jEnvOfPads
 lean\formal_proofs\ERURH\SmokeTests.lean:9: noncomputable section
@@ -97,6 +96,7 @@ lean\formal_proofs\ERURH\ZetaBounds.lean:19: noncomputable def zeta_log_q (w : W
 lean\formal_proofs\ERURH\ZetaBounds.lean:25: noncomputable def zeta_j_q (w : Window) : \u211a :=
 lean\formal_proofs\ERURH\ZetaBounds.lean:31: noncomputable def zeta_log_tail : \u211a := ((426435487679 : \u211a) / 250000000000)
 lean\formal_proofs\ERURH\ZetaBounds.lean:35: noncomputable def zeta_j_tail : \u211a := ((6032211236253 : \u211a) / 50000000000)
+OK: no axiom/constant/opaque/sorry/admit declarations under lean/formal_proofs/ERURH
 lean\formal_proofs\ERURH\ZetaBounds.lean:39: noncomputable def zeta_log_sup : \u211a := ((426435487679 : \u211a) / 250000000000)
 lean\formal_proofs\ERURH\ZetaBounds.lean:43: noncomputable def zeta_j_sup : \u211a := ((6032211236253 : \u211a) / 50000000000)
 lean\formal_proofs\ERURH\ZetaWitnessBuildOn.lean:17: noncomputable def zeta_log_env_on (t : \u211d) : \u211d :=

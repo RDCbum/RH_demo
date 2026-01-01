@@ -31,6 +31,16 @@ artifacts.
 - Repro guide: `docs/core/ERURH_HOWTO_Reproduce.md`.
 - Manifest (versions + hashes): `arxiv_submission/reproducibility_manifest.txt`.
 
+## Recent commands (capsule)
+```bash
+LAKE_JOBS=1 lake build ERURH
+python scripts/verify_gate.py
+lake env lean docs/core/PrintFinalStatement.lean > docs/core/NOAX_FINAL_STATEMENTS.txt
+lake env lean docs/core/PrintGapStatements.lean > arxiv_submission/lean_gap_statements.txt
+lake env lean docs/core/PrintMasterAxioms.lean > arxiv_submission/lean_master_axioms.txt
+./scripts/make_arxiv_bundle.ps1
+```
+
 ## Bundle snapshot
 - Tarball: `dist/arxiv_submission.tar.gz`.
 - Listing: `docs/core/ARXIV_TARBALL_LIST.txt`.

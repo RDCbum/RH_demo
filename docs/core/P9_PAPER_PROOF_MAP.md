@@ -75,6 +75,24 @@ This map aligns remaining Lean hypotheses with paper statements and proof plans.
   paper using admissibility of the window family and Lemma
   \ref{lem:pointwise-to-rms}). One concrete derivation uses the Buchstab bridge.
 
+## A2 from classical inputs (legacy window-free)
+
+**Lean statements**
+- `ERURH.A2Low_RMS ctx` and `ERURH.A2Tail_RMS ctx`.
+
+**Mathematical statement (paper)**
+- Lemma `a2-from-abc`: under the explicit-formula package and Theorems A/B/C,
+  there exist constants `c_low`, `c_tail` such that
+  `RMS_low(w) ≤ c_low` and `RMS_tail(w) ≤ c_tail` on admissible windows.
+
+**Paper placement**
+- Section \ref{sec:no-supercritical}, Lemma `a2-from-abc`.
+
+**Dependencies**
+- Theorems A/B/C in `arxiv_submission/Theorem_ABC_preprint.tex`
+  (labels `thm:A`, `thm:B`, `thm:C`).
+- Assumption `assm:explicit` (explicit-formula package).
+
 ## Buchstab bridge (optional derivation of A1)
 
 **Lean statements**

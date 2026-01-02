@@ -107,6 +107,12 @@ In addition, this repository includes a **proposed analytic proof** of three key
 - Assumptions table and dependency map: `docs/core/ERURH_Assumptions_Report.md`
 - Main theorem overview and assumption references: `docs/core/ERURH_MainTheorem.md`
 
+**Standard conditionality statement.** The Lean development proves a conditional
+implication: RH for `xiAlpha` follows provided the analytic packages (A/B/C and
+the A1 bridge in the paper) are correct and the numeric certificates are
+verified by the gate. These external components are presented for independent
+review.
+
 ## How to cite
 
 Use the repository URL and release tag for citations.

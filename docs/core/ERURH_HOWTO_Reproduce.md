@@ -26,8 +26,8 @@ To make the run fully reproducible for a referee, capture:
   - `lake --version`
   - `elan show`
 - Gate logs:
-  - `docs/core/POST_MERGE_BUILD.txt`
-  - `docs/core/POST_MERGE_GATE_FULL.txt`
+  - `docs/core/FINAL_BUILD.txt`
+  - `docs/core/FINAL_GATE_FULL.txt`
 - Hashes of frozen inputs (PowerShell examples):
   - `Get-FileHash data/docs/paper/rational_bounds.json`
   - `Get-FileHash data/docs/paper/certificate_values.json`

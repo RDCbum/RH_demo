@@ -19,13 +19,13 @@ where
   2^(-rho) := exp(-rho * log 2).
 
 Normalization note: in the Lean formalization the explicit-formula
-identification uses `explicit_b_rho_expression = pi^{-rho/2} * Gamma(rho/2) * H(rho)`,
-where `H` is a holomorphic factor that is assumed nonvanishing on nontrivial
-zeros (paper Assumption `assm:explicit`). Any additional holomorphic factors
-(e.g., `(rho-1)/rho`) are absorbed into `H`. In the current release data the
-kernel is the Buchstab operator above, so the kernel contribution to `H` is
-exactly the multiplier `m(rho)`, which is nonzero for Re(rho) > 0; the remaining
-nonvanishing requirement concerns only auxiliary holomorphic weights.
+identification uses `explicit_b_rho_expression = pi^{-rho/2} * Gamma(rho/2)`
+(gamma prefactor). Any auxiliary holomorphic factors (e.g. `H(rho)` or
+`(rho-1)/rho`) are absorbed into the abstract coefficient `b_rho` in the
+preprint. In the current release data the kernel is the Buchstab operator above,
+so the kernel contribution to the analytic factor `H` is exactly the multiplier
+`m(rho)`, which is nonzero for Re(rho) > 0; the remaining nonvanishing
+requirement concerns only auxiliary holomorphic weights.
 
 ## Nonvanishing
 If beta > 0, then m(rho) != 0. The key estimate is

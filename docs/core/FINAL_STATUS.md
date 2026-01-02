@@ -22,13 +22,13 @@ artifacts.
 - A1 audit: `docs/core/A1_PROOF_AUDIT.md`.
 
 ## Lean status and axiom footprints
-- Final statements: `docs/core/POST_MERGE_FINAL_STATEMENTS.txt`.
-- Master axioms: `docs/core/POST_MERGE_PRINT_AXIOMS_MASTER.txt`.
-- Unconditional core axioms: `docs/core/POST_MERGE_PRINT_AXIOMS_UNCOND.txt`.
+- Final statements: `docs/core/FINAL_STATEMENTS.txt`.
+- Master axioms: `docs/core/FINAL_PRINT_AXIOMS_MASTER.txt`.
+- Unconditional core axioms: `docs/core/FINAL_PRINT_AXIOMS_UNCOND.txt`.
 
 ## Gate and reproducibility
-- Build log: `docs/core/POST_MERGE_BUILD.txt`.
-- Gate log: `docs/core/POST_MERGE_GATE_FULL.txt`.
+- Build log: `docs/core/FINAL_BUILD.txt`.
+- Gate log: `docs/core/FINAL_GATE_FULL.txt`.
 - Repro guide: `docs/core/ERURH_HOWTO_Reproduce.md`.
 - Manifest (versions + hashes): `arxiv_submission/reproducibility_manifest.txt`.
 

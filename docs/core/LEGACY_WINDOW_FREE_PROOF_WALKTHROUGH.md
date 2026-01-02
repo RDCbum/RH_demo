@@ -29,7 +29,8 @@ Scope: the abstract-context theorem
 
 ### Step 1: Define the ERU mode and observable
 - Statement: `ERU_mode_beta β` is the existence of a threshold `s0` with a
-  pointwise lower bound on `|logR_alpha s|` for all `s >= s0`.
+  pointwise lower bound on the supercritical mode component
+  `|logR_alpha^{mode} s|` for all `s >= s0` (paper interpretation).
 - Why needed: this is the formal representation of a supercritical mode.
 - Evidence:
   - Lean definition: `lean/formal_proofs/ERURH/ERUModesCore.lean`.

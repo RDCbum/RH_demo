@@ -918,15 +918,18 @@ are established, RH follows mechanically.
 In the formalization, the A1/A2 hypotheses are stated as unconditional window
 assumptions (mirroring the Lean definition of \texttt{A1\_mode} and
 \texttt{A2Low\_RMS}/\texttt{A2Tail\_RMS}). Analytically, A1 is intended to be
-derived from the existence of a supercritical mode, but the conditional theorem
-is stated with A1/A2 as explicit hypotheses.
+derived from the existence of a supercritical mode; this is made explicit in
+Proposition~\ref{prop:no-supercritical}, which discharges A1/A2 via the paper
+bridges before invoking the gate contradiction.
 \end{remark}
 
 \begin{remark}
-Because A1/A2 are assumed outright, the conditional theorem can be vacuous
-unless the analytic derivations of A1/A2 are shown to be consistent with the
-closed-gate regime. Eliminating this potential vacuity is part of the analytic
-gap identified in Section~\ref{sec:status-gaps}.
+Because A1/A2 are assumptions in the Lean statement, the conditional theorem
+can be vacuous if A1/A2 are incompatible with the closed-gate regime. The paper
+avoids this by deriving A1/A2 from a supercritical mode hypothesis before
+invoking the gate contradiction (Proposition~\ref{prop:no-supercritical}).
+Any remaining gap is therefore the analytic bridge that produces A1 from a
+supercritical mode.
 \end{remark}
 
 \section{Formal status and gaps}\label{sec:status-gaps}

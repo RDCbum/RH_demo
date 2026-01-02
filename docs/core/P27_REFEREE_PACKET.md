@@ -30,6 +30,8 @@ back here (see `docs/core/REFEREE_FAQ.md`).
 - A/B/C proof audit: `docs/core/ABC_PROOF_AUDIT.md`.
 - A1 proof audit: `docs/core/A1_PROOF_AUDIT.md`.
 - Risk assessment (qualitative): `docs/core/REFEREE_RISK_ASSESSMENT.md`.
+- Non-vacuity note: `docs/core/REFEREE_NOTE_NONVACUITY.md`.
+- Paper fix summary: `docs/core/PROOF_FIX_DIFF_SUMMARY.md`.
 - Ledger: `arxiv_submission/assumptions_ledger.tex`.
 
 **Gate evidence**

@@ -34,7 +34,8 @@ This map aligns remaining Lean hypotheses with paper statements and proof plans.
 - Section \ref{sec:no-supercritical}, Lemma B.1 (Pointwise-to-RMS bridge).
 
 **Dependencies**
-- Definition of `ERU_mode_beta` (pointwise growth for $|\log R_\alpha|$).
+- Definition of `ERU_mode_beta` (pointwise growth for the supercritical mode
+  component in the paper interpretation).
 - Definition of `RMS_mode` and the window interval associated to `ctx_real_window`.
 - Any bridge fact equating the Lean `RMS_mode` to the analytical RMS or a certified lower bound.
 

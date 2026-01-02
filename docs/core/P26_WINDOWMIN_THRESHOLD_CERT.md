@@ -6,7 +6,7 @@ From `ERU_mode_beta`:
 
 ```
 ∃ s0 : ℝ, ∀ {s : ℝ}, s ≥ s0 →
-  |logR_alpha s| ≥ exp((β - 1/2) * s)
+  |logR_alpha^{mode} s| ≥ exp((β - 1/2) * s)
 ```
 
 The threshold `s0` is existential and depends on the chosen mode witness.

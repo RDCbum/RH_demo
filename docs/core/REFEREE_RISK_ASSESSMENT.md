@@ -11,13 +11,13 @@ Legend:
 ## 1) Lean formal core (logic + axioms)
 - Risk: Low
 - Why: `lake build ERURH` passes; `#print axioms` shows only Lean kernel axioms.
-- Evidence: `docs/core/POST_MERGE_BUILD.txt`, `arxiv_submission/lean_master_axioms.txt`.
+- Evidence: `docs/core/FINAL_BUILD.txt`, `arxiv_submission/lean_master_axioms.txt`.
 
 ## 2) Gate reproducibility (numeric certificates)
 - Risk: Medium-Low (computational trust)
 - Why: reproducible pipeline with frozen inputs + manifest; interval arithmetic for
   `ctx_real_logR_alpha_upper` reduces numerical fragility.
-- Evidence: `docs/core/POST_MERGE_GATE_FULL.txt`,
+- Evidence: `docs/core/FINAL_GATE_FULL.txt`,
   `arxiv_submission/reproducibility_manifest.txt`,
   `tools/check_rms_mode_bridge.py`.
 

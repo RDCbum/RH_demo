@@ -29,3 +29,5 @@ artifacts, the Lean chain yields RH for `xiAlpha`.
 - A1 audit: `docs/core/A1_PROOF_AUDIT.md`
 - A/B/C audit: `docs/core/ABC_PROOF_AUDIT.md`
 - Risk assessment: `docs/core/REFEREE_RISK_ASSESSMENT.md`
+- Non-vacuity note: `docs/core/REFEREE_NOTE_NONVACUITY.md`
+- Paper fix summary: `docs/core/PROOF_FIX_DIFF_SUMMARY.md`

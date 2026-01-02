@@ -18,9 +18,10 @@ back here (see `docs/core/REFEREE_FAQ.md`).
 ## Evidence map (where to look)
 
 **Lean statements and axioms**
-- `docs/core/POST_MERGE_FINAL_STATEMENTS.txt`
-- `docs/core/POST_MERGE_PRINT_AXIOMS_MASTER.txt`
-- `docs/core/POST_MERGE_PRINT_AXIOMS_UNCOND.txt`
+- `docs/core/FINAL_STATEMENTS.txt`
+- `docs/core/FINAL_PRINT_AXIOMS_MASTER.txt`
+- `docs/core/FINAL_PRINT_AXIOMS_UNCOND.txt`
+- Capsule summary: `docs/core/FINAL_CAPSULE.md`
 
 **Paper proofs and assumptions**
 - Main paper: `arxiv_submission/ERURH_Conditional_Proof.tex`
@@ -32,7 +33,7 @@ back here (see `docs/core/REFEREE_FAQ.md`).
 - Ledger: `arxiv_submission/assumptions_ledger.tex`.
 
 **Gate evidence**
-- `docs/core/POST_MERGE_GATE_FULL.txt`
+- `docs/core/FINAL_GATE_FULL.txt` (latest full run)
 - `docs/core/P16_GATE_FULL.txt` (rms_mode bridge)
 - `docs/core/P35_GATE_FULL.txt` (full pipeline)
 - Repro instructions: `docs/core/ERURH_HOWTO_Reproduce.md`
@@ -73,7 +74,7 @@ python tools/make_beta_certificate.py
 LAKE_JOBS=1 lake build ERURH
 python scripts/verify_gate.py
 
-lake env lean docs/core/PrintFinalStatement.lean > docs/core/POST_MERGE_FINAL_STATEMENTS.txt
+lake env lean docs/core/PrintFinalStatement.lean > docs/core/FINAL_STATEMENTS.txt
 lake env lean docs/core/PrintGapStatements.lean > arxiv_submission/lean_gap_statements.txt
 lake env lean docs/core/PrintMasterAxioms.lean > arxiv_submission/lean_master_axioms.txt
 

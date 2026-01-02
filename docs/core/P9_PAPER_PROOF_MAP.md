@@ -46,7 +46,7 @@ This map aligns remaining Lean hypotheses with paper statements and proof plans.
 **Mathematical statement (paper)**
 - For every $\beta > 1/2$ with `ERU_mode_beta`$(\beta)$, there exists
   $s_0 \le \mathrm{windowMinMax}$ such that
-  $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$ for all $s \ge s_0$.
+  $|\log R_\alpha^{\mathrm{mode}}(s)| \ge \exp((\beta-1/2)s)$ for all $s \ge s_0$.
 
 **Paper placement**
 - Section \ref{sec:no-supercritical}, Assumption `assm:threshold-control`.

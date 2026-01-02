@@ -163,19 +163,26 @@ are not part of \texttt{AxiomsShimAccepted}.
 in \texttt{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger section below.
 
 \section{No supercritical ERU modes}\label{sec:no-supercritical}
-\begin{proposition}[No supercritical ERU modes]\label{prop:no-supercritical}
-For every $\beta > 1/2$, there is no ERU exponential mode of weight $\beta$.
+\begin{proposition}[No supercritical ERU modes (conditional)]\label{prop:no-supercritical}
+Assume the hypotheses of Lemma~\ref{lem:a1-from-supercritical} and
+Lemma~\ref{lem:a2-from-abc}, together with the closed-gate certificates
+(Assumption~\ref{assm:certs}). Then for every $\beta > 1/2$, there is no ERU
+exponential mode of weight $\beta$.
 \end{proposition}
 
 \begin{proof}
-We maintain two Route~B bridges.
-In the legacy window-free route, Lemma~\ref{lem:a1-from-supercritical} supplies
-\texttt{A1\_mode}, and Lemma~\ref{lem:a2-from-abc} supplies A2-low/tail. The RMS
-decomposition then yields a window with RMS exceeding the envelope, contradicting
-the closed-gate regime. In the fixed-window alternative, Assumption
-\ref{assm:threshold-control} supplies the analogous A1-mode bridge for
-\texttt{ctx\_real}, and the same A2-low/tail input closes the argument. Thus no
-supercritical ERU mode can exist.
+Fix $\beta>1/2$ and suppose \texttt{ERU\_mode\_beta}$(\beta)$ holds. By
+Lemma~\ref{lem:a1-from-supercritical}, the A1-mode hypothesis holds for an
+admissible window family. By Lemma~\ref{lem:a2-from-abc}, the A2-low and A2-tail
+bounds hold. Hence Assumption~\ref{assm:a1a2} is satisfied, and
+Lemma~\ref{lem:a1a2-rms-violation} yields a window with
+$\mathrm{RMS}_{\alpha}(w)>C_{\mathrm{env}}$. This contradicts the closed-gate
+certificates (Assumption~\ref{assm:certs}). Therefore no such supercritical mode
+exists.
+
+The fixed-window route follows the same pattern, replacing
+Lemma~\ref{lem:a1-from-supercritical} by Assumption~\ref{assm:threshold-control}
+for \texttt{ctx\_real}.
 \end{proof}
 
 \subsubsection*{Two Route B bridges (primary legacy window-free vs alternative fixed-window).}
@@ -793,13 +800,13 @@ $c_{\mathrm{low}},c_{\mathrm{tail}},C_{\mathrm{env}}$ such that:
 \begin{itemize}
   \item \textbf{A1 (mode growth):} there exists a window $w$ and a constant $K$
   with $K>c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$ such that
-  $\mathrm{RMS}_{\mathrm{mode}}(w)=K$.
-  \item \textbf{A2-low:} $\mathrm{RMS}_{\mathrm{low}}(w)=c_{\mathrm{low}}$
-  uniformly.
-  \item \textbf{A2-tail:} $\mathrm{RMS}_{\mathrm{tail}}(w)=c_{\mathrm{tail}}$
-  uniformly.
+  $\mathrm{RMS}_{\mathrm{mode}}(w)\ge K$.
+  \item \textbf{A2-low:} for every admissible window $w$,
+  $\mathrm{RMS}_{\mathrm{low}}(w)\le c_{\mathrm{low}}$.
+  \item \textbf{A2-tail:} for every admissible window $w$,
+  $\mathrm{RMS}_{\mathrm{tail}}(w)\le c_{\mathrm{tail}}$.
   \item \textbf{Decomposition:}
-  $\mathrm{RMS}_{\alpha}(w)=\mathrm{RMS}_{\mathrm{mode}}(w)-
+  $\mathrm{RMS}_{\alpha}(w)\ge\mathrm{RMS}_{\mathrm{mode}}(w)-
   (\mathrm{RMS}_{\mathrm{low}}(w)+\mathrm{RMS}_{\mathrm{tail}}(w))$.
 \end{itemize}
 These abstract hypotheses are the analytic inputs of the Plan~B route. The
@@ -812,7 +819,7 @@ Let $S_{\max}$ denote the maximal lower endpoint among the fixed
 \texttt{ctx\_real} windows (Lean: \texttt{windowMinMax}). For every
 $\beta>1/2$, if \texttt{ERU\_mode\_beta}$(\beta)$ holds then there exists
 $s_0\le S_{\max}$ such that for all $s\ge s_0$,
-$|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)$. This is precisely the Lean
+$|\log R_\alpha^{\mathrm{mode}}(s)|\ge \exp((\beta-1/2)s)$. This is precisely the Lean
 predicate \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily}.
 \end{assumption}
 
@@ -826,7 +833,7 @@ supplement.
 
 \paragraph{Discussion (analytic gap for Assumption~\ref{assm:threshold-control}).}
 \textbf{Step 1.} Unpack \texttt{ERU\_mode\_beta}$(\beta)$ to obtain a threshold
-$s_0$ such that $|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)$ for all $s\ge s_0$.
+$s_0$ such that $|\log R_\alpha^{\mathrm{mode}}(s)|\ge \exp((\beta-1/2)s)$ for all $s\ge s_0$.
 
 \textbf{Step 2.} Establish an analytic upper bound on $s_0$ in terms of
 explicit-formula data (e.g., via a lower bound on the relevant mode coefficient
@@ -861,7 +868,7 @@ The Plan~B proof decomposes the RMS of the ERU observable into mode/low/tail
 contributions. The following lemma is formalized in
 \texttt{ERURH\_A2Hypotheses.lean}.
 
-\begin{lemma}[A1/A2 imply an RMS violation]
+\begin{lemma}[A1/A2 imply an RMS violation]\label{lem:a1a2-rms-violation}
 Under Assumption~\ref{assm:a1a2}, there exists a window $w$ with
 $\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$.
 \end{lemma}
@@ -876,7 +883,8 @@ renormalization gate is open.
 
 The correctness of the certificates (Assumption~\ref{assm:certs}) closes the
 renormalization gates; thus the RMS violation is incompatible with the closed
-gate regime. Consequently, supercritical modes cannot exist.
+gate regime. Any route that derives the A1/A2 window hypotheses from a
+supercritical mode therefore yields a contradiction.
 
 \section{Proof of the main theorem}\label{sec:proof-main}
 We now prove Theorem~\ref{thm:main}. This is the mathematical counterpart of
@@ -884,10 +892,14 @@ the Lean theorem \texttt{RH\_from\_ERURH\_conditional}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 Assumption~\ref{assm:a1a2} yields a window with
-$\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$, hence the renormalization gate
-opens. Assumption~\ref{assm:certs} implies the gate is closed, so the
-hypotheses preclude any supercritical mode. Therefore no mode with
-$\alpha>1/2$ exists. The Lean lemma
+$\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$ by
+Lemma~\ref{lem:a1a2-rms-violation}, hence the renormalization gate opens.
+Assumption~\ref{assm:certs} implies the gate is closed. Therefore any instance
+of the A1/A2 window hypotheses is incompatible with the closed-gate regime.
+In particular, when the A1/A2 hypotheses are discharged via the analytic
+bridges (Lemmas~\ref{lem:a1-from-supercritical} and~\ref{lem:a2-from-abc}),
+Proposition~\ref{prop:no-supercritical} rules out all supercritical modes.
+Thus no mode with $\alpha>1/2$ exists. The Lean lemma
 \texttt{InertiaERU\_alpha\_strong\_of\_no\_modes\_via\_certificates} yields
 strong ERU inertia from the absence of modes. Finally, the formal equivalence
 between strong ERU inertia and RH for $\xi_\alpha$ (under

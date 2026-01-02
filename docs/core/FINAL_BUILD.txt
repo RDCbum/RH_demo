@@ -1,4 +1,4 @@
-⚠ [7495/7521] Replayed ERURH.ComplexAbsCompat
+⚠ [7499/7521] Replayed ERURH.ComplexAbsCompat
 warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:11:2: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
@@ -8,7 +8,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySimpa false
 warning: lean/formal_proofs/ERURH/ComplexAbsCompat.lean:17:2: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [7496/7521] Replayed ERURH.PsiLayer
+⚠ [7500/7521] Replayed ERURH.PsiLayer
 warning: lean/formal_proofs/ERURH/PsiLayer.lean:20:34: This simp argument is unused:
   add_left_comm
 
@@ -23,7 +23,7 @@ Hint: Omit it from the simp argument list.
   simp [P.E_is_error x, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [7498/7521] Replayed ERURH.NumberTheory.Chebyshev
+⚠ [7502/7521] Replayed ERURH.NumberTheory.Chebyshev
 warning: lean/formal_proofs/ERURH/NumberTheory/Chebyshev.lean:32:25: This simp argument is unused:
   add_left_comm
 
@@ -38,18 +38,18 @@ Hint: Omit it from the simp argument list.
   simp [E_def, add_comm, add_left_comm,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-⚠ [7502/7521] Replayed ERURH.FluxWindows
+⚠ [7505/7521] Replayed ERURH.FluxWindows
 warning: lean/formal_proofs/ERURH/FluxWindows.lean:51:2: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [7503/7521] Replayed ERURH.FluxBounds
+⚠ [7506/7521] Replayed ERURH.FluxBounds
 warning: lean/formal_proofs/ERURH/FluxBounds.lean:31:6: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
 warning: lean/formal_proofs/ERURH/FluxBounds.lean:36:6: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
-⚠ [7505/7521] Replayed ERURH.BoundsConfig
+⚠ [7507/7521] Replayed ERURH.BoundsConfig
 warning: lean/formal_proofs/ERURH/BoundsConfig.lean:24:2: try 'simp' instead of 'simpa'
 
 Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`

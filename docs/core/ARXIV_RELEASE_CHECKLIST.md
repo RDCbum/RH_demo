@@ -8,13 +8,13 @@
   - python scripts/verify_gate.py --skip-pytests
 - lake build ERURH: [x] verified in this release run
 - verify_gate.py --skip-pytests: [x] verified in this release run
-- verify_gate.py (full): [x] verified (clean run, docs/core/FINAL_GATE_FULL.txt)
-- Final build+gate capsule: [x] logged (docs/core/FINAL_BUILD.txt, docs/core/FINAL_GATE_FULL.txt)
+- verify_gate.py (full): [x] verified (clean run, docs/core/FINAL_GATE_FULL.txt; latest capsule: docs/core/POST_EXPORTS_GATE_FULL.txt)
+- Final build+gate capsule: [x] logged (docs/core/FINAL_BUILD.txt, docs/core/FINAL_GATE_FULL.txt; latest: docs/core/POST_EXPORTS_BUILD.txt, docs/core/POST_EXPORTS_GATE_FULL.txt)
 - RB22 no_supercritical_beta attempt: [x] logged (docs/core/RB22_NoSupercritical_Try.log)
 - Paper build (CI or local): [ ] verified (CI: build-paper workflow or local latexmk)
-- Tarball contents: [x] verified (tar -tf dist/arxiv_submission.tar.gz)
-- ARXIV_TARBALL_LIST.txt: [x] logged (docs/core/ARXIV_TARBALL_LIST.txt)
-- NOAX bundle rebuild (assumptions ledger + axioms export): [x] verified
+- Tarball contents: [x] verified (tar -tf dist/arxiv_submission.tar.gz; latest list in docs/core/POST_EXPORTS_TARBALL_LIST.txt)
+- ARXIV_TARBALL_LIST.txt: [x] logged (docs/core/ARXIV_TARBALL_LIST.txt; latest list in docs/core/POST_EXPORTS_TARBALL_LIST.txt)
+- NOAX bundle rebuild (assumptions ledger + axioms export): [x] verified (latest: docs/core/NOAX_FINAL_STATEMENTS.txt)
 - RB32 tarball list: [x] logged (docs/core/RB32_TARBALL_LIST.txt)
 - RB45 tarball list: [x] logged (docs/core/RB45_TARBALL_LIST.txt)
 - P18 tarball list: [x] logged (docs/core/P18_TARBALL_LIST.txt)

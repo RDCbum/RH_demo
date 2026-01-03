@@ -1,5 +1,9 @@
 # ERURH-alpha Preprint (v0)
 
+Status: legacy preprint snapshot. For the current paper and gap framing, see
+`arxiv_submission/ERURH_Conditional_Proof.tex` and
+`docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 ## 1. Introduction
 
 The Riemann Hypothesis (RH) for the completed zeta-like function \(\xi_\alpha\) is recast in the ERURH framework through a collection of finite, auditable certificates. ERURH-alpha introduces bridge invariants \(\log R(s)\) and \(J_{\mathrm{rel}}(s)\), energy and inertia functionals, and connects them to the zero distribution of the zeta function on the logarithmic scale \(s = \log x\). The core reduction states that if four finite certificates are correct, then RH holds for \(\xi_\alpha\).

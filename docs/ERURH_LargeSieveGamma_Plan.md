@@ -1,6 +1,9 @@
 ERURH Large-Sieve-on-γ Plan
 ===========================
 
+Status: background note. For the authoritative assumptions and gap mapping, see
+`docs/core/ASSUMPTIONS_LEDGER.md` and `docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 1. Setup for the γ-large-sieve lemma
 ------------------------------------
 - Zeros `ρ_j = β_j + iγ_j` with `β_j > 1/2` in the tail regime.

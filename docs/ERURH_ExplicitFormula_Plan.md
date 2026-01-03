@@ -1,6 +1,9 @@
 ERURH Explicit Formula Plan (Alpha Layer)
 =========================================
 
+Status: background note. For the authoritative assumptions and gap mapping, see
+`docs/core/ASSUMPTIONS_LEDGER.md` and `docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 1. Explicit formula for ψ(x), E(x), and logR(s)
 -----------------------------------------------
 - Classical explicit formula: `ψ(x) = x - Σ x^ρ/ρ + (trivial terms + error)`, where the sum ranges over non-trivial zeros ρ of ζ.

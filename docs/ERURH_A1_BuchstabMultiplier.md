@@ -1,5 +1,8 @@
 # A1 Bridge via Buchstab Multiplier (Paper-First)
 
+Status: optional analytic bridge note. For the primary route and gap list, see
+`docs/core/RH_CLOSURE_CHECKLIST.md` and `arxiv_submission/ERURH_Conditional_Proof.tex`.
+
 This note records a paper-level bridge that reduces the A1 analytic burden to a
 single structural nonvanishing statement, without changing the kernel or any
 numerical certificates.

@@ -1,5 +1,9 @@
 # ERURH-alpha · Smoothed \(J_{\mathrm{rel}}\) (concept sketch)
 
+Status: concept sketch. For the current proof narrative and assumptions, see
+`arxiv_submission/ERURH_Conditional_Proof.tex` and
+`docs/core/ASSUMPTIONS_LEDGER.md`.
+
 ## Definition idea
 - Fix a kernel \(K: \mathbb{R} \to \mathbb{R}_{\ge 0}\), normalized \(\int K = 1\), localized (effective support tied to a window-scale parameter). In numerics we use a discrete Gaussian (radius 5, \(\sigma = 1.5\) in index units) as an approximation.
 - Define a smoothed bridge invariant
@@ -22,4 +26,5 @@
 - **Pipeline:** Add scripts to approximate/convolve \(J_{\mathrm{rel}}\) with \(K\) and produce rational/interval bounds per window; document kernel parameters and support.
 - **Preprint narrative:** Distinguish clearly between raw \(J_{\mathrm{rel}}\) and smoothed \(J_{\mathrm{rel}}^{K}\); report \(C_{\text{numeric,smooth}}\) alongside \(C_{\text{numeric,raw}}\) to guide future constant choices.
 
-This sketch keeps the Lean axioms unchanged while opening a path to a smoothed inertia formulation that may live at a smaller, better-behaved scale.***
+This sketch keeps the Lean axioms unchanged while opening a path to a smoothed
+inertia formulation that may live at a smaller, better-behaved scale.

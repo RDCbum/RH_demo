@@ -1,6 +1,10 @@
 ERURH A2 Analytic Plan (Ideas 1&2)
 ==================================
 
+Status: background note aligned with the current paper. For the authoritative
+gap list and route framing, see `docs/core/ASSUMPTIONS_LEDGER.md` and
+`docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 1. Statement of A2 (low + tail)
 --------------------------------
 - **A2-low:** Control of the RMS contribution from the finite “low” part of jRel (small zeros and bounded spectrum). This delivers a uniform bound on the normalized RMS over the low range.
@@ -23,6 +27,11 @@ ERURH A2 Analytic Plan (Ideas 1&2)
 
 4. Link to RMSLocalHypothesis and Plan B
 ----------------------------------------
-- Combining **A2-low** + **A2-tail** with **A1-mode** (a mode β > 1/2 contributing positively) should force an RMS-window above the formal envelope, i.e. establish `RMSLocalHypothesis`.
-- Once `RMSLocalHypothesis` holds, the Plan B master theorem (`RH_from_planB_RMS`) uses gate closure to rule out modes β > 1/2, and via existing ERURH equivalences concludes `RiemannHypothesis xiAlpha`.
-  The A1-mode growth lemma is recorded in `formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean`.
+- Combining **A2-low** + **A2-tail** with the **conditional A1 bridge**
+  (supercritical mode ⇒ A1 witness window) forces an RMS window above the
+  envelope, i.e. establishes `RMSLocalHypothesis`.
+- In the paper this is packaged as Lemma `a1-from-supercritical` (legacy
+  window-free route) or, alternatively, the fixed-window threshold bridge.
+- Once `RMSLocalHypothesis` holds, the Plan B master theorem uses gate closure
+  to rule out modes β > 1/2, and via the ERURH equivalences concludes
+  `RiemannHypothesis xiAlpha`.

@@ -1,6 +1,9 @@
 ERURH Explicit Coefficients Plan
 ================================
 
+Status: background note. For the authoritative assumptions and gap mapping, see
+`docs/core/ASSUMPTIONS_LEDGER.md` and `docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 1. From ψ(x) to logR(s) and jRel(s)
 -----------------------------------
 - Explicit formula sketch: `ψ(x) = x - Σ x^ρ/ρ + (trivial terms + error)`.

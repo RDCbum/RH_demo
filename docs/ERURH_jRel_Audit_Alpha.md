@@ -1,5 +1,9 @@
 # ERURH-alpha · jRel Audit (Lean ↔ Python)
 
+Status: technical audit note. For the current proof narrative and assumptions,
+see `arxiv_submission/ERURH_Conditional_Proof.tex` and
+`docs/core/ASSUMPTIONS_LEDGER.md`.
+
 ## Formal jRel_alpha (Lean)
 
 - The core object is `ERUBridge.jRel : ℝ → ℝ` (see `formal_proofs/ERURH/Inertia.lean`), an analytic bridge field alongside `logR`. No explicit formula is fixed at the certificate level; `jRel` is treated abstractly as a real function on the `s` axis.

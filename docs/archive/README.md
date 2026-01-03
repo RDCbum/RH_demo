@@ -3,6 +3,8 @@
 This directory contains historical snapshots and legacy drafts preserved for
 traceability. These files may be outdated relative to the current paper/Lean
 state and should not be used as authoritative references.
+Some legacy notes are in Spanish under `docs/archive/es` and are retained only
+for internal provenance; the maintained documentation is English.
 
 For the current, authoritative sources, use:
 - `arxiv_submission/ERURH_Conditional_Proof.tex`

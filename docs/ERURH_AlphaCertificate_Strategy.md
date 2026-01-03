@@ -1,6 +1,9 @@
 ERURH Alpha Certificate Strategy
 ================================
 
+Status: background strategy note. For the current proof state and gap list, see
+`docs/core/ASSUMPTIONS_LEDGER.md` and `docs/core/RH_CLOSURE_CHECKLIST.md`.
+
 ## 1. Introduction
 
 The ERURH-alpha layer already formalizes the implication “four finite certificates ⇒ RH_alpha” in Lean. ERURH-beta serves as a phenomenological laboratory, but here we focus on the alpha route: completing the analytic and numeric bounds that instantiate the alpha certificates.

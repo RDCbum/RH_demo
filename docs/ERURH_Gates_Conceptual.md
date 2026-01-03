@@ -1,6 +1,10 @@
 ERURH Gates (alpha/beta framing)
 ================================
 
+Status: background note. For the formal gate definitions and current route
+framing, see `arxiv_submission/ERURH_Conditional_Proof.tex` and
+`docs/core/ASSUMPTIONS_LEDGER.md`.
+
 1. What are ERURH gates?
 ------------------------
 - **Renormalization gate**: tracks the regime where the ERURH alpha constants remain admissible. It is closed when the envelope constant `C_envelope` respects its cap, the κ-family stays inside the admissible band `[κ_min, κ_max]`, and the global energy envelope `L_global` remains at the target level. If any of these constraints break, the flow must renormalize or switch regime.
@@ -13,7 +17,7 @@ ERURH Gates (alpha/beta framing)
   - `κ` sits in the specified band `[κ_min, κ_max]` (target `≈ [8.168, 9.384]`).
   - `C_envelope` is below its limit (`≈ 0.048`).
 - These numbers are not floating placeholders: they originate from the formal bounds (`lGlobalFormalRat`, `kappaLowFormalRat`, `kappaHighFormalRat`, `cEnvelopeFormalRat`) and from the alpha certificates that identify the actual constants with the released values.
-- Supporting demos: a simple LS_γ bound is implemented in Lean (`LS_gamma_simple_pointwise`), and the A1-mode growth lemma is recorded in `formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean` to track how β > 1/2 modes would force gate violations.
+- Supporting demos: a simple LS_γ bound is implemented in Lean (`LS_gamma_simple_pointwise`), and the mode-growth estimates in `formal_proofs/ERURH/ERURH_ModeGrowthAlpha.lean` support the conditional A1 bridge used in the paper to derive an RMS violation from a supercritical mode.
 
 3. Phenomenological beta-layer view
 -----------------------------------

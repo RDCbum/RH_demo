@@ -107,6 +107,10 @@ there are no ERU modes with weight $\alpha>1/2$, the ERU strong inertia bound
 holds, and the Riemann Hypothesis for $\xi_\alpha$ follows.
 \end{theorem}
 
+\noindent The exact Lean statement additionally takes an explicit
+\texttt{AxiomsShimAccepted} package and separates \texttt{CertificatesCorrectAlpha}
+from \texttt{NumericCoverageAlpha}; see the machine-generated exports below.
+
 \begin{remark}
 A proof is given in Section~\ref{sec:proof-main} using the Plan~B RMS-local
 route and the gate-closure implications of the alpha certificates.
@@ -168,25 +172,22 @@ in \texttt{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger sect
 
 \section{No supercritical ERU modes}\label{sec:no-supercritical}
 \begin{proposition}[No supercritical ERU modes (conditional)]\label{prop:no-supercritical}
-Assume the hypotheses of Lemma~\ref{lem:a1-from-supercritical} and
-Lemma~\ref{lem:a2-from-abc}, together with the closed-gate certificates
+Assume the Plan~B RMS-local hypotheses (Assumption~\ref{assm:a1a2}) and the
+correctness of the alpha certificates and numeric coverage
 (Assumption~\ref{assm:certs}). Then for every $\beta > 1/2$, there is no ERU
 exponential mode of weight $\beta$.
 \end{proposition}
 
 \begin{proof}
-Fix $\beta>1/2$ and suppose \texttt{ERU\_mode\_beta}$(\beta)$ holds. By
-Lemma~\ref{lem:a1-from-supercritical}, the A1-mode hypothesis holds for an
-admissible window family. By Lemma~\ref{lem:a2-from-abc}, the A2-low and A2-tail
-bounds hold. Hence Assumption~\ref{assm:a1a2} is satisfied, and
-Lemma~\ref{lem:a1a2-rms-violation} yields a window with
-$\mathrm{RMS}_{\alpha}(w)>C_{\mathrm{env}}$. This contradicts the closed-gate
-certificates (Assumption~\ref{assm:certs}). Therefore no such supercritical mode
-exists.
-
-The fixed-window route follows the same pattern, replacing
-Lemma~\ref{lem:a1-from-supercritical} by Assumption~\ref{assm:threshold-control}
-for \texttt{ctx\_real}.
+Fix $\beta>1/2$ and suppose for contradiction that
+\texttt{ERU\_mode\_beta}$(\beta)$ holds.
+By Lemma~\ref{lem:a1a2-rms-violation}, there exists a window $w$ with
+$\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$. By
+Lemma~\ref{lem:rms-violation-opens-gate}, the renormalization gate is open.
+Assumption~\ref{assm:certs} implies the relevant renormalization gates are
+closed, a contradiction. Hence \texttt{ERU\_mode\_beta}$(\beta)$ does not hold.
+Since $\beta>1/2$ was arbitrary, no supercritical ERU exponential mode can
+exist.
 \end{proof}
 
 \subsubsection*{Two Route B bridges (primary legacy window-free vs alternative fixed-window).}
@@ -802,20 +803,27 @@ There exist RMS quantities $\mathrm{RMS}_{\alpha},\mathrm{RMS}_{\mathrm{mode}},
 \mathrm{RMS}_{\mathrm{low}},\mathrm{RMS}_{\mathrm{tail}}$ and constants
 $c_{\mathrm{low}},c_{\mathrm{tail}},C_{\mathrm{env}}$ such that:
 \begin{itemize}
-  \item \textbf{A1 (mode growth):} there exists a window $w$ and a constant $K$
-  with $K>c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$ such that
+  \item \textbf{A1 (mode $\Rightarrow$ window bridge):} for every $\beta>1/2$, if
+  \texttt{ERU\_mode\_beta}$(\beta)$ holds then there exist an admissible window
+  $w$ and a constant $K$ with
+  $K>c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$ such that
   $\mathrm{RMS}_{\mathrm{mode}}(w)\ge K$.
   \item \textbf{A2-low:} for every admissible window $w$,
   $\mathrm{RMS}_{\mathrm{low}}(w)\le c_{\mathrm{low}}$.
   \item \textbf{A2-tail:} for every admissible window $w$,
   $\mathrm{RMS}_{\mathrm{tail}}(w)\le c_{\mathrm{tail}}$.
-  \item \textbf{Decomposition:}
-  $\mathrm{RMS}_{\alpha}(w)\ge\mathrm{RMS}_{\mathrm{mode}}(w)-
-  (\mathrm{RMS}_{\mathrm{low}}(w)+\mathrm{RMS}_{\mathrm{tail}}(w))$.
+  \item \textbf{Decomposition:} for every admissible window $w$,
+  \[
+    \mathrm{RMS}_{\alpha}(w)\ \ge\ \mathrm{RMS}_{\mathrm{mode}}(w)\;-\;
+    \mathrm{RMS}_{\mathrm{low}}(w)\;-\;\mathrm{RMS}_{\mathrm{tail}}(w).
+  \]
 \end{itemize}
-These abstract hypotheses are the analytic inputs of the Plan~B route. The
-admissibility (cofinality) of the window family is part of the window model,
-not an extra analytic assumption.
+These hypotheses are the analytic inputs of the Plan~B RMS-local route. In
+particular, A1 is formulated as a \emph{conditional bridge}: it produces a
+witness window only under the presence of a putative supercritical mode, and
+therefore does not assert an RMS violation in the closed-gate regime.
+The admissibility (cofinality) of the window family is part of the window
+model, not an extra analytic assumption.
 \end{assumption}
 
 \begin{assumption}[Fixed-window threshold control]\label{assm:threshold-control}
@@ -823,7 +831,7 @@ Let $S_{\max}$ denote the maximal lower endpoint among the fixed
 \texttt{ctx\_real} windows (Lean: \texttt{windowMinMax}). For every
 $\beta>1/2$, if \texttt{ERU\_mode\_beta}$(\beta)$ holds then there exists
 $s_0\le S_{\max}$ such that for all $s\ge s_0$,
-$|\log R_\alpha^{\mathrm{mode}}(s)|\ge \exp((\beta-1/2)s)$. This is precisely the Lean
+$|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)$. This is precisely the Lean
 predicate \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily}.
 \end{assumption}
 
@@ -837,7 +845,7 @@ supplement.
 
 \paragraph{Discussion (analytic gap for Assumption~\ref{assm:threshold-control}).}
 \textbf{Step 1.} Unpack \texttt{ERU\_mode\_beta}$(\beta)$ to obtain a threshold
-$s_0$ such that $|\log R_\alpha^{\mathrm{mode}}(s)|\ge \exp((\beta-1/2)s)$ for all $s\ge s_0$.
+$s_0$ such that $|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)$ for all $s\ge s_0$.
 
 \textbf{Step 2.} Establish an analytic upper bound on $s_0$ in terms of
 explicit-formula data (e.g., via a lower bound on the relevant mode coefficient
@@ -857,6 +865,10 @@ by Lemma~\ref{lem:a2-from-abc} from the classical inputs.
 \begin{assumption}[Numeric certificates]\label{assm:certs}
 The alpha certificates (GlobalEnergy and KernelBlowup) are correct, and the
 numeric coverage assumptions required to close the renormalization gates hold.
+In particular, the coverage asserts that for every admissible window $w$ in the
+covered family (the Lean predicate \texttt{NumericCoverageAlpha}), we have
+$\mathrm{RMS}_{\alpha}(w) \le C_{\mathrm{env}}$, i.e., the renormalization gate
+is closed on that family.
 These are finite rational inequalities generated by the ERURH pipeline.
 \end{assumption}
 
@@ -872,42 +884,52 @@ The Plan~B proof decomposes the RMS of the ERU observable into mode/low/tail
 contributions. The following lemma is formalized in
 \texttt{ERURH\_A2Hypotheses.lean}.
 
-\begin{lemma}[A1/A2 imply an RMS violation]\label{lem:a1a2-rms-violation}
-Under Assumption~\ref{assm:a1a2}, there exists a window $w$ with
+\begin{lemma}[Supercritical mode forces an RMS violation]\label{lem:a1a2-rms-violation}
+Assume Assumption~\ref{assm:a1a2}. Let $\beta>1/2$. If
+\texttt{ERU\_mode\_beta}$(\beta)$ holds, then there exists a window $w$ with
 $\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$.
 \end{lemma}
+
+\begin{proof}
+Assume $\beta>1/2$ and \texttt{ERU\_mode\_beta}$(\beta)$. By the A1 clause of
+Assumption~\ref{assm:a1a2}, choose an admissible window $w$ and $K$ such that
+$K>c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$ and
+$\mathrm{RMS}_{\mathrm{mode}}(w)\ge K$. Using the decomposition inequality and
+the A2-low/tail bounds from Assumption~\ref{assm:a1a2}, we obtain
+\begin{align*}
+\mathrm{RMS}_{\alpha}(w)
+&\ge \mathrm{RMS}_{\mathrm{mode}}(w)-\mathrm{RMS}_{\mathrm{low}}(w)-\mathrm{RMS}_{\mathrm{tail}}(w) \\
+&\ge K - c_{\mathrm{low}} - c_{\mathrm{tail}} \\
+&> C_{\mathrm{env}}.
+\end{align*}
+This is the desired RMS violation.
+\end{proof}
 
 A window whose RMS exceeds the envelope forces a renormalization gate to open.
 This is a direct consequence of the definition of the gate predicate.
 
-\begin{lemma}[RMS violation opens a gate]
+\begin{lemma}[RMS violation opens a gate]\label{lem:rms-violation-opens-gate}
 If $\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$ for some window $w$, then the
 renormalization gate is open.
 \end{lemma}
 
 The correctness of the certificates (Assumption~\ref{assm:certs}) closes the
 renormalization gates; thus the RMS violation is incompatible with the closed
-gate regime. Any route that derives the A1/A2 window hypotheses from a
-supercritical mode therefore yields a contradiction.
+gate regime. Consequently, under Assumptions~\ref{assm:a1a2} and~\ref{assm:certs},
+supercritical modes cannot exist.
 
 \section{Proof of the main theorem}\label{sec:proof-main}
 We now prove Theorem~\ref{thm:main}. This is the mathematical counterpart of
 the Lean theorem \texttt{RH\_from\_ERURH\_conditional}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
-Assumption~\ref{assm:a1a2} yields a window with
-$\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$ by
-Lemma~\ref{lem:a1a2-rms-violation}, hence the renormalization gate opens.
-Assumption~\ref{assm:certs} implies the gate is closed. Therefore any instance
-of the A1/A2 window hypotheses is incompatible with the closed-gate regime.
-In particular, when the A1/A2 hypotheses are discharged via the analytic
-bridges (Lemmas~\ref{lem:a1-from-supercritical} and~\ref{lem:a2-from-abc}),
-Proposition~\ref{prop:no-supercritical} rules out all supercritical modes.
-Thus no mode with $\alpha>1/2$ exists. The Lean lemma
+By Proposition~\ref{prop:no-supercritical}, there are no ERU exponential modes
+with weight $>1/2$. The Lean lemma
 \texttt{InertiaERU\_alpha\_strong\_of\_no\_modes\_via\_certificates} yields
-strong ERU inertia from the absence of modes. Finally, the formal equivalence
-between strong ERU inertia and RH for $\xi_\alpha$ (under
-Assumption~\ref{assm:classical}) gives RH.
+strong ERU inertia from the absence of modes (using
+Assumption~\ref{assm:certs}). Finally, the formal equivalence between strong
+ERU inertia and RH for $\xi_\alpha$ (under Assumption~\ref{assm:classical})
+gives RH.
 \end{proof}
 
 \begin{remark}
@@ -919,21 +941,25 @@ are established, RH follows mechanically.
 \end{remark}
 
 \begin{remark}
-In the formalization, the A1/A2 hypotheses are stated as unconditional window
-assumptions (mirroring the Lean definition of \texttt{A1\_mode} and
-\texttt{A2Low\_RMS}/\texttt{A2Tail\_RMS}). Analytically, A1 is intended to be
-derived from the existence of a supercritical mode; this is made explicit in
-Proposition~\ref{prop:no-supercritical}, which discharges A1/A2 via the paper
-bridges before invoking the gate contradiction.
+In the Lean master statement, the Plan~B window hypotheses are packaged as
+\texttt{hA1 : A1\_mode ctx} and \texttt{hLow : A2Low\_RMS ctx}/\texttt{hTail :
+A2Tail\_RMS ctx} inside \texttt{WindowScalingAssumptions}. In this paper,
+Assumption~\ref{assm:a1a2} is formulated so that the A1 clause is a
+\emph{mode-to-window bridge} rather than an unconditional witness. This matches
+the intended analytic semantics: A1 produces a window only under a putative
+supercritical mode, so it is compatible with the closed-gate regime.
 \end{remark}
 
 \begin{remark}
-Because A1/A2 are assumptions in the Lean statement, the conditional theorem
-can be vacuous if A1/A2 are incompatible with the closed-gate regime. The paper
-avoids this by deriving A1/A2 from a supercritical mode hypothesis before
-invoking the gate contradiction (Proposition~\ref{prop:no-supercritical}).
-Any remaining gap is therefore the analytic bridge that produces A1 from a
-supercritical mode.
+With A1 formulated as an implication from \texttt{ERU\_mode\_beta} to a witness
+window, the core Plan~B contradiction has the standard form:
+\[
+(\exists\,\beta>1/2\ \text{supercritical mode})\ \Rightarrow\
+(\exists\,w\ \text{RMS violation})\ \Rightarrow\ \text{gate opens},
+\]
+which contradicts gate closure from the finite certificates. Thus the
+conditional theorem is not vacuous: the hypotheses do not force an RMS
+violation unless a supercritical mode exists.
 \end{remark}
 
 \section{Formal status and gaps}\label{sec:status-gaps}
@@ -997,7 +1023,8 @@ Arrows indicate implication or usage.
   \item Classical estimates (Theorems~\ref{thm:A}--\ref{thm:C})
   $\Rightarrow$ spectral decay and large-sieve inputs
   (Assumptions~\ref{assm:hb}--\ref{assm:ls}).
-  \item A1/A2 window hypotheses (Assumption~\ref{assm:a1a2})
+  \item A1/A2 window hypotheses (Assumption~\ref{assm:a1a2}) plus a
+  putative supercritical mode $\texttt{ERU\_mode\_beta}(\beta)$
   $\Rightarrow$ RMS violation $\Rightarrow$ gate opens.
   \item Certificates (Assumption~\ref{assm:certs})
   $\Rightarrow$ gate closed.
@@ -1127,9 +1154,6 @@ Dover, 2003.
 \end{thebibliography}
 
 \end{document}
-
-
-
 
 
 

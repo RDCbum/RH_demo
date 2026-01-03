@@ -49,6 +49,9 @@ required for a complete Route B chain.
   `arxiv_submission/lean_gap_statements.txt`; Lemmas
   `a1-from-supercritical-buchstab` and
   `buchstab-coefficient` in `arxiv_submission/ERURH_Conditional_Proof.tex`).
+  The Lean export also includes the intermediate predicate
+  `ERURH.ModeRMSLowerBound_from_buchstab ctx_real`, which packages the explicit
+  mode RMS lower bound used by the Buchstab bridge.
   This packages the Buchstab
   multiplier non-vanishing with a structural coefficient lower bound and
   implies `ERURH.A1_from_supercritical` via

@@ -1,7 +1,8 @@
 # Paper diff summary (A1/A2 consistency fix)
 
 This note summarizes the changes applied to address the vacuity and consistency
-issues highlighted in `docs/Critica_prueba_condicional.md`.
+issues highlighted during the referee-audit pass (see
+`docs/core/REFEREE_AUDIT_CAPSULE.md`).
 
 ## What changed
 - **A1/A2 assumptions** are now written as **inequalities**:
@@ -22,4 +23,4 @@ anything) and align the paper’s assumptions with the Lean formulation.
 
 ## References
 - Paper: `arxiv_submission/ERURH_Conditional_Proof.tex`
-- Critique: `docs/Critica_prueba_condicional.md`
+- Audit capsule: `docs/core/REFEREE_AUDIT_CAPSULE.md`

@@ -50,4 +50,5 @@ package explicitly.
 | Hypothesis (Lean) | How discharged | Evidence | Status |
 | --- | --- | --- | --- |
 | `ERURH.A1_from_supercritical_buchstab ctx` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemmas `a1-from-supercritical-buchstab`, `buchstab-coefficient`) | OPEN (paper) |
+| `ERURH.ModeRMSLowerBound_from_buchstab ctx` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Definition "Buchstab mode lower bound") | OPEN (paper) |
 | `ERURH.ExplicitBRhoExpression` | Paper | `arxiv_submission/ERURH_Conditional_Proof.tex` (Lemma `buchstab-coefficient`, explicit-formula identification) | OPEN (paper) |

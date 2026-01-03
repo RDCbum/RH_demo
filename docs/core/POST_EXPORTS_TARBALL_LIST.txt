@@ -1,0 +1,16 @@
+./
+./assumptions_ledger.tex
+./data/
+./ERURH_ABC_preprint_old.tex
+./ERURH_Conditional_Proof.tex
+./lean_axioms_shim_bundle.txt
+./lean_gap_statements.txt
+./lean_master_axioms.txt
+./lean_master_statement.txt
+./reproducibility_manifest.txt
+./Theorem_ABC_preprint.tex
+./data/releases/
+./data/releases/erurh-v2-core/
+./data/releases/erurh-v2-core/formal/
+./data/releases/erurh-v2-core/formal/rms_context.json
+./data/releases/erurh-v2-core/formal/rms_mode_bridge.json

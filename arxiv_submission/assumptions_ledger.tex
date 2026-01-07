@@ -72,33 +72,31 @@ Reference/proof: immediate from the previous assumption. Lean field:
 \texttt{AxiomsShimAccepted.h\_xi\_argument\_alpha}.
 
 \paragraph{xi\_bounds\_alpha\_of\_hypotheses.}
-Statement: `xi_bounds_hypotheses_alpha → xi_bounds_alpha`.
+Statement: \texttt{\detokenize{xi_bounds_hypotheses_alpha -> xi_bounds_alpha}}.
 Reference/proof: classical/citable implication (explicit-formula bounds package).
 Lean field: \texttt{AxiomsShimAccepted.xi\_bounds\_alpha\_of\_hypotheses}.
 
 \paragraph{xi\_argument\_alpha\_of\_hypotheses.}
-Statement: `xi_argument_hypotheses_alpha → xi_argument_alpha`.
+Statement: \texttt{\detokenize{xi_argument_hypotheses_alpha -> xi_argument_alpha}}.
 Reference/proof: classical/citable implication (argument bounds package).
 Lean field: \texttt{AxiomsShimAccepted.xi\_argument\_alpha\_of\_hypotheses}.
 
 \paragraph{rh\_from\_E\_alpha\_of\_hypotheses.}
-Statement: `(E_bound_strong_alpha ∧ xi_bounds_alpha ∧ xi_argument_alpha ∧
-explicit_rect_alpha ∧ Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi)) →
-RHfromE xiAlpha AlphaPsi`.
+Statement: \texttt{\detokenize{(E_bound_strong_alpha and xi_bounds_alpha and xi_argument_alpha and explicit_rect_alpha and Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi)) -> RHfromE xiAlpha AlphaPsi}}.
 Reference/proof: classical/citable implications in the ERU explicit-formula framework.
 Lean field: \texttt{AxiomsShimAccepted.rh\_from\_E\_alpha\_of\_hypotheses}.
 
 \paragraph{h\_inertia\_to\_E.}
-Statement: `InertiaERU_alpha_strong → E_bound_strong_alpha`.
+Statement: \texttt{\detokenize{InertiaERU_alpha_strong -> E_bound_strong_alpha}}.
 Reference/proof: classical ERU inertia $\Rightarrow$ strong $E$-bound implication.
 Lean field: \texttt{AxiomsShimAccepted.h\_inertia\_to\_E}.
 
 \paragraph{h\_inertia\_of\_E.}
-Statement: `E_bound_strong_alpha → InertiaERU_alpha_strong`.
+Statement: \texttt{\detokenize{E_bound_strong_alpha -> InertiaERU_alpha_strong}}.
 Reference/proof: classical strong $E$-bound $\Rightarrow$ ERU inertia implication.
 Lean field: \texttt{AxiomsShimAccepted.h\_inertia\_of\_E}.
 
 \paragraph{h\_RH\_to\_E.}
-Statement: `RiemannHypothesis xiAlpha → E_bound_strong_alpha`.
+Statement: \texttt{\detokenize{RiemannHypothesis xiAlpha -> E_bound_strong_alpha}}.
 Reference/proof: classical RH $\Rightarrow$ $E$-bound (Assumption~\ref{assm:classical}).
 Lean field: \texttt{AxiomsShimAccepted.h\_RH\_to\_E}.

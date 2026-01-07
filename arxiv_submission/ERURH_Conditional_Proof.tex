@@ -1117,6 +1117,23 @@ Lemma~\ref{lem:buchstab-m-nonzero} gives $m(s)\neq 0$. Thus the only remaining
 nonvanishing requirement in Assumption~\ref{assm:explicit} concerns auxiliary
 holomorphic weights absorbed into $H(s)$.
 
+\section{Hypotheses glossary (Lean \texorpdfstring{$\leftrightarrow$}{<->} paper)}\label{sec:hypotheses-glossary}
+
+For auditability we spell out the main predicates exactly as they are used in Lean.
+\begin{itemize}
+  \item \textbf{\texttt{ERU\_mode\_beta} $(\beta)$:} with $\beta>1/2$, there exists $s_0>0$ such that for all $s\ge s_0$, the mode contribution in \texttt{logR\_alpha} satisfies the exponential lower bound against the fixed polynomial divisor used in the Lean definition. Domain: $s\in\mathbb{R}_{\ge 0}$; no uniform bound in $\beta$ is claimed.
+  \item \textbf{\texttt{A1\_mode} $(\mathrm{ctx})$:} there exists an admissible window $w$ in the family of windows of \texttt{RMSLocalContext} $\mathrm{ctx}$ such that $\mathrm{RMS}_\alpha(w)$ exceeds the envelope constant of \texttt{ctx}. This is existential in $w$; no statement about all windows.
+  \item \textbf{\texttt{A2Low\_RMS} $(\mathrm{ctx})$ and \texttt{A2Tail\_RMS} $(\mathrm{ctx})$:} inequalities (not equalities) controlling the low and tail parts of the RMS decomposition over the same admissible window family, with constants \(C_{\mathrm{low}},C_{\mathrm{tail}}\) fixed by \texttt{ctx}.
+  \item \textbf{\texttt{NumericCoverageAlpha} $(\mathrm{ctx\_real})$:} certifies a finite set of admissible windows \(W_{\mathrm{cert}}\) sufficient for Route~B; the gate only enforces RMS bounds on this finite family.
+  \item \textbf{Gate statement (Route B):} for all \(w\in W_{\mathrm{cert}}\), \(\mathrm{RMS}_\alpha(w)\le C_{\mathrm{env}}\), with \(C_{\mathrm{env}}\) the envelope constant of \texttt{ctx\_real}.
+\end{itemize}
+
+\paragraph{Coefficient normalisation \texorpdfstring{$b_\rho$}{b\_rho}.}
+We fix that \(b_\rho\) absorbs the gamma prefactor, $\pi^{-s/2}$, the auxiliary holomorphic weight $H(s)$, and the factor $(\rho-1)/\rho$. The Lean predicate \texttt{ExplicitBRhoExpression} records exactly this normalisation; if another normalisation is used elsewhere, the equality (or a bound) must be declared explicitly. Here we assume it coincides with \texttt{ExplicitBRhoExpression}.
+
+\paragraph{Assumption (window coverage bridge).}
+Let \(W_{\mathrm{cofinal}}\) be the admissible family in which \texttt{A1\_mode} witnesses a window \(w\), and \(W_{\mathrm{cert}}\) the finite family certified by \texttt{NumericCoverageAlpha}. We assume \(W_{\mathrm{cert}}\) covers the relevant tail of \(W_{\mathrm{cofinal}}\) (cofinality or inclusion), so any A1-produced violation occurs within \(W_{\mathrm{cert}}\). This is the only bridge needed to combine A1 with the finite gate certificates.
+
 \section{Verification of H1--H3 for the ERU kernel}\label{app:h1h3}
 This short appendix explains why the hypotheses (H1)–(H3) used in
 \texttt{Theorem\_ABC\_preprint.tex} are reasonable for the ERU kernel in the

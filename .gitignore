@@ -72,3 +72,23 @@ docs/preprints/*_old.*
 **/*.ilean
 **/*.trace
 docs/core/STEP0_GATE_NO_SKIP.txt
+
+########################################
+# LaTeX build artefacts (local only)
+########################################
+*.synctex.gz
+*.toc
+*.bbl
+*.blg
+arxiv_submission/*.log
+arxiv_submission/*.out
+arxiv_submission/*.fls
+arxiv_submission/*.fdb_latexmk
+arxiv_submission/*.aux
+arxiv_submission/*.pdf
+dist/*.log
+dist/*.out
+dist/*.fls
+dist/*.fdb_latexmk
+dist/*.aux
+dist/*.pdf

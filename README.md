@@ -2,6 +2,10 @@
 
 RH_demo_clean presents ERURH as a high-difficulty applied case study of the ERU framework. It provides a conditional Lean reduction to the Riemann Hypothesis together with a claim-indexed analytic discharge (Theorems A/B/C) prepared for external audit. It does not assert RH unconditionally; it invites focused review of specific Claim IDs. The repo includes the Lean proof modules and Python tooling used to regenerate the numeric certificates referenced by the conditional statement.
 
+**ERU context.**  
+This repository presents ERURH as an applied, high-difficulty case study of the ERU framework.  
+For a concise overview of ERU and how ERURH fits into it, see `docs/ERU_AT_A_GLANCE.md`.
+
 **Scope-exact claim.** ERURH provides a complete, formally verified (Lean) reduction of RH for `xiAlpha` to a finite and explicit set of external analytic statements (A/B/C and normalization bridges), together with a family of finite, reproducible numerical certificates whose verification is mechanical. The repository includes a machine-checked proof of the conditional implication `ERURH_GlobalAssumptions -> RiemannHypothesis`, and a deterministic pipeline that regenerates and verifies all referenced numeric artifacts.
 
 ## Routes

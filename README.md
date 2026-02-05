@@ -1,10 +1,16 @@
-# ERURH - Conditional RH Proof (Lean/Python)
+# RH_demo_clean - ERURH conditional RH proof (Lean/Python)
 
-This repository is a minimal, self-contained project. It provides the Lean proof modules and the Python tooling needed to regenerate the rational certificates used in the conditional proof of the Riemann Hypothesis (RH).
-It also presents three analytic theorems (A, B, C) that underpin the Lean result and should be independently reviewed and verified.
-Route B is presented with a primary legacy window-free bridge and an alternative fixed-window computational bridge; the Buchstab bridge is an optional derivation. See `docs/core/ROUTES_COMPARISON.md`.
+RH_demo_clean presents ERURH as a high-difficulty applied case study of the ERU framework. It provides a conditional Lean reduction to the Riemann Hypothesis together with a claim-indexed analytic discharge (Theorems A/B/C) prepared for external audit. It does not assert RH unconditionally; it invites focused review of specific Claim IDs. The repo includes the Lean proof modules and Python tooling used to regenerate the numeric certificates referenced by the conditional statement.
+
+**Scope-exact claim.** ERURH provides a complete, formally verified (Lean) reduction of RH for `xiAlpha` to a finite and explicit set of external analytic statements (A/B/C and normalization bridges), together with a family of finite, reproducible numerical certificates whose verification is mechanical. The repository includes a machine-checked proof of the conditional implication `ERURH_GlobalAssumptions -> RiemannHypothesis`, and a deterministic pipeline that regenerates and verifies all referenced numeric artifacts.
+
+## Routes
+- Primary (legacy window-free): main route; abstract RMS context; no fixed window family / no computational threshold control; core conceptual chain.
+- Secondary (fixed-window computational): experimental/optional; depends on extra bridges (threshold control, `ExplicitBRhoExpression`); not required for the primary route.
+See `docs/core/ROUTES_COMPARISON.md`.
 
 ## Overview
+Lean proves a conditional implication from explicit hypotheses; all external assumptions and bridge conditions are documented in `docs/core/` and prepared for audit.
 - Lean formalization: encodes the ERURH framework and the conditional implication `ERURH_GlobalAssumptions -> RiemannHypothesis`.
 - Python tooling: regenerates rational bounds and certificate values from the published numeric artefacts.
 - Documentation: explains the analytic assumptions, the certificate pipeline, and how to reproduce the build.
@@ -101,6 +107,7 @@ The Lean theorem formalizes a conditional implication of the form:
 - Spectral / large-sieve–style controls for explicit-formula coefficients.
 - Window and certificate hypotheses (A1/A2 conditions, alpha/beta coverage).
 
+Bridge assumptions (A1/A2, normalization) are structural/compatibility conditions audited mechanically; deep analytic review is concentrated in A/B/C Claim IDs.
 In addition, this repository includes a **proposed analytic proof** of three key assumptions (Theorems **A, B, C**) which, if externally verified, would discharge the remaining analytic gaps used by the conditional statement. These analytic components are provided for independent review:
 
 - Theorems A, B, C (analytic write-up): `docs/core/ERURH_Analytic_Theorems_ABC.md`

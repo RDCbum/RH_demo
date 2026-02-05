@@ -3,6 +3,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 \usepackage{fancyvrb}
+\usepackage{array}
 
 % Unicode characters present in Lean exports (VerbatimInput).
 \DeclareUnicodeCharacter{2200}{\ensuremath{\forall}}
@@ -29,11 +30,19 @@
 \newcommand{\Imc}{\operatorname{Im}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\brhoLean}{b_\rho^{\mathrm{Lean}}}
+\newcommand{\brhoABC}{b_\rho^{\mathrm{ABC}}}
+\newcommand{\code}[1]{\path{#1}}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
+ERURH is presented here as a high-difficulty applied case study of the ERU
+framework. The Riemann Hypothesis for the ERURH completed function
+$\xi_\alpha$ is used as a stress-test to demonstrate a reduction to explicit
+analytic obligations and finite, auditable certificates. All conclusions are
+conditional on the external analytic inputs and certified data stated below.
 We present a precise conditional proof of the Riemann Hypothesis for the
 completed zeta-like function $\xi_\alpha$ used in the ERURH framework. The
 argument reduces RH to a finite set of auditable numerical certificates and a
@@ -44,9 +53,37 @@ explains the ERU energy/inertia machinery, and gives a rigorous, end-to-end
 proof of the conditional theorem.
 \end{abstract}
 
+\noindent\textbf{Status / Scope.}
+This document is a logical reduction and an explanatory bridge between the
+Lean formal statement and external analytic hypotheses.
+It does not contain independent analytic proofs of the A/B/C estimates; those
+appear in \code{Theorem}\allowbreak\code{_ABC}\allowbreak\code{_preprint.tex}.
+Its purpose is to fix dependencies (\code{ERURH}\allowbreak\code{_GlobalAssumptions}
+$\Rightarrow$ RH for $\xi_\alpha$) and provide cross-references for audit.
+See \code{docs/core/ERURH}\allowbreak\code{_Assumptions_Report.md} and
+\code{docs/core/ERURH}\allowbreak\code{_Analytic_Theorems_ABC.md} for
+consolidated assumption summaries and A/B/C pointers.
+\textbf{Trust boundary note.} The Lean bundle \code{AxiomsShimAccepted} is the
+trust base (Lean kernel + mathlib axioms only). The window and normalization
+bridges are coverage/compatibility conditions audited structurally against the
+numeric certificates, not deep analytic conjectures.
+
+\subsection*{Main Claim (scope-exact)}
+ERURH provides a complete, formally verified (Lean) reduction of the Riemann
+Hypothesis for $\xi_\alpha$ to a finite and explicit set of external analytic
+statements (A/B/C and normalization bridges), together with a family of finite,
+reproducible numerical certificates whose verification is mechanical. The
+repository includes a machine-checked proof of the conditional implication
+\code{ERURH_GlobalAssumptions} $\Rightarrow$ RH$(\xi_\alpha)$, and a
+deterministic pipeline that regenerates and verifies all referenced numeric
+artifacts.
+
 \section{Introduction}
 The ERURH program reformulates the Riemann Hypothesis (RH) in terms of a
-finite set of numerically checkable certificates. The strategy is to translate
+finite set of numerically checkable certificates. It is presented here as a
+high-difficulty applied case study of the ERU framework, using RH for
+$\xi_\alpha$ as a stress-test of the reduction-to-certificates paradigm. The
+strategy is to translate
 the classical explicit formula for $\psi(x)$ into an ``energy--inertia''
 framework on the logarithmic scale $s = \log x$, and then show that the
 absence of supercritical exponential modes (modes with real part $>1/2$)
@@ -55,10 +92,13 @@ content is encapsulated in finite certificates; the classical analytic inputs
 are isolated as explicit assumptions. The entire logical chain is formalized
 in Lean.
 
-This paper is a rigorous, stand-alone description of the conditional proof.
-We make no unconditional claims; all analytic inputs are enumerated and treated
-as hypotheses. The main theorem mirrors the Lean theorem
-\texttt{RH\_from\_ERURH\_conditional}.
+This paper is a rigorous, stand-alone description of the conditional proof at
+the level of the reduction and the Lean-verified logical chain. The analytic
+proofs of the classical inputs appear in the companion preprint
+\code{Theorem}\allowbreak\code{_ABC}\allowbreak\code{_preprint.tex}. We make no unconditional claims; all
+analytic inputs are enumerated and treated as hypotheses. The main theorem
+mirrors the Lean theorem
+\code{RH_from}\allowbreak\code{_ERURH}\allowbreak\code{_conditional}.
 
 \section{Notation and ERU observables}
 Let $\xi_\alpha$ denote the completed zeta-like function used in the ERURH
@@ -78,44 +118,49 @@ The explicit formula for $\psi(x)$ can be written on the $s$-scale in the form
 \end{equation}
 where $\rho = \beta + i\gamma$ ranges over non-trivial zeros of $\zeta(s)$ and
 $\cdots$ denotes terms from trivial zeros and smooth test factors. We introduce
-abstract coefficients $b_\rho$ from the explicit formula. For the Lean
-formalization we fix a normalization in which the explicit-formula package
-identifies these coefficients with the prefactor
+abstract coefficients $\brhoLean$ for the Lean formalization. For the analytic
+preprint (Theorems A/B/C) we use coefficients $\brhoABC$ defined in the
+``Classical analytic estimates'' section; a bridge between $\brhoABC$ and
+$\brhoLean$ is stated explicitly below. For Lean we fix a normalization in
+which the explicit-formula package identifies $\brhoLean$ with the prefactor
 \[
   \mathrm{explicit\_b}_\rho(\rho) := \pi^{-\rho/2}\Gamma\!\left(\frac{\rho}{2}\right).
 \]
-Any additional holomorphic factor (e.g., a factor $H(s)$ of moderate growth or
-the prefactor $(\rho-1)/\rho$) is absorbed into the abstract coefficient
-$b_\rho$ and the explicit-formula assumption. This normalization matches the
-Lean definition \texttt{explicit\_b\_rho\_expression}.
+This normalization matches the Lean definition
+\texttt{explicit\_b\_rho\_expression}. Any additional holomorphic factors (e.g.,
+$H(s)$ or $(\rho-1)/\rho$) appear only in the analytic coefficient $\brhoABC$
+and are related to $\brhoLean$ by Assumption~\ref{assm:brho-bridge}.
 
 \subsection*{Notation summary}
 \begin{itemize}
   \item $\xi_\alpha$: the completed zeta-like function of the ERURH alpha layer.
   \item $s=\log x$, $\log R(s)=E(e^s)/e^s$, $J_{\mathrm{rel}}(s)=d(\log R)/ds$.
   \item $\rho=\beta+i\gamma$: a non-trivial zero of $\zeta(s)$.
-  \item $b_\rho$: explicit-formula coefficients associated to $\rho$.
+  \item $\brhoLean$: Lean-side explicit-formula coefficient.
+  \item $\brhoABC$: analytic preprint coefficient used in Theorems~A/B/C.
   \item $C_{\mathrm{env}}$: formal RMS envelope constant.
 \end{itemize}
-\noindent The symbol $\alpha$ is used both for the ERU mode parameter and for
-generic exponents (e.g., the admissible range in Theorem~\ref{thm:B}); these
-uses are unrelated and should not be confused with the fixed subscript in
-$\xi_\alpha$.
+\noindent \textbf{Notation convention.} The symbol $\alpha$ is reserved for the
+fixed alpha layer (e.g., $\xi_\alpha$, \texttt{alphaBridge}). The weight of a
+mode is denoted $\beta$; ``supercritical'' always means $\beta>1/2$. We avoid
+phrases like ``mode of weight $\alpha>1/2$'' to keep the roles disjoint.
 
 \section{Main theorem (conditional)}
 \begin{theorem}[Conditional ERURH master theorem]\label{thm:main}
 Assume the classical zeta package (Assumption~\ref{assm:classical}), the ERU
 explicit formula (Assumption~\ref{assm:explicit}), spectral decay (Assumption
 \ref{assm:hb}), the large-sieve estimate (Assumption~\ref{assm:ls}), the RMS
-window hypotheses (Assumption~\ref{assm:a1a2}), and the correctness of the
+window hypotheses (Assumption~\ref{assm:a1a2}), the window-coverage bridge
+(Assumption~\ref{assm:window-coverage-bridge}), and the correctness of the
 alpha certificates and numeric coverage (Assumption~\ref{assm:certs}). Then
-there are no ERU modes with weight $\alpha>1/2$, the ERU strong inertia bound
+there are no ERU modes with weight $\beta>1/2$, the ERU strong inertia bound
 holds, and the Riemann Hypothesis for $\xi_\alpha$ follows.
 \end{theorem}
 
 \noindent The exact Lean statement additionally takes an explicit
-\texttt{AxiomsShimAccepted} package and separates \texttt{CertificatesCorrectAlpha}
-from \texttt{NumericCoverageAlpha}; see the machine-generated exports below.
+\code{AxiomsShimAccepted} package and separates
+\code{CertificatesCorrectAlpha} from \code{NumericCoverageAlpha};
+see the machine-generated exports below.
 
 \begin{remark}
 A proof is given in Section~\ref{sec:proof-main} using the Plan~B RMS-local
@@ -126,13 +171,27 @@ the result depends on external verification of those analytic proofs and the
 gate-certified data.
 \end{remark}
 
+\noindent\textbf{Referee-grade summary.} If one accepts the explicit analytic
+assumptions listed in this paper (including the A1/A2 window implications, the
+window-coverage bridge, and the coefficient-normalization bridge where
+applicable), the analytic inputs
+from the companion preprint (Theorems A/B/C as used for A2), the finite
+certificate checks (CertificatesCorrectAlpha plus NumericCoverageAlpha), and
+the explicit Lean hypothesis bundle \code{AxiomsShimAccepted}, then Lean
+verifies the implication up to \code{RiemannHypothesis}\allowbreak\code{xiAlpha}. The paper
+explains the intermediate chain ``no supercritical modes $\Rightarrow$ strong
+inertia $\Rightarrow$ RH$(\xi_\alpha)$'' under Assumption~\ref{assm:classical}.
+
 \section{Formal verification in Lean}
 The conditional ERURH master theorem is formalized in Lean 4 (mathlib). The
 exact statement and axiom footprint below are machine-generated and included
 in the arXiv bundle.
-These files are produced by running \texttt{\detokenize{lake env lean docs/core/PrintMasterStatement.lean}} and
-\texttt{\detokenize{lake env lean docs/core/PrintAxioms_Numeric.lean}}, redirecting the outputs to
-\texttt{\detokenize{arxiv_submission/lean_master_statement.txt}} and \texttt{\detokenize{arxiv_submission/lean_master_axioms.txt}}.
+These files are produced by running \texttt{lake env lean} on
+\code{docs/core/PrintMasterStatement.lean} and
+\code{docs/core/PrintAxioms_Numeric.lean}.
+The outputs are redirected to
+\code{arxiv_submission/lean_master_statement.txt} and
+\code{arxiv_submission/lean_master_axioms.txt}.
 
 {\small\VerbatimInput{lean_master_statement.txt}}
 
@@ -146,39 +205,53 @@ These files are produced by running \texttt{\detokenize{lake env lean docs/core/
 
 \noindent Gap statements (machine-generated):
 
+\noindent The following are exactly the gap statements exported by this Lean version (see Appendix for the verbatim file):
+\begin{itemize}
+  \item \code{ERURH.A1_from_supercritical}\allowbreak\code{_buchstab}\allowbreak\ \code{ctx_real}
+  \item \code{ERURH.ModeRMSLowerBound}\allowbreak\code{_from_buchstab}\allowbreak\ \code{ctx_real}
+  \item \code{ERURH.}\allowbreak\code{Alpha.}\allowbreak\code{ModeThreshold}\allowbreak\code{Control}\allowbreak\code{OnCtxReal}\allowbreak\code{WindowFamily}
+  \item \code{ERURH.}\allowbreak\code{ExplicitBRhoExpression}
+\end{itemize}
+
 {\small\VerbatimInput{lean_gap_statements.txt}}
 
-\noindent These gap statements are paper-level analytic obligations. We provide
-full proofs for the primary legacy window-free route (A1 and A2) in this paper,
-and full proofs of the A/B/C analytic inputs in the companion preprint. The
+\noindent These gap statements are the authoritative Lean gaps for this version.
+We provide full proofs for the primary legacy window-free route (A1 and A2) in
+this paper, and full proofs of the A/B/C analytic inputs in the companion
+preprint. The Buchstab-specific gaps are
+\code{A1_from_supercritical}\allowbreak\code{_buchstab},
+\code{ModeRMSLowerBound}\allowbreak\code{_from_buchstab}, and
+\code{ExplicitBRho}\allowbreak\code{Expression}.
+These are explicit paper-level assumptions for the optional Buchstab route. The
 fixed-window threshold control remains a documented analytic gap, as noted in
 Assumption~\ref{assm:threshold-control}.
 
-\noindent Discharge map for \texttt{AxiomsShimAccepted}:
+\noindent Discharge map for \code{AxiomsShimAccepted}:
 
 \begin{center}
-\begin{tabular}{|l|l|}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.38\linewidth}|>{\raggedright\arraybackslash}p{0.56\linewidth}|}
 \hline
 Field(s) & Discharge path \\
 \hline
-\texttt{alphaInterfacesBase}, \texttt{explicit\_alpha\_via\_stages} & Assumption~\ref{assm:explicit} (explicit formula package). \\
-\texttt{xi\_bounds\_alpha}, \texttt{xi\_argument\_alpha} and their hypothesis bridges & Classical/citable implications (Assumptions Ledger). \\
-\texttt{rh\_from\_E\_alpha\_of\_hypotheses} & Classical/citable implications (Assumptions Ledger). \\
-\texttt{h\_inertia\_to\_E}, \texttt{h\_inertia\_of\_E}, \texttt{h\_RH\_to\_E} & Classical/citable implications (Assumptions Ledger). \\
+\code{alphaInterfacesBase}, \code{explicit_alpha_via_stages} & Assumption~\ref{assm:explicit} (explicit formula package). \\
+\code{xi_bounds_alpha}, \code{xi_argument_alpha} and their hypothesis bridges & Classical/citable implications (Assumptions Ledger). \\
+\code{rh_from_E_alpha_of_hypotheses} & Classical/citable implications (Assumptions Ledger). \\
+\code{h_inertia_to_E}, \code{h_inertia_of_E}, \code{h_RH_to_E} & Classical/citable implications (Assumptions Ledger). \\
 \hline
 \end{tabular}
 \end{center}
 
 \noindent Route B bridge assumptions (primary legacy window-free or alternative
 fixed-window computational) are listed in Section~\ref{sec:no-supercritical} and
-are not part of \texttt{AxiomsShimAccepted}.
+are not part of \code{AxiomsShimAccepted}.
 
 \noindent The beta layer is now an explicit hypothesis bundle (no frozen numeric input is present
-in \texttt{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger section below.
+in \code{data/releases/erurh-v2-core/formal}); see the Assumptions Ledger section below.
 
 \section{No supercritical ERU modes}\label{sec:no-supercritical}
 \begin{proposition}[No supercritical ERU modes (conditional)]\label{prop:no-supercritical}
-Assume the Plan~B RMS-local hypotheses (Assumption~\ref{assm:a1a2}) and the
+Assume the Plan~B RMS-local hypotheses (Assumption~\ref{assm:a1a2}), the
+window-coverage bridge (Assumption~\ref{assm:window-coverage-bridge}), and the
 correctness of the alpha certificates and numeric coverage
 (Assumption~\ref{assm:certs}). Then for every $\beta > 1/2$, there is no ERU
 exponential mode of weight $\beta$.
@@ -186,39 +259,54 @@ exponential mode of weight $\beta$.
 
 \begin{proof}
 Fix $\beta>1/2$ and suppose for contradiction that
-\texttt{ERU\_mode\_beta}$(\beta)$ holds.
+\code{ERU_mode_beta}$(\beta)$ holds.
 By Lemma~\ref{lem:a1a2-rms-violation}, there exists a window $w$ with
 $\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$. By
+Assumption~\ref{assm:window-coverage-bridge}, we may choose $w$ in the
+certified family \(W_{\mathrm{cert}}\), so gate bounds apply. By
 Lemma~\ref{lem:rms-violation-opens-gate}, the renormalization gate is open.
 Assumption~\ref{assm:certs} implies the relevant renormalization gates are
-closed, a contradiction. Hence \texttt{ERU\_mode\_beta}$(\beta)$ does not hold.
+closed, a contradiction. Hence \code{ERU_mode_beta}$(\beta)$ does not hold.
 Since $\beta>1/2$ was arbitrary, no supercritical ERU exponential mode can
 exist.
 \end{proof}
 
 \subsubsection*{Two Route B bridges (primary legacy window-free vs alternative fixed-window).}
 \begin{itemize}
-  \item \textbf{Legacy window-free bridge (primary route).} The paper-level lemma
-  \texttt{A1\_from\_supercritical} (Lemma~\ref{lem:a1-from-supercritical}) supplies
-  the A1 mode lower bound in an abstract RMS context. A2-low/tail are supplied by
-  Lemma~\ref{lem:a2-from-abc}.
-  \item \textbf{Fixed-window bridge (alternative computational route).} The Lean
-  hypothesis \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily}
+  \item \textbf{Legacy window-free bridge (primary route).}\\
+  The paper-level lemma \code{A1_from}\allowbreak\code{_supercritical}
+  (Lemma~\ref{lem:a1-from-supercritical}) supplies the A1 mode lower bound in an
+  abstract RMS context. A2-low/tail are supplied by Lemma~\ref{lem:a2-from-abc}.
+  \item \textbf{Fixed-window bridge (alternative computational route).}\\
+  The Lean hypothesis \code{ERURH.}\allowbreak\code{Alpha.}\allowbreak\code{ModeThreshold}\allowbreak\code{Control}\allowbreak\code{OnCtxReal}\allowbreak\code{WindowFamily}
   asserts that the supercritical-mode threshold can be chosen within the
-  \texttt{ctx\_real} window family. This is a paper-level analytic assumption;
-  the gate checks only the numeric side conditions (see
+  \code{ctx_real} window family. This is a paper-level analytic assumption; the
+  gate checks only the numeric side conditions (see
   Assumption~\ref{assm:threshold-control}).
 \end{itemize}
 
 \begin{center}
-\begin{tabular}{llll}
+{\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.22\linewidth}%
+                >{\raggedright\arraybackslash}p{0.30\linewidth}%
+                >{\raggedright\arraybackslash}p{0.14\linewidth}%
+                >{\raggedright\arraybackslash}p{0.20\linewidth}}
 \hline
 Route & Lean gap & Discharge & Reference \\
 \hline
-Primary (legacy window-free) & \texttt{A1\_from\_supercritical} and A2 & Paper & Lemmas~\ref{lem:a1-from-supercritical},~\ref{lem:a2-from-abc} \\
-Alternative (fixed-window) & \texttt{ModeThresholdControlOnCtxRealWindowFamily} & Paper + gate & Assm.~\ref{assm:threshold-control} \\
+Primary (legacy window-free) & \code{A1_from}\allowbreak\code{_supercritical} and A2 & Paper & Lemmas~\ref{lem:a1-from-supercritical},~\ref{lem:a2-from-abc} \\
+Alternative (fixed-window) &
+\begin{tabular}[t]{@{}l@{}}
+\code{Mode}\allowbreak\code{Threshold}\\
+\code{Control}\\
+\code{On}\allowbreak\code{Ctx}\allowbreak\code{Real}\\
+\code{Window}\allowbreak\code{Family}
+\end{tabular}
+& Paper + gate & Assm.~\ref{assm:threshold-control} \\
 \hline
 \end{tabular}
+}
 \end{center}
 
 \noindent The main narrative below follows the primary legacy window-free route;
@@ -240,19 +328,19 @@ Choose $S_1$ so that $\log f(S)> \log C$ for all $S\ge S_1$, hence $f(S)>C$.
 \subsubsection*{Legacy window-free A1 lemma (primary route).}
 \begin{lemma}[A1 from supercritical mode (legacy window-free)]
 \label{lem:a1-from-supercritical}
-Let $\beta\in\mathbb{R}$ with $\beta>1/2$. If \texttt{ERU\_mode\_beta}$(\beta)$ holds,
-then \texttt{A1\_mode} holds for the chosen RMS context. Equivalently, this is the
-statement \texttt{ERURH.A1\_from\_supercritical}.
+Let $\beta\in\mathbb{R}$ with $\beta>1/2$. If \code{ERU_mode_beta}$(\beta)$ holds,
+then \code{A1_mode} holds for the chosen RMS context. Equivalently, this is the
+statement \code{ERURH.A1_from_supercritical}.
 \end{lemma}
 \begin{proof}
 We use the admissibility (cofinality) of the window family
 (Definition~\ref{def:admissible-window}) and the elementary fact that
 $\exp(aS)/S^2 \to \infty$ for any $a>0$.
 
-\textbf{Step 1 (mode threshold).} By \texttt{ERU\_mode\_beta}$(\beta)$ there exists
+\textbf{Step 1 (mode threshold).} By \code{ERU_mode_beta}$(\beta)$ there exists
 $s_0$ such that for all $s\ge s_0$,
 $|\log R_\alpha^{\mathrm{mode}}(s)| \ge \exp((\beta-1/2)s)$.
-Here \texttt{ERU\_mode\_beta} is interpreted on the supercritical mode component
+Here \code{ERU_mode_beta} is interpreted on the supercritical mode component
 $\log R_\alpha^{\mathrm{mode}}$; this is the analytic content of the A1 bridge.
 
 \textbf{Step 2 (exp dominates the envelope).} Let
@@ -270,19 +358,20 @@ $|\log R_\alpha^{\mathrm{mode}}(s)|\ge \exp((\beta-1/2)s)\ge \exp((\beta-1/2)S)$
 $\mathrm{RMS}_{\mathrm{mode}}(w)\ge \exp((\beta-1/2)S)\ge
 \exp((\beta-1/2)S)/S^2$. Set $K:=\exp((\beta-1/2)S)/S^2$; then
 $K>C_\ast$ by Step 2 and $\mathrm{RMS}_{\mathrm{mode}}(w)\ge K$.
-This is exactly \texttt{A1\_mode}.
+This is exactly \code{A1_mode}.
 \end{proof}
 
 \noindent The Buchstab bridge below provides one concrete derivation of
-\texttt{ERU\_mode\_beta} and the mode coefficient lower bound; in Lean,
-\texttt{A1\_from\_supercritical} is derived from that packaging via
-\texttt{A1\_from\_supercritical\_of\_buchstab}.
+\code{ERU_mode_beta} and the mode coefficient lower bound; in Lean,
+\code{A1_from_supercritical} is derived from that packaging via
+\code{A1_from_supercritical_of_buchstab}.
 
 \subsubsection*{Buchstab bridge (analytic derivation of A1)}
 The Buchstab bridge supplies one analytic route to
 Lemma~\ref{lem:a1-from-supercritical}. The remaining analytic gap is the bridge
-\texttt{ERURH.A1\_from\_supercritical\_buchstab} for a chosen RMS context, together
-with the explicit-formula identification \texttt{ERURH.ExplicitBRhoExpression}.
+\code{ERURH.A1_from_supercritical}\allowbreak\code{_buchstab} for a chosen RMS context, together
+with the explicit-formula identification
+\code{ERURH.}\allowbreak\code{ExplicitBRhoExpression}.
 The exact Lean statements are machine-exported below.
 
 {\small\VerbatimInput{lean_gap_statements.txt}}
@@ -290,7 +379,7 @@ The exact Lean statements are machine-exported below.
 \paragraph{Definition (Buchstab mode lower bound).}
 Fix an RMS context $\mathrm{ctx}$ with window type and $\mathrm{RMS\_mode}$.
 For $\beta,\gamma\in\mathbb{R}$, we write
-\texttt{ModeRMSLowerBound\_from\_buchstab}$(\mathrm{ctx},\beta,\gamma)$ for the
+\code{ModeRMSLowerBound}\allowbreak\code{_from_buchstab}$(\mathrm{ctx},\beta,\gamma)$ for the
 statement that there exists a structural coefficient $c_{\mathrm{struct}}\neq 0$
 and a threshold $S_0$ such that for all $S\ge S_0$ there exists a window $w$ with
 \[
@@ -298,17 +387,20 @@ and a threshold $S_0$ such that for all $S\ge S_0$ there exists a window $w$ wit
 |c_{\mathrm{struct}}\, m(\beta+i\gamma)|\cdot
 \frac{\exp((\beta-1/2)S)}{S^2}.
 \]
-This is exactly the Lean predicate \texttt{ERURH.ModeRMSLowerBound\_from\_buchstab}.
+This is exactly the Lean predicate
+\code{ERURH.ModeRMSLowerBound}\allowbreak\code{_from_buchstab}.
 
 \begin{lemma}[A1 from supercritical mode (Buchstab bridge)]
 \label{lem:a1-from-supercritical-buchstab}
-Let $\beta\in\mathbb{R}$ with $\beta>1/2$. If \texttt{ERU\_mode\_beta}$(\beta)$ holds,
+Let $\beta\in\mathbb{R}$ with $\beta>1/2$. If \code{ERU_mode_beta}$(\beta)$ holds,
 then there exists $\gamma\in\mathbb{R}$ such that
-\texttt{ModeRMSLowerBound\_from\_buchstab}$(\mathrm{ctx},\beta,\gamma)$ holds.
-Equivalently, this is the statement \texttt{ERURH.A1\_from\_supercritical\_buchstab}.
+the predicate
+\code{ModeRMSLowerBound}\allowbreak\code{_from_buchstab}$(\mathrm{ctx},\beta,\gamma)$ holds.
+Equivalently, this is the statement
+\code{ERURH.A1_from_supercritical}\allowbreak\code{_buchstab}.
 \end{lemma}
 \begin{proof}
-\textbf{Step 1 (unpack the mode).} By \texttt{ERU\_mode\_beta}$(\beta)$ there exists
+\textbf{Step 1 (unpack the mode).} By \code{ERU_mode_beta}$(\beta)$ there exists
 $s_0$ such that for all $s\ge s_0$,
 $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
 
@@ -316,21 +408,21 @@ $|\log R_\alpha(s)| \ge \exp((\beta-1/2)s)$.
 formula package identifies the supercritical mode coefficient with
 the explicit prefactor (Assumption~\ref{assm:explicit}); combined with
 Lemma~\ref{lem:buchstab-coefficient}, this yields a factorization
-$b_\rho=c_{\mathrm{struct}}(\rho)\,m(\rho)$ with $c_{\mathrm{struct}}(\rho)\neq 0$.
+$\brhoLean=c_{\mathrm{struct}}(\rho)\,m(\rho)$ with $c_{\mathrm{struct}}(\rho)\neq 0$.
 This is the central paper-level input in the Buchstab bridge.
-The normalization of $b_\rho$ matches the preprint definition after absorbing
-holomorphic factors into $H(s)$; see Remark~\ref{rem:Hs-mapping}.
+The normalization of $\brhoLean$ matches the preprint coefficient via
+Assumption~\ref{assm:brho-bridge}; see Remark~\ref{rem:Hs-mapping}.
 
 \textbf{Step 3 (non-vanishing of the multiplier).} Lemma~\ref{lem:buchstab-m-nonzero}
 gives $m(\beta+i\gamma)\neq 0$ for $\beta>0$, hence the mode coefficient is nonzero.
 
-\textbf{Step 4 (RMS lower bound).} By the definition of \texttt{RMS\_mode} for
+\textbf{Step 4 (RMS lower bound).} By the definition of \code{RMS_mode} for
 the mode contribution and the admissibility of the window family
 (Definition~\ref{def:admissible-window}), one can choose windows with
 arbitrarily large base $S$ and obtain the stated lower bound with coefficient
 $|c_{\mathrm{struct}}\,m(\beta+i\gamma)|$.
 This is precisely the predicate
-\texttt{ModeRMSLowerBound\_from\_buchstab}$(\mathrm{ctx},\beta,\gamma)$.
+\code{ModeRMSLowerBound}\allowbreak\code{_from_buchstab}$(\mathrm{ctx},\beta,\gamma)$.
 \end{proof}
 
 \subsubsection*{Buchstab multiplier non-vanishing (paper bridge for A1).}
@@ -362,35 +454,37 @@ $\Re(\rho)=\beta>0$. Therefore $m(\rho)\neq 0$.
 \begin{lemma}[Buchstab coefficient identification]\label{lem:buchstab-coefficient}
   Let $\rho=\beta+i\gamma$ be a nontrivial zero with $\beta>1/2$. Assume the
   explicit-formula identification
-  $b_\rho=\mathrm{explicit\_b}_\rho(\rho)$ with
+  $\brhoLean=\mathrm{explicit\_b}_\rho(\rho)$ with
   $\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$ as in the
   explicit formula package. Then the ERU coefficient satisfies
   \[
-  b_\rho = c_{\mathrm{struct}}(\rho)\, m(\rho)
+  \brhoLean = c_{\mathrm{struct}}(\rho)\, m(\rho)
   \quad\text{with}\quad c_{\mathrm{struct}}(\rho)\neq 0.
   \]
 \end{lemma}
 \begin{proof}[Proof (step-by-step)]
   \textbf{Step 1 (explicit formula identification).} By
   Assumption~\ref{assm:explicit},
-  $b_\rho=\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$.
+  $\brhoLean=\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$.
   Since $\Gamma$ has no zeros and $\pi^{-\rho/2}\neq 0$, we obtain
-  $b_\rho\neq 0$ for $\beta>0$.
+  $\brhoLean\neq 0$ for $\beta>0$.
 
 \textbf{Step 2 (define the structural coefficient).} By
 Lemma~\ref{lem:buchstab-m-nonzero}, $m(\rho)\neq 0$ for $\beta>0$. Define
-$c_{\mathrm{struct}}(\rho) := b_\rho / m(\rho)$. Then
-$b_\rho = c_{\mathrm{struct}}(\rho)\, m(\rho)$ by construction.
+$c_{\mathrm{struct}}(\rho) := \brhoLean / m(\rho)$. This is a purely algebraic
+step once $m(\rho)\neq 0$. Then
+$\brhoLean = c_{\mathrm{struct}}(\rho)\, m(\rho)$ by construction.
 
-\textbf{Step 3 (non-vanishing).} Since $b_\rho\neq 0$ and $m(\rho)\neq 0$,
+\textbf{Step 3 (non-vanishing).} Since $\brhoLean\neq 0$ and $m(\rho)\neq 0$,
 we have $c_{\mathrm{struct}}(\rho)\neq 0$.
 \end{proof}
 
-  \paragraph{Lean correspondence.}
-  The explicit-formula identification is the Lean predicate
-  \texttt{ERURH.ExplicitBRhoExpression}. From it, Lean derives
-  \texttt{ERURH.BuchstabCoefficientNonzero} via
-  \texttt{buchstab\_coefficient\_nonzero\_of\_explicit\_b\_rho\_expr}. The lemma
+\paragraph{Lean correspondence.}\mbox{}\\
+The explicit-formula identification is the Lean predicate:
+\code{ERURH.}\allowbreak\code{ExplicitBRhoExpression}.
+From it, Lean derives
+\code{ERURH.}\allowbreak\code{BuchstabCoefficientNonzero} via
+\code{buchstab_coefficient_nonzero_}\allowbreak\code{of_explicit_b_rho_expr}. The lemma
   above is the paper-level justification for the explicit identification and
   the derived factorisation.
 
@@ -406,14 +500,16 @@ captured by the multiplier and the elementary $\exp$-dominates-polynomial lemma
 used in the Lean core.
 
 \paragraph{Window semantics and admissibility.}
-The Lean predicate \texttt{A1\_mode} is defined over an abstract
-\texttt{RMSLocalContext} with a type of windows and an associated
-\texttt{RMS\_mode}. In the paper we model a window as an interval
+The Lean predicate \code{A1_mode} is defined over an abstract
+\code{RMSLocalContext} with a type of windows and an associated
+\code{RMS_mode}. In the paper we model a window as an interval
 $w=[S,S+L]$ with $1\ll L\ll S^\alpha$ and $I_w=[S,S+L]$. The only analytic
 input used in Steps~3 and~4 is \emph{admissibility}, i.e., the ability to
 choose a window with arbitrarily large $S$. We build this cofinality into the
 definition of an admissible window family (Definition~\ref{def:admissible-window}),
 so it is part of the window model rather than an extra analytic assumption.
+The separate window-coverage bridge (Assumption~\ref{assm:window-coverage-bridge})
+is still required when combining A1 with the finite certified family.
 
 \begin{remark}[Does not replace A/B/C]
 Lemma~\ref{lem:a1-from-supercritical-buchstab} is an internal ERURH analytic bridge.
@@ -434,8 +530,8 @@ Define the RMS-mode contribution by
 where $\log R_\alpha^{\mathrm{mode}}$ denotes the supercritical mode component of
 $\log R_\alpha$. The total RMS of $\log R_\alpha$ is denoted
 $\mathrm{RMS}_\alpha(w)$ and is decomposed in Assumption~\ref{assm:a1a2}.
-For Route~B we use the unique window of \texttt{ctx\_real} (since $n\_windows=1$),
-written \texttt{ctx\_real\_window} in Lean.
+For Route~B we use the unique window of \code{ctx_real} (since $n\_windows=1$),
+written \code{ctx_real_window} in Lean.
 
 \begin{lemma}[Pointwise-to-RMS bridge]\label{lem:pointwise-to-rms}
 If $|\log R_\alpha^{\mathrm{mode}}(s)| \ge K$ for all $s \in I_w$ and $|I_w|>0$, then
@@ -458,24 +554,24 @@ $\mathrm{RMS\_mode}(w)$ & \texttt{ctx.RMS\_mode w} \\
 \end{tabular}
 \end{center}
 The Lean development does not define $\log R_\alpha^{\mathrm{mode}}$ explicitly;
-instead, its effect is summarized by the hypothesis \texttt{A1\_mode}. The A1
-lemma above interprets \texttt{ERU\_mode\_beta} as a bound on the mode component.
+instead, its effect is summarized by the hypothesis \code{A1_mode}. The A1
+lemma above interprets \code{ERU_mode_beta} as a bound on the mode component.
 
 \paragraph{Gate/Lean alignment.}
-In the window-free legacy route, \texttt{A1\_from\_supercritical} is treated as an
+In the window-free legacy route, \code{A1_from_supercritical} is treated as an
 analytic lemma for an abstract RMS context. If one later instantiates this context
-with gate data (e.g., \texttt{ctx\_real}), then \texttt{RMS\_mode} and the envelope
+with gate data (e.g., \code{ctx_real}), then \code{RMS_mode} and the envelope
 closure are discharged by the numeric certificates; the window-free core itself
 does not depend on any fixed window family.
 
-\paragraph{Semantic compatibility of \texttt{RMS\_mode}.}
+\paragraph{Semantic compatibility of \texorpdfstring{\texttt{RMS\_mode}}{RMS_mode}.}
 For the fixed-window route, we also track a semantic lower bound
 \[
 \mathrm{rms\_semantic}(w) := \inf_{s\in I_w} |\log R_\alpha(s)|.
 \]
 In Lean this is the definition \texttt{Alpha.rms\_semantic w}. The gate provides
-a certificate (Lean: \texttt{GeneratedRMSModeBridge.ctx\_real\_rms\_mode\_ge\_semantic})
-that for each \texttt{ctx\_real} window,
+a certificate (Lean: \code{GeneratedRMSModeBridge.ctx_real_rms_mode_ge_semantic})
+that for each \code{ctx_real} window,
 \texttt{ctx\_real.RMS\_mode w} $\ge$ \texttt{rms\_semantic w}. Together with
 Lemma~\ref{lem:pointwise-to-rms}, this ensures the numeric \texttt{RMS\_mode}
 used by the gate is a valid lower bound for the analytic RMS in the
@@ -493,47 +589,47 @@ python scripts/verify_gate.py --skip-pytests
 The reproducibility data release includes all numeric inputs used by the gate
 (rational bounds, certificates, and RMS context JSON). These are regenerated by
 the scripts above and are distinct from the analytic assumptions listed in
-Assumption~\ref{assm:classical} and the lemma \texttt{A1\_from\_supercritical}.
+Assumption~\ref{assm:classical} and the lemma \code{A1_from_supercritical}.
 
 \paragraph{Reproducibility manifest.}
-The bundle includes \texttt{reproducibility\_manifest.txt} with tool versions
+The bundle includes \code{reproducibility_manifest.txt} with tool versions
 and SHA256 hashes of the frozen numeric inputs used by the gate.
 {\small\VerbatimInput{reproducibility_manifest.txt}}
 
 \paragraph{Trust boundary.}
 The formal logic is checked by the Lean kernel and mathlib. The numeric gate
-depends on the Python toolchain in \texttt{tools/} (including interval
-arithmetic via \texttt{mpmath.iv}) and OS-level arithmetic used for packaging
-(\texttt{tar}, PowerShell). These are the only computational dependencies
+depends on the Python toolchain in \code{tools/} (including interval
+arithmetic via \code{mpmath.iv}) and OS-level arithmetic used for packaging
+(\code{tar}, PowerShell). These are the only computational dependencies
 outside Lean.
 
 \paragraph{Interval-checked numeric bridge (example).}
 The gate verifies the fixed-window RMS bridge using interval arithmetic on the
-witness points. The script \texttt{tools/check\_rms\_mode\_bridge.py} reads
-\texttt{rms\_mode\_bridge.json} and \texttt{rms\_context.json} from the frozen
-release data (bundled under \texttt{data/releases/erurh-v2-core/formal/}) and
+witness points. The script \code{tools/check_rms_mode_bridge.py} reads
+\code{rms_mode_bridge.json} and \code{rms_context.json} from the frozen
+release data (bundled under \code{data/releases/erurh-v2-core/formal/}) and
 checks, for each window, that
 \[
 | \log R_\alpha(s_{\mathrm{wit}}) | \le u_{\mathrm{wit}} \le \mathrm{RMS\_mode}(w),
 \qquad s_{\mathrm{wit}} \in [s_{\min}, s_{\max}],
 \]
-using interval enclosures (\texttt{mpmath.iv}) with adaptive precision
-(\texttt{dps} raised up to 200 if needed). This is a fully reproducible check:
+using interval enclosures (\code{mpmath.iv}) with adaptive precision
+(\code{dps} raised up to 200 if needed). This is a fully reproducible check:
 \begin{verbatim}
 python tools/check_rms_mode_bridge.py
 \end{verbatim}
-and it is executed by \texttt{scripts/verify\_gate.py}. The log line
+and it is executed by \code{scripts/verify_gate.py}. The log line
 ``OK: RMS mode bridge certificate matches RMS context data.'' confirms success.
 
 \input{assumptions_ledger.tex}
 
 \subsection*{Classical/citable lemmas used as assumptions}
-The Lean bundle \texttt{AxiomsShimAccepted} includes the following classical/citable
-implications, recorded as explicit hypotheses:
+The Lean bundle is \code{AxiomsShim}\allowbreak\code{Accepted}. It includes the
+following classical/citable implications, recorded as explicit hypotheses:
 \begin{itemize}
-  \item \texttt{InertiaERU\_alpha\_strong} $\Rightarrow$ \texttt{E\_bound\_strong\_alpha}.
-  \item \texttt{E\_bound\_strong\_alpha} $\Rightarrow$ \texttt{InertiaERU\_alpha\_strong}.
-  \item \texttt{RiemannHypothesis xiAlpha} $\Rightarrow$ \texttt{E\_bound\_strong\_alpha}.
+  \item \code{InertiaERU_alpha_strong} $\Rightarrow$ \code{E_bound_strong_alpha}.
+  \item \code{E_bound_strong_alpha} $\Rightarrow$ \code{InertiaERU_alpha_strong}.
+  \item \code{RiemannHypothesis}\allowbreak\code{xiAlpha} $\Rightarrow$ \code{E_bound_strong_alpha}.
 \end{itemize}
 
 \section{Energy, inertia, and ERU modes}
@@ -543,15 +639,15 @@ stays under a prescribed envelope. A key notion is the existence of an
 exponential ERU mode.
 
 \begin{definition}[ERU mode]
-An \emph{ERU mode of weight $\alpha$} (denoted \texttt{ERU\_mode\_beta $\alpha$}
- in Lean) is an asymptotic component of $\log R(s)$ that grows like
-$\exp((\alpha-\tfrac{1}{2})s)$ for large $s$. The ERURH theory is structured so
-that the presence of a mode with $\alpha>1/2$ forces energy blow-up beyond the
+An \emph{ERU mode of weight $\beta$} (Lean: \code{ERU_mode_beta} $\beta$) is
+an asymptotic component of $\log R(s)$ that grows like
+$\exp((\beta-\tfrac{1}{2})s)$ for large $s$. The ERURH theory is structured so
+that the presence of a mode with $\beta>1/2$ forces energy blow-up beyond the
 allowable envelope.
 \end{definition}
 
 \begin{definition}[Strong inertia]
-\emph{Strong ERU inertia} (Lean: \texttt{InertiaERU\_alpha\_strong}) is a
+\emph{Strong ERU inertia} (Lean: \code{InertiaERU_alpha_strong}) is a
 quantitative upper bound on $J_{\mathrm{rel}}(s)$ of the shape
 $|J_{\mathrm{rel}}(s)| \le C e^{-s/2}s^2$ for all sufficiently large $s$.
 \end{definition}
@@ -580,7 +676,7 @@ certificates are used in the direct alpha route.
 
 \section{Classical analytic estimates (Theorems A, B, C)}
 This section records the classical analytic estimates for the explicit-formula
-coefficients $b_\rho$ that underlie the spectral hypotheses used in ERURH. The
+coefficients $\brhoABC$ that underlie the spectral hypotheses used in ERURH. The
 statements match the more detailed companion preprint and are included here to
 make the analytic inputs explicit.
 
@@ -588,13 +684,13 @@ make the analytic inputs explicit.
 Let $\rho=\beta+i\gamma$ range over the non-trivial zeros of $\zeta(s)$,
 counted with multiplicity, and let
 \[
-  b_\rho := \frac{\rho-1}{\rho}\,G(\rho),
+  \brhoABC := \frac{\rho-1}{\rho}\,G(\rho),
   \qquad
   G(s) := \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)H(s).
 \]
 \noindent\textbf{(H1) (Holomorphic model with gamma factor).}
 The auxiliary factor $H(s)$ is holomorphic in a neighbourhood of the closed
-strip $0\le \Re s\le 1$, and the coefficients $b_\rho$ are defined by the above
+strip $0\le \Rea(s)\le 1$, and the coefficients $\brhoABC$ are defined by the above
 formula (in particular, the completed zeta factor
 $\pi^{-s/2}\Gamma(s/2)$ is present in $G(s)$).
 
@@ -622,13 +718,13 @@ with an absolute implied constant.
 Assume \textbf{(H1)}--\textbf{(H3)}. Then there exist constants $c>0$, $k\ge 0$,
 and $T_0\ge 3$ such that, for all $T\ge T_0$,
 \[
-  \sum_{\substack{\rho \\ T < |\gamma| \le 2T}} |b_\rho|^2
+  \sum_{\substack{\rho \\ T < |\gamma| \le 2T}} |\brhoABC|^2
   \;\ll\; T^{2k+1}(\log T)\,e^{-2cT}.
 \]
 In particular, there exist constants $C>0$ and $A>0$ such that, for all
 $T\ge T_0$,
 \[
-  \sum_{\substack{\rho \\ T < |\gamma| \le 2T}} |b_\rho|^2
+  \sum_{\substack{\rho \\ T < |\gamma| \le 2T}} |\brhoABC|^2
   \;\le\; C\,T(\log T)^A.
 \]
 \end{theorem}
@@ -636,12 +732,12 @@ $T\ge T_0$,
 \begin{theorem}[Theorem B: Large-sieve mean-square bound]\label{thm:B}
 Assume \textbf{(H3)}. Let $T\ge 3$ and $L\ge 1$, and define
 \[
-  F(u) = \sum_{\substack{\rho\\ T<|\gamma|\le 2T}} b_\rho\, e^{i\gamma u}.
+  F(u) = \sum_{\substack{\rho\\ T<|\gamma|\le 2T}} \brhoABC\, e^{i\gamma u}.
 \]
 Then
 \[
   \frac{1}{L} \int_0^L |F(u)|^2 \, du
-    \;\ll\; (\log T)\sum_{\substack{\rho\\ T<|\gamma|\le 2T}} |b_\rho|^2,
+    \;\ll\; (\log T)\sum_{\substack{\rho\\ T<|\gamma|\le 2T}} |\brhoABC|^2,
 \]
 with an absolute implied constant. In particular, this holds in any admissible
 range $1\ll L\ll T^\alpha$ with $0<\alpha<1$.
@@ -651,7 +747,7 @@ range $1\ll L\ll T^\alpha$ with $0<\alpha<1$.
 Assume \textbf{(H1)}--\textbf{(H3)} and fix $B>0$. Define
 \[
   \widetilde F_{\mathrm{tail}}(s)
-  \;:=\; s^{-2} \sum_{\substack{|\gamma|>S^B}} b_\rho\, e^{i\gamma s},
+  \;:=\; s^{-2} \sum_{\substack{|\gamma|>S^B}} \brhoABC\, e^{i\gamma s},
   \qquad
   K_{\mathrm{tail}}(S,L)^2
   := \frac{1}{L} \int_{S}^{S+L} \bigl|\widetilde F_{\mathrm{tail}}(s)\bigr|^2\,ds.
@@ -666,7 +762,7 @@ $S$ and $L$, for a suitable constant $M_{\mathrm{tail}}>0$.
 \end{theorem}
 
 \noindent Proofs of Theorems~\ref{thm:A}--\ref{thm:C} are not reproduced here;
-see the companion preprint \texttt{Theorem\_ABC\_preprint.tex}. We record only
+see the companion preprint \code{Theorem}\allowbreak\code{_ABC}\allowbreak\code{_preprint.tex}. We record only
 the statements and use them as analytic inputs.
 
 \begin{lemma}[A2-low and A2-tail from classical inputs]\label{lem:a2-from-abc}
@@ -711,26 +807,26 @@ the explicit-formula package.
 \end{proof}
 
 \noindent Full derivations (including constants and admissible ranges) are
-provided in \texttt{Theorem\_ABC\_preprint.tex}, which is included in the arXiv
-bundle for this submission.
+in the bundled preprint. See
+\code{Theorem}\allowbreak\code{_ABC}\allowbreak\code{_preprint.tex}.
 
 \paragraph{Lean correspondence for A2.}
 The paper inequalities
 $\mathrm{RMS}_{\mathrm{low}}(w)\le c_{\mathrm{low}}$ and
 $\mathrm{RMS}_{\mathrm{tail}}(w)\le c_{\mathrm{tail}}$ are encoded in Lean as
-\texttt{ERURH.A2Low\_RMS ctx} and \texttt{ERURH.A2Tail\_RMS ctx}, where
-\texttt{ctx.RMS\_low}, \texttt{ctx.RMS\_tail}, \texttt{ctx.c\_low},
-\texttt{ctx.c\_tail} live in \texttt{ERURH.RMSLocalContext}. The decomposition
+\code{ERURH.A2Low_RMS}\allowbreak\code{ctx} and \code{ERURH.A2Tail_RMS}\allowbreak\code{ctx}, where
+\code{ctx.RMS_low}, \code{ctx.RMS_tail}, \code{ctx.c_low},
+\code{ctx.c_tail} live in \code{ERURH.RMSLocalContext}. The decomposition
 $\mathrm{RMS}_\alpha \ge \mathrm{RMS}_{\mathrm{mode}}-(\mathrm{RMS}_{\mathrm{low}}+
-\mathrm{RMS}_{\mathrm{tail}})$ matches \texttt{ctx.RMS\_decomp}. For the
-generated context \texttt{ctx\_real}, the hypotheses are discharged by the
-generated lemmas \texttt{Alpha.GeneratedRMSContext.ctx\_real\_A2Low} and
-\texttt{Alpha.GeneratedRMSContext.ctx\_real\_A2Tail}.
+\mathrm{RMS}_{\mathrm{tail}})$ matches \code{ctx.RMS_decomp}. For the
+generated context \code{ctx_real}, the hypotheses are discharged by the
+generated lemmas \code{Alpha.GeneratedRMSContext.ctx_real_A2Low} and
+\code{Alpha.GeneratedRMSContext.ctx_real_A2Tail}.
 
 These theorems provide the analytic content behind the spectral decay
 Assumption~\ref{assm:hb} and the large-sieve estimate
 Assumption~\ref{assm:ls}. Proofs are given in the companion preprint
-\texttt{Theorem\_ABC\_preprint.tex} in the same submission folder, with
+\code{Theorem}\allowbreak\code{_ABC}\allowbreak\code{_preprint.tex} in the same submission folder, with
 references to standard sources (e.g. Titchmarsh, Montgomery--Vaughan, Ivic);
 we record only the statements here and treat them as classical inputs.
 
@@ -744,30 +840,52 @@ of the Riemann zeta function: explicit formula for $\psi(x)$, functional
 equation, standard bounds for $\zeta'/\zeta$ in vertical strips, the
 Riemann--von Mangoldt zero counting formula (including local counts), and the
 classical equivalence between RH and bounds on $E(x)$.
+In particular, RH for $\xi_\alpha$ is equivalent to the classical RH for
+$\zeta$ under this package.
 \end{assumption}
 
 \begin{assumption}[Explicit formula for the ERU observable]\label{assm:explicit}
 The ERU observable $\log R(s)$ and its derivative $J_{\mathrm{rel}}(s)$ admit an
 explicit formula of the form~\eqref{eq:explicit-form} in which the coefficients
-$b_\rho$ are identified with the explicit prefactor
+$\brhoLean$ are identified with the explicit prefactor
 $\mathrm{explicit\_b}_\rho(\rho)=\pi^{-\rho/2}\Gamma(\rho/2)$ under the chosen
-normalization. Any additional holomorphic factors (e.g., $H(s)$ or
-$(\rho-1)/\rho$) are absorbed into $b_\rho$ and the explicit-formula package.
+normalization. Under this normalization, Lean takes $\brhoLean$ to be the gamma
+prefactor; any additional holomorphic factors (e.g., $H(s)$ or $(\rho-1)/\rho$)
+are carried by $\brhoABC$ and handled by Assumption~\ref{assm:brho-bridge}.
+\end{assumption}
+
+\begin{assumption}[Coefficient normalization bridge]\label{assm:brho-bridge}
+Let $\brhoABC$ denote the analytic preprint coefficients
+$\brhoABC := \frac{\rho-1}{\rho}G(\rho)$ with $G(s)=\pi^{-s/2}\Gamma(s/2)H(s)$.
+We assume there exists a holomorphic function $W(s)$, nonvanishing in
+$0\le \Rea(s)\le 1$, such that for all nontrivial zeros $\rho$,
+\[
+  \brhoABC = W(\rho)\,\brhoLean,
+\]
+where $W$ captures the additional factors (e.g., $(s-1)/s$ and $H(s)$) from the
+preprint coefficient, and both $W$ and $1/W$ have at most polynomial growth in
+$|\Imc(s)|$. This bridge allows transfer of Theorems~A/B/C bounds to the Lean
+coefficient once Assumption~\ref{assm:explicit} fixes $\brhoLean$; it is
+complementary to
+\code{ExplicitBRho}\allowbreak\code{Expression}.
 \end{assumption}
 
 \begin{remark}[Mapping to the $H(s)$ factor]\label{rem:Hs-mapping}
 In the A/B/C preprint we write
 \[
-  b_\rho := \frac{\rho-1}{\rho}\,G(\rho),
+  \brhoABC := \frac{\rho-1}{\rho}\,G(\rho),
   \qquad
   G(s) := \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)H(s).
 \]
 For ERURH, the factor $H(s)$ is the Mellin transform of the ERU kernel and
 auxiliary weights from the explicit formula. Under the normalization above,
-any additional holomorphic factors are absorbed into $b_\rho$ (so the Lean
-predicate \texttt{ExplicitBRhoExpression} uses only the gamma prefactor). We
+the Lean coefficient $\brhoLean$ is exactly the gamma prefactor, while the
+remaining factors $(\rho-1)/\rho$ and $H(s)$ are carried by $\brhoABC$
+(equivalently by $W$ in Assumption~\ref{assm:brho-bridge}). We
 assume $H(\rho)\neq 0$ in the analytic preprint to avoid trivial coefficients,
-so the analytic assumptions on $H(s)$ in the preprint (H1–H3) apply verbatim.
+so the analytic assumptions on $H(s)$ in the preprint (H1-H3) apply verbatim.
+The bridge between $\brhoABC$ and $\brhoLean$ is recorded in
+Assumption~\ref{assm:brho-bridge}.
 \end{remark}
 
 \begin{remark}[Nonvanishing for the Buchstab kernel]\label{rem:buchstab-H-nonzero}
@@ -777,21 +895,22 @@ $m(s)=(2^{-s}-3^{-s})/s$ (Lemma~\ref{lem:buchstab-m-nonzero}). For $\Re(s)>0$,
 Lemma~\ref{lem:buchstab-m-nonzero} gives $m(s)\neq 0$, so the kernel contribution
 to $H(s)$ does not vanish on nontrivial zeros. The remaining nonvanishing
 requirement in Assumption~\ref{assm:explicit} concerns only auxiliary holomorphic
-weights from the analytic preprint; in Lean they are absorbed into $b_\rho$.
+weights carried by $H(s)$ in the analytic preprint (hence by $W$), while Lean
+keeps $\brhoLean$ as the gamma prefactor.
 \end{remark}
 
 \begin{assumption}[Spectral decay: $H_b$]\label{assm:hb}
-The coefficient family $\{b_\rho\}$ satisfies:
+The coefficient family $\{\brhoABC\}$ satisfies:
 (i) a pointwise polynomial (or exponential) bound in $|\gamma|$;
 (ii) a dyadic $L^2$ tail bound
-\[\sum_{T<|\gamma|\le 2T} |b_\rho|^2 \le C T (\log T)^A\]
+\[\sum_{T<|\gamma|\le 2T} |\brhoABC|^2 \le C T (\log T)^A\]
 for sufficiently large $T$.
 \end{assumption}
 
 \begin{assumption}[Large-sieve for zero ordinates]\label{assm:ls}
 For each dyadic band $T<|\gamma|\le 2T$ and each $L\ge 1$,
-\[\frac{1}{L}\int_0^L\Bigl|\sum_{T<|\gamma|\le 2T} b_\rho e^{i\gamma u}\Bigr|^2\,du
-  \ll (\log T)\sum_{T<|\gamma|\le 2T}|b_\rho|^2.\]
+\[\frac{1}{L}\int_0^L\Bigl|\sum_{T<|\gamma|\le 2T} \brhoABC e^{i\gamma u}\Bigr|^2\,du
+  \ll (\log T)\sum_{T<|\gamma|\le 2T}|\brhoABC|^2.\]
 This is a standard large-sieve inequality for separated exponentials combined
 with local zero counting.
 \end{assumption}
@@ -804,13 +923,14 @@ with $S\ge S_0$ and $1\ll L\ll S^\alpha$.
 
 \begin{assumption}[RMS window hypotheses]\label{assm:a1a2}
 Fix an admissible window family (Definition~\ref{def:admissible-window}) of
-windows $w=[S,S+L]$ with $1\ll L\ll S^\alpha$.
+windows $w=[S,S+L]$.
+Assume $1\ll L\ll S^\alpha$ for each window.
 There exist RMS quantities $\mathrm{RMS}_{\alpha},\mathrm{RMS}_{\mathrm{mode}},
 \mathrm{RMS}_{\mathrm{low}},\mathrm{RMS}_{\mathrm{tail}}$ and constants
 $c_{\mathrm{low}},c_{\mathrm{tail}},C_{\mathrm{env}}$ such that:
 \begin{itemize}
   \item \textbf{A1 (mode $\Rightarrow$ window bridge):} for every $\beta>1/2$, if
-  \texttt{ERU\_mode\_beta}$(\beta)$ holds then there exist an admissible window
+  \code{ERU_mode_beta}$(\beta)$ holds then there exist an admissible window
   $w$ and a constant $K$ with
   $K>c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$ such that
   $\mathrm{RMS}_{\mathrm{mode}}(w)\ge K$.
@@ -834,23 +954,26 @@ model, not an extra analytic assumption.
 
 \begin{assumption}[Fixed-window threshold control]\label{assm:threshold-control}
 Let $S_{\max}$ denote the maximal lower endpoint among the fixed
-\texttt{ctx\_real} windows (Lean: \texttt{windowMinMax}). For every
-$\beta>1/2$, if \texttt{ERU\_mode\_beta}$(\beta)$ holds then there exists
+\code{ctx_real} windows (Lean: \code{windowMinMax}).
+For every
+$\beta>1/2$, if \code{ERU_mode_beta}$(\beta)$ holds then there exists
 $s_0\le S_{\max}$ such that for all $s\ge s_0$,
 $|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)$. This is precisely the Lean
-predicate \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily}.
+predicate
+\code{ERURH.}\allowbreak\code{Alpha.}\allowbreak\code{ModeThreshold}\allowbreak\code{Control}\newline
+\code{OnCtxReal}\allowbreak\code{WindowFamily}.
 \end{assumption}
 
 \begin{remark}
 This is a paper-level analytic assumption. The gate certifies the numeric
 inequality $S_{\max}\ge s_0$ once the threshold control is supplied, but it does
-not prove the analytic implication from \texttt{ERU\_mode\_beta} to that bound.
+not prove the analytic implication from \code{ERU_mode_beta} to that bound.
 We provide a discussion of the analytic gap; a full proof is deferred to a
 supplement.
 \end{remark}
 
 \paragraph{Discussion (analytic gap for Assumption~\ref{assm:threshold-control}).}
-\textbf{Step 1.} Unpack \texttt{ERU\_mode\_beta}$(\beta)$ to obtain a threshold
+\textbf{Step 1.} Unpack \code{ERU_mode_beta}$(\beta)$ to obtain a threshold
 $s_0$ such that $|\log R_\alpha(s)|\ge \exp((\beta-1/2)s)$ for all $s\ge s_0$.
 
 \textbf{Step 2.} Establish an analytic upper bound on $s_0$ in terms of
@@ -859,8 +982,9 @@ and its contribution to $\log R_\alpha$). This is the only genuinely analytic
 input in the fixed-window bridge.
 
 \textbf{Step 3.} Use the gate-certified numerical inequality
-$S_{\max}\ge s_0$ (from \texttt{formal\_report\_analytic.json}) to conclude
-$s_0\le S_{\max}$, which is exactly Assumption~\ref{assm:threshold-control}.
+$S_{\max}\ge s_0$ to conclude $s_0\le S_{\max}$, which is exactly
+Assumption~\ref{assm:threshold-control}. The gate input is read from
+\code{formal}\allowbreak\code{_report}\allowbreak\code{_analytic.json}.
 
 \begin{remark}
 In the legacy window-free route, A1 is supplied by
@@ -872,7 +996,7 @@ by Lemma~\ref{lem:a2-from-abc} from the classical inputs.
 The alpha certificates (GlobalEnergy and KernelBlowup) are correct, and the
 numeric coverage assumptions required to close the renormalization gates hold.
 In particular, the coverage asserts that for every admissible window $w$ in the
-covered family (the Lean predicate \texttt{NumericCoverageAlpha}), we have
+covered family (the Lean predicate \code{NumericCoverageAlpha}), we have
 $\mathrm{RMS}_{\alpha}(w) \le C_{\mathrm{env}}$, i.e., the renormalization gate
 is closed on that family.
 These are finite rational inequalities generated by the ERURH pipeline.
@@ -888,16 +1012,16 @@ of the ERURH pipeline.
 \section{Plan B: RMS-local route}
 The Plan~B proof decomposes the RMS of the ERU observable into mode/low/tail
 contributions. The following lemma is formalized in
-\texttt{ERURH\_A2Hypotheses.lean}.
+\code{ERURH_A2Hypotheses.lean}.
 
 \begin{lemma}[Supercritical mode forces an RMS violation]\label{lem:a1a2-rms-violation}
 Assume Assumption~\ref{assm:a1a2}. Let $\beta>1/2$. If
-\texttt{ERU\_mode\_beta}$(\beta)$ holds, then there exists a window $w$ with
+\code{ERU_mode_beta}$(\beta)$ holds, then there exists a window $w$ with
 $\mathrm{RMS}_{\alpha}(w) > C_{\mathrm{env}}$.
 \end{lemma}
 
 \begin{proof}
-Assume $\beta>1/2$ and \texttt{ERU\_mode\_beta}$(\beta)$. By the A1 clause of
+Assume $\beta>1/2$ and \code{ERU_mode_beta}$(\beta)$. By the A1 clause of
 Assumption~\ref{assm:a1a2}, choose an admissible window $w$ and $K$ such that
 $K>c_{\mathrm{low}}+c_{\mathrm{tail}}+C_{\mathrm{env}}$ and
 $\mathrm{RMS}_{\mathrm{mode}}(w)\ge K$. Using the decomposition inequality and
@@ -921,17 +1045,19 @@ renormalization gate is open.
 
 The correctness of the certificates (Assumption~\ref{assm:certs}) closes the
 renormalization gates; thus the RMS violation is incompatible with the closed
-gate regime. Consequently, under Assumptions~\ref{assm:a1a2} and~\ref{assm:certs},
-supercritical modes cannot exist.
+gate regime. Consequently, under Assumptions~\ref{assm:a1a2},
+\ref{assm:window-coverage-bridge}, and~\ref{assm:certs}, supercritical modes
+cannot exist.
 
 \section{Proof of the main theorem}\label{sec:proof-main}
 We now prove Theorem~\ref{thm:main}. This is the mathematical counterpart of
-the Lean theorem \texttt{RH\_from\_ERURH\_conditional}.
+the Lean theorem
+\code{RH_from}\allowbreak\code{_ERURH}\allowbreak\code{_conditional}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 By Proposition~\ref{prop:no-supercritical}, there are no ERU exponential modes
 with weight $>1/2$. The Lean lemma
-\texttt{InertiaERU\_alpha\_strong\_of\_no\_modes\_via\_certificates} yields
+\code{InertiaERU_alpha_strong_of_no_modes_via_certificates} yields
 strong ERU inertia from the absence of modes (using
 Assumption~\ref{assm:certs}). Finally, the formal equivalence between strong
 ERU inertia and RH for $\xi_\alpha$ (under Assumption~\ref{assm:classical})
@@ -948,16 +1074,19 @@ are established, RH follows mechanically.
 
 \begin{remark}
 In the Lean master statement, the Plan~B window hypotheses are packaged as
-\texttt{hA1 : A1\_mode ctx} and \texttt{hLow : A2Low\_RMS ctx}/\texttt{hTail :
-A2Tail\_RMS ctx} inside \texttt{WindowScalingAssumptions}. In this paper,
-Assumption~\ref{assm:a1a2} is formulated so that the A1 clause is a
-\emph{mode-to-window bridge} rather than an unconditional witness. This matches
-the intended analytic semantics: A1 produces a window only under a putative
-supercritical mode, so it is compatible with the closed-gate regime.
+named fields \code{hA1}, \code{hLow}, and \code{hTail} inside
+\code{WindowScalingAssumptions}, with types
+\code{A1_mode}\allowbreak\code{ctx},
+\code{A2Low_RMS}\allowbreak\code{ctx}, and
+\code{A2Tail_RMS}\allowbreak\code{ctx}.
+In this paper, Assumption~\ref{assm:a1a2} is formulated so that the A1 clause
+is a \emph{mode-to-window bridge} rather than an unconditional witness. This
+matches the intended analytic semantics: A1 produces a window only under a
+putative supercritical mode, so it is compatible with the closed-gate regime.
 \end{remark}
 
 \begin{remark}
-With A1 formulated as an implication from \texttt{ERU\_mode\_beta} to a witness
+With A1 formulated as an implication from \code{ERU_mode_beta} to a witness
 window, the core Plan~B contradiction has the standard form:
 \[
 (\exists\,\beta>1/2\ \text{supercritical mode})\ \Rightarrow\
@@ -973,41 +1102,71 @@ The ERURH development separates formal logic from external analytic and numeric
 inputs. The current status can be summarized as follows.
 \begin{itemize}
   \item \textbf{Formalized in Lean:} definitions of the ERU observables,
-  energy/inertia machinery, gate predicates, the Plan~B RMS-local chain, and
-  the conditional theorem \texttt{RH\_from\_ERURH\_conditional}.
+  energy/inertia machinery, gate predicates, and the Plan~B RMS-local chain.
+  The conditional theorem is
+  \code{RH_from}\allowbreak\code{_ERURH}\allowbreak\code{_conditional}.
   \item \textbf{External classical assumptions:} explicit formula, functional
   equation, bounds for $\zeta'/\zeta$, and Riemann--von Mangoldt zero counts
-  (Assumption~\ref{assm:classical}), together with the explicit-formula
-  framework for $b_\rho$ (Assumption~\ref{assm:explicit}).
-  \item \textbf{Analytic inputs:} Theorems~\ref{thm:A}--\ref{thm:C} (spectral
-  decay and large-sieve bounds) together with the analytic bridges
-  Lemma~\ref{lem:a1-from-supercritical-buchstab} (A1) and Lemma~\ref{lem:a2-from-abc}
-  (A2). The remaining gap is the classical derivation of Theorems~\ref{thm:A}--\ref{thm:C}
-  from standard zeta estimates. Full proofs of Theorems~\ref{thm:A}--\ref{thm:C}
-  are included in the bundled preprint \texttt{Theorem\_ABC\_preprint.tex}.
+  (Assumption~\ref{assm:classical}). The explicit-formula framework for
+  $\brhoLean$ and the coefficient bridge to $\brhoABC$
+  (Assumptions~\ref{assm:explicit} and~\ref{assm:brho-bridge}).
+  \item \textbf{Analytic gap statements (Lean):}
+  \begin{itemize}
+    \item \code{ERURH.A1_from_supercritical}\allowbreak\code{_buchstab}\allowbreak\ \code{ctx_real} (A1 bridge, legacy window-free).
+    \item \code{ERURH.ModeRMSLowerBound}\allowbreak\code{_from_buchstab}\allowbreak\ \code{ctx_real} (mode lower bound via Buchstab).
+    \item \code{ERURH.}\allowbreak\code{Alpha.}\allowbreak\code{ModeThreshold}\allowbreak\code{Control}\newline
+    \code{OnCtxReal}\allowbreak\code{WindowFamily} (fixed-window threshold control).
+    \item \code{ERURH.}\allowbreak\code{ExplicitBRhoExpression} (explicit-formula coefficient identification).
+  \end{itemize}
+Paper proofs cover the legacy A1 bridge and the A2 derivation from
+Theorems~\ref{thm:A}--\ref{thm:C}. The Buchstab-specific gaps and the explicit
+coefficient identification remain explicit assumptions for the optional
+Buchstab route, and the fixed-window threshold control is kept as a documented
+assumption. Full proofs of Theorems~\ref{thm:A}--\ref{thm:C} are included in
+the bundled preprint \code{Theorem}\allowbreak\code{_ABC}\allowbreak\code{_preprint.tex}.
   \item \textbf{Numeric inputs:} correctness of the finite certificates and
   numeric coverage assumptions (Assumption~\ref{assm:certs}), which are
   generated by the ERURH pipeline as exact rational data.
 \end{itemize}
 
+\subsection*{Routes and scope clarification}
+Two complementary routes are presented.
+\begin{itemize}
+  \item \textbf{Primary route (legacy, window-free).} This is the main route.
+  It works in the abstract RMS context and does not require a fixed window
+  family or computational threshold control. The window-free route is the core
+  conceptual and logical chain of the reduction.
+  \item \textbf{Secondary route (fixed-window, computational).} This
+  alternative route anchors the RMS chain to a certified finite window family.
+  It introduces additional hypotheses, including fixed-window threshold
+  control and the coefficient-identification bridge
+  \code{ExplicitBRhoExpression}. It is experimental and not required for the
+  primary route.
+\end{itemize}
+The inclusion of the secondary route is not meant to compensate for a gap in
+the primary argument, but to illustrate how the ERU framework can be
+instantiated in a fully reproducible computational setting.
+
 \section{Formalization and reproducibility}
 The definitions and implications above are formalized in Lean. The main
 logical entry points are:
 \begin{itemize}
-  \item \texttt{ERURH\_MasterTheoremSummary.lean}:
-        \texttt{RH\_from\_ERURH\_conditional}.
-  \item \texttt{ERURH\_MasterTheoremPlanB.lean}:
+  \item \code{ERURH_MasterTheoremSummary.lean}:
+        \code{RH_from}\allowbreak\code{_ERURH}\allowbreak\code{_conditional}.
+  \item \code{ERURH_MasterTheoremPlanB.lean}:
         Plan~B RMS-local route.
-  \item \texttt{ERURH\_A2Hypotheses.lean}:
+  \item \code{ERURH_A2Hypotheses.lean}:
         A1/A2 hypotheses and RMS decomposition.
-  \item \texttt{ERURH\_GatesAlpha.lean} and \texttt{ERURH\_GatesFromRMS.lean}:
+  \item \code{ERURH_GatesAlpha.lean} and \code{ERURH_GatesFromRMS.lean}:
         gate closure and RMS-to-gate implications.
   \item Reproducibility gate:
-        \texttt{scripts/verify\_gate.py} regenerates artifacts and checks the
+        \code{scripts/verify_gate.py} regenerates artifacts and checks the
         Lean build against the current certificate data.
 \end{itemize}
 The certificates are generated by reproducible scripts and imported as exact
-rational data. The formal statement does not rely on floating-point computation.
+rational data. The Lean theorem itself does not execute floating-point
+arithmetic; interval arithmetic is used only in the external pipeline to
+produce the rational certificates.
 
 \section{Conclusion}
 ERURH provides a formal, conditional path from explicit-formula analysis to RH.
@@ -1030,8 +1189,10 @@ Arrows indicate implication or usage.
   $\Rightarrow$ spectral decay and large-sieve inputs
   (Assumptions~\ref{assm:hb}--\ref{assm:ls}).
   \item A1/A2 window hypotheses (Assumption~\ref{assm:a1a2}) plus a
-  putative supercritical mode $\texttt{ERU\_mode\_beta}(\beta)$
-  $\Rightarrow$ RMS violation $\Rightarrow$ gate opens.
+  putative supercritical mode \code{ERU_mode_beta}$(\beta)$
+  $\Rightarrow$ RMS violation; the window-coverage bridge
+  (Assumption~\ref{assm:window-coverage-bridge}) selects a certified window,
+  hence the gate opens.
   \item Certificates (Assumption~\ref{assm:certs})
   $\Rightarrow$ gate closed.
   \item RMS violation and gate closed $\Rightarrow$ contradiction; in the
@@ -1043,21 +1204,31 @@ Arrows indicate implication or usage.
 \subsection*{Lean file map}
 \begin{itemize}
   \item Main theorem:
-  \texttt{lean/formal\_proofs/ERURH/ERURH\_MasterTheoremSummary.lean}
-  (theorem \texttt{RH\_from\_ERURH\_conditional}).
-  \item Plan B chain:
-  \texttt{lean/formal\_proofs/ERURH/ERURH\_MasterTheoremPlanB.lean},
-  \texttt{lean/formal\_proofs/ERURH/ERURH\_A2Hypotheses.lean}.
-  \item Gates:
-  \texttt{lean/formal\_proofs/ERURH/ERURH\_GatesAlpha.lean},
-  \texttt{lean/formal\_proofs/ERURH/ERURH\_GatesFromRMS.lean}.
-  \item Assumption bundles:
-  \texttt{lean/formal\_proofs/ERURH/ERURH\_ClassicalZetaAssumptions.lean},
-  \texttt{lean/formal\_proofs/ERURH/ERURH\_ExplicitFormulaAlpha.lean},
-  \texttt{lean/formal\_proofs/ERURH/ERURH\_LargeSieveGammaSketch.lean}.
-  \item Certificates:
-  \texttt{lean/formal\_proofs/ERURH/EnergyCertificatesAlpha.lean},
-  \texttt{lean/formal\_proofs/ERURH/InertiaCertificatesAlpha.lean}.
+  \code{lean/}\allowbreak\code{formal_proofs/}\allowbreak\code{ERURH/}\allowbreak
+  \code{ERURH_}\allowbreak\code{MasterTheoremSummary.lean}
+  (theorem \code{RH_from}\allowbreak\code{_ERURH}\allowbreak\code{_conditional}).
+  \item Plan B chain:\par
+  \code{lean/}\allowbreak\code{formal_proofs/}\allowbreak\code{ERURH/}\allowbreak
+  \code{ERURH_}\allowbreak\code{MasterTheorem}\allowbreak\code{PlanB.lean}\par
+  \code{lean/}\allowbreak\code{formal_proofs/}\allowbreak\code{ERURH/}\allowbreak
+  \code{ERURH_}\allowbreak\code{A2Hypotheses.lean}.
+  \item Gates:\par
+  \code{lean/}\allowbreak\code{formal_proofs/}\allowbreak\code{ERURH/}\allowbreak
+  \code{ERURH_}\allowbreak\code{GatesAlpha.lean}\par
+  \code{lean/}\allowbreak\code{formal_proofs/}\allowbreak\code{ERURH/}\allowbreak
+  \code{ERURH_}\allowbreak\code{GatesFromRMS.lean}.
+  \item Assumption bundles:\par
+  \code{lean/}\allowbreak\code{formal_proofs/}\allowbreak\code{ERURH/}\allowbreak
+  \code{ERURH_}\allowbreak\code{ClassicalZeta}\allowbreak\code{Assumptions.lean}\par
+  \code{lean/}\allowbreak\code{formal_proofs/}\allowbreak\code{ERURH/}\allowbreak
+  \code{ERURH_}\allowbreak\code{ExplicitFormula}\allowbreak\code{Alpha.lean}\par
+  \code{lean/}\allowbreak\code{formal_proofs/}\allowbreak\code{ERURH/}\allowbreak
+  \code{ERURH_}\allowbreak\code{LargeSieve}\allowbreak\code{GammaSketch.lean}.
+  \item Certificates:\par
+  \code{lean/}\allowbreak\code{formal_proofs/}\allowbreak\code{ERURH/}\allowbreak
+  \code{Energy}\allowbreak\code{CertificatesAlpha.lean}\par
+  \code{lean/}\allowbreak\code{formal_proofs/}\allowbreak\code{ERURH/}\allowbreak
+  \code{Inertia}\allowbreak\code{CertificatesAlpha.lean}.
 \end{itemize}
 
 \section{Proof obligations}\label{app:proof-obligations}
@@ -1067,43 +1238,48 @@ Route~B closure. The machine-generated statements are included below.
 {\small\VerbatimInput{lean_gap_statements.txt}}
 
 \noindent A field-by-field map from the Lean hypotheses to the paper proofs is
-maintained in the repository at \texttt{docs/core/P9\_PAPER\_PROOF\_MAP.md}.
+maintained in the repository at \code{docs/core/P9_PAPER_PROOF_MAP.md}.
 
-\section{Normalization and Lean mapping for $b_\rho$ and $H(s)$}\label{app:normalization}
+\section{Normalization and Lean mapping for \texorpdfstring{$\brhoLean$ and $\brhoABC$}{b\_rho (Lean/ABC)}}\label{app:normalization}
 This appendix fixes the normalization of the explicit-formula coefficients and
 records the exact Lean correspondence. In the companion preprint we define
 \[
-  b_\rho := \frac{\rho-1}{\rho}\,G(\rho), \qquad
+  \brhoABC := \frac{\rho-1}{\rho}\,G(\rho), \qquad
   G(s) := \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)H(s),
 \]
 where $H(s)$ is a holomorphic factor encoding the ERU kernel normalization and
-any auxiliary weights. In the Lean development, $b_\rho$ is an abstract
+any auxiliary weights. In the Lean development, $\brhoLean$ is an abstract
 coefficient attached to a zero, and the explicit-formula identification is
-packaged by \texttt{HbExplicitData.h\_b\_rho}. The function
-\texttt{explicit\_b\_rho\_expression} is defined as the gamma prefactor
-\texttt{gamma\_prefactor}, i.e.\ $\pi^{-\rho/2}\Gamma(\rho/2)$, and any remaining
-holomorphic factors are absorbed into the preprint's $H(s)$ and into the abstract
-coefficient $b_\rho$ in Lean. Under Assumption~\ref{assm:explicit}, the chosen
-normalization matches the Lean predicate \texttt{ERURH.ExplicitBRhoExpression}.
+packaged by \code{HbExplicitData.h_b_rho}. The function
+\code{explicit_b_rho_expression} is defined as the gamma prefactor
+\code{gamma_prefactor}, i.e.\ $\pi^{-\rho/2}\Gamma(\rho/2)$. Any remaining
+holomorphic factors are absorbed into the preprint's $H(s)$ (equivalently $W$
+in Assumption~\ref{assm:brho-bridge}), while $\brhoLean$ remains the gamma
+prefactor in Lean. Under Assumptions~\ref{assm:explicit}
+and~\ref{assm:brho-bridge}, the chosen normalization matches the Lean predicate
+\code{ERURH.}\allowbreak\code{ExplicitBRhoExpression}.
 
 \begin{center}
-\begin{tabular}{ll}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.38\linewidth}%
+                >{\raggedright\arraybackslash}p{0.56\linewidth}}
 \hline
 Paper object & Lean name \\
 \hline
-$\rho=\beta+i\gamma$ & \texttt{ERURH.Alpha.ZeroOfZeta} (fields \texttt{beta}, \texttt{gamma}) \\
-$b_\rho$ & \texttt{ERURH.Alpha.b\_rho} \\
-$\pi^{-\rho/2}\Gamma(\rho/2)$ & \texttt{ERURH.Alpha.gamma\_prefactor} \\
-Explicit identification $b_\rho=\mathrm{explicit\_b}_\rho(\rho)$ &
-\texttt{ERURH.Alpha.HbExplicitData.h\_b\_rho} \\
-Explicit formula package & \texttt{ERURH.ExplicitBRhoExpression} \\
+$\rho=\beta+i\gamma$ & \code{ERURH.}\allowbreak\code{Alpha.}\allowbreak\code{ZeroOfZeta} (fields \code{beta}, \code{gamma}) \\
+$\brhoABC$ & analytic coefficient in the A/B/C preprint \\
+$\brhoLean$ & \code{ERURH.}\allowbreak\code{Alpha.}\allowbreak\code{b_rho} \\
+$\pi^{-\rho/2}\Gamma(\rho/2)$ & \code{ERURH.}\allowbreak\code{Alpha.}\allowbreak\code{gamma_prefactor} \\
+Explicit identification $\brhoLean=\allowbreak\mathrm{explicit\_b}_\rho(\rho)$ &
+\code{ERURH.}\allowbreak\code{Alpha.}\allowbreak\code{HbExplicitData.}\allowbreak\code{h_b_rho} \\
+Bridge $\brhoABC=W(\rho)\brhoLean$ & Assumption~\ref{assm:brho-bridge} \\
+Explicit formula package & \code{ERURH.}\allowbreak\code{ExplicitBRhoExpression} \\
 \hline
 \end{tabular}
 \end{center}
 
 This normalization is the bridge between the analytic preprint (A/B/C) and the
 Lean formalization: the analytic estimates apply to the same coefficients once
-the above identification is fixed.
+the explicit identification and the bridge assumption are fixed.
 
 \subsection*{Buchstab kernel factor for the alpha bridge}\label{app:buchstab-kernel}
 The alpha bridge data use the multiplicative averaging kernel
@@ -1121,39 +1297,56 @@ holomorphic weights absorbed into $H(s)$.
 
 For auditability we spell out the main predicates exactly as they are used in Lean.
 \begin{itemize}
-  \item \textbf{\texttt{ERU\_mode\_beta} $(\beta)$:} with $\beta>1/2$, there exists $s_0>0$ such that for all $s\ge s_0$, the mode contribution in \texttt{logR\_alpha} satisfies the exponential lower bound against the fixed polynomial divisor used in the Lean definition. Domain: $s\in\mathbb{R}_{\ge 0}$; no uniform bound in $\beta$ is claimed.
-  \item \textbf{\texttt{A1\_mode} $(\mathrm{ctx})$:} there exists an admissible window $w$ in the family of windows of \texttt{RMSLocalContext} $\mathrm{ctx}$ such that $\mathrm{RMS}_\alpha(w)$ exceeds the envelope constant of \texttt{ctx}. This is existential in $w$; no statement about all windows.
-  \item \textbf{\texttt{A2Low\_RMS} $(\mathrm{ctx})$ and \texttt{A2Tail\_RMS} $(\mathrm{ctx})$:} inequalities (not equalities) controlling the low and tail parts of the RMS decomposition over the same admissible window family, with constants \(C_{\mathrm{low}},C_{\mathrm{tail}}\) fixed by \texttt{ctx}.
-  \item \textbf{\texttt{NumericCoverageAlpha} $(\mathrm{ctx\_real})$:} certifies a finite set of admissible windows \(W_{\mathrm{cert}}\) sufficient for Route~B; the gate only enforces RMS bounds on this finite family.
-  \item \textbf{Gate statement (Route B):} for all \(w\in W_{\mathrm{cert}}\), \(\mathrm{RMS}_\alpha(w)\le C_{\mathrm{env}}\), with \(C_{\mathrm{env}}\) the envelope constant of \texttt{ctx\_real}.
+  \item \textbf{\code{ERU_mode_beta} $(\beta)$:} with $\beta>1/2$, there exists $s_0>0$ such that for all $s\ge s_0$, the mode contribution in \code{logR_alpha} satisfies the exponential lower bound against the fixed polynomial divisor used in the Lean definition. Domain: $s\in\mathbb{R}_{\ge 0}$; no uniform bound in $\beta$ is claimed.
+  \item \textbf{\code{A1_mode} $(\mathrm{ctx})$:} the mode-to-window bridge: for any supercritical mode \code{ERU_mode_beta}$(\beta)$ with $\beta>1/2$, there exists an admissible window $w$ in the family of \code{RMSLocalContext} $\mathrm{ctx}$ such that the \emph{mode} RMS, $\mathrm{RMS\_mode}(\mathrm{ctx},w)$, exceeds the explicit threshold (of size $\exp((\beta-\tfrac12)S)/S^2$ in the window). The conclusion $\mathrm{RMS}_\alpha(w) > C_{\mathrm{env}}$ is obtained later by combining \code{A1_mode} with \code{A2Low_RMS}, \code{A2Tail_RMS}, and the decomposition \code{RMS_decomp}.
+  \item \textbf{\code{A2Low_RMS} $(\mathrm{ctx})$ and \code{A2Tail_RMS} $(\mathrm{ctx})$:} inequalities (not equalities) controlling the low and tail parts of the RMS decomposition over the same admissible window family, with constants \(C_{\mathrm{low}},C_{\mathrm{tail}}\) fixed by \code{ctx}.
+  \item \textbf{\code{NumericCoverageAlpha} $(\mathrm{ctx\_real})$:} certifies a finite set of admissible windows \(W_{\mathrm{cert}}\) sufficient for Route~B; the gate only enforces RMS bounds on this finite family.
+  \item \textbf{Gate statement (Route B):} for all \(w\in W_{\mathrm{cert}}\), \(\mathrm{RMS}_\alpha(w)\le C_{\mathrm{env}}\), with \(C_{\mathrm{env}}\) the envelope constant of \code{ctx_real}.
 \end{itemize}
 
-\paragraph{Coefficient normalisation \texorpdfstring{$b_\rho$}{b\_rho}.}
-We fix that \(b_\rho\) absorbs the gamma prefactor, $\pi^{-s/2}$, the auxiliary holomorphic weight $H(s)$, and the factor $(\rho-1)/\rho$. The Lean predicate \texttt{ExplicitBRhoExpression} records exactly this normalisation; if another normalisation is used elsewhere, the equality (or a bound) must be declared explicitly. Here we assume it coincides with \texttt{ExplicitBRhoExpression}.
+\paragraph{Coefficient normalisation \texorpdfstring{$b_\rho$}{b\_rho}.}\mbox{}\\
+We distinguish the Lean coefficient $\brhoLean$ and the analytic preprint
+coefficient $\brhoABC$. The Lean predicate
+\code{ExplicitBRho}\allowbreak\code{Expression}
+records the normalization $\brhoLean=\pi^{-\rho/2}\Gamma(\rho/2)$.
+The analytic preprint uses
+$\brhoABC := (\rho-1)/\rho\cdot G(\rho)$ with $G(s)=\pi^{-s/2}\Gamma(s/2)H(s)$,
+so the additional holomorphic factors live in $\brhoABC$.
+The bridge between the two is declared explicitly in
+Assumption~\ref{assm:brho-bridge}. If another normalization is used elsewhere,
+the equality (or a bound) must be stated explicitly.
 
-\paragraph{Assumption (window coverage bridge).}
-Let \(W_{\mathrm{cofinal}}\) be the admissible family in which \texttt{A1\_mode} witnesses a window \(w\), and \(W_{\mathrm{cert}}\) the finite family certified by \texttt{NumericCoverageAlpha}. We assume \(W_{\mathrm{cert}}\) covers the relevant tail of \(W_{\mathrm{cofinal}}\) (cofinality or inclusion), so any A1-produced violation occurs within \(W_{\mathrm{cert}}\). This is the only bridge needed to combine A1 with the finite gate certificates.
+\begin{assumption}[Window coverage bridge]\label{assm:window-coverage-bridge}
+Let \(W_{\mathrm{cofinal}}\) be the admissible window family for the context
+\code{ctx_real}. This is the family in which \code{A1_mode} witnesses a window
+under \code{ERU_mode_beta}. Let \(W_{\mathrm{cert}}\) be the finite window
+family certified by \code{NumericCoverage}\allowbreak\code{Alpha} for
+\code{ctx_real}. We assume \(W_{\mathrm{cert}}\) is cofinal in
+\(W_{\mathrm{cofinal}}\) (or contains an equivalent representative) so that any
+A1-produced window can be chosen in \(W_{\mathrm{cert}}\). This bridge is
+required to combine A1 with the finite gate certificates.
+\end{assumption}
 
 \section{Verification of H1--H3 for the ERU kernel}\label{app:h1h3}
 This short appendix explains why the hypotheses (H1)–(H3) used in
-\texttt{Theorem\_ABC\_preprint.tex} are reasonable for the ERU kernel in the
+\code{Theorem}\allowbreak\code{_ABC}\allowbreak\code{_preprint.tex} are reasonable for the ERU kernel in the
 ERURH setting.
 
-\paragraph{H1 (holomorphic model with gamma factor).}
+\paragraph{H1 (holomorphic model with gamma factor).}\mbox{}\\
 The explicit-formula package (Assumption~\ref{assm:explicit}) identifies the
 coefficients with the completed zeta prefactor
-$\pi^{-\rho/2}\Gamma(\rho/2)$ under the chosen normalization. The remaining
-kernel-dependent factor is absorbed into $H(s)$ in the preprint, matching the
-model $G(s)=\pi^{-s/2}\Gamma(s/2)H(s)$.
+$\pi^{-\rho/2}\Gamma(\rho/2)$ under the chosen normalization.
+The remaining kernel-dependent factor is absorbed into $H(s)$ in the preprint,
+matching the model $G(s)=\pi^{-s/2}\Gamma(s/2)H(s)$.
 
-\paragraph{H2 (polynomial growth of $H$).}
+\paragraph{H2 (polynomial growth of $H$).}\mbox{}\\
 For the ERU kernel, $H(s)$ is a Mellin transform of a smooth compactly
 supported test function and auxiliary weights. Such Mellin transforms are
 holomorphic in vertical strips and grow at most polynomially in $|\Im s|$.
 This is the standard setting of explicit-formula derivations (see
 \cite{Titchmarsh} and the remark on hypothesis verification in the preprint).
 
-\paragraph{H3 (Riemann--von Mangoldt and local zero counts).}
+\paragraph{H3 (Riemann--von Mangoldt and local zero counts).}\mbox{}\\
 The unit-interval zero count bound is a direct consequence of the classical
 Riemann--von Mangoldt formula and is standard; see \cite{Titchmarsh} and
 \cite{MontgomeryVaughan}. This is the only zero-distribution input in Theorem B.

@@ -41,64 +41,73 @@
 Statement: existence of the alpha interface package (`AlphaInterfaces`) providing
 the ERU observable $\log R$ and $J_{\mathrm{rel}}$ in the explicit-formula framework.
 Reference/proof: Assumption~\ref{assm:explicit}. Lean field:
-\code{AxiomsShimAccepted.alphaInterfacesBase}.
+\code{AxiomsShimAccepted.}\allowbreak\code{alphaInterfacesBase}.
 
 \paragraph{explicit\_alpha\_via\_stages.}
 Statement: the explicit-formula laws used by the alpha bridge hold, i.e.
 `ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi`.
 Reference/proof: Assumption~\ref{assm:explicit}. Lean field:
-\code{AxiomsShimAccepted.explicit\_alpha\_via\_stages}.
+\code{AxiomsShimAccepted.}\allowbreak\code{explicit\_alpha\_via\_stages}.
 
-\paragraph{xi\_bounds\_alpha.}
+\paragraph{xi\_bounds\_alpha.}\leavevmode\\
 Statement: the $\xi_\alpha$ bounds required by the ERU explicit-formula package
 hold (the proposition \texttt{xi\_bounds\_alpha}).
 Reference/proof: assumed as part of the explicit-formula bounds package;
-to be cited in the explicit-formula bounds section. Lean field:
-\code{AxiomsShimAccepted.xi\_bounds\_alpha}.
+to be cited in the explicit-formula bounds section.\\
+Lean field: \code{AxiomsShimAccepted.}\allowbreak\code{xi\_bounds\_alpha}.
 
 \paragraph{h\_xi\_bounds\_alpha.}
 Statement: a proof witness of \texttt{xi\_bounds\_alpha}.
 Reference/proof: immediate from the previous assumption. Lean field:
-\code{AxiomsShimAccepted.h\_xi\_bounds\_alpha}.
+\code{AxiomsShimAccepted.}\allowbreak\code{h\_xi\_bounds\_alpha}.
 
-\paragraph{xi\_argument\_alpha.}
+\paragraph{xi\_argument\_alpha.}\leavevmode\\
 Statement: the $\xi_\alpha$ argument bounds required by ERURH hold
 (\texttt{xi\_argument\_alpha}).
 Reference/proof: assumed as part of the explicit-formula bounds package;
-to be cited in the argument bounds section. Lean field:
-\code{AxiomsShimAccepted.xi\_argument\_alpha}.
+to be cited in the argument bounds section.\\
+Lean field: \code{AxiomsShimAccepted.}\allowbreak\code{xi\_argument\_alpha}.
 
 \paragraph{h\_xi\_argument\_alpha.}
 Statement: a proof witness of \texttt{xi\_argument\_alpha}.
 Reference/proof: immediate from the previous assumption. Lean field:
-\code{AxiomsShimAccepted.h\_xi\_argument\_alpha}.
+\code{AxiomsShimAccepted.}\allowbreak\code{h\_xi\_argument\_alpha}.
 
 \paragraph{xi\_bounds\_alpha\_of\_hypotheses.}
-Statement: \texttt{\detokenize{xi_bounds_hypotheses_alpha -> xi_bounds_alpha}}.
+Statement: \texttt{xi\_bounds\_hypotheses\_alpha ->}\\
+\texttt{xi\_bounds\_alpha}.
 Reference/proof: classical/citable implication (explicit-formula bounds package).
-Lean field: \code{AxiomsShimAccepted.xi\_bounds\_alpha\_of\_hypotheses}.
+Lean field: \code{AxiomsShimAccepted.}\allowbreak\code{xi\_bounds\_alpha\_of\_hypotheses}.
 
 \paragraph{xi\_argument\_alpha\_of\_hypotheses.}
-Statement: \texttt{\detokenize{xi_argument_hypotheses_alpha -> xi_argument_alpha}}.
+Statement: \texttt{xi\_argument\_hypotheses\_alpha ->}\\
+\texttt{xi\_argument\_alpha}.
 Reference/proof: classical/citable implication (argument bounds package).
-Lean field: \code{AxiomsShimAccepted.xi\_argument\_alpha\_of\_hypotheses}.
+Lean field: \code{AxiomsShimAccepted.}\allowbreak\code{xi\_argument\_alpha\_of\_hypotheses}.
 
-\paragraph{rh\_from\_E\_alpha\_of\_hypotheses.}
-Statement: \texttt{\detokenize{(E_bound_strong_alpha and xi_bounds_alpha and xi_argument_alpha and explicit_rect_alpha and Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi)) -> RHfromE xiAlpha AlphaPsi}}.
-Reference/proof: classical/citable implications in the ERU explicit-formula framework.
-Lean field: \code{AxiomsShimAccepted.rh\_from\_E\_alpha\_of\_hypotheses}.
+\paragraph{rh\_from\_E\_alpha\_of\_hypotheses.}\leavevmode\\
+Statement: \texttt{(E\_bound\_strong\_alpha and xi\_bounds\_alpha and}\\
+\texttt{xi\_argument\_alpha and explicit\_rect\_alpha and}\\
+\texttt{Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi))}\\
+\texttt{-> RHfromE}\\
+\texttt{xiAlpha AlphaPsi}.
+Reference/proof: classical/citable implications in the ERU explicit-formula framework.\\
+Lean field: \code{AxiomsShimAccepted.}\allowbreak\code{rh\_from\_E\_alpha\_of\_hypotheses}.
 
 \paragraph{h\_inertia\_to\_E.}
-Statement: \texttt{\detokenize{InertiaERU_alpha_strong -> E_bound_strong_alpha}}.
+Statement: \texttt{InertiaERU\_alpha\_strong ->}\\
+\texttt{E\_bound\_strong\_alpha}.
 Reference/proof: classical ERU inertia $\Rightarrow$ strong $E$-bound implication.
-Lean field: \code{AxiomsShimAccepted.h\_inertia\_to\_E}.
+Lean field: \code{AxiomsShimAccepted.}\allowbreak\code{h\_inertia\_to\_E}.
 
 \paragraph{h\_inertia\_of\_E.}
-Statement: \texttt{\detokenize{E_bound_strong_alpha -> InertiaERU_alpha_strong}}.
+Statement: \texttt{E\_bound\_strong\_alpha ->}\\
+\texttt{InertiaERU\_alpha\_strong}.
 Reference/proof: classical strong $E$-bound $\Rightarrow$ ERU inertia implication.
-Lean field: \code{AxiomsShimAccepted.h\_inertia\_of\_E}.
+Lean field: \code{AxiomsShimAccepted.}\allowbreak\code{h\_inertia\_of\_E}.
 
 \paragraph{h\_RH\_to\_E.}
-Statement: \texttt{\detokenize{RiemannHypothesis xiAlpha -> E_bound_strong_alpha}}.
+Statement: \texttt{RiemannHypothesis xiAlpha ->}\\
+\texttt{E\_bound\_strong\_alpha}.
 Reference/proof: classical RH $\Rightarrow$ $E$-bound (Assumption~\ref{assm:classical}).
-Lean field: \code{AxiomsShimAccepted.h\_RH\_to\_E}.
+Lean field: \code{AxiomsShimAccepted.}\allowbreak\code{h\_RH\_to\_E}.

@@ -1,6 +1,6 @@
 \section{Assumptions Ledger}
 \begin{itemize}
-  \item \textbf{Axioms footprint.} No project axioms: there are no \texttt{axiom}/\texttt{constant} declarations in ERURH. Lean kernel axioms still appear in \texttt{\#print axioms} (e.g., \texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}, \texttt{Lean.ofReduceBool}, \texttt{Lean.trustCompiler}).
+  \item \textbf{Axioms footprint.} No project axioms: there are no \texttt{axiom}/\texttt{constant} declarations in ERURH. Lean kernel axioms still appear in \texttt{\#print axioms} (e.g., \texttt{propext},\allowbreak \texttt{Classical.choice},\allowbreak \texttt{Quot.sound},\allowbreak \texttt{Lean.ofReduceBool},\allowbreak \texttt{Lean.trustCompiler}).
   \item \textbf{A/B/C (analytic packages).} The analytic inputs used by Plan~B:
   spectral decay (A), large-sieve bounds (B), and the uniform RMS tail bound (C)
   recorded in Theorem~\ref{thm:C}. These feed the A2 derivation
@@ -17,7 +17,7 @@
     of the window family is built into the paper definition of windows, not
     stated as a separate assumption.
     \item \textbf{Fixed-window bridge (alternative route).} The hypothesis
-    \texttt{ERURH.Alpha.ModeThresholdControlOnCtxRealWindowFamily} (Assumption
+    \texttt{ERURH.Alpha.ModeThresholdControl}\allowbreak\texttt{OnCtxRealWindowFamily} (Assumption
     \ref{assm:threshold-control}) pairs with gate-verified constraints on
     \texttt{ctx\_real}. The paper provides a discussion of the analytic gap;
     a full proof is deferred to a supplement.

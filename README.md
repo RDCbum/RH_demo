@@ -136,7 +136,7 @@ Use the repository URL and release tag for citations.
   title        = {ERURH: Conditional RH demo (Lean) with analytic assumptions A, B, C},
   year         = {2025},
   version      = {v1.0-preprint},
-  url          = {https://github.com/RDCbum/RH_demo},
+  url          = {https://github.com/RDCbum/RH_demo_clean},
 }
 ```
 Note. The Lean formalization proves a conditional implication

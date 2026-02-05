@@ -1,6 +1,7 @@
 \section{Assumptions Ledger}
 \begin{itemize}
-  \item \textbf{Axioms footprint.} No project axioms: there are no \texttt{axiom}/\texttt{constant} declarations in ERURH. Lean kernel axioms still appear in \texttt{\#print axioms} (e.g., \texttt{propext},\allowbreak \texttt{Classical.choice},\allowbreak \texttt{Quot.sound},\allowbreak \texttt{Lean.ofReduceBool},\allowbreak \texttt{Lean.trustCompiler}).
+  \item \textbf{Axioms footprint.} No project axioms: there are no \texttt{axiom}/\texttt{constant} declarations in ERURH. Lean kernel axioms still appear in \texttt{\#print axioms}.\\
+  (e.g.,\allowbreak \texttt{propext},\allowbreak \texttt{Classical.choice},\allowbreak \texttt{Quot.sound},\allowbreak \texttt{Lean.ofReduceBool},\allowbreak \texttt{Lean.trustCompiler}).
   \item \textbf{A/B/C (analytic packages).} The analytic inputs used by Plan~B:
   spectral decay (A), large-sieve bounds (B), and the uniform RMS tail bound (C)
   recorded in Theorem~\ref{thm:C}. These feed the A2 derivation
@@ -16,13 +17,14 @@
     A2 is discharged by Lemma~\ref{lem:a2-from-abc}. Admissibility (cofinality)
     of the window family is built into the paper definition of windows, not
     stated as a separate assumption.
-    \item \textbf{Fixed-window bridge (alternative route).} The hypothesis
-    \texttt{ERURH.Alpha.ModeThresholdControl}\allowbreak\texttt{OnCtxRealWindowFamily} (Assumption
+    \item \textbf{Fixed-window bridge (alternative route).} The hypothesis\\
+    \texttt{ERURH.Alpha.ModeThresholdControl}\allowbreak\texttt{OnCtxRealWindowFamily}\\
+    (Assumption
     \ref{assm:threshold-control}) pairs with gate-verified constraints on
     \texttt{ctx\_real}. The paper provides a discussion of the analytic gap;
     a full proof is deferred to a supplement.
-    \item \textbf{Buchstab derivation (optional).} The hypotheses
-    \texttt{ERURH.A1\_from\_supercritical\_buchstab} and
+    \item \textbf{Buchstab derivation (optional).} The hypotheses\\
+    \texttt{ERURH.A1\_from\_supercritical}\allowbreak\texttt{\_buchstab} and\\
     \texttt{ERURH.ExplicitBRhoExpression} are discharged by Lemmas
     \ref{lem:a1-from-supercritical-buchstab} and \ref{lem:buchstab-coefficient},
     yielding \texttt{A1\_from\_supercritical}.
@@ -39,64 +41,64 @@
 Statement: existence of the alpha interface package (`AlphaInterfaces`) providing
 the ERU observable $\log R$ and $J_{\mathrm{rel}}$ in the explicit-formula framework.
 Reference/proof: Assumption~\ref{assm:explicit}. Lean field:
-\texttt{AxiomsShimAccepted.alphaInterfacesBase}.
+\code{AxiomsShimAccepted.alphaInterfacesBase}.
 
 \paragraph{explicit\_alpha\_via\_stages.}
 Statement: the explicit-formula laws used by the alpha bridge hold, i.e.
 `ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi`.
 Reference/proof: Assumption~\ref{assm:explicit}. Lean field:
-\texttt{AxiomsShimAccepted.explicit\_alpha\_via\_stages}.
+\code{AxiomsShimAccepted.explicit\_alpha\_via\_stages}.
 
 \paragraph{xi\_bounds\_alpha.}
 Statement: the $\xi_\alpha$ bounds required by the ERU explicit-formula package
 hold (the proposition \texttt{xi\_bounds\_alpha}).
 Reference/proof: assumed as part of the explicit-formula bounds package;
 to be cited in the explicit-formula bounds section. Lean field:
-\texttt{AxiomsShimAccepted.xi\_bounds\_alpha}.
+\code{AxiomsShimAccepted.xi\_bounds\_alpha}.
 
 \paragraph{h\_xi\_bounds\_alpha.}
 Statement: a proof witness of \texttt{xi\_bounds\_alpha}.
 Reference/proof: immediate from the previous assumption. Lean field:
-\texttt{AxiomsShimAccepted.h\_xi\_bounds\_alpha}.
+\code{AxiomsShimAccepted.h\_xi\_bounds\_alpha}.
 
 \paragraph{xi\_argument\_alpha.}
 Statement: the $\xi_\alpha$ argument bounds required by ERURH hold
 (\texttt{xi\_argument\_alpha}).
 Reference/proof: assumed as part of the explicit-formula bounds package;
 to be cited in the argument bounds section. Lean field:
-\texttt{AxiomsShimAccepted.xi\_argument\_alpha}.
+\code{AxiomsShimAccepted.xi\_argument\_alpha}.
 
 \paragraph{h\_xi\_argument\_alpha.}
 Statement: a proof witness of \texttt{xi\_argument\_alpha}.
 Reference/proof: immediate from the previous assumption. Lean field:
-\texttt{AxiomsShimAccepted.h\_xi\_argument\_alpha}.
+\code{AxiomsShimAccepted.h\_xi\_argument\_alpha}.
 
 \paragraph{xi\_bounds\_alpha\_of\_hypotheses.}
 Statement: \texttt{\detokenize{xi_bounds_hypotheses_alpha -> xi_bounds_alpha}}.
 Reference/proof: classical/citable implication (explicit-formula bounds package).
-Lean field: \texttt{AxiomsShimAccepted.xi\_bounds\_alpha\_of\_hypotheses}.
+Lean field: \code{AxiomsShimAccepted.xi\_bounds\_alpha\_of\_hypotheses}.
 
 \paragraph{xi\_argument\_alpha\_of\_hypotheses.}
 Statement: \texttt{\detokenize{xi_argument_hypotheses_alpha -> xi_argument_alpha}}.
 Reference/proof: classical/citable implication (argument bounds package).
-Lean field: \texttt{AxiomsShimAccepted.xi\_argument\_alpha\_of\_hypotheses}.
+Lean field: \code{AxiomsShimAccepted.xi\_argument\_alpha\_of\_hypotheses}.
 
 \paragraph{rh\_from\_E\_alpha\_of\_hypotheses.}
 Statement: \texttt{\detokenize{(E_bound_strong_alpha and xi_bounds_alpha and xi_argument_alpha and explicit_rect_alpha and Nonempty (ExplicitFormulaLaws alphaBridge xiAlpha AlphaPsi)) -> RHfromE xiAlpha AlphaPsi}}.
 Reference/proof: classical/citable implications in the ERU explicit-formula framework.
-Lean field: \texttt{AxiomsShimAccepted.rh\_from\_E\_alpha\_of\_hypotheses}.
+Lean field: \code{AxiomsShimAccepted.rh\_from\_E\_alpha\_of\_hypotheses}.
 
 \paragraph{h\_inertia\_to\_E.}
 Statement: \texttt{\detokenize{InertiaERU_alpha_strong -> E_bound_strong_alpha}}.
 Reference/proof: classical ERU inertia $\Rightarrow$ strong $E$-bound implication.
-Lean field: \texttt{AxiomsShimAccepted.h\_inertia\_to\_E}.
+Lean field: \code{AxiomsShimAccepted.h\_inertia\_to\_E}.
 
 \paragraph{h\_inertia\_of\_E.}
 Statement: \texttt{\detokenize{E_bound_strong_alpha -> InertiaERU_alpha_strong}}.
 Reference/proof: classical strong $E$-bound $\Rightarrow$ ERU inertia implication.
-Lean field: \texttt{AxiomsShimAccepted.h\_inertia\_of\_E}.
+Lean field: \code{AxiomsShimAccepted.h\_inertia\_of\_E}.
 
 \paragraph{h\_RH\_to\_E.}
 Statement: \texttt{\detokenize{RiemannHypothesis xiAlpha -> E_bound_strong_alpha}}.
 Reference/proof: classical RH $\Rightarrow$ $E$-bound (Assumption~\ref{assm:classical}).
-Lean field: \texttt{AxiomsShimAccepted.h\_RH\_to\_E}.
+Lean field: \code{AxiomsShimAccepted.h\_RH\_to\_E}.

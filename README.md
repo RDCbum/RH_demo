@@ -6,7 +6,7 @@ RH_demo_clean presents ERURH as a high-difficulty applied case study of the ERU 
 
 ## Routes
 - Primary (legacy window-free): main route; abstract RMS context; no fixed window family / no computational threshold control; core conceptual chain.
-- Secondary (fixed-window computational): experimental/optional; depends on extra bridges (threshold control, `ExplicitBRhoExpression`); not required for the primary route.
+- Secondary (fixed-window computational): experimental/optional; depends on extra bridges (threshold control, and for the Buchstab instantiation `ExplicitBRhoExpression`); not required for the primary route.
 See `docs/core/ROUTES_COMPARISON.md`.
 
 ## Overview

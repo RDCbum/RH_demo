@@ -68,16 +68,6 @@ trust base (Lean kernel + mathlib axioms only). The window and normalization
 bridges are coverage/compatibility conditions audited structurally against the
 numeric certificates, not deep analytic conjectures.
 
-\subsection*{Main Claim (scope-exact)}
-ERURH provides a complete, formally verified (Lean) reduction of the Riemann
-Hypothesis for $\xi_\alpha$ to a finite and explicit set of external analytic
-statements (A/B/C and normalization bridges), together with a family of finite,
-reproducible numerical certificates whose verification is mechanical. The
-repository includes a machine-checked proof of the conditional implication
-\code{ERURH_GlobalAssumptions} $\Rightarrow$ RH$(\xi_\alpha)$, and a
-deterministic pipeline that regenerates and verifies all referenced numeric
-artifacts.
-
 \section{Introduction}
 The ERURH program reformulates the Riemann Hypothesis (RH) in terms of a
 finite set of numerically checkable certificates. It is presented here as a
@@ -91,6 +81,16 @@ forces the RH for a completed zeta-like function $\xi_\alpha$. The novel
 content is encapsulated in finite certificates; the classical analytic inputs
 are isolated as explicit assumptions. The entire logical chain is formalized
 in Lean.
+
+\paragraph*{Main Claim (scope-exact).}
+ERURH provides a complete, formally verified (Lean) reduction of the Riemann
+Hypothesis for $\xi_\alpha$ to a finite and explicit set of external analytic
+statements (A/B/C and normalization bridges), together with a family of finite,
+reproducible numerical certificates whose verification is mechanical. The
+repository includes a machine-checked proof of the conditional implication
+\code{ERURH_GlobalAssumptions} $\Rightarrow$ RH$(\xi_\alpha)$, and a
+deterministic pipeline that regenerates and verifies all referenced numeric
+artifacts.
 
 This paper is a rigorous, stand-alone description of the conditional proof at
 the level of the reduction and the Lean-verified logical chain. The analytic
@@ -1139,9 +1139,10 @@ Two complementary routes are presented.
   \item \textbf{Secondary route (fixed-window, computational).} This
   alternative route anchors the RMS chain to a certified finite window family.
   It introduces additional hypotheses, including fixed-window threshold
-  control and the coefficient-identification bridge
-  \code{ExplicitBRhoExpression}. It is experimental and not required for the
-  primary route.
+  control. When instantiated via the Buchstab bridge, it also uses the
+  coefficient-identification bridge
+  \code{ExplicitBRho}\allowbreak\code{Expression}. It is experimental and not
+  required for the primary route.
 \end{itemize}
 The inclusion of the secondary route is not meant to compensate for a gap in
 the primary argument, but to illustrate how the ERU framework can be

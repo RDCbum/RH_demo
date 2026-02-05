@@ -1,5 +1,7 @@
 # RH_demo_clean - ERURH conditional RH proof (Lean/Python)
 
+**DOI:** https://doi.org/10.5281/zenodo.18010407
+
 RH_demo_clean presents ERURH as a high-difficulty applied case study of the ERU framework. It provides a conditional Lean reduction to the Riemann Hypothesis together with a claim-indexed analytic discharge (Theorems A/B/C) prepared for external audit. It does not assert RH unconditionally; it invites focused review of specific Claim IDs. The repo includes the Lean proof modules and Python tooling used to regenerate the numeric certificates referenced by the conditional statement.
 
 **ERU context.**  

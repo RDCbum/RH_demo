@@ -1,14 +1,32 @@
 # RH_demo_clean - ERURH conditional RH proof (Lean/Python)
 
-**DOI:** https://doi.org/10.5281/zenodo.18010407
+## What this repository contains
 
-RH_demo_clean presents ERURH as a high-difficulty applied case study of the ERU framework. It provides a conditional Lean reduction to the Riemann Hypothesis together with a claim-indexed analytic discharge (Theorems A/B/C) prepared for external audit. It does not assert RH unconditionally; it invites focused review of specific Claim IDs. The repo includes the Lean proof modules and Python tooling used to regenerate the numeric certificates referenced by the conditional statement.
+**RH_demo_clean** contains a **machine-checked (Lean) conditional reduction of the Riemann Hypothesis**
+to a finite and explicit set of analytic assumptions.
 
-**ERU context.**  
-This repository presents ERURH as an applied, high-difficulty case study of the ERU framework.  
+The repository formalizes the conditional implication
+
+> **ERURH_GlobalAssumptions  RiemannHypothesis**
+
+where all logical steps are verified in Lean, and all external analytic components
+(Theorems **A**, **B**, **C** and normalization bridges) are isolated, claim-indexed,
+and prepared for independent audit.
+No unconditional claim of RH is made.
+
+This work is presented as a high-difficulty applied case study of the **ERU framework**.
+The repository includes the Lean proof modules and a deterministic Python pipeline
+to regenerate and mechanically verify the numerical certificates referenced by the conditional statement.
+
 For a concise overview of ERU and how ERURH fits into it, see `docs/ERU_AT_A_GLANCE.md`.
 
-**Scope-exact claim.** ERURH provides a complete, formally verified (Lean) reduction of RH for `xiAlpha` to a finite and explicit set of external analytic statements (A/B/C and normalization bridges), together with a family of finite, reproducible numerical certificates whose verification is mechanical. The repository includes a machine-checked proof of the conditional implication `ERURH_GlobalAssumptions -> RiemannHypothesis`, and a deterministic pipeline that regenerates and verifies all referenced numeric artifacts.
+## Preprint and citation
+
+- **DOI (Zenodo):** https://doi.org/10.5281/zenodo.18010407  
+- **HAL preprint:** https://hal.science/hal-05501445
+
+The HAL deposit provides an academic preprint version and institutional anchoring.
+The DOI should be used for citation.
 
 ## Routes
 - Primary (legacy window-free): main route; abstract RMS context; no fixed window family / no computational threshold control; core conceptual chain.
@@ -128,7 +146,8 @@ review.
 
 ## How to cite
 
-Use the repository URL and release tag for citations.
+Use the DOI above for citation. Include the repository URL and release tag when
+referencing a specific code snapshot or release.
 
 ### BibTeX
 
@@ -138,6 +157,7 @@ Use the repository URL and release tag for citations.
   title        = {ERURH: Conditional RH demo (Lean) with analytic assumptions A, B, C},
   year         = {2025},
   version      = {v1.0-preprint},
+  doi          = {10.5281/zenodo.18010407},
   url          = {https://github.com/RDCbum/RH_demo_clean},
 }
 ```

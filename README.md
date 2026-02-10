@@ -7,7 +7,7 @@ to a finite and explicit set of analytic assumptions.
 
 The repository formalizes the conditional implication
 
-> **ERURH_GlobalAssumptions  RiemannHypothesis**
+> **ERURH_GlobalAssumptions -> RiemannHypothesis**
 
 where all logical steps are verified in Lean, and all external analytic components
 (Theorems **A**, **B**, **C** and normalization bridges) are isolated, claim-indexed,
